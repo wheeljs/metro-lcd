@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import type { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { RunningLineService } from '../running-line.service';
 import { StationStatus } from '../types';
@@ -20,11 +20,8 @@ export class HeaderComponent {
 
   constructor(private runningLineService: RunningLineService) {
     this.running$ = runningLineService.runningState$.pipe(
+      filter(x => x != null),
       map((state) => {
-        if (!state) {
-          return null;
-        }
-
         const { current } = state;
         if (current.status !== StationStatus.Past) {
           return current;
