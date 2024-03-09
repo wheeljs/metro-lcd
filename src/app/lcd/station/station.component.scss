@@ -51,7 +51,7 @@ $cls: lcd-station;
   lcd-splitor {
     position: absolute;
     top: 8.5px;
-    right: 45px;
+    right: 48px;
     font-size: 24px;
     line-height: 24px;
     z-index: 20;
@@ -79,7 +79,7 @@ $cls: lcd-station;
   &:nth-child(even) .#{$cls}__info {
     transform: translate(
       calc(-50% + 20px),
-      calc(($point-size * -1) - 100% - 8px)
+      calc(($point-size * -1) - 100% - 16px)
     );
 
     .#{$cls}__transfers {
