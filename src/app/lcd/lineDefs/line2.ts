@@ -108,7 +108,7 @@ export const Line2: Line = {
     {
       id: '0207',
       nameCh: '益康路',
-      nameEn: 'YiKangLu',
+      nameEn: 'Yi Kang Lu',
       voices: {
         [StationStatus.ArrivingSoon]: {
           ch: ['19-PengJiaZhuang-T.wav', '07-YiKangLu-01.wav'],
@@ -251,7 +251,7 @@ export const Line2: Line = {
     {
       id: '0216',
       nameCh: '姜家庄',
-      nameEn: 'JiangJiaZhuang',
+      nameEn: 'Jiang Jia Zhuang',
       voices: {
         [StationStatus.ArrivingSoon]: {
           ch: ['19-PengJiaZhuang-T.wav', '16-JiangJiaZhuang-01.wav'],
