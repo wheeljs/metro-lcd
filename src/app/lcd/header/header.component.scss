@@ -1,0 +1,111 @@
+@use '../_utils';
+
+$lcd-header-padding-v: 8px;
+$lcd-header-cn-font-size: 48px;
+$lcd-header-en-font-size: 28px;
+
+.lcd-header {
+  padding: $lcd-header-padding-v 64px $lcd-header-padding-v 72px;
+  height: 96px;
+  @include utils.flex-horizontal();
+  background-color: var(--line-color);
+
+  &__logo-container {
+    flex: 0 0;
+    @include utils.flex-vertical();
+    justify-content: center;
+    padding: 8px;
+    background-color: #fff;
+    border-radius: 8px;
+  }
+
+  &__logo {
+    height: 100%;
+  }
+
+  &__line-number {
+    flex: 0 0;
+    margin-left: 32px;
+    @include utils.flex-horizontal();
+    @include utils.keep-one-line();
+    align-items: center;
+
+    > span {
+      font-weight: bold;
+      font-size: 98px;
+      line-height: 96px;
+    }
+
+    &__text {
+      margin-left: 8px;
+      @include utils.flex-vertical();
+      justify-content: center;
+
+      &__ch {
+        font-size: $lcd-header-cn-font-size;
+        line-height: 1.2;
+      }
+
+      &__en {
+        font-size: $lcd-header-en-font-size;
+      }
+    }
+  }
+
+  &__station {
+    flex: 1 1;
+    margin: -$lcd-header-padding-v 40px;
+    min-width: 34.5834%;
+    @include utils.flex-horizontal();
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 0 0 8px 8px;
+    background-color: #fff;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.65);
+
+    &__prefix,
+    &__station-name {
+      padding: 0 40px;
+      @include utils.flex-vertical();
+      @include utils.keep-one-line();
+      text-align: center;
+    }
+
+    &__cn {
+      font-weight: bold;
+      font-size: 48px;
+      line-height: 1.2;
+    }
+
+    &__en {
+      font-size: $lcd-header-en-font-size;
+    }
+  }
+
+  &__dest {
+    flex: 1 0;
+    @include utils.flex-horizontal();
+    align-items: center;
+
+    &__splitor {
+      margin: 0 24px;
+      font-size: 48px;
+    }
+
+    &__cn {
+      font-size: 48px;
+      line-height: 1.2;
+    }
+
+    &__en {
+      font-size: $lcd-header-en-font-size;
+    }
+  }
+
+  &__dest__a,
+  &__dest__b {
+    @include utils.flex-vertical();
+    @include utils.keep-one-line();
+    text-align: center;
+  }
+}

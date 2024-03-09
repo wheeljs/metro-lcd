@@ -1,0 +1,129 @@
+@use 'sass:math';
+@use '../_utils';
+@import '../_variables';
+
+$point-size: 40px;
+$cls: lcd-station;
+
+.#{$cls} {
+  flex: 0 0 $point-size;
+  position: relative;
+  @include utils.flex-vertical();
+
+  &__point {
+    position: relative;
+    width: $point-size;
+    height: $point-size;
+    border: 4px solid var(--line-color);
+    border-radius: 50%;
+    background-color: #fff;
+    text-align: center;
+    font-size: 24px;
+    line-height: 32px;
+    z-index: 30;
+
+    fa-icon {
+      position: absolute;
+      left: 4px;
+      color: var(--transfer-line-color);
+    }
+
+    fa-icon:first-child {
+      color: var(--line-color);
+      clip-path: circle(63% at 50% 0);
+      z-index: 1;
+    }
+  }
+
+  &__line {
+    position: absolute;
+    top: 8px;
+    height: $lcd-route-line-height;
+    background-color: var(--line-color);
+    z-index: -1;
+  }
+
+  &:first-child .#{$cls}__line {
+    display: none;
+  }
+
+  &--transferrable .#{$cls}__point {
+    animation: 1.75s ease-in infinite transferrable-station;
+  }
+
+  &--arriving-soon .#{$cls}__point {
+    background-color: var(--line-color);
+  }
+
+  &--past {
+    color: #e9e9e9;
+    filter: grayscale(100%);
+  }
+
+  lcd-splitor {
+    position: absolute;
+    top: 8.5px;
+    right: 45px;
+    font-size: 24px;
+    line-height: 24px;
+    z-index: 20;
+
+    :nth-child(n + 4) {
+      display: none;
+    }
+  }
+
+  &:first-child lcd-splitor {
+    display: none;
+  }
+
+  &__info {
+    position: absolute;
+    top: $point-size + 8;
+    @include utils.flex-vertical();
+    @include utils.keep-one-line();
+    transform: translateX(
+      calc(-50% + /* half of point width */ math.div($point-size, 2))
+    );
+    text-align: center;
+  }
+
+  &:nth-child(even) .#{$cls}__info {
+    transform: translate(
+      calc(-50% + 20px),
+      calc(($point-size * -1) - 100% - 8px)
+    );
+
+    .#{$cls}__transfers {
+      order: -1;
+    }
+  }
+
+  &__transfers {
+    align-self: center;
+  }
+
+  &__transfer {
+    margin: 4px 0;
+    padding: 4px 16px;
+    @include utils.flex-vertical();
+    @include utils.keep-one-line();
+    border-radius: 8px;
+    color: #fff;
+    background-color: var(--transfer-line-color);
+
+    &--disabled {
+      background-color: #e9e9e9;
+    }
+  }
+}
+
+@keyframes transferrable-station {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

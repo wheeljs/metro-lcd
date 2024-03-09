@@ -1,0 +1,14 @@
+@mixin flex-horizontal() {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flex-vertical() {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin keep-one-line() {
+  word-break: keep-all;
+  white-space: nowrap;
+}

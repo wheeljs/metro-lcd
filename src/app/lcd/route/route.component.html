@@ -1,0 +1,8 @@
+<div class="lcd-route__station-container">
+  <div #line class="lcd-route__stations__line"></div>
+  <div class="lcd-route__stations">
+    @for (station of stations; track station.id) {
+      <lcd-station [station]="station" [routeLineWidth]="stationRouteLineWidth" />
+    }
+  </div>
+</div>

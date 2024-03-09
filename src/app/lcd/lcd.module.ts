@@ -1,0 +1,26 @@
+import { NgModule } from '@angular/core';
+
+import { SharedModule } from '../shared/shared.module';
+import { SplitorComponent } from './splitor/splitor.component';
+import { HeaderComponent } from './header/header.component';
+import { ContainerComponent } from './container/container.component';
+import { RouteComponent } from './route/route.component';
+import { StationComponent } from './station/station.component';
+import { LineNamePipe } from './line-name.pipe';
+import { PlayerComponent } from './player/player.component';
+// import { PlayerComponent } from './player/player-rxjs2.component';
+
+@NgModule({
+  declarations: [
+    SplitorComponent,
+    HeaderComponent,
+    ContainerComponent,
+    RouteComponent,
+    StationComponent,
+    LineNamePipe,
+    PlayerComponent,
+  ],
+  imports: [SharedModule],
+  exports: [ContainerComponent],
+})
+export class LcdModule {}

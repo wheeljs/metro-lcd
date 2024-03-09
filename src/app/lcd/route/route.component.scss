@@ -1,0 +1,20 @@
+@use '../_utils';
+@import '../_variables';
+
+.lcd-route {
+  &__station-container {
+    padding: 128px 64px 0;
+  }
+
+  &__stations__line {
+    height: $lcd-route-line-height;
+    background-color: var(--line-color);
+    z-index: -1;
+  }
+
+  &__stations {
+    margin: -32px -4px 0;
+    @include utils.flex-horizontal();
+    justify-content: space-between;
+  }
+}

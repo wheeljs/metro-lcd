@@ -1,0 +1,8 @@
+<audio
+  #audio
+  controls
+  [src]="playing$ | async"
+  (canplaythrough)="audioLoaded($event)"
+  (ended)="audioEnded($event)"
+></audio>
+{{ playing$ | async }}

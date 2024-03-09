@@ -1,0 +1,35 @@
+<div
+  class="lcd-station__point"
+  [style.--transfer-line-color]="station.transfers?.[0]?.color"
+>@if (transferrable) {
+  <fa-icon [icon]="transferIcon" />
+  <fa-icon [icon]="transferIcon" />
+}</div>
+<div
+  class="lcd-station__line"
+  [style.width.px]="routeLineWidth + 20"
+  [style.left.px]="-routeLineWidth - 7"
+></div>
+<lcd-splitor
+  speed="faster"
+  [animating]="station.status === 'arriving-soon'"
+  [color]="station.status === 'arriving-soon' ? 'red' : 'white'"
+/>
+<div class="lcd-station__info">
+  <span class="lcd-station__name__ch">{{ station.nameCh }}</span>
+  <span class="lcd-station__name__en" [innerHTML]="station.nameEn"></span>
+  @if (station.transfers) {
+    <div class="lcd-station__transfers">
+      @for (transfer of station.transfers; track transfer.id) {
+        <div
+          class="lcd-station__transfer"
+          [class.lcd-station__transfer--disabled]="transfer.disabled"
+          [style.--transfer-line-color]="transfer.color"
+        >
+          <span class="lcd-station__transfer__line__ch">{{ transfer.nameCh | lineName }}</span>
+          <span class="lcd-station__transfer__line__en">{{ transfer.nameEn | lineName }}</span>
+        </div>
+      }
+    </div>
+  }
+</div>

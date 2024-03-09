@@ -1,0 +1,60 @@
+<div class="lcd-header">
+  <div class="lcd-header__logo-container">
+    <img
+      src="/assets/logo.png"
+      alt="Jinan Metro Logo"
+      class="lcd-header__logo"
+    />
+  </div>
+  <div class="lcd-header__line-number">
+    <span>{{ line.nameCh.main }}</span>
+    <div class="lcd-header__line-number__text">
+      <span class="lcd-header__line-number__text__ch">
+        {{ line.nameCh.suffix }}
+      </span>
+      <span class="lcd-header__line-number__text__en">
+        {{ line.nameEn | lineName }}
+      </span>
+    </div>
+  </div>
+  <div class="lcd-header__station">
+    @if (running$ | async; as running) {
+      @if (running.status === 'arriving-soon') {
+        <div class="lcd-header__station__prefix">
+          <span class="lcd-header__station__cn">下一站</span>
+          <span class="lcd-header__station__en">Next</span>
+        </div>
+        <div class="lcd-header__station__station-name">
+          <span class="lcd-header__station__cn">{{ running.nameCh }}</span>
+          <span class="lcd-header__station__en">
+            {{ running.nameEn | stripNewLine }}
+          </span>
+        </div>
+      } @else if (running.status === 'arrived') {
+        <div class="lcd-header__station__prefix">
+          <span class="lcd-header__station__cn">到达站</span>
+          <span class="lcd-header__station__en">Arrived</span>
+        </div>
+        <div class="lcd-header__station__station-name">
+          <span class="lcd-header__station__cn">{{ running.nameCh }}</span>
+          <span class="lcd-header__station__en">
+            {{ running.nameEn | stripNewLine }}
+          </span>
+        </div>
+      }
+    }
+  </div>
+  <div class="lcd-header__dest">
+    <div class="lcd-header__dest__a">
+      <span class="lcd-header__dest__cn">{{ line.from.nameCh }}</span>
+      <span class="lcd-header__dest__en">{{ line.from.nameEn }}</span>
+    </div>
+    <div class="lcd-header__dest__splitor">
+      <lcd-splitor />
+    </div>
+    <div class="lcd-header__dest__b">
+      <span class="lcd-header__dest__cn">{{ line.to.nameCh }}</span>
+      <span class="lcd-header__dest__en">{{ line.to.nameEn }}</span>
+    </div>
+  </div>
+</div>

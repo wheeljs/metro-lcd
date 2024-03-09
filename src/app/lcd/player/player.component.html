@@ -1,0 +1,9 @@
+<audio
+  #audio
+  [src]="playing"
+  (canplaythrough)="audioLoaded($event)"
+  (ended)="audioEnded()"
+></audio>
+<button (click)="play()">Play</button>
+<button (click)="pause()">Pause</button>
+<button (click)="next()">Next</button>

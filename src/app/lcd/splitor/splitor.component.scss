@@ -1,0 +1,24 @@
+@use '../_utils';
+
+.lcd-splitor {
+  @include utils.flex-horizontal();
+
+  @for $i from 1 through 5 {
+    &--animating > :nth-child(#{$i}) {
+      animation: 1.5s $i * 0.25s infinite splitor-animation;
+    }
+  }
+
+  &--animate-faster > :nth-child(n) {
+    animation-duration: 0.85s;
+  }
+}
+
+@keyframes splitor-animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
