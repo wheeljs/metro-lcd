@@ -21,18 +21,6 @@ $cls: lcd-station;
     font-size: 24px;
     line-height: 32px;
     z-index: 30;
-
-    fa-icon {
-      position: absolute;
-      left: 4px;
-      color: var(--transfer-line-color);
-    }
-
-    fa-icon:first-child {
-      color: var(--line-color);
-      clip-path: circle(63% at 50% 0);
-      z-index: 1;
-    }
   }
 
   &__line {

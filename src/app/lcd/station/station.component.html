@@ -1,9 +1,10 @@
 <div
   class="lcd-station__point"
-  [style.--transfer-line-color]="station.transfers?.[0]?.color"
 >@if (transferrable) {
-  <fa-icon [icon]="transferIcon" />
-  <fa-icon [icon]="transferIcon" />
+  <lcd-transfer-icon
+    mainColor="var(--line-color)"
+    [transferColor]="station.transfers?.[0]?.color"
+  />
 }</div>
 <div
   class="lcd-station__line"

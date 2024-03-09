@@ -1,5 +1,4 @@
 import { Component, ViewEncapsulation, Input } from '@angular/core';
-import { faRotate } from '@fortawesome/free-solid-svg-icons';
 import type { RunningLineStation } from '../types';
 
 @Component({
@@ -15,7 +14,6 @@ import type { RunningLineStation } from '../types';
   encapsulation: ViewEncapsulation.None,
 })
 export class StationComponent {
-  transferIcon = faRotate;
 
   @Input() station!: RunningLineStation;
 

@@ -9,6 +9,7 @@ import { StationComponent } from './station/station.component';
 import { LineNamePipe } from './line-name.pipe';
 import { PlayerComponent } from './player/player.component';
 // import { PlayerComponent } from './player/player-rxjs2.component';
+import { TransferIconComponent } from './transfer-icon/transfer-icon.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PlayerComponent } from './player/player.component';
     StationComponent,
     LineNamePipe,
     PlayerComponent,
+    TransferIconComponent,
   ],
   imports: [SharedModule],
   exports: [ContainerComponent],
