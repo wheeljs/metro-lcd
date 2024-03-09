@@ -31,5 +31,5 @@ export class SplitorComponent {
 
   @Input() color = '#000';
 
-  @Input() speed: string | SplitorSpeed = SplitorSpeed.Faster;
+  @Input() speed: string | SplitorSpeed = SplitorSpeed.Default;
 }
