@@ -2,6 +2,5 @@
 <lcd-route [line]="runningLine" />
 <div class="ops">
   <button (click)="moveNext()">NEXT</button>
-  {{ voice$ | async | json }}
-  <lcd-player [playlist]="playlist" (ended)="onPlayerEnded()" />
+  <lcd-player [playlist]="(playlist$ | async) || []" (ended)="onPlayerEnded()" />
 </div>

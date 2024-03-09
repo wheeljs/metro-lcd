@@ -13,19 +13,11 @@ import { RunningLineService } from '../running-line.service';
   providers: [RunningLineService],
 })
 export class ContainerComponent {
-  playlist = [
-    '/assets/voices/ch/02-LaShanNan-01.wav',
-    '/assets/t-rex-roar.mp3',
-    '/assets/t-rex-roar1.mp3',
-    '/assets/t-rex-roar.mp3',
-    '/assets/t-rex-roar1.mp3',
-  ];
-
   line: Line = Line2;
 
   runningLine!: ReturnType<RunningLineService['init']>;
 
-  voice$: Observable<string[]>;
+  playlist$: Observable<string[]>;
 
   @HostBinding('style.--line-color')
   get lineColor() {
@@ -35,7 +27,7 @@ export class ContainerComponent {
   constructor(private runningLineService: RunningLineService) {
     this.runningLine = this.runningLineService.init(this.line);
 
-    this.voice$ = this.runningLineService.runningState$.pipe(
+    this.playlist$ = this.runningLineService.runningState$.pipe(
       filter((x) => x != null),
       map((state) => {
         const { current, next } = state;
