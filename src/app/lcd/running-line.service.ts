@@ -84,7 +84,12 @@ export class RunningLineService {
       const station = stations[i];
       if (from === station) {
         from.status = StationStatus.ArrivingSoon;
-        this.next();
+        const nextStation = stations[i + 1];
+        this.running.next({
+          current: Object.assign(from),
+          next: nextStation ? Object.assign(nextStation) : null,
+        });
+
         break;
       }
     }
