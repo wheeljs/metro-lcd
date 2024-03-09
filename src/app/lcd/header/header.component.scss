@@ -86,6 +86,7 @@ $lcd-header-en-font-size: 28px;
     flex: 1 0;
     @include utils.flex-horizontal();
     align-items: center;
+    justify-content: flex-end;
 
     &__splitor {
       margin: 0 24px;
