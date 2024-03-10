@@ -8,7 +8,7 @@ interface RunningState {
   next: RunningLineStation;
 }
 
-type InitLineOptions = Pick<ContainerConfig, 'from' | 'to'>;
+type InitLineOptions = Pick<ContainerConfig, 'from' | 'to' | 'disabledStations'>;
 
 @Injectable()
 export class RunningLineService {
@@ -26,13 +26,14 @@ export class RunningLineService {
     /**
      * 初始化时可传的参数，如控制小交路等
      */
-    options: InitLineOptions = {}
+    options: InitLineOptions,
   ): Readonly<RunningLine> {
     const runningLine = { ...line } as Partial<RunningLine>;
 
     runningLine.stations = line.stations.map<RunningLineStation>((station) => ({
       ...station,
       status: StationStatus.OnTheWay,
+      disabled: options?.disabledStations?.includes?.(station.id),
     }));
 
     if (line.direction === 'down') {

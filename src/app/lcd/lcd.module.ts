@@ -11,6 +11,7 @@ import { PlayerComponent } from './player/player.component';
 // import { PlayerComponent } from './player/player-rxjs2.component';
 import { OperationPanelComponent } from './operation-panel/operation-panel.component';
 import { TransferIconComponent } from './transfer-icon/transfer-icon.component';
+import { ToolbarComponent } from './station/toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { TransferIconComponent } from './transfer-icon/transfer-icon.component';
     PlayerComponent,
     OperationPanelComponent,
     TransferIconComponent,
+    ToolbarComponent,
   ],
   imports: [SharedModule],
   exports: [ContainerComponent],

@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation, Input } from '@angular/core';
-import { StationStatus, type RunningLineStation } from '../types';
+import { StationStatus, type RunningLine, type RunningLineStation } from '../types';
+import { ContainerConfigService } from '../container-config.service';
 
 @Component({
   selector: 'lcd-station',
@@ -17,6 +18,8 @@ import { StationStatus, type RunningLineStation } from '../types';
 export class StationComponent {
   StationStatus = StationStatus;
 
+  @Input() line?: RunningLine;
+
   @Input() station!: RunningLineStation;
 
   @Input() routeLineWidth!: number;
@@ -24,4 +27,10 @@ export class StationComponent {
   get transferrable(): boolean {
     return this.station?.transfers?.some((x) => !x.disabled) ?? false;
   }
+
+  get config() {
+    return this.containerConfigService.config;
+  }
+
+  constructor(private containerConfigService: ContainerConfigService) {}
 }

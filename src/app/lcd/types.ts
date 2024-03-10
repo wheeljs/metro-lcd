@@ -70,6 +70,11 @@ export interface ContainerConfig {
   nextOnAudioEnded?: boolean;
 
   /**
+   * 是否编辑模式
+   */
+  editing?: boolean;
+
+  /**
    * 线路起点
    */
   from?: RunningLine['id'];
@@ -77,4 +82,8 @@ export interface ContainerConfig {
    * 线路终点
    */
   to?: RunningLine['id'];
+  /**
+   * 暂缓开通站点
+   */
+  disabledStations: RunningLine['id'][];
 }

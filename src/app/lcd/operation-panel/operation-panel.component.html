@@ -10,7 +10,7 @@
 <div class="lcd-operation-panel__category">
   <div class="lcd-operation-panel__category__title">LCD Control</div>
   <span class="lcd-operation-panel__operation-item">
-    <button (click)="container.moveNext()">Next</button>
+    <button [disabled]="config.editing" (click)="container.moveNext()">Next</button>
   </span>
   <span class="lcd-operation-panel__operation-item">
     <label><input
@@ -19,12 +19,20 @@
       (change)="updateBooleanConfig('nextOnAudioEnded', $event)"
     />Move Next When Audio Ended</label>
   </span>
+  <span class="lcd-operation-panel__operation-item">
+    <label><input
+      type="checkbox"
+      [checked]="config.editing"
+      (change)="updateBooleanConfig('editing', $event)"
+    />Edit Station Mode (⚠Will Lose Current Running Status)</label>
+  </span>
 </div>
 <div class="lcd-operation-panel__category">
   <div class="lcd-operation-panel__category__title">Voice Control</div>
   <div class="lcd-operation-panel__operation-item">
     <lcd-player
       [playlist]="(container.playlist$ | async) || []"
+      [disabled]="config.editing"
       (ended)="container.onPlayerEnded()"
     />
   </div>

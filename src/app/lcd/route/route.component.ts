@@ -20,7 +20,7 @@ import type { RunningLine, RunningLineStation } from '../types';
 export class RouteComponent implements AfterViewChecked {
   @Input() line!: RunningLine;
 
-  @ViewChild('line', { read: ElementRef })
+  @ViewChild('lineEl', { read: ElementRef })
   lineElRef!: ElementRef<HTMLDivElement>;
 
   stationRouteLineWidth = 0;
