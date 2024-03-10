@@ -23,6 +23,8 @@ interface ControlsContext {
 export class PlayerComponent implements AfterViewInit, ControlsContext {
   @Input() controls?: TemplateRef<ControlsContext>;
 
+  @Input() disabled? = false;
+
   private _playlist!: string[];
   @Input() set playlist(val: string[]) {
     this._playlist = [...val];
