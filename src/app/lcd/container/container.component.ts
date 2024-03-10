@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { type Line, StationStatus } from '../types';
-import { Line2 } from '../lineDefs/';
+import { Line2 } from '../defs/';
 import { RunningLineService } from '../running-line.service';
 
 @Component({
