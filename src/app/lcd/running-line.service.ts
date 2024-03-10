@@ -77,6 +77,21 @@ export class RunningLineService {
     return this.runningLine;
   }
 
+  private getNextStation(index: number): { index: number; station: RunningLineStation; } | null {
+    const { stations } = this.runningLine;
+
+    let nextIdx = index + 1;
+    if (nextIdx === stations.length) {
+      return null;
+    }
+    const nextStation = stations[nextIdx];
+    if (nextStation.disabled) {
+      return this.getNextStation(nextIdx);
+    }
+
+    return { index: nextIdx, station: nextStation };
+  }
+
   setStartStation() {
     const { from, stations } = this.runningLine;
 
@@ -84,7 +99,7 @@ export class RunningLineService {
       const station = stations[i];
       if (from === station) {
         from.status = StationStatus.ArrivingSoon;
-        const nextStation = stations[i + 1];
+        const nextStation = this.getNextStation(i);
         this.running.next({
           current: Object.assign(from),
           next: nextStation ? Object.assign(nextStation) : null,
@@ -106,7 +121,7 @@ export class RunningLineService {
       return;
     }
     const nextStation = stations[nextStationIdx];
-    const next2Station = stations[nextStationIdx + 1];
+    const { index, station: next2Station } = this.getNextStation(nextStationIdx) ?? {};
 
     switch (nextStation.status) {
       case StationStatus.ArrivingSoon:
@@ -117,7 +132,15 @@ export class RunningLineService {
           return;
         }
         nextStation.status = StationStatus.Past;
-        next2Station.status = StationStatus.ArrivingSoon;
+        if (next2Station) {
+          if (typeof index === 'number' && index > nextStationIdx + 1) {
+            // 中间暂缓开通的车站，在运行时设置状态为Past
+            for (let i = nextStationIdx + 1; i < index; i++) {
+              stations[i].status = StationStatus.Past;
+            }
+          }
+          next2Station.status = StationStatus.ArrivingSoon;
+        }
         break;
     }
 

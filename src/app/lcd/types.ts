@@ -29,6 +29,7 @@ export interface Station extends NameSimple {
     [StationStatus.ArrivingSoon]: StationVoice;
     [StationStatus.Arrived]: StationVoice;
   };
+  disabled?: boolean;
 }
 
 export interface Line extends LineSimple {
@@ -40,8 +41,6 @@ export interface Line extends LineSimple {
 }
 
 export enum StationStatus {
-  /** 暂缓开通 */
-  UnOperating = 'un-operating',
   /** 未在运营区间 */
   NotInService = 'not-in-service',
   /** 未到达 */

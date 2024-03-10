@@ -8,6 +8,7 @@ import { StationStatus, type RunningLineStation } from '../types';
   host: {
     class: 'lcd-station',
     '[class.lcd-station--transferrable]': `transferrable`,
+    '[class.lcd-station--disabled]': `station.disabled`,
     '[class.lcd-station--arriving-soon]': `station.status === StationStatus.ArrivingSoon`,
     '[class.lcd-station--past]': `station.status === StationStatus.Past || station.status === StationStatus.NotInService`,
   },

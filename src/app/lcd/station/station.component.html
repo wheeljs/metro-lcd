@@ -19,6 +19,7 @@
 <div class="lcd-station__info">
   <span class="lcd-station__name__ch">{{ station.nameCh }}</span>
   <span class="lcd-station__name__en" [innerHTML]="station.nameEn"></span>
+  @if (station.disabled) { <span class="lcd-station__disabled">(暂缓开通)</span> }
   @if (station.transfers) {
     <div class="lcd-station__transfers">
       @for (transfer of station.transfers; track transfer.id) {
@@ -34,3 +35,6 @@
     </div>
   }
 </div>
+@if (config.editing) {
+  <lcd-station-toolbar [line]="line" [station]="station" />
+}
