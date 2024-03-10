@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, Input } from '@angular/core';
-import type { RunningLineStation } from '../types';
+import { StationStatus, type RunningLineStation } from '../types';
 
 @Component({
   selector: 'lcd-station',
@@ -8,12 +8,13 @@ import type { RunningLineStation } from '../types';
   host: {
     class: 'lcd-station',
     '[class.lcd-station--transferrable]': `transferrable`,
-    '[class.lcd-station--arriving-soon]': `station.status === 'arriving-soon'`,
-    '[class.lcd-station--past]': `station.status === 'past' || station.status === 'not-in-service'`,
+    '[class.lcd-station--arriving-soon]': `station.status === StationStatus.ArrivingSoon`,
+    '[class.lcd-station--past]': `station.status === StationStatus.Past || station.status === StationStatus.NotInService`,
   },
   encapsulation: ViewEncapsulation.None,
 })
 export class StationComponent {
+  StationStatus = StationStatus;
 
   @Input() station!: RunningLineStation;
 
