@@ -62,3 +62,10 @@ export interface RunningLine extends Line {
   to: RunningLineStation;
   stations: RunningLineStation[];
 }
+
+export interface ContainerConfig {
+  /**
+   * 当音频播放完毕后自动next
+   */
+  nextOnAudioEnded?: boolean;
+}

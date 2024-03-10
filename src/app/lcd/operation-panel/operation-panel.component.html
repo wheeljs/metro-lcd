@@ -12,6 +12,13 @@
   <span class="lcd-operation-panel__operation-item">
     <button (click)="container.moveNext()">Next</button>
   </span>
+  <span class="lcd-operation-panel__operation-item">
+    <label><input
+      type="checkbox"
+      [checked]="config.nextOnAudioEnded"
+      (change)="updateBooleanConfig('nextOnAudioEnded', $event)"
+    />Move Next When Audio Ended</label>
+  </span>
 </div>
 <div class="lcd-operation-panel__category">
   <div class="lcd-operation-panel__category__title">Voice Control</div>

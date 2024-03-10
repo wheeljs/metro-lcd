@@ -1,16 +1,17 @@
 import { Component, HostBinding } from '@angular/core';
 import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { distinctUntilChanged, filter, map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { type Line, StationStatus } from '../types';
 import { Line2 } from '../defs/';
 import { RunningLineService } from '../running-line.service';
+import { ContainerConfigService } from '../container-config.service';
 
 @Component({
   selector: 'lcd-container',
   templateUrl: './container.component.html',
   styleUrl: './container.component.scss',
-  providers: [RunningLineService],
+  providers: [RunningLineService, ContainerConfigService],
 })
 export class ContainerComponent {
   line: Line = Line2;
@@ -24,8 +25,14 @@ export class ContainerComponent {
     return this.line?.color;
   }
 
-  constructor(private runningLineService: RunningLineService) {
-    this.runningLine = this.runningLineService.init(this.line);
+  get config() {
+    return this.containerConfigService.config;
+  }
+
+  constructor(private runningLineService: RunningLineService, private containerConfigService: ContainerConfigService) {
+    this.containerConfigService.config$.pipe(distinctUntilChanged()).subscribe((config) => {
+      this.runningLine = this.runningLineService.init(this.line, config);
+    });
 
     this.playlist$ = this.runningLineService.runningState$.pipe(
       filter((x) => x != null),
@@ -82,6 +89,8 @@ export class ContainerComponent {
   }
 
   onPlayerEnded() {
-    console.log('player ended');
+    if (this.config.nextOnAudioEnded) {
+      this.moveNext();
+    }
   }
 }
