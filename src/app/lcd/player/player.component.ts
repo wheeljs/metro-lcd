@@ -35,6 +35,8 @@ export class PlayerComponent implements AfterViewInit, ControlsContext {
 
   @ViewChild('audio') audio!: ElementRef<HTMLAudioElement>;
 
+  private autoplay = false;
+
   private playingIndex = -1;
 
   get playing() {
@@ -56,6 +58,7 @@ export class PlayerComponent implements AfterViewInit, ControlsContext {
   }
 
   play() {
+    this.autoplay = true;
     this.audio?.nativeElement?.play?.();
   }
 
@@ -76,7 +79,7 @@ export class PlayerComponent implements AfterViewInit, ControlsContext {
 
   audioLoaded(event: Event) {
     const el = event.target as HTMLAudioElement;
-    if (this.playingIndex !== 0) {
+    if (this.autoplay || this.playingIndex !== 0) {
       el.play();
     }
   }
