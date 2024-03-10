@@ -68,4 +68,13 @@ export interface ContainerConfig {
    * 当音频播放完毕后自动next
    */
   nextOnAudioEnded?: boolean;
+
+  /**
+   * 线路起点
+   */
+  from?: RunningLine['id'];
+  /**
+   * 线路终点
+   */
+  to?: RunningLine['id'];
 }

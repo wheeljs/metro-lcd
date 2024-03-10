@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { StationStatus } from './types';
+import { StationStatus, type ContainerConfig } from './types';
 import type { Line, RunningLine, RunningLineStation } from './types';
 
 interface RunningState {
@@ -8,16 +8,7 @@ interface RunningState {
   next: RunningLineStation;
 }
 
-interface InitLineOptions {
-  /**
-   * 始发站Id，默认为第一站，与上下行有关
-   */
-  from?: RunningLineStation['id'];
-  /**
-   * 终点站Id，默认为最后一站，与上下行有关
-   */
-  to?: RunningLineStation['id'];
-}
+type InitLineOptions = Pick<ContainerConfig, 'from' | 'to'>;
 
 @Injectable()
 export class RunningLineService {
