@@ -4,6 +4,10 @@
   (canplaythrough)="audioLoaded($event)"
   (ended)="audioEnded()"
 ></audio>
-<button (click)="play()">Play</button>
-<button (click)="pause()">Pause</button>
-<button (click)="next()">Next</button>
+<ng-container *ngTemplateOutlet="controls || defaultControls; context: { $implicit: context }"></ng-container>
+<ng-template #defaultControls let-context>
+  <button (click)="context.play()">Play</button>
+  <button (click)="context.pause()">Pause</button>
+  <button (click)="context.next()">Next</button>
+</ng-template>
+

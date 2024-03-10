@@ -6,17 +6,22 @@ import {
   Input,
   Output,
   EventEmitter,
+  TemplateRef,
 } from '@angular/core';
+
+interface ControlsContext {
+  play: () => void;
+  pause: () => void;
+  next: () => boolean;
+}
 
 @Component({
   selector: 'lcd-player',
   templateUrl: './player.component.html',
   styleUrl: './player.component.scss',
 })
-export class PlayerComponent implements AfterViewInit {
-  @Output() ended = new EventEmitter<void>();
-
-  private playingIndex = -1;
+export class PlayerComponent implements AfterViewInit, ControlsContext {
+  @Input() controls?: TemplateRef<ControlsContext>;
 
   private _playlist!: string[];
   @Input() set playlist(val: string[]) {
@@ -26,11 +31,23 @@ export class PlayerComponent implements AfterViewInit {
     this.next();
   }
 
+  @Output() ended = new EventEmitter<void>();
+
+  @ViewChild('audio') audio!: ElementRef<HTMLAudioElement>;
+
+  private playingIndex = -1;
+
   get playing() {
     return this._playlist?.[this.playingIndex];
   }
 
-  @ViewChild('audio') audio!: ElementRef<HTMLAudioElement>;
+  get context() {
+    return {
+      play: this.play.bind(this),
+      pause: this.pause.bind(this),
+      next: this.next.bind(this),
+    };
+  }
 
   ngAfterViewInit() {
     if (this.playing && this.playingIndex !== 0) {
