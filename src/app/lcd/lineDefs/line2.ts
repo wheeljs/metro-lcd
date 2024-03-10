@@ -1,4 +1,5 @@
 import { StationStatus, type Line } from '../types';
+import { HeartSeat, TrainRunning } from './voices';
 
 const LineVoicePrefix = '02/';
 const ArrivedCommonVoices = [`${LineVoicePrefix}Common-0201.wav`];
@@ -39,7 +40,7 @@ export const Line2: Line = {
       nameEn: 'La Shan Nan',
       voices: {
         [StationStatus.ArrivingSoon]: {
-          ch: [`${LineVoicePrefix}19-PengJiaZhuang-T.wav`, `${LineVoicePrefix}02-LaShanNan-01.wav`],
+          ch: [`${LineVoicePrefix}19-PengJiaZhuang-T.wav`, `${LineVoicePrefix}02-LaShanNan-01.wav`, TrainRunning],
           en: [],
         },
         [StationStatus.Arrived]: {
@@ -69,7 +70,7 @@ export const Line2: Line = {
       nameEn: 'Er Huan Xi Lu',
       voices: {
         [StationStatus.ArrivingSoon]: {
-          ch: [`${LineVoicePrefix}19-PengJiaZhuang-T.wav`, `${LineVoicePrefix}04-ErHuanXiLu-01.wav`],
+          ch: [`${LineVoicePrefix}19-PengJiaZhuang-T.wav`, `${LineVoicePrefix}04-ErHuanXiLu-01.wav`, HeartSeat],
           en: [],
         },
         [StationStatus.Arrived]: {
@@ -114,7 +115,7 @@ export const Line2: Line = {
       nameEn: 'Yi Kang Lu',
       voices: {
         [StationStatus.ArrivingSoon]: {
-          ch: [`${LineVoicePrefix}19-PengJiaZhuang-T.wav`, `${LineVoicePrefix}07-YiKangLu-01.wav`],
+          ch: [`${LineVoicePrefix}19-PengJiaZhuang-T.wav`, `${LineVoicePrefix}07-YiKangLu-01.wav`, TrainRunning],
           en: [],
         },
         [StationStatus.Arrived]: {
@@ -159,7 +160,7 @@ export const Line2: Line = {
       nameEn: 'Sheng Chan Lu',
       voices: {
         [StationStatus.ArrivingSoon]: {
-          ch: [`${LineVoicePrefix}19-PengJiaZhuang-T.wav`, `${LineVoicePrefix}10-ShengChanLu-01.wav`],
+          ch: [`${LineVoicePrefix}19-PengJiaZhuang-T.wav`, `${LineVoicePrefix}10-ShengChanLu-01.wav`, HeartSeat],
           en: [],
         },
         [StationStatus.Arrived]: {
@@ -204,7 +205,7 @@ export const Line2: Line = {
       nameEn: 'Qi Li Pu',
       voices: {
         [StationStatus.ArrivingSoon]: {
-          ch: [`${LineVoicePrefix}19-PengJiaZhuang-T.wav`, `${LineVoicePrefix}13-QiLiPu-01.wav`],
+          ch: [`${LineVoicePrefix}19-PengJiaZhuang-T.wav`, `${LineVoicePrefix}13-QiLiPu-01.wav`, TrainRunning],
           en: [],
         },
         [StationStatus.Arrived]: {
@@ -257,7 +258,7 @@ export const Line2: Line = {
       nameEn: 'Jiang Jia Zhuang',
       voices: {
         [StationStatus.ArrivingSoon]: {
-          ch: [`${LineVoicePrefix}19-PengJiaZhuang-T.wav`, `${LineVoicePrefix}16-JiangJiaZhuang-01.wav`],
+          ch: [`${LineVoicePrefix}19-PengJiaZhuang-T.wav`, `${LineVoicePrefix}16-JiangJiaZhuang-01.wav`, HeartSeat],
           en: [],
         },
         [StationStatus.Arrived]: {
@@ -296,7 +297,7 @@ export const Line2: Line = {
       nameEn: 'Bao Shan',
       voices: {
         [StationStatus.ArrivingSoon]: {
-          ch: [`${LineVoicePrefix}19-PengJiaZhuang-T.wav`, `${LineVoicePrefix}18-BaoShan-01.wav`],
+          ch: [`${LineVoicePrefix}19-PengJiaZhuang-T.wav`, `${LineVoicePrefix}18-BaoShan-01.wav`, TrainRunning],
           en: [],
         },
         [StationStatus.Arrived]: {
