@@ -1,0 +1,77 @@
+$cls: lcd-operation-panel;
+
+.#{$cls} {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0 32px 32px;
+  height: 256px;
+  transition: height 0.25s ease-in-out;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+
+  &--collapsed {
+    padding: 0;
+    min-height: initial;
+    height: 50.4px;
+
+    .#{$cls}__toggle {
+      transform: rotate(-180deg);
+    }
+
+    .#{$cls}__footer {
+      padding-top: 16.2px;
+      padding-bottom: 16.2px;
+    }
+
+    > :not(.#{$cls}__header) {
+      display: none;
+    }
+  }
+
+  &__footer {
+    padding: 7px 0;
+    color: #e9e9e9;
+    line-height: 18px;
+    text-align: center;
+
+    a:active,
+    a:visited {
+      color: inherit;
+    }
+
+    a:hover {
+      color: var(--line-color);
+    }
+  }
+
+  &__toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 16px;
+    cursor: pointer;
+    transition: transform 0.25s ease-in;
+  }
+
+  &__category + &__category {
+    margin-top: 16px;
+  }
+
+  button {
+    padding: 4px 8px;
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    transition: box-shadow 0.15s ease-in;
+
+    &:not([disabled]):hover {
+      box-shadow: 2px 2px 7px -3px rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  button + button,
+  &__operation-item + &__operation-item {
+    margin-left: 8px;
+  }
+}

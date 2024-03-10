@@ -1,6 +1,3 @@
 <lcd-header [line]="runningLine" />
 <lcd-route [line]="runningLine" />
-<div class="ops">
-  <button (click)="moveNext()">NEXT</button>
-  <lcd-player [playlist]="(playlist$ | async) || []" (ended)="onPlayerEnded()" />
-</div>
+<lcd-operation-panel />

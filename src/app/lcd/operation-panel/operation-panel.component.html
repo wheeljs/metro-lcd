@@ -1,0 +1,24 @@
+<div class="lcd-operation-panel__header">
+  <div class="lcd-operation-panel__footer">
+    Powered by <a href="https://github.com/RVC-Boss/GPT-SoVITS" target="_blank" referrerpolicy="no-referrer">GPT-SoVITS</a>, <a href="https://angular.io" target="_blank" referrerpolicy="no-referrer">Angular</a>, <a href="https://fontawesome.com" target="_blank" referrerpolicy="no-referrer">FontAwesome</a>
+  </div>
+  <div class="lcd-operation-panel__toggle" (click)="togglePanel()">
+    <fa-icon [icon]="collapseIcon" />
+  </div>
+</div>
+
+<div class="lcd-operation-panel__category">
+  <div class="lcd-operation-panel__category__title">LCD Control</div>
+  <span class="lcd-operation-panel__operation-item">
+    <button (click)="container.moveNext()">Next</button>
+  </span>
+</div>
+<div class="lcd-operation-panel__category">
+  <div class="lcd-operation-panel__category__title">Voice Control</div>
+  <div class="lcd-operation-panel__operation-item">
+    <lcd-player
+      [playlist]="(container.playlist$ | async) || []"
+      (ended)="container.onPlayerEnded()"
+    />
+  </div>
+</div>

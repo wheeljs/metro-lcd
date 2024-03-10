@@ -9,6 +9,7 @@ import { StationComponent } from './station/station.component';
 import { LineNamePipe } from './line-name.pipe';
 import { PlayerComponent } from './player/player.component';
 // import { PlayerComponent } from './player/player-rxjs2.component';
+import { OperationPanelComponent } from './operation-panel/operation-panel.component';
 import { TransferIconComponent } from './transfer-icon/transfer-icon.component';
 
 @NgModule({
@@ -20,6 +21,7 @@ import { TransferIconComponent } from './transfer-icon/transfer-icon.component';
     StationComponent,
     LineNamePipe,
     PlayerComponent,
+    OperationPanelComponent,
     TransferIconComponent,
   ],
   imports: [SharedModule],
