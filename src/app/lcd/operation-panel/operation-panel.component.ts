@@ -29,6 +29,12 @@ export class OperationPanelComponent {
     this.collapsed = !this.collapsed;
   }
 
+  updateConfig(key: keyof ContainerConfig, value: Event) {
+    this.containerConfigService.update({
+      [key]: (value.target as HTMLInputElement).value,
+    });
+  }
+
   updateBooleanConfig(key: keyof ContainerConfig, value: Event) {
     this.containerConfigService.update({
       [key]: (value.target as HTMLInputElement).checked,

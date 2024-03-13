@@ -90,7 +90,7 @@ export class ContainerComponent {
 
   onPlayerEnded() {
     if (this.config.nextOnAudioEnded) {
-      this.moveNext();
+      setTimeout(() => this.moveNext(), this.config.nextGap);
     }
   }
 }

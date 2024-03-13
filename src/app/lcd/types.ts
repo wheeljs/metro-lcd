@@ -70,6 +70,11 @@ export interface ContainerConfig {
   nextOnAudioEnded?: boolean;
 
   /**
+   * `nextOnAudioEnded=true`时有效，自动移动下一站的间隔，单位ms，默认为0，即播放完成后直接下一站
+   */
+  nextGap?: number;
+
+  /**
    * 是否编辑模式
    */
   editing?: boolean;

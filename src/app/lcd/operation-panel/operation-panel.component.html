@@ -20,6 +20,16 @@
     />Move Next When Audio Ended</label>
   </span>
   <span class="lcd-operation-panel__operation-item">
+    <label>Move Gap Time(ms): </label><input
+      type="number"
+      min="0"
+      step="100"
+      style="width: 80px;"
+      [value]="config.nextGap"
+      (change)="updateConfig('nextGap', $event)"
+    />
+  </span>
+  <span class="lcd-operation-panel__operation-item">
     <label><input
       type="checkbox"
       [checked]="config.editing"

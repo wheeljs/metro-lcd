@@ -7,6 +7,7 @@ export class ContainerConfigService {
 
   private configSubject = new BehaviorSubject<ContainerConfig>({
     nextOnAudioEnded: true,
+    nextGap: 1000,
     disabledStations: [],
   });
 
