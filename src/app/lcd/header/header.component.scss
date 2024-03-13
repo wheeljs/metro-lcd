@@ -1,10 +1,11 @@
 @use '../_utils';
 
+$cls: lcd-header;
 $lcd-header-padding-v: 8px;
 $lcd-header-cn-font-size: 48px;
 $lcd-header-en-font-size: 28px;
 
-.lcd-header {
+.#{$cls} {
   padding: $lcd-header-padding-v 64px $lcd-header-padding-v 72px;
   height: 96px;
   @include utils.flex-horizontal();
@@ -108,5 +109,22 @@ $lcd-header-en-font-size: 28px;
     @include utils.flex-vertical();
     @include utils.keep-one-line();
     text-align: center;
+  }
+
+  &--grid {
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: repeat(2, 1fr) repeat(2, 3fr);
+    column-gap: 32px;
+
+    .#{$cls}__line-number {
+      margin-left: 0;
+    }
+
+    .#{$cls}__station {
+      justify-self: stretch;
+      margin-right: 0;
+      margin-left: 0;
+    }
   }
 }
