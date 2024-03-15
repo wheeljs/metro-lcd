@@ -281,15 +281,15 @@ export const Line2: Line = {
           en: [],
         },
       },
-      transfers: [
-        {
-          id: '06',
-          nameCh: { main: '6', suffix: '号线' },
-          nameEn: { prefix: 'Line ', main: '6' },
-          color: '#E51400',
-          disabled: true,
-        },
-      ],
+      // transfers: [
+      //   {
+      //     id: '06',
+      //     nameCh: { main: '6', suffix: '号线' },
+      //     nameEn: { prefix: 'Line ', main: '6' },
+      //     color: '#E51400',
+      //     disabled: true,
+      //   },
+      // ],
     },
     {
       id: '0218',
