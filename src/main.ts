@@ -24,7 +24,7 @@ Sentry.init({
   standalone: true,
   imports: [LcdModule],
   template: `
-    <lcd-container />
+    <lcd-outlet />
   `,
 })
 export class App {

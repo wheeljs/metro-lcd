@@ -10,7 +10,7 @@
 <div class="lcd-operation-panel__category">
   <div class="lcd-operation-panel__category__title">LCD Control</div>
   <span class="lcd-operation-panel__operation-item">
-    <button [disabled]="config.editing" (click)="container.moveNext()">Next</button>
+    <button [disabled]="config.editing" (click)="moveNext()">Next</button>
   </span>
   <span class="lcd-operation-panel__operation-item">
     <label><input
@@ -41,9 +41,9 @@
   <div class="lcd-operation-panel__category__title">Voice Control</div>
   <div class="lcd-operation-panel__operation-item">
     <lcd-player
-      [playlist]="(container.playlist$ | async) || []"
+      [playlist]="(playlist$ | async) || []"
       [disabled]="config.editing"
-      (ended)="container.onPlayerEnded()"
+      (ended)="onPlayerEnded()"
     />
   </div>
 </div>

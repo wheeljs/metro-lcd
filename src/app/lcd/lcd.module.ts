@@ -12,6 +12,7 @@ import { PlayerComponent } from './player/player.component';
 import { OperationPanelComponent } from './operation-panel/operation-panel.component';
 import { TransferIconComponent } from './transfer-icon/transfer-icon.component';
 import { ToolbarComponent } from './station/toolbar/toolbar.component';
+import { OutletComponent } from './outlet/outlet.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +26,9 @@ import { ToolbarComponent } from './station/toolbar/toolbar.component';
     OperationPanelComponent,
     TransferIconComponent,
     ToolbarComponent,
+    OutletComponent,
   ],
   imports: [SharedModule],
-  exports: [ContainerComponent],
+  exports: [OutletComponent],
 })
 export class LcdModule {}

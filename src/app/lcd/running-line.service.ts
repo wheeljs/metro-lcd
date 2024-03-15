@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, filter, map } from 'rxjs';
 import { StationStatus, type ContainerConfig } from './types';
 import type { Line, RunningLine, RunningLineStation } from './types';
+import { environment } from '../../environments/environment';
 
 interface RunningState {
   current: RunningLineStation;
@@ -14,6 +15,55 @@ type InitLineOptions = Pick<ContainerConfig, 'from' | 'to' | 'disabledStations'>
 export class RunningLineService {
   private running = new BehaviorSubject<RunningState | null>(null);
   private runningLine!: RunningLine;
+
+  playlist$ = this.runningState$.pipe(
+    filter((x) => x != null),
+    map((state) => {
+      const { current, next } = state;
+      let station;
+      if (current.status !== StationStatus.Past) {
+        station = current;
+      } else {
+        station = next;
+      }
+
+      switch (station.status) {
+        case StationStatus.ArrivingSoon:
+        case StationStatus.Arrived:
+          return station.voices?.[station.status] ?? {};
+        default:
+          return {};
+      }
+    }),
+    map((voices) => {
+      if (Object.keys(voices).length === 0) {
+        return [];
+      }
+      const { ch, en } = voices;
+      const playlist: string[] = [];
+      for (let i = 0; i < ch.length; i++) {
+        const chItem = ch[i];
+        const enItem = en[i];
+        if (chItem) {
+          playlist.push(environment.VoicesPrefix.ch + chItem);
+        }
+        if (enItem) {
+          playlist.push(environment.VoicesPrefix.en + enItem);
+        }
+      }
+      if (en.length > ch.length) {
+        playlist.push(
+          ...en
+            .slice(ch.length)
+            .filter<string>(
+              (x): x is string => typeof x === 'string' && x.length > 0
+            )
+        );
+      }
+
+      return playlist;
+    }),
+  );
 
   constructor() {}
 

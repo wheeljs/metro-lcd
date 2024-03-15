@@ -1,8 +1,8 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
-import { ContainerComponent } from '../container/container.component';
 import { ContainerConfigService } from '../container-config.service';
 import type { ContainerConfig } from '../types';
+import { RunningLineService } from '../running-line.service';
 
 @Component({
   selector: 'lcd-operation-panel',
@@ -23,10 +23,27 @@ export class OperationPanelComponent {
     return this.containerConfigService.config;
   }
 
-  constructor(public container: ContainerComponent, private containerConfigService: ContainerConfigService) {}
+  get playlist$() {
+    return this.runningLineService.playlist$;
+  }
+
+  constructor(
+    private runningLineService: RunningLineService,
+    private containerConfigService: ContainerConfigService
+  ) {}
 
   togglePanel() {
     this.collapsed = !this.collapsed;
+  }
+
+  moveNext() {
+    this.runningLineService.next();
+  }
+
+  onPlayerEnded() {
+    if (this.config.nextOnAudioEnded) {
+      setTimeout(() => this.moveNext(), this.config.nextGap);
+    }
   }
 
   updateConfig(key: keyof ContainerConfig, value: Event) {
