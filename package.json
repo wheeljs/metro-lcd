@@ -1,5 +1,6 @@
 {
-  "name": "angular-starter",
+  "name": "metro-lcd",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "ng": "ng",
