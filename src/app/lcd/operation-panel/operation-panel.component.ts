@@ -46,15 +46,17 @@ export class OperationPanelComponent {
     }
   }
 
-  updateConfig(key: keyof ContainerConfig, value: Event) {
+  private _updateConfig(key: keyof ContainerConfig, value: ContainerConfig[typeof key]) {
     this.containerConfigService.update({
-      [key]: (value.target as HTMLInputElement).value,
+      [key]: value,
     });
   }
 
+  updateConfig(key: keyof ContainerConfig, value: Event) {
+    this._updateConfig(key, (value.target as HTMLInputElement).value);
+  }
+
   updateBooleanConfig(key: keyof ContainerConfig, value: Event) {
-    this.containerConfigService.update({
-      [key]: (value.target as HTMLInputElement).checked,
-    });
+    this._updateConfig(key, (value.target as HTMLInputElement).checked);
   }
 }
