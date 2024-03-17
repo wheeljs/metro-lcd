@@ -25,6 +25,15 @@ export class ContainerConfigService {
     this.configSubject.next(Object.assign({}, this.configSubject.value, config));
   }
 
+  reset(config: Partial<ContainerConfig> = {}) {
+    this.configSubject.next({
+      nextOnAudioEnded: true,
+      nextGap: 1000,
+      disabledStations: [],
+      ...config,
+    });
+  }
+
   toggleStationDisabled(id: RunningLine['id']) {
     const { disabledStations } = this.config;
     let nextDisabledStations;
