@@ -50,6 +50,10 @@
             "scripts": [],
             "styles": [
               "node_modules/normalize.css/normalize.css",
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "@fontsource/roboto/300.css",
+              "@fontsource/roboto/400.css",
+              "@fontsource/roboto/500.css",
               "src/global_styles.css"
             ],
             "tsConfig": "tsconfig.app.json"

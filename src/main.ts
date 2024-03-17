@@ -1,6 +1,7 @@
 import { APP_INITIALIZER, Component, ErrorHandler } from '@angular/core';
 import { Router } from '@angular/router';
 import { bootstrapApplication } from '@angular/platform-browser';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import * as Sentry from '@sentry/angular-ivy';
 import 'zone.js';
 
@@ -35,6 +36,7 @@ export class App {
 
 bootstrapApplication(App, {
   providers: [
+    provideAnimationsAsync(),
     {
       provide: ErrorHandler,
       useValue: Sentry.createErrorHandler(),

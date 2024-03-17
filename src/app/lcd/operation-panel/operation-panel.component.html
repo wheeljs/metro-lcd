@@ -10,31 +10,36 @@
 <div class="lcd-operation-panel__category">
   <div class="lcd-operation-panel__category__title">LCD Control</div>
   <span class="lcd-operation-panel__operation-item">
-    <button [disabled]="config.editing" (click)="moveNext()">Next</button>
+    <button mat-stroked-button [disabled]="config.editing" (click)="moveNext()">Next</button>
   </span>
+  <br />
   <span class="lcd-operation-panel__operation-item">
-    <label><input
-      type="checkbox"
+    <mat-slide-toggle
       [checked]="config.nextOnAudioEnded"
       (change)="updateBooleanConfig('nextOnAudioEnded', $event)"
-    />Move Next When Audio Ended</label>
+    >Move Next When Audio Ended</mat-slide-toggle>
   </span>
   <span class="lcd-operation-panel__operation-item">
-    <label>Move Gap Time(ms): </label><input
-      type="number"
-      min="0"
-      step="100"
-      style="width: 80px;"
-      [value]="config.nextGap"
-      (change)="updateConfig('nextGap', $event)"
-    />
+    <mat-form-field subscriptSizing="dynamic">
+      <mat-label>Move Gap Time(ms):</mat-label>
+      <input
+        matInput
+        type="number"
+        min="0"
+        step="100"
+        style="width: 80px;"
+        [value]="config.nextGap"
+        (change)="updateConfig('nextGap', $event)"
+      />
+    </mat-form-field>
   </span>
+  <br />
   <span class="lcd-operation-panel__operation-item">
-    <label><input
+    <mat-slide-toggle
       type="checkbox"
       [checked]="config.editing"
       (change)="updateBooleanConfig('editing', $event)"
-    />Edit Station Mode (⚠Will Lose Current Running Status)</label>
+    >Edit Station Mode (⚠Will Lose Current Running Status)</mat-slide-toggle>
   </span>
 </div>
 <div class="lcd-operation-panel__category">

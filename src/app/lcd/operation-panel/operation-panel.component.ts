@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ContainerConfigService } from '../container-config.service';
 import type { ContainerConfig } from '../types';
 import { RunningLineService } from '../running-line.service';
@@ -56,7 +57,7 @@ export class OperationPanelComponent {
     this._updateConfig(key, (value.target as HTMLInputElement).value);
   }
 
-  updateBooleanConfig(key: keyof ContainerConfig, value: Event) {
-    this._updateConfig(key, (value.target as HTMLInputElement).checked);
+  updateBooleanConfig(key: keyof ContainerConfig, event: MatSlideToggleChange) {
+    this._updateConfig(key, event.checked);
   }
 }

@@ -6,8 +6,8 @@
 ></audio>
 <ng-container *ngTemplateOutlet="controls || defaultControls; context: { $implicit: context }"></ng-container>
 <ng-template #defaultControls let-context>
-  <button [disabled]="disabled" (click)="context.play()">Play</button>
-  <button [disabled]="disabled" (click)="context.pause()">Pause</button>
-  <button [disabled]="disabled" (click)="context.next()">Next</button>
+  <button mat-stroked-button [disabled]="disabled" (click)="context.play()">Play</button>
+  <button mat-stroked-button [disabled]="disabled" (click)="context.pause()">Pause</button>
+  <button mat-stroked-button [disabled]="disabled" (click)="context.next()">Next</button>
 </ng-template>
 
