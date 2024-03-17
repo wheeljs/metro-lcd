@@ -1,39 +1,56 @@
 <div
-  class="lcd-station__line"
+  class="lcd-station"
+  [class.lcd-station--transferrable]="transferrable"
+  [class.lcd-station--disabled]="station.disabled"
+  [class.lcd-station--arriving-soon]="station.status === StationStatus.ArrivingSoon"
+  [class.lcd-station--past]="station.status === StationStatus.Past || station.status === StationStatus.NotInService"
+  [class.lcd-station--showing-editing-bar]="showEditingBar"
+  [attachOutsideOnClick]="true"
+  (clickOutside)="clickOutside()"
 >
-  <lcd-splitor
-    speed="faster"
-    [animating]="station.status === 'arriving-soon'"
-    [color]="station.status === 'arriving-soon' ? 'red' : 'white'"
-  />
-</div>
-<div
-  class="lcd-station__point"
->@if (transferrable) {
-  <lcd-transfer-icon
-    mainColor="var(--line-color)"
-    [transferColor]="station.transfers?.[0]?.color"
-  />
-}</div>
-<div class="lcd-station__info">
-  <span class="lcd-station__name__ch">{{ station.nameCh }}</span>
-  <span class="lcd-station__name__en" [innerHTML]="station.nameEn"></span>
-  @if (station.disabled) { <span class="lcd-station__disabled">(暂缓开通)</span> }
-  @if (station.transfers) {
-    <div class="lcd-station__transfers">
-      @for (transfer of station.transfers; track transfer.id) {
-        <div
-          class="lcd-station__transfer"
-          [class.lcd-station__transfer--disabled]="transfer.disabled"
-          [style.--transfer-line-color]="transfer.color"
-        >
-          <span class="lcd-station__transfer__line__ch">{{ transfer.nameCh | lineName }}</span>
-          <span class="lcd-station__transfer__line__en">{{ transfer.nameEn | lineName }}</span>
-        </div>
-      }
-    </div>
+  <div
+    class="lcd-station__line"
+  >
+    <lcd-splitor
+      speed="faster"
+      [animating]="station.status === 'arriving-soon'"
+      [color]="station.status === 'arriving-soon' ? 'red' : 'white'"
+    />
+  </div>
+  <div
+    class="lcd-station__point"
+  >@if (transferrable) {
+    <lcd-transfer-icon
+      mainColor="var(--line-color)"
+      [transferColor]="station.transfers?.[0]?.color"
+    />
+  } @else if (config.editing) {
+    <fa-icon
+      class="lcd-station__setting-icon"
+      [icon]="settingIcon"
+      (click)="toggleEditingBar()"
+    />
+  }</div>
+  <div class="lcd-station__info">
+    <span class="lcd-station__name__ch">{{ station.nameCh }}</span>
+    <span class="lcd-station__name__en" [innerHTML]="station.nameEn"></span>
+    @if (station.disabled) { <span class="lcd-station__disabled">(暂缓开通)</span> }
+    @if (station.transfers) {
+      <div class="lcd-station__transfers">
+        @for (transfer of station.transfers; track transfer.id) {
+          <div
+            class="lcd-station__transfer"
+            [class.lcd-station__transfer--disabled]="transfer.disabled"
+            [style.--transfer-line-color]="transfer.color"
+          >
+            <span class="lcd-station__transfer__line__ch">{{ transfer.nameCh | lineName }}</span>
+            <span class="lcd-station__transfer__line__en">{{ transfer.nameEn | lineName }}</span>
+          </div>
+        }
+      </div>
+    }
+  </div>
+  @if (config.editing) {
+    <lcd-station-toolbar [line]="line" [station]="station" />
   }
 </div>
-@if (config.editing) {
-  <lcd-station-toolbar [line]="line" [station]="station" />
-}

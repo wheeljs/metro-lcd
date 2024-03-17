@@ -39,6 +39,10 @@ $cls: lcd-station;
     z-index: 30;
   }
 
+  &__setting-icon {
+    display: none;
+  }
+
   &--transferrable:not(&--disabled) .#{$cls}__point {
     animation: 1.75s ease-in infinite transferrable-station;
   }
@@ -67,10 +71,6 @@ $cls: lcd-station;
     }
   }
 
-  &:first-child lcd-splitor {
-    display: none;
-  }
-
   &__info {
     position: absolute;
     top: $point-size + 8;
@@ -81,17 +81,6 @@ $cls: lcd-station;
       calc(50% - /* half of point width */ math.div($point-size, 2))
     );
     text-align: center;
-  }
-
-  &:nth-child(even) .#{$cls}__info {
-    transform: translate(
-      calc(-50% + 20px),
-      calc(($point-size * -1) - 100% - 16px)
-    );
-
-    .#{$cls}__transfers {
-      order: -1;
-    }
   }
 
   &__name__ch,
@@ -118,6 +107,27 @@ $cls: lcd-station;
     .#{$cls}--disabled & {
       background-color: #e9e9e9;
     }
+  }
+
+  // editing mode
+  &:hover .#{$cls}__setting-icon,
+  &--showing-editing-bar .#{$cls}__setting-icon {
+    display: initial;
+  }
+}
+
+#{$cls}:first-child .#{$cls}__line {
+  display: none;
+}
+
+#{$cls}:nth-child(even) .#{$cls}__info {
+  transform: translate(
+    calc(50% - 20px),
+    calc(($point-size * -1) - 100% - 16px)
+  );
+
+  .#{$cls}__transfers {
+    order: -1;
   }
 }
 
