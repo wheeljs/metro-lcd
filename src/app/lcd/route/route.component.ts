@@ -1,11 +1,4 @@
-import {
-  Component,
-  ViewEncapsulation,
-  Input,
-  ViewChild,
-  ElementRef,
-  AfterViewChecked,
-} from '@angular/core';
+import { Component, ViewEncapsulation, Input } from '@angular/core';
 import type { RunningLine, RunningLineStation } from '../types';
 
 @Component({
@@ -14,30 +7,14 @@ import type { RunningLine, RunningLineStation } from '../types';
   styleUrl: './route.component.scss',
   host: {
     class: 'lcd-route',
+    '[style.--rest-station-count]': `stations.length - 1`,
   },
   encapsulation: ViewEncapsulation.Emulated,
 })
-export class RouteComponent implements AfterViewChecked {
+export class RouteComponent {
   @Input() line!: RunningLine;
-
-  @ViewChild('lineEl', { read: ElementRef })
-  lineElRef!: ElementRef<HTMLDivElement>;
-
-  stationRouteLineWidth = 0;
 
   get stations(): RunningLineStation[] {
     return this.line?.stations ?? [];
-  }
-
-  ngAfterViewChecked() {
-    setTimeout(() => {
-      const rect = this.lineElRef?.nativeElement?.getBoundingClientRect?.();
-      if (!rect?.width) {
-        this.stationRouteLineWidth = 0;
-        return;
-      }
-
-      this.stationRouteLineWidth = rect.width / this.stations.length - 40;
-    });
   }
 }

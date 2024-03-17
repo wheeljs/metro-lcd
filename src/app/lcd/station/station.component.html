@@ -1,4 +1,13 @@
 <div
+  class="lcd-station__line"
+>
+  <lcd-splitor
+    speed="faster"
+    [animating]="station.status === 'arriving-soon'"
+    [color]="station.status === 'arriving-soon' ? 'red' : 'white'"
+  />
+</div>
+<div
   class="lcd-station__point"
 >@if (transferrable) {
   <lcd-transfer-icon
@@ -6,16 +15,6 @@
     [transferColor]="station.transfers?.[0]?.color"
   />
 }</div>
-<div
-  class="lcd-station__line"
-  [style.width.px]="routeLineWidth + 20"
-  [style.left.px]="-routeLineWidth - 7"
-></div>
-<lcd-splitor
-  speed="faster"
-  [animating]="station.status === 'arriving-soon'"
-  [color]="station.status === 'arriving-soon' ? 'red' : 'white'"
-/>
 <div class="lcd-station__info">
   <span class="lcd-station__name__ch">{{ station.nameCh }}</span>
   <span class="lcd-station__name__en" [innerHTML]="station.nameEn"></span>

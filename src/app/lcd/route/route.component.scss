@@ -6,15 +6,9 @@
     padding: 128px 64px 0;
   }
 
-  &__stations__line {
-    height: $lcd-route-line-height;
-    background-color: var(--line-color);
-    z-index: -1;
-  }
-
   &__stations {
-    margin: -32px -4px 0;
-    @include utils.flex-horizontal();
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 40px repeat(var(--rest-station-count), 1fr);
+    align-items: start;
   }
 }

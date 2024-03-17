@@ -22,8 +22,6 @@ export class StationComponent {
 
   @Input() station!: RunningLineStation;
 
-  @Input() routeLineWidth!: number;
-
   get transferrable(): boolean {
     return this.station?.transfers?.some((x) => !x.disabled) ?? false;
   }
