@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, Input, TemplateRef } from '@angular/core';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ContainerConfigService } from '../container-config.service';
@@ -19,6 +19,8 @@ export class OperationPanelComponent {
   collapseIcon = faAngleDown;
 
   collapsed = false;
+
+  @Input() customOperation?: TemplateRef<{ $implicit: ContainerConfig }>;
 
   get config() {
     return this.containerConfigService.config;

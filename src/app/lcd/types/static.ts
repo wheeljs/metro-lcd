@@ -36,7 +36,12 @@ export interface TransferLine extends LineSimple {
   disabled?: boolean;
 }
 
+export interface LineUI {
+  title: string;
+}
+
 export interface Line extends LineSimple {
+  ui: LineUI;
   /**
    * 行进方向，'up'-上行, 'down'-下行
    */

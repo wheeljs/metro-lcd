@@ -5,6 +5,11 @@ const LineVoicePrefix = '02/';
 const ArrivedCommonVoices = [`${LineVoicePrefix}Common-0201.wav`];
 
 export const Line2: Line = {
+  ui: {
+    get title() {
+      return 'Jinan Metro Line 2';
+    },
+  },
   id: '02',
   nameCh: { main: '2', suffix: '号线' },
   nameEn: { prefix: 'Line ', main: '2' },

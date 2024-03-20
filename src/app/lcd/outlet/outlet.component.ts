@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import * as Lines from '../defs/';
 import { ContainerConfigService } from '../container-config.service';
 import { RunningLineService } from '../running-line.service';
+import { Line } from '../types';
 
 @Component({
   selector: 'lcd-outlet',
@@ -10,5 +12,16 @@ import { RunningLineService } from '../running-line.service';
   providers: [RunningLineService, ContainerConfigService],
 })
 export class OutletComponent {
-  line = Lines.Line2;
+  lines = Object.values(Lines);
+
+  line!: Line;
+
+  constructor(private title: Title) {
+    this.onLineChange(this.lines[0]);
+  }
+
+  onLineChange(selectedLine: Line) {
+    this.title.setTitle(selectedLine.ui.title || 'Metro LCD');
+    this.line = selectedLine;
+  }
 }
