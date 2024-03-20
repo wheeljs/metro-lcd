@@ -1,2 +1,21 @@
 <lcd-container [line]="line" />
-<lcd-operation-panel />
+<lcd-operation-panel [customOperation]="customOperation" />
+<ng-template #customOperation let-config>
+  <div class="lcd-operation-panel__category">
+    <span class="lcd-operation-panel__operation-item">
+      <mat-form-field>
+        <mat-label>Line</mat-label>
+        <mat-select
+          [value]="line"
+          [disabled]="config.editing"
+          (valueChange)="onLineChange($event)"
+        >
+          @for (line of lines; track line.id) {
+            <mat-option [value]="line">{{ line.ui.title }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </span>
+  </div>
+</ng-template>
+

@@ -8,6 +8,9 @@
 </div>
 
 <div class="lcd-operation-panel__content">
+  @if (customOperation) {
+    <ng-container *ngTemplateOutlet="customOperation; context: { $implicit: config }" />
+  }
   <div class="lcd-operation-panel__category">
     <div class="lcd-operation-panel__category__title">LCD Control</div>
     <span class="lcd-operation-panel__operation-item">
