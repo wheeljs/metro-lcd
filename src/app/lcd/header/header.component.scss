@@ -30,6 +30,7 @@ $lcd-header-en-font-size: 28px;
     @include utils.flex-horizontal();
     @include utils.keep-one-line();
     align-items: center;
+    color: var(--foreground-color);
 
     > span {
       font-weight: bold;
@@ -88,6 +89,7 @@ $lcd-header-en-font-size: 28px;
     @include utils.flex-horizontal();
     align-items: center;
     justify-content: flex-end;
+    color: var(--foreground-color);
 
     &__splitor {
       margin: 0 24px;

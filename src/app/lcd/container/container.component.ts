@@ -8,11 +8,21 @@ import { ContainerConfigService } from '../container-config.service';
   selector: 'lcd-container',
   templateUrl: './container.component.html',
   styleUrl: './container.component.scss',
+  host: {
+    '[style.--foreground-color]': `line.ui.foregroundColor || '#000'`,
+  },
 })
 export class ContainerComponent {
   private lineSubject = new Subject<Line>();
 
+  private _line!: Line;
+
+  get line() {
+    return this._line;
+  }
+
   @Input() set line(line: Line) {
+    this._line = line;
     this.lineSubject.next(line);
   }
 

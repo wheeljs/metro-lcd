@@ -38,6 +38,10 @@ export interface TransferLine extends LineSimple {
 
 export interface LineUI {
   title: string;
+  /**
+   * 线路前景色，LCD的部分组件会使用该颜色。部分线路标识色颜色较深时可将前景色改为白色。默认为#000
+   */
+  foregroundColor?: string;
 }
 
 export interface Line extends LineSimple {
