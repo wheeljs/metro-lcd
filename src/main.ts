@@ -1,12 +1,9 @@
-import { APP_INITIALIZER, Component, ErrorHandler } from '@angular/core';
-import { Router } from '@angular/router';
-import { bootstrapApplication } from '@angular/platform-browser';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import * as Sentry from '@sentry/angular-ivy';
 import 'zone.js';
 
 import { environment } from './environments/environment';
-import { LcdModule } from './app/lcd/lcd.module';
+import { AppModule } from './app/app.module';
 
 if (!environment.disableSentry) {
   Sentry.init({
@@ -23,33 +20,5 @@ if (!environment.disableSentry) {
   });
 }
 
-@Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [LcdModule],
-  template: `
-    <lcd-outlet />
-  `,
-})
-export class App {
-  name = 'Angular';
-
-  constructor() {}
-}
-
-bootstrapApplication(App, {
-  providers: [
-    provideAnimationsAsync(),
-    {
-      provide: ErrorHandler,
-      useValue: Sentry.createErrorHandler(),
-    },
-    { provide: Sentry.TraceService, deps: [Router] },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: () => () => {},
-      deps: [Sentry.TraceService],
-      multi: true,
-    },
-  ],
-});
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch((err) => console.error(err));
