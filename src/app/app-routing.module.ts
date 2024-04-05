@@ -7,6 +7,10 @@ const routes: Routes = [
     path: 'lcd',
     loadChildren: () => import('./lcd/lcd.module').then(m => m.LcdModule),
   },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
+  },
 ];
 
 @NgModule({
