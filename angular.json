@@ -6,7 +6,8 @@
   "newProjectRoot": "projects",
   "schematics": {
     "@schematics/angular:component": {
-      "style": "scss"
+      "style": "scss",
+      "standalone": false
     }
   },
   "projects": {
