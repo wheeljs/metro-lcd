@@ -13,6 +13,7 @@ import { OperationPanelComponent } from './operation-panel/operation-panel.compo
 import { TransferIconComponent } from './transfer-icon/transfer-icon.component';
 import { ToolbarComponent } from './station/toolbar/toolbar.component';
 import { OutletComponent } from './outlet/outlet.component';
+import { LcdRoutingModule } from './lcd-routing.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,9 @@ import { OutletComponent } from './outlet/outlet.component';
     ToolbarComponent,
     OutletComponent,
   ],
-  imports: [SharedModule],
-  exports: [OutletComponent],
+  imports: [
+    SharedModule,
+    LcdRoutingModule,
+  ],
 })
 export class LcdModule {}

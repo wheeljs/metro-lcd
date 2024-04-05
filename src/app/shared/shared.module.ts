@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -12,6 +13,7 @@ import { StripNewLinePipe } from './strip-new-line.pipe';
 
 const ExportsAsIs = [
   CommonModule,
+  HttpClientModule,
   FontAwesomeModule,
   MatButtonModule,
   MatFormFieldModule,
