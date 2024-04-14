@@ -18,6 +18,18 @@ jobs:
       with:
         node-version: 18.x
 
+    - name: Get Tag
+      id: get_tag
+      run: |
+        echo "version=$(echo '${{ github.ref_name }}' | sed 's/release\///')" >> $GITHUB_OUTPUT
+          
+    - name: Create PR
+      env:
+        GH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+      run: |
+        git fetch origin
+        gh pr create --fill --title 'release: ${{ steps.get_tag.outputs.version }}' --body ''
+
     - name: Prepare and deploy
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
