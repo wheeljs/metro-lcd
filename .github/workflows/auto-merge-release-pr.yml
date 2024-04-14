@@ -3,7 +3,8 @@ name: Auto Merge Release/* PR
 on:
   pull_request:
     branches:
-      - 'release/**'
+      - release/*
+      - main
 
 jobs:
   auto-merge:
