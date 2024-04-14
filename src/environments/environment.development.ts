@@ -6,4 +6,7 @@ export const environment: Environment = {
     en: 'assets/voices/en/',
   },
   disableSentry: true,
+  firestore: {
+    collectionName: 'rail-transit-statistics',
+  },
 };
