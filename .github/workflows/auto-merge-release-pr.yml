@@ -1,0 +1,33 @@
+name: Auto Merge Release/* PR
+
+on:
+  pull_request:
+    types:
+      - opened
+    branches:
+      - 'release/**'
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Get Tag
+        id: get_tag
+        run: |
+          echo "version=$(echo '${{ github.ref_name }}' | sed 's/release\///')" >> $GITHUB_OUTPUT
+
+      - name: Merge PR
+        env:
+          GH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+        run: |
+          git fetch origin
+          gh pr merge ${{ github.event.pull_request.html_url }} --rebase
+
+      - name: Push Tag
+        uses: mathieudutour/github-tag-action@v6.2
+        with:
+          github_token: ${{ secrets.PERSONAL_TOKEN }}
+          custom_tag: ${{ steps.get_tag.outputs.version }}
+          tag_prefix: ""
