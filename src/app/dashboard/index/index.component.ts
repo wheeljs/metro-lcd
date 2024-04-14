@@ -75,26 +75,6 @@ export class DashboardIndexComponent {
     },
     tooltip: {
       trigger: 'axis',
-      // formatter: (params: TooltipComponentFormatterCallbackParams) => {
-      //   console.log(params);
-      //   let p: any = params;
-      //   if (!Array.isArray(params)) {
-      //     p = [params];
-      //   }
-
-      //   return `${p[0]?.axisValueLabel}
-      //     <br>${p.map((param: any) => {
-      //       const dimension = param.dimensionNames[param.encode.y[0]];
-      //       const value = param.value[dimension];
-      //       // @ts-ignore
-      //       const cityProp = CityProperties[dimension as string];
-      //       // if (cityProp?.unit) {
-      //       //   value = formatCityNumber(value, cityProp.unit);
-      //       // }
-
-      //       return `${param.marker} ${param.seriesName}: ${value}${cityProp?.suffix}`;
-      //     }).join('<br>')}`;
-      // },
     },
     dataset: [{
       source: [],
