@@ -3,4 +3,7 @@ export interface Environment {
     [locale: string]: string;
   };
   disableSentry?: boolean;
+  firestore: {
+    collectionName: string;
+  },
 }

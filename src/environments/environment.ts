@@ -5,4 +5,7 @@ export const environment: Environment = {
     ch: 'assets/voices/ch/',
     en: 'assets/voices/en/',
   },
+  firestore: {
+    collectionName: 'rail-transit-statistics',
+  },
 };

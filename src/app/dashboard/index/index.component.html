@@ -1,0 +1,62 @@
+@if (loading) {
+  <div class="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+}
+@if (list) {
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav mode="over" position="end" [(opened)]="opened">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>设置</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-form-field>
+            <mat-label>数据范围</mat-label>
+            <mat-select [value]="selectedId" (valueChange)="onRangeChange($event)">
+              @for (id of ids; track id) {
+                <mat-option [value]="id">
+                  {{id}}
+                </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </mat-card-content>
+      </mat-card>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="sidenav-toggle" (click)="sidenav.toggle()">
+        <button mat-mini-fab color="#cccccc">
+          <fa-icon [icon]="faSliders" />
+        </button>
+      </div>
+      @if (data) {
+        <main>
+          <div class="title">
+            <h1>交通运输部{{data.year}}年{{data.month}}月城市轨道交通运营数据</h1>
+            <div class="subtitle">
+              @if (data.originLink) {
+                <a
+                  [href]="data.originLink"
+                  target="_blank"
+                  referrerpolicy="no-referrer"
+                  class="read-origin"
+                >阅读原文</a>
+              }
+            </div>
+          </div>
+          <div echarts [options]="options"></div>
+          @if (data.summaries) {
+            <section class="summaries">
+              <ul>
+                @for (summary of data.summaries; track summary) {
+                  <li>{{summary}}</li>
+                }
+              </ul>
+            </section>
+          }
+        </main>
+      }
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+}
