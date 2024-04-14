@@ -2,8 +2,6 @@ name: Auto Merge Release/* PR
 
 on:
   pull_request:
-    types:
-      - opened
     branches:
       - 'release/**'
 
