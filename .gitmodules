@@ -1,0 +1,3 @@
+[submodule "src/assets/dashboard-data"]
+	path = src/assets/dashboard-data
+	url = git@github.com:wheeljs/rail-transit-data.git
