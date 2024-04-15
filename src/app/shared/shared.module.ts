@@ -11,8 +11,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { FirebaseAppModule, initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { FirestoreModule, getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { NgClickOutsideDirective } from 'ng-click-outside2';
 import { StripNewLinePipe } from './strip-new-line.pipe';
 
