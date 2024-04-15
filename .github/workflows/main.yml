@@ -18,11 +18,30 @@ jobs:
       with:
         node-version: 18.x
 
+    - uses: pnpm/action-setup@v3
+      name: Install pnpm
+      with:
+        version: 8
+        run_install: false
+
+    - name: Get pnpm store directory
+      shell: bash
+      run: |
+        echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+    - uses: actions/cache@v4
+      name: Setup pnpm cache
+      with:
+        path: ${{ env.STORE_PATH }}
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-store-
+
     - name: Get Tag
       id: get_tag
       run: |
         echo "version=$(echo '${{ github.ref_name }}' | sed 's/release\///')" >> $GITHUB_OUTPUT
-          
+
     - name: Create PR
       env:
         GH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
@@ -34,7 +53,7 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
-        npm install
+        pnpm install
         # npm run lint
         ###
         # Configure Angular first!
@@ -43,4 +62,4 @@ jobs:
         # npm run webdriver-update-ci
         # npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js --webdriver-update=false
         ####
-        npm run ng -- deploy --base-href=/metro-lcd/ --name="metro-lcd-bot" --email=ttvip88888888@foxmail.com
+        pnpm run ng -- deploy --base-href=/metro-lcd/ --name="metro-lcd-bot" --email=ttvip88888888@foxmail.com
