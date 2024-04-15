@@ -168,11 +168,7 @@ export class DashboardIndexComponent {
         });
         this.list = listMap;
 
-        if (!this.selectedId) {
-          this.onRangeChange(list[0].id!);
-        } else {
-          this.rangeUpdate(this.selectedId);
-        }
+        this.onRangeChange(this.selectedId || list[0].id!);
       },
     });
   }
@@ -210,7 +206,20 @@ export class DashboardIndexComponent {
 
   onRangeChange(id: string) {
     this.loading = true;
-    this.router.navigateByUrl(`/dashboard/${id}`);
+    const listItem = this.list[id];
+    this.dataService.getData({
+      range: id,
+      hash: listItem.hash,
+    }).subscribe({
+      next: (data) => {
+        this.list = Object.assign({}, this.list, {
+          [id]: data,
+        });
+        this.rangeUpdate(id);
+
+        this.router.navigateByUrl(`/dashboard/${id}`, { skipLocationChange: true });
+      },
+    });
   }
 
   rangeUpdate(id: string) {

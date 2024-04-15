@@ -4,7 +4,7 @@ import { SharedModule } from '../shared/shared.module';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardIndexComponent } from './index/index.component';
 import { DataService } from './services/';
-import { FirebaseService } from './services/firebase.service';
+import { FileService } from './services/file.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { FirebaseService } from './services/firebase.service';
     }),
   ],
   providers: [
-    { provide: DataService, useClass: FirebaseService },
+    { provide: DataService, useClass: FileService },
   ],
 })
 export class DashboardModule { }

@@ -1,0 +1,39 @@
+import { Inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { type Observable, of, tap } from 'rxjs';
+
+import { STORAGE } from '../../common';
+import type { DashboardData, LoadDataOptions } from '../types';
+
+@Injectable()
+export class FileService {
+
+  constructor(@Inject(STORAGE) private storage: Storage, private httpClient: HttpClient) { }
+
+  list(): Observable<DashboardData[]> {
+    return this.httpClient.get('assets/dashboard-manifest.json') as Observable<DashboardData[]>;
+  }
+
+  getData({ range, hash, skipCache }: LoadDataOptions): Observable<DashboardData> {
+    if (!skipCache && range in this.storage) {
+      const cachedData = JSON.parse(this.storage[range]);
+      if (cachedData.hash === hash) {
+        return of(cachedData.data);
+      }
+
+      this.storage.removeItem(range);
+    }
+
+    return (
+      this.httpClient.get(`assets/dashboard-data/${range}.json`) as Observable<DashboardData>
+    ).pipe(
+      tap(data => {
+        this.storage[range] = JSON.stringify({
+          hash,
+          data,
+        });
+      })
+    ) ;
+  }
+
+}
