@@ -215,9 +215,11 @@ export class DashboardIndexComponent {
         this.list = Object.assign({}, this.list, {
           [id]: data,
         });
-        this.rangeUpdate(id);
+        if (this.selectedId !== id) {
+          this.router.navigateByUrl(`/dashboard/${id}`);
+        }
 
-        this.router.navigateByUrl(`/dashboard/${id}`, { skipLocationChange: true });
+        this.rangeUpdate(id);
       },
     });
   }
