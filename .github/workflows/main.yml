@@ -62,4 +62,5 @@ jobs:
         # npm run webdriver-update-ci
         # npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js --webdriver-update=false
         ####
-        pnpm run ng -- deploy --base-href=/metro-lcd/ --name="metro-lcd-bot" --email=ttvip88888888@foxmail.com
+        pnpm run prebuild
+        pnpm exec ng deploy --base-href=/metro-lcd/ --name="metro-lcd-bot" --email=ttvip88888888@foxmail.com
