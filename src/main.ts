@@ -3,6 +3,7 @@ import * as Sentry from '@sentry/angular-ivy';
 import 'zone.js';
 
 import { environment } from './environments/environment';
+import { STORAGE } from './app/common';
 import { AppModule } from './app/app.module';
 
 if (!environment.disableSentry) {
@@ -20,5 +21,7 @@ if (!environment.disableSentry) {
   });
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
+platformBrowserDynamic([
+  { provide: STORAGE, useFactory: () => localStorage },
+]).bootstrapModule(AppModule)
   .catch((err) => console.error(err));

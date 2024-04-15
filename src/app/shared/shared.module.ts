@@ -36,14 +36,10 @@ const ExportsAsIs = [
   declarations: [StripNewLinePipe],
   imports: [
     ...ExportsAsIs,
-    provideFirebaseApp(() => initializeApp({"projectId":"metro-lcd","appId":"1:31875830124:web:95f23f4270717180662349","storageBucket":"metro-lcd.appspot.com","apiKey":"AIzaSyDZASCWN_ZTSOlzUvS_cdfeFuq6Op07CTc","authDomain":"metro-lcd.firebaseapp.com","messagingSenderId":"31875830124","measurementId":"G-FVKX0VXY3Z"})),
-    provideFirestore(() => getFirestore()),
   ],
   exports: [
     ...ExportsAsIs,
-    FirebaseAppModule,
-    FirestoreModule,
-    StripNewLinePipe
+    StripNewLinePipe,
   ],
 })
 export class SharedModule {}
