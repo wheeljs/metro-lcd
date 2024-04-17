@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, filter, map } from 'rxjs';
+import { BehaviorSubject, type Observable, filter, map, shareReplay } from 'rxjs';
 import { StationStatus, type ContainerConfig } from './types';
 import type { Line, RunningLine, RunningLineStation, StationVoiceWithSubtitle } from './types';
 
@@ -66,6 +66,7 @@ export class RunningLineService {
 
       return playlist;
     }),
+    shareReplay(1),
   );
 
   constructor() {}
