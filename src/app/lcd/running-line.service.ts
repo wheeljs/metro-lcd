@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, filter, map } from 'rxjs';
 import { StationStatus, type ContainerConfig } from './types';
-import type { Line, RunningLine, RunningLineStation } from './types';
-import { environment } from '../../environments/environment';
+import type { Line, RunningLine, RunningLineStation, StationVoiceWithSubtitle } from './types';
 
 interface RunningState {
   current: RunningLineStation;
@@ -40,24 +39,28 @@ export class RunningLineService {
         return [];
       }
       const { ch, en } = voices;
-      const playlist: string[] = [];
+      const playlist: StationVoiceWithSubtitle[] = [];
       for (let i = 0; i < ch.length; i++) {
         const chItem = ch[i];
         const enItem = en[i];
         if (chItem) {
-          playlist.push(environment.VoicesPrefix.ch + chItem);
+          playlist.push({
+            lang: 'ch',
+            ...chItem,
+          });
         }
         if (enItem) {
-          playlist.push(environment.VoicesPrefix.en + enItem);
+          playlist.push({
+            lang: 'en',
+            ...enItem,
+          });
         }
       }
       if (en.length > ch.length) {
         playlist.push(
-          ...en
+          ...(en as StationVoiceWithSubtitle[])
             .slice(ch.length)
-            .filter<string>(
-              (x): x is string => typeof x === 'string' && x.length > 0
-            )
+            .filter((x) => x?.voiceUrl?.length > 0)
         );
       }
 

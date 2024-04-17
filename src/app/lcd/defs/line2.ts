@@ -1,10 +1,11 @@
-import { StationStatus, type Line } from '../types';
+import { StationStatus, type LineDef } from '../types';
 import { HeartSeat, TrainRunning } from './voices';
+import { lineDefToStatic } from '../utils/line';
 
 const LineVoicePrefix = '02/';
 const ArrivedCommonVoices = [`${LineVoicePrefix}Common-0201.wav`];
 
-export const Line2: Line = {
+const Line2: LineDef = {
   ui: {
     get title() {
       return 'Jinan Metro Line 2';
@@ -329,4 +330,8 @@ export const Line2: Line = {
   ],
 };
 
-export default Line2;
+const line = lineDefToStatic(Line2);
+
+export { line as Line2 };
+
+export default line;
