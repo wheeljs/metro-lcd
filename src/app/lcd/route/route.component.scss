@@ -3,7 +3,8 @@
 
 .lcd-route {
   &__station-container {
-    padding: 128px 64px 0;
+    padding-top: 128px;
+    padding-bottom: 128px;
   }
 
   &__stations {
