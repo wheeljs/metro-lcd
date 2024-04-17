@@ -42,12 +42,43 @@ const Line2: LineDef = {
       ],
       voices: {
         [StationStatus.ArrivingSoon]: {
-          ch: [`${LineVoicePrefix}01-WangFuZhuang-T.wav`, `${LineVoicePrefix}01-WangFuZhuang-01.wav`, `${LineVoicePrefix}01-WangFuZhuang-0101.wav`],
-          en: [, , `${LineVoicePrefix}01-WangFuZhuang-01.wav`],
+          ch: [
+            {
+              voiceUrl: `${LineVoicePrefix}01-WangFuZhuang-T.wav`,
+              subtitle: '本次列车终点站王府庄。',
+            },
+            {
+              voiceUrl: `${LineVoicePrefix}01-WangFuZhuang-01.wav`,
+              subtitleConfig: { terminal: true },
+            },
+            {
+              voiceUrl: `${LineVoicePrefix}01-WangFuZhuang-0101.wav`,
+              subtitleConfig: { transfer: true },
+            },
+          ],
+          en: [
+            , ,
+            {
+              voiceUrl: `${LineVoicePrefix}01-WangFuZhuang-01.wav`,
+              subtitleConfig: { terminal: true },
+            },
+          ],
         },
         [StationStatus.Arrived]: {
-          ch: [`${LineVoicePrefix}01-WangFuZhuang-02.wav`, ...ArrivedCommonVoices],
-          en: [, `${LineVoicePrefix}01-WangFuZhuang-02.wav`],
+          ch: [
+            {
+              voiceUrl: `${LineVoicePrefix}01-WangFuZhuang-02.wav`,
+              subtitleConfig: { terminal: true },
+            },
+            ...ArrivedCommonVoices,
+          ],
+          en: [
+            ,
+            {
+              voiceUrl: `${LineVoicePrefix}01-WangFuZhuang-02.wav`,
+              subtitleConfig: { terminal: true },
+            },
+          ],
         },
       },
     },
@@ -252,7 +283,14 @@ const Line2: LineDef = {
       nameEn: 'Ba Jian Pu',
       voices: {
         [StationStatus.ArrivingSoon]: {
-          ch: [TerminalAtPengJiaZhuang, `${LineVoicePrefix}15-BaJianPu-01.wav`, `${LineVoicePrefix}15-BaJianPu-0101.wav`],
+          ch: [
+            TerminalAtPengJiaZhuang,
+            `${LineVoicePrefix}15-BaJianPu-01.wav`,
+            {
+              voiceUrl: `${LineVoicePrefix}15-BaJianPu-0101.wav`,
+              subtitleConfig: { transfer: true },
+            },
+          ],
           en: [, , `${LineVoicePrefix}15-BaJianPu-01.wav`],
         },
         [StationStatus.Arrived]: {
@@ -329,12 +367,36 @@ const Line2: LineDef = {
       nameEn: 'Peng Jia Zhuang',
       voices: {
         [StationStatus.ArrivingSoon]: {
-          ch: [TerminalAtPengJiaZhuang, `${LineVoicePrefix}19-PengJiaZhuang-01.wav`],
-          en: [, `${LineVoicePrefix}19-PengJiaZhuang-01.wav`],
+          ch: [
+            TerminalAtPengJiaZhuang,
+            {
+              voiceUrl: `${LineVoicePrefix}19-PengJiaZhuang-01.wav`,
+              subtitleConfig: { terminal: true },
+            },
+          ],
+          en: [
+            ,
+            {
+              voiceUrl: `${LineVoicePrefix}19-PengJiaZhuang-01.wav`,
+              subtitleConfig: { terminal: true },
+            },
+          ],
         },
         [StationStatus.Arrived]: {
-          ch: [`${LineVoicePrefix}19-PengJiaZhuang-02.wav`, ...ArrivedCommonVoices],
-          en: [, `${LineVoicePrefix}19-PengJiaZhuang-02.wav`],
+          ch: [
+            {
+              voiceUrl: `${LineVoicePrefix}19-PengJiaZhuang-02.wav`,
+              subtitleConfig: { terminal: true },
+            },
+            ...ArrivedCommonVoices,
+          ],
+          en: [
+            ,
+            {
+              voiceUrl: `${LineVoicePrefix}19-PengJiaZhuang-02.wav`,
+              subtitleConfig: { terminal: true },
+            },
+          ],
         },
       },
     },

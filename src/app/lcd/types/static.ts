@@ -21,6 +21,10 @@ export interface StationVoiceWithSubtitle {
    */
   subtitle?: string;
   /**
+   * 生成字幕参数，如果`subtitle`存在将被忽略，仅用于自动生成字幕时
+   */
+  subtitleConfig?: SubtitleGenerateOptions;
+  /**
    * 音频的语言，在Line Normalize时会自动检测
    *
    * 在<lcd-subtitle>显示字幕时，若前后两段音频语言一致则显示在同一行，否则分行显示
