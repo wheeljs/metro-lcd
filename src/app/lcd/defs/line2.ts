@@ -403,7 +403,14 @@ const Line2: LineDef = {
   ],
 };
 
-const line = lineDefToStatic(Line2);
+const shNameEn = ['Wangfuzhuang', 'South Lashan', 'Lashan', 'West Erhuan Road', 'Laotun', 'Baliqiao', 'Yikang Road', 'North Jinan<br>Railway Station', 'Jiluo Road', 'Shengchan Road', 'Beiyuan', 'Lishan Road', 'Qilipu', 'Zhudian', 'Bajianpu', 'Jiangjiazhuang', 'Fenghuang Road', 'Baoshan', 'Pengjiazhuang'];
+const line = lineDefToStatic({
+  ...Line2,
+  stations: Line2.stations.map((station, index) => ({
+    ...station,
+    nameEn: shNameEn[index] ?? station.nameEn,
+  })),
+});
 
 export { line as Line2 };
 
