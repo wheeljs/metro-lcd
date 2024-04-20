@@ -56,7 +56,7 @@
               "@fontsource/roboto/300.css",
               "@fontsource/roboto/400.css",
               "@fontsource/roboto/500.css",
-              "src/global_styles.css"
+              "src/global_styles.less"
             ],
             "tsConfig": "tsconfig.app.json"
           }

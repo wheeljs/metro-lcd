@@ -28,6 +28,7 @@
     "@sentry/angular-ivy": "^7.107.0",
     "echarts": "^5.5.0",
     "ng-click-outside2": "^14.0.1",
+    "ng-zorro-antd": "17.3.0",
     "ngx-echarts": "^17.1.0",
     "normalize.css": "^8.0.1",
     "rxjs": "^7.8.1",
