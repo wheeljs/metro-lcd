@@ -4,6 +4,11 @@
   height: 100vh;
 }
 
+nz-spin,
+::ng-deep .ant-spin-container {
+  height: 100%;
+}
+
 .mat-sidenav-container {
   height: 100%;
 }
@@ -12,19 +17,6 @@
   position: absolute;
   right: 10px;
   top: 20px;
-}
-
-.loading {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffffff;
-  z-index: 10;
 }
 
 .title {
