@@ -1,0 +1,168 @@
+@if (data) {
+  <div class="md-monthly-data__container">
+    <nz-card class="md-monthly-data__main-card">
+      <div class="md-monthly-data__main">
+        <md-statistic-item
+          nzTitle="轨道交通线路"
+          [value]="data.lines"
+          nzSuffix="条"
+        />
+        <md-statistic-item
+          nzTitle="运营里程"
+          [value]="data.operationLength"
+          nzSuffix="公里"
+        />
+        <md-statistic-item
+          nzTitle="实际开行列车"
+          [value]="data.runs"
+          unit="万"
+          nzSuffix="万次"
+        />
+        @if (data.newLines.count > 0) {
+          <md-statistic-item
+            nzTitle="新增运营线路"
+            [value]="data.newLines.count"
+            nzSuffix="条"
+          />
+          <md-statistic-item
+            nzTitle="新增运营里程"
+            [value]="data.newLines.operationLength"
+            nzSuffix="公里"
+          />
+          <div class="md-monthly-data__new-lines__detail">
+            @for (newLine of data.newLines.detail; track newLine.ch) {
+              {{ newLine.ch }}@if (!$last) {<br />}
+            }
+          </div>
+        } @else {
+          <div class="md-monthly-data__new-lines__empty">本月无新开通线路</div>
+        }
+      </div>
+    </nz-card>
+
+    <nz-card [nzActions]="[passengerCapacityQoQ, passengerCapacityYoY]">
+      <md-statistic-item
+        nzTitle="客运量"
+        [value]="data.passengerCapacity.value"
+        unit="亿"
+      />
+    </nz-card>
+    <ng-template #passengerCapacityQoQ>
+      <nz-flex nzAlign="center" nzJustify="space-around">
+        <span>环比</span>
+        <md-statistic-item
+          [value]="data.passengerCapacity.compareLastMonth"
+          unit="亿"
+          autoPrefix
+          autoColor
+        />
+        <md-statistic-item
+          [value]="data.passengerCapacity.compareLastMonthPercent"
+          percent
+          autoPrefix
+          autoColor
+        />
+      </nz-flex>
+    </ng-template>
+    <ng-template #passengerCapacityYoY>
+      <nz-flex nzAlign="center" nzJustify="space-around">
+        <span>同比</span>
+        <md-statistic-item
+          [value]="data.passengerCapacity.compareLastYear"
+          unit="亿"
+          autoPrefix
+          autoColor
+        />
+        <md-statistic-item
+          [value]="data.passengerCapacity.compareLastYearPercent"
+          percent
+          autoPrefix
+          autoColor
+        />
+      </nz-flex>
+    </ng-template>
+
+    <nz-card>
+      <md-statistic-item
+        nzTitle="进站量"
+        [value]="data.inStationCapacity"
+        unit="亿"
+      />
+    </nz-card>
+
+    <nz-card [nzActions]="[passengerStrongQoQ, passengerStrongYoY]">
+      <md-statistic-item
+        nzTitle="平均客运强度"
+        [value]="data.passengerStrong.value"
+        valueFormat="1.0-3"
+        nzSuffix="万人次每公里日"
+      />
+    </nz-card>
+    <ng-template #passengerStrongQoQ>
+      <nz-flex nzAlign="center" nzJustify="space-around">
+        <span>环比</span>
+        <md-statistic-item
+          [value]="data.passengerStrong.compareLastMonthPercent"
+          percent
+          autoPrefix
+          autoColor
+        />
+      </nz-flex>
+    </ng-template>
+    <ng-template #passengerStrongYoY>
+      <nz-flex nzAlign="center" nzJustify="space-around">
+        <span>同比</span>
+        <md-statistic-item
+          [value]="data.passengerStrong.compareLastYearPercent"
+          percent
+          autoPrefix
+          autoColor
+        />
+      </nz-flex>
+    </ng-template>
+
+    <ng-template #volumeItem let-volumeName="volumeName" let-volume="volume" let-unit="unit">
+      <nz-card [nzTitle]="volumeName">
+        <md-statistic-item
+          nz-card-grid
+          [nzHoverable]="false"
+          nzTitle="线路数"
+          [value]="volume.lines"
+          nzSuffix="条"
+          [ngStyle]="{ width: '50%' }"
+        />
+        <md-statistic-item
+          nz-card-grid
+          [nzHoverable]="false"
+          nzTitle="运营里程"
+          [value]="volume.operationLength"
+          nzSuffix="公里"
+          [ngStyle]="{ width: '50%' }"
+        />
+        <md-statistic-item
+          nz-card-grid
+          [nzHoverable]="false"
+          nzTitle="客运量"
+          [value]="volume.passengerCapacity"
+          [unit]="unit"
+          [ngStyle]="{ width: '50%' }"
+        />
+        <md-statistic-item
+          nz-card-grid
+          [nzHoverable]="false"
+          nzTitle="进站量"
+          [value]="volume.inStationCapacity"
+          [unit]="unit"
+          [ngStyle]="{ width: '50%' }"
+        />
+      </nz-card>
+    </ng-template>
+
+    <div class="md-monthly-data__volumes">
+      <ng-container *ngTemplateOutlet="volumeItem; context: { volumeName: '大运量', volume: data.largeVolume, unit: '亿' }" />
+      <ng-container *ngTemplateOutlet="volumeItem; context: { volumeName: '中运量', volume: data.mediumVolume, unit: '万' }" />
+      <ng-container *ngTemplateOutlet="volumeItem; context: { volumeName: '低运量', volume: data.smallVolume, unit: '万' }" />
+    </div>
+
+  </div>
+}

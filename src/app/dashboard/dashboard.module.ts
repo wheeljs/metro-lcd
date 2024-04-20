@@ -6,10 +6,18 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardIndexComponent } from './index/index.component';
 import { DataService } from './services/';
 import { FileService } from './services/file.service';
+import { MonthlyDataComponent } from './monthly-data/monthly-data.component';
+import { UnitPipe } from './pipes/unit.pipe';
+import { PosnegStatisticDirective } from './directives/posneg-statistic.directive';
+import { StatisticItemComponent } from './components/statistic-item/statistic-item.component';
 
 @NgModule({
   declarations: [
     DashboardIndexComponent,
+    MonthlyDataComponent,
+    UnitPipe,
+    PosnegStatisticDirective,
+    StatisticItemComponent,
   ],
   imports: [
     SharedModule,

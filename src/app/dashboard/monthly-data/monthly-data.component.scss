@@ -1,0 +1,58 @@
+.md-monthly-data {
+  &__container {
+    padding: 16px 48px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px 32px;
+
+    ::ng-deep {
+      .ant-card-actions > li > span {
+        cursor: inherit;
+
+        &:hover {
+          color: inherit;
+        }
+      }
+
+      .ant-card-actions .ant-statistic-content {
+        font-size: 16px;
+      }
+
+      .ant-statistic-title:empty {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__main-card ::ng-deep {
+    grid-row: 1 / 3;
+
+    .ant-card-body {
+      padding: 24px 16px;
+    }
+  }
+
+  &__main {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(max-content, 1fr));
+    gap: 32px 16px;
+  }
+
+  &__new-lines {
+    &__detail {
+      padding-top: 26px;
+      line-height: 24px;
+    }
+
+    &__empty {
+      font-size: 18px;
+    }
+  }
+
+  &__volumes {
+    grid-column: 2 / 5;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: inherit;
+  }
+}
