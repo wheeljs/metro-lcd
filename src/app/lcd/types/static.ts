@@ -1,4 +1,5 @@
-import { NameSimple, NameItem } from './common';
+import type { SubtitleGenerateOptions } from '../utils/subtitle';
+import type { NameSimple, NameItem } from './common';
 
 export enum StationStatus {
   /** 未在运营区间 */
@@ -13,14 +14,30 @@ export enum StationStatus {
   Past = 'past',
 }
 
-export type StationVoice = Record<string, (string | undefined)[]>;
+export interface StationVoiceWithSubtitle {
+  voiceUrl: string;
+  /**
+   * 声音对应的字幕
+   */
+  subtitle?: string;
+  /**
+   * 生成字幕参数，如果`subtitle`存在将被忽略，仅用于自动生成字幕时
+   */
+  subtitleConfig?: SubtitleGenerateOptions;
+  /**
+   * 音频的语言，在Line Normalize时会自动检测
+   *
+   * 在<lcd-subtitle>显示字幕时，若前后两段音频语言一致则显示在同一行，否则分行显示
+   */
+  readonly lang?: string;
+}
 
 export interface Station extends NameSimple {
   id: string;
   transfers?: TransferLine[];
   voices?: {
-    [StationStatus.ArrivingSoon]: StationVoice;
-    [StationStatus.Arrived]: StationVoice;
+    [StationStatus.ArrivingSoon]: Record<string, (StationVoiceWithSubtitle | undefined)[]>;
+    [StationStatus.Arrived]: Record<string, (StationVoiceWithSubtitle | undefined)[]>;
   };
   disabled?: boolean;
 }

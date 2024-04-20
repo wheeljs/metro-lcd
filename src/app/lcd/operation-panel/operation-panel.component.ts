@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation, Input, TemplateRef } from '@angular/core';
+import { type Observable, map, shareReplay } from 'rxjs';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ContainerConfigService } from '../container-config.service';
@@ -26,9 +27,10 @@ export class OperationPanelComponent {
     return this.containerConfigService.config;
   }
 
-  get playlist$() {
-    return this.runningLineService.playlist$;
-  }
+  playlist$: Observable<string[]> = this.runningLineService.playlist$.pipe(
+    map((voices) => voices.map(voice => voice?.voiceUrl)),
+    shareReplay(1),
+  );
 
   constructor(
     private runningLineService: RunningLineService,

@@ -14,6 +14,7 @@ import { TransferIconComponent } from './transfer-icon/transfer-icon.component';
 import { ToolbarComponent } from './station/toolbar/toolbar.component';
 import { OutletComponent } from './outlet/outlet.component';
 import { LcdRoutingModule } from './lcd-routing.module';
+import { SubtitleComponent } from './subtitle/subtitle.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { LcdRoutingModule } from './lcd-routing.module';
     TransferIconComponent,
     ToolbarComponent,
     OutletComponent,
+    SubtitleComponent,
   ],
   imports: [
     SharedModule,
