@@ -22,18 +22,33 @@
           <md-statistic-item
             nzTitle="新增运营线路"
             [value]="data.newLines.count"
-            nzSuffix="条"
+            [nzSuffix]="newLineCountSuffix"
           />
+          <ng-template #newLineCountSuffix>
+            条
+            <a class="md-monthly-data__popover-btn">
+              <span
+                nz-icon
+                nzType="info-circle"
+                nzTheme="outline"
+                nz-popover
+                nzPopoverOverlayClassName="md-monthly-data__news-popover"
+                [nzPopoverContent]="newLinesDetail"
+                nzPopoverPlacement="right"
+              ></span>
+            </a>
+          </ng-template>
+          <ng-template #newLinesDetail>
+            @for (newLine of data.newLines.detail; track newLine.ch) {
+              {{ newLine.ch }}@if (!$last) {<br />}
+            }
+          </ng-template>
+
           <md-statistic-item
             nzTitle="新增运营里程"
             [value]="data.newLines.operationLength"
             nzSuffix="公里"
           />
-          <div class="md-monthly-data__new-lines__detail">
-            @for (newLine of data.newLines.detail; track newLine.ch) {
-              {{ newLine.ch }}@if (!$last) {<br />}
-            }
-          </div>
         } @else {
           <div class="md-monthly-data__new-lines__empty">本月无新开通线路</div>
         }

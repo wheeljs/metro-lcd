@@ -39,14 +39,23 @@
   }
 
   &__new-lines {
-    &__detail {
-      padding-top: 26px;
-      line-height: 24px;
-    }
-
     &__empty {
+      grid-column: 1 / -1;
       font-size: 18px;
     }
+  }
+
+  &__popover-btn {
+    font-size: 14px;
+    color: inherit;
+
+    &:hover {
+      color: #1890ff;
+    }
+  }
+
+  ::ng-deep &__news-popover {
+    max-width: 250px;
   }
 
   &__volumes {
