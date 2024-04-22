@@ -1,7 +1,10 @@
-.md-monthly-data {
+$cls: md-monthly-data;
+
+.#{$cls} {
   &__container {
     padding: 16px 48px;
     display: grid;
+    grid-template-rows: min-content 1fr;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px 32px;
 
@@ -34,8 +37,12 @@
 
   &__main {
     display: grid;
-    grid-template-columns: repeat(3, minmax(max-content, 1fr));
+    grid-template-columns: repeat(3, minmax(min-content, 1fr));
     gap: 32px 16px;
+
+    :nth-child(3n + 2) {
+      white-space: nowrap;
+    }
   }
 
   &__new-lines {
