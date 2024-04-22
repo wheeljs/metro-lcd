@@ -10,6 +10,7 @@ import { MonthlyDataComponent } from './monthly-data/monthly-data.component';
 import { UnitPipe } from './pipes/unit.pipe';
 import { PosnegStatisticDirective } from './directives/posneg-statistic.directive';
 import { StatisticItemComponent } from './components/statistic-item/statistic-item.component';
+import { MonthCitiesBarChartComponent } from './charts/month-cities-bar-chart/month-cities-bar-chart.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { StatisticItemComponent } from './components/statistic-item/statistic-it
     UnitPipe,
     PosnegStatisticDirective,
     StatisticItemComponent,
+    MonthCitiesBarChartComponent,
   ],
   imports: [
     SharedModule,

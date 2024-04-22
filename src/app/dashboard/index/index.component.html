@@ -48,7 +48,7 @@
             </div>
           </div>
           <md-monthly-data [data]="data" [config]="config" />
-          <div echarts [options]="options"></div>
+          <md-chart-month-cities-bar [cities]="data.cities" />
           @if (data.summaries) {
             <section class="summaries">
               <ul>
