@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { filter, tap } from 'rxjs';
@@ -53,6 +54,15 @@ export class DashboardIndexComponent {
     return Object.keys(this.list);
   }
 
+  get pageTitle() {
+    if (!this.data) {
+      return 'Dashboard'
+    }
+
+    const { year, month } = this.data;
+    return `${year}年${month}月城市轨道交通运营数据`;
+  }
+
   private _data?: DashboardDataVM;
   get data() {
     return this._data!;
@@ -61,6 +71,9 @@ export class DashboardIndexComponent {
   set data(val: DashboardDataVM) {
     this.selectedId = val.id!;
     this._data = val;
+    if (val.year && val.month) {
+      this.title.setTitle(this.pageTitle);
+    }
   }
 
   loading = true;
@@ -154,6 +167,7 @@ export class DashboardIndexComponent {
 
   constructor(
     private router: Router,
+    private title: Title,
     private dataService: DataService,
   ) {
     this.dataService.list().pipe(
