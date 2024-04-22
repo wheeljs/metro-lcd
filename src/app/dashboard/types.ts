@@ -35,21 +35,21 @@ export type ValueCompareFull = Value & CompareLastMonth & CompareLastYear;
 
 export type ValueComparePercent = Value & CompareLastMonthPercent & CompareLastYearPercent;
 
-export interface NewLineItem {
+export interface NewsItem {
   ch: string;
   cityCh: string;
   cityEn: string;
 }
 
-export interface NewLines {
+export interface NewsCategory {
   count: number;
-  operationLength: number;
-  detail?: NewLineItem[];
+  detail?: NewsItem[];
 }
 
-export interface NewSegments {
-  count: number;
-  detail?: NewLineItem[];
+export interface News {
+  operationLength: number;
+  lines: NewsCategory;
+  segments: NewsCategory;
 }
 
 export interface City {
@@ -85,8 +85,7 @@ export interface DashboardData extends DashboardDataSimple {
   passengerCapacity: ValueCompareFull;
   inStationCapacity: number;
   passengerStrong: ValueComparePercent;
-  newLines: NewLines;
-  newSegments: NewSegments;
+  news: News;
   largeVolume: VolumeSummary;
   mediumVolume: VolumeSummary;
   smallVolume: VolumeSummary;

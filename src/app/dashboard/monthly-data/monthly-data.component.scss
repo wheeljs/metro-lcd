@@ -52,6 +52,10 @@ $cls: md-monthly-data;
     }
   }
 
+  &__new-operation-length {
+    grid-column: -2;
+  }
+
   &__popover-btn {
     font-size: 14px;
     color: inherit;

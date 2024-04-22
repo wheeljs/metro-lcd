@@ -18,66 +18,70 @@
           unit="万"
           nzSuffix="万次"
         />
-        @if (data.newLines.count > 0) {
-          <md-statistic-item
-            nzTitle="新增运营线路"
-            [value]="data.newLines.count"
-            [nzSuffix]="newLineCountSuffix"
-          />
-          <ng-template #newLineCountSuffix>
-            条
-            <a class="md-monthly-data__popover-btn">
-              <span
-                nz-icon
-                nzType="info-circle"
-                nzTheme="outline"
-                nz-popover
-                nzPopoverOverlayClassName="md-monthly-data__news-popover"
-                [nzPopoverContent]="newLinesDetail"
-                nzPopoverPlacement="right"
-              ></span>
-            </a>
-          </ng-template>
-          <ng-template #newLinesDetail>
-            @for (newLine of data.newLines.detail; track newLine.ch) {
-              {{ newLine.ch }}@if (!$last) {<br />}
-            }
-          </ng-template>
+        @if (data.news.lines.count > 0 || data.news.segments.count > 0) {
+          @if (data.news.lines.count > 0) {
+            <md-statistic-item
+              nzTitle="新增运营线路"
+              [value]="data.news.lines.count"
+              [nzSuffix]="newLineCountSuffix"
+            />
+            <ng-template #newLineCountSuffix>
+              条
+              <a class="md-monthly-data__popover-btn">
+                <span
+                  nz-icon
+                  nzType="info-circle"
+                  nzTheme="outline"
+                  nz-popover
+                  nzPopoverOverlayClassName="md-monthly-data__news-popover"
+                  [nzPopoverContent]="newLinesDetail"
+                  nzPopoverPlacement="right"
+                ></span>
+              </a>
+            </ng-template>
+            <ng-template #newLinesDetail>
+              @for (newLine of data.news.lines.detail; track newLine.ch) {
+                {{ newLine.ch }}@if (!$last) {<br />}
+              }
+            </ng-template>
+          }
+          @if (data.news.segments.count > 0) {
+            <md-statistic-item
+              nzTitle="新增运营区段"
+              [value]="data.news.segments.count"
+              [nzSuffix]="newSegmentCountSuffix"
+            />
+            <ng-template #newSegmentCountSuffix>
+              个
+              <a class="md-monthly-data__popover-btn">
+                <span
+                  nz-icon
+                  nzType="info-circle"
+                  nzTheme="outline"
+                  nz-popover
+                  nzPopoverOverlayClassName="md-monthly-data__news-popover"
+                  [nzPopoverContent]="newSegmentsDetail"
+                  nzPopoverPlacement="right"
+                ></span>
+              </a>
+            </ng-template>
+            <ng-template #newSegmentsDetail>
+              @for (newSegment of data.news.segments.detail; track newSegment.ch) {
+                {{ newSegment.ch }}@if (!$last) {<br />}
+              }
+            </ng-template>
+          }
 
           <md-statistic-item
+            class="md-monthly-data__new-operation-length"
             nzTitle="新增运营里程"
-            [value]="data.newLines.operationLength"
+            [value]="data.news.operationLength"
             nzSuffix="公里"
           />
         } @else {
-          <div class="md-monthly-data__new-lines__empty">本月无新开通线路</div>
+          <div class="md-monthly-data__new-lines__empty">本月无新开通线路和区段</div>
         }
-        @if (data.newSegments?.count! > 0) {
-          <md-statistic-item
-            nzTitle="新增运营区段"
-            [value]="data.newSegments.count"
-            [nzSuffix]="newSegmentCountSuffix"
-          />
-          <ng-template #newSegmentCountSuffix>
-            个
-            <a class="md-monthly-data__popover-btn">
-              <span
-                nz-icon
-                nzType="info-circle"
-                nzTheme="outline"
-                nz-popover
-                nzPopoverOverlayClassName="md-monthly-data__news-popover"
-                [nzPopoverContent]="newSegmentsDetail"
-                nzPopoverPlacement="right"
-              ></span>
-            </a>
-          </ng-template>
-          <ng-template #newSegmentsDetail>
-            @for (newSegment of data.newSegments.detail; track newSegment.ch) {
-              {{ newSegment.ch }}@if (!$last) {<br />}
-            }
-          </ng-template>
-        }
+
       </div>
     </nz-card>
 
