@@ -95,7 +95,14 @@ export interface DashboardData extends DashboardDataSimple {
   summaries: string[];
 }
 
+export type VolumeCompare = {
+  [K in keyof VolumeSummary]: CompareLastMonthValue;
+}
+
 export interface DashboardDataVM extends DashboardData {
   inStationCapacityVM: Value & CompareLastMonth;
   passengerStrongVM: DashboardData['passengerStrong'] & Partial<CompareLastMonthValue>;
+  largeVolumeCompare: VolumeCompare;
+  mediumVolumeCompare: VolumeCompare;
+  smallVolumeCompare: VolumeCompare;
 }

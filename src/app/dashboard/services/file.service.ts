@@ -87,6 +87,21 @@ export class FileService {
       });
     }
 
+    ['largeVolume', 'mediumVolume', 'smallVolume'].forEach((volumeKey) => {
+      const volumeK = volumeKey as keyof Pick<DashboardData, 'largeVolume' | 'mediumVolume' | 'smallVolume'>;
+      const currentVolume = current[volumeK];
+
+      if (lastMonth?.[volumeK]) {
+        const lastMonthVolume = lastMonth[volumeK];
+        vm[`${volumeK}Compare`] = {
+          lines: { compareLastMonth: currentVolume.lines - lastMonthVolume.lines },
+          operationLength: { compareLastMonth: ((currentVolume.operationLength * 10) - (lastMonthVolume.operationLength * 10)) / 10 },
+          passengerCapacity: { compareLastMonth: currentVolume.passengerCapacity - lastMonthVolume.passengerCapacity },
+          inStationCapacity: { compareLastMonth: currentVolume.inStationCapacity - lastMonthVolume.inStationCapacity },
+        };
+      }
+    });
+
     return vm as DashboardDataVM;
   }
 

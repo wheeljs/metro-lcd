@@ -71,4 +71,41 @@ $cls: md-monthly-data;
     grid-template-columns: repeat(3, 1fr);
     gap: inherit;
   }
+
+  &__volume-card {
+    &__container {
+      display: grid;
+      grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+
+      > * {
+        padding: 24px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+
+        &:nth-child(odd) {
+          border-right: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        &:nth-last-child(-n + 2) {
+          border-bottom: none;
+        }
+      }
+    }
+
+    &__item {
+      display: grid;
+      grid-template-columns: 1fr max-content;
+
+      &__compare ::ng-deep {
+        .ant-statistic-content-prefix {
+          font-size: 16px;
+        }
+
+        .ant-statistic-content {
+          color: #acacac;
+          font-size: 18px;
+          line-height: 22px;
+        }
+      }
+    }
+  }
 }

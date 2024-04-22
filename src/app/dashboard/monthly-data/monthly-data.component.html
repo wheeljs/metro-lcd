@@ -191,47 +191,112 @@
       </nz-flex>
     </ng-template>
 
-    <ng-template #volumeItem let-volumeName="volumeName" let-volume="volume" let-unit="unit">
-      <nz-card [nzTitle]="volumeName">
-        <md-statistic-item
-          nz-card-grid
-          [nzHoverable]="false"
-          nzTitle="线路数"
-          [value]="volume.lines"
-          nzSuffix="条"
-          [ngStyle]="{ width: '50%' }"
-        />
-        <md-statistic-item
-          nz-card-grid
-          [nzHoverable]="false"
-          nzTitle="运营里程"
-          [value]="volume.operationLength"
-          nzSuffix="公里"
-          [ngStyle]="{ width: '50%' }"
-        />
-        <md-statistic-item
-          nz-card-grid
-          [nzHoverable]="false"
-          nzTitle="客运量"
-          [value]="volume.passengerCapacity"
-          [unit]="unit"
-          [ngStyle]="{ width: '50%' }"
-        />
-        <md-statistic-item
-          nz-card-grid
-          [nzHoverable]="false"
-          nzTitle="进站量"
-          [value]="volume.inStationCapacity"
-          [unit]="unit"
-          [ngStyle]="{ width: '50%' }"
-        />
+    <ng-template
+      #volumeItem
+      let-volumeName="volumeName"
+      let-volume="volume"
+      let-volumeCompare="volumeCompare"
+      let-unit="unit"
+    >
+      <nz-card
+        class="md-monthly-data__volume-card"
+        [nzTitle]="volumeName"
+        [nzBodyStyle]="{ padding: 0 }"
+      >
+        <div class="md-monthly-data__volume-card__container">
+          <div class="md-monthly-data__volume-card__item">
+            <md-statistic-item
+              nzTitle="线路数"
+              [value]="volume.lines"
+              nzSuffix="条"
+            />
+            @if (volumeCompare?.lines?.compareLastMonth) {
+              <md-statistic-item
+                class="md-monthly-data__volume-card__item__compare"
+                [value]="volumeCompare.lines.compareLastMonth"
+                prefixMode="plusminus"
+                autoPrefix
+              />
+            }
+          </div>
+          <div class="md-monthly-data__volume-card__item">
+            <md-statistic-item
+              nzTitle="运营里程"
+              [value]="volume.operationLength"
+              nzSuffix="公里"
+            />
+            @if (volumeCompare?.operationLength?.compareLastMonth) {
+              <md-statistic-item
+                class="md-monthly-data__volume-card__item__compare"
+                [value]="volumeCompare.operationLength.compareLastMonth"
+                prefixMode="plusminus"
+                autoPrefix
+              />
+            }
+          </div>
+          <div class="md-monthly-data__volume-card__item">
+            <md-statistic-item
+              nzTitle="客运量"
+              [value]="volume.passengerCapacity"
+              [unit]="unit"
+            />
+            @if (volumeCompare?.passengerCapacity?.compareLastMonth) {
+              <md-statistic-item
+                class="md-monthly-data__volume-card__item__compare"
+                [value]="volumeCompare.passengerCapacity.compareLastMonth"
+                [unit]="unit"
+                nzSuffix=""
+                prefixMode="plusminus"
+                autoPrefix
+              />
+            }
+          </div>
+          <div class="md-monthly-data__volume-card__item">
+            <md-statistic-item
+              nzTitle="进站量"
+              [value]="volume.inStationCapacity"
+              [unit]="unit"
+            />
+            @if (volumeCompare?.inStationCapacity?.compareLastMonth) {
+              <md-statistic-item
+                class="md-monthly-data__volume-card__item__compare"
+                [value]="volumeCompare.inStationCapacity.compareLastMonth"
+                [unit]="unit"
+                nzSuffix=""
+                prefixMode="plusminus"
+                autoPrefix
+              />
+            }
+          </div>
+        </div>
       </nz-card>
     </ng-template>
 
     <div class="md-monthly-data__volumes">
-      <ng-container *ngTemplateOutlet="volumeItem; context: { volumeName: '大运量', volume: data.largeVolume, unit: '亿' }" />
-      <ng-container *ngTemplateOutlet="volumeItem; context: { volumeName: '中运量', volume: data.mediumVolume, unit: '万' }" />
-      <ng-container *ngTemplateOutlet="volumeItem; context: { volumeName: '低运量', volume: data.smallVolume, unit: '万' }" />
+      @if (data.largeVolume) {
+        <ng-container *ngTemplateOutlet="volumeItem; context: {
+          volumeName: '大运量',
+          volume: data.largeVolume,
+          volumeCompare: data.largeVolumeCompare,
+          unit: '亿'
+        }"/>
+      }
+      @if (data.mediumVolume) {
+        <ng-container *ngTemplateOutlet="volumeItem; context: {
+          volumeName: '中运量',
+          volume: data.mediumVolume,
+          volumeCompare: data.mediumVolumeCompare,
+          unit: '万'
+        }"/>
+      }
+      @if (data.smallVolume) {
+        <ng-container *ngTemplateOutlet="volumeItem; context: {
+          volumeName: '低运量',
+          volume: data.smallVolume,
+          volumeCompare: data.smallVolumeCompare,
+          unit: '万'
+        }"/>
+      }
     </div>
 
   </div>
