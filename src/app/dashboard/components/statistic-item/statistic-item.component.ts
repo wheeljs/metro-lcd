@@ -3,7 +3,7 @@ import { formatNumber, formatPercent } from '@angular/common';
 import { BooleanInput } from 'ng-zorro-antd/core/types';
 import { InputBoolean } from 'ng-zorro-antd/core/util';
 import { NzStatisticComponent } from 'ng-zorro-antd/statistic';
-import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUp, faArrowDown, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { formatUnit, Units } from '../../pipes/unit.pipe';
 
 @Component({
@@ -18,11 +18,17 @@ export class StatisticItemComponent implements OnChanges, AfterViewInit {
 
   upIcon = faArrowUp;
 
+  plusIcon = faPlus;
+
   downIcon = faArrowDown;
+
+  minusIcon = faMinus;
 
   @ViewChild('upPrefix') upPrefix!: TemplateRef<void>;
 
   @ViewChild('downPrefix') downPrefix!: TemplateRef<void>;
+
+  @Input() prefixMode: 'arrow' | 'plusminus' = 'arrow';
 
   @Input() nzTitle?: NzStatisticComponent['nzTitle'];
 

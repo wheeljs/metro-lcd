@@ -6,6 +6,6 @@
   [mdPosNegStatistic]="autoColor"
   [mdPosNegValue]="value"
 />
-<ng-template #upPrefix><fa-icon [icon]="upIcon" /></ng-template>
-<ng-template #downPrefix><fa-icon [icon]="downIcon" /></ng-template>
+<ng-template #upPrefix><fa-icon [icon]="prefixMode === 'arrow' ? upIcon : plusIcon" /></ng-template>
+<ng-template #downPrefix><fa-icon [icon]="prefixMode === 'arrow' ? downIcon : minusIcon" /></ng-template>
 
