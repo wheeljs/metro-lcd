@@ -52,6 +52,32 @@
         } @else {
           <div class="md-monthly-data__new-lines__empty">本月无新开通线路</div>
         }
+        @if (data.newSegments?.count! > 0) {
+          <md-statistic-item
+            nzTitle="新增运营区段"
+            [value]="data.newSegments.count"
+            [nzSuffix]="newSegmentCountSuffix"
+          />
+          <ng-template #newSegmentCountSuffix>
+            个
+            <a class="md-monthly-data__popover-btn">
+              <span
+                nz-icon
+                nzType="info-circle"
+                nzTheme="outline"
+                nz-popover
+                nzPopoverOverlayClassName="md-monthly-data__news-popover"
+                [nzPopoverContent]="newSegmentsDetail"
+                nzPopoverPlacement="right"
+              ></span>
+            </a>
+          </ng-template>
+          <ng-template #newSegmentsDetail>
+            @for (newSegment of data.newSegments.detail; track newSegment.ch) {
+              {{ newSegment.ch }}@if (!$last) {<br />}
+            }
+          </ng-template>
+        }
       </div>
     </nz-card>
 

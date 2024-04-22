@@ -47,6 +47,11 @@ export interface NewLines {
   detail?: NewLineItem[];
 }
 
+export interface NewSegments {
+  count: number;
+  detail?: NewLineItem[];
+}
+
 export interface City {
   number: number;
   city: string;
@@ -81,6 +86,7 @@ export interface DashboardData extends DashboardDataSimple {
   inStationCapacity: number;
   passengerStrong: ValueComparePercent;
   newLines: NewLines;
+  newSegments: NewSegments;
   largeVolume: VolumeSummary;
   mediumVolume: VolumeSummary;
   smallVolume: VolumeSummary;
