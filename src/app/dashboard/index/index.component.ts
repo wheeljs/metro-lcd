@@ -4,7 +4,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { filter, tap } from 'rxjs';
 import { faSliders } from '@fortawesome/free-solid-svg-icons';
 import type { DatasetComponentOption, EChartsOption } from 'echarts';
-import type { City, DashboardData } from '../types';
+import type { City, DashboardData, DashboardDataVM } from '../types';
 import { DataService } from '../services';
 
 const formatCityNumber = (value: number, unit: number): number => {
@@ -47,18 +47,18 @@ export class DashboardIndexComponent {
     }
   }
 
-  list: Record<string, DashboardData> = {};
+  list: Record<string, DashboardData | DashboardDataVM> = {};
 
   get ids() {
     return Object.keys(this.list);
   }
 
-  private _data?: DashboardData;
+  private _data?: DashboardDataVM;
   get data() {
     return this._data!;
   }
 
-  set data(val: DashboardData) {
+  set data(val: DashboardDataVM) {
     this.selectedId = val.id!;
     this._data = val;
   }
@@ -177,7 +177,7 @@ export class DashboardIndexComponent {
     return Array.isArray(arg) ? arg[0] : arg;
   }
 
-  private updateData({ data, error }: { data?: DashboardData; error?: any }) {
+  private updateData({ data, error }: { data?: DashboardDataVM; error?: any }) {
     if (data) {
       const newData = { ...data };
       newData.cities = data.cities.map((city) => {
@@ -207,7 +207,7 @@ export class DashboardIndexComponent {
   onRangeChange(id: string) {
     this.loading = true;
     const listItem = this.list[id];
-    this.dataService.getData({
+    this.dataService.getDataVM({
       range: id,
       hash: listItem.hash,
     }).subscribe({
@@ -226,7 +226,7 @@ export class DashboardIndexComponent {
 
   rangeUpdate(id: string) {
     this.updateData({
-      data: this.list[id],
+      data: this.list[id] as DashboardDataVM,
     });
     this.loading = false;
   }

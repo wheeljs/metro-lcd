@@ -94,3 +94,8 @@ export interface DashboardData extends DashboardDataSimple {
   originLink?: string;
   summaries: string[];
 }
+
+export interface DashboardDataVM extends DashboardData {
+  inStationCapacityVM: Value & CompareLastMonth;
+  passengerStrongVM: DashboardData['passengerStrong'] & Partial<CompareLastMonthValue>;
+}

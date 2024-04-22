@@ -123,15 +123,32 @@
       </nz-flex>
     </ng-template>
 
-    <nz-card>
+    <nz-card [nzActions]="data.inStationCapacityVM ? [inStationCapacityQoQ] : []">
       <md-statistic-item
         nzTitle="进站量"
         [value]="data.inStationCapacity"
         unit="亿"
       />
     </nz-card>
+    <ng-template #inStationCapacityQoQ>
+      <nz-flex nzAlign="center" nzJustify="space-around">
+        <span>环比</span>
+        <md-statistic-item
+          [value]="data.inStationCapacityVM.compareLastMonth!"
+          unit="亿"
+          autoPrefix
+          autoColor
+        />
+        <md-statistic-item
+          [value]="data.inStationCapacityVM.compareLastMonthPercent!"
+          percent
+          autoPrefix
+          autoColor
+        />
+      </nz-flex>
+    </ng-template>
 
-    <nz-card [nzActions]="[passengerStrongQoQ, passengerStrongYoY]">
+    <nz-card [nzActions]="passengerStrongTpls">
       <md-statistic-item
         nzTitle="平均客运强度"
         [value]="data.passengerStrong.value"
@@ -141,24 +158,36 @@
     </nz-card>
     <ng-template #passengerStrongQoQ>
       <nz-flex nzAlign="center" nzJustify="space-around">
-        <span>环比</span>
-        <md-statistic-item
-          [value]="data.passengerStrong.compareLastMonthPercent"
-          percent
-          autoPrefix
-          autoColor
-        />
+        @if (data.passengerStrongVM.compareLastMonthPercent) {
+          <span>环比</span>
+          @if (data.passengerStrongVM.compareLastMonth) {
+            <md-statistic-item
+              [value]="data.passengerStrongVM.compareLastMonth"
+              valueFormat="1.0-3"
+              autoPrefix
+              autoColor
+            />
+          }
+          <md-statistic-item
+            [value]="data.passengerStrongVM.compareLastMonthPercent"
+            percent
+            autoPrefix
+            autoColor
+          />
+        }
       </nz-flex>
     </ng-template>
     <ng-template #passengerStrongYoY>
       <nz-flex nzAlign="center" nzJustify="space-around">
-        <span>同比</span>
-        <md-statistic-item
-          [value]="data.passengerStrong.compareLastYearPercent"
-          percent
-          autoPrefix
-          autoColor
-        />
+        @if (data.passengerStrongVM.compareLastYearPercent) {
+          <span>同比</span>
+          <md-statistic-item
+            [value]="data.passengerStrongVM.compareLastYearPercent"
+            percent
+            autoPrefix
+            autoColor
+          />
+        }
       </nz-flex>
     </ng-template>
 
