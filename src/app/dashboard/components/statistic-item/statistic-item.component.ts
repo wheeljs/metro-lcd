@@ -70,7 +70,7 @@ export class StatisticItemComponent implements OnChanges, AfterViewInit {
 
   ngOnChanges(simpleChanges: SimpleChanges) {
     if (simpleChanges['value'] || simpleChanges['autoPrefix']) {
-      if (!(simpleChanges['value'] ?? simpleChanges['autoPrefix']).firstChange) {
+      if (!(simpleChanges['value'] ?? simpleChanges['autoPrefix']).isFirstChange()) {
         this.updateNzPrefix();
       }
     }
