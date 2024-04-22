@@ -210,7 +210,7 @@
               [value]="volume.lines"
               nzSuffix="条"
             />
-            @if (volumeCompare?.lines?.compareLastMonth) {
+            @if (config?.showVolumeDiff && volumeCompare?.lines?.compareLastMonth) {
               <md-statistic-item
                 class="md-monthly-data__volume-card__item__compare"
                 [value]="volumeCompare.lines.compareLastMonth"
@@ -225,7 +225,7 @@
               [value]="volume.operationLength"
               nzSuffix="公里"
             />
-            @if (volumeCompare?.operationLength?.compareLastMonth) {
+            @if (config?.showVolumeDiff && volumeCompare?.operationLength?.compareLastMonth) {
               <md-statistic-item
                 class="md-monthly-data__volume-card__item__compare"
                 [value]="volumeCompare.operationLength.compareLastMonth"
@@ -240,7 +240,7 @@
               [value]="volume.passengerCapacity"
               [unit]="unit"
             />
-            @if (volumeCompare?.passengerCapacity?.compareLastMonth) {
+            @if (config?.showVolumeDiff && volumeCompare?.passengerCapacity?.compareLastMonth) {
               <md-statistic-item
                 class="md-monthly-data__volume-card__item__compare"
                 [value]="volumeCompare.passengerCapacity.compareLastMonth"
@@ -257,7 +257,7 @@
               [value]="volume.inStationCapacity"
               [unit]="unit"
             />
-            @if (volumeCompare?.inStationCapacity?.compareLastMonth) {
+            @if (config?.showVolumeDiff && volumeCompare?.inStationCapacity?.compareLastMonth) {
               <md-statistic-item
                 class="md-monthly-data__volume-card__item__compare"
                 [value]="volumeCompare.inStationCapacity.compareLastMonth"

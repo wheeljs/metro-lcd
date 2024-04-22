@@ -1,5 +1,6 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, TemplateRef, ViewChild } from '@angular/core';
 import type { DashboardDataVM } from '../types';
+import type { DashboardConfig } from '../index/types';
 
 @Component({
   selector: 'md-monthly-data',
@@ -13,6 +14,8 @@ export class MonthlyDataComponent implements AfterViewInit {
   @ViewChild('passengerStrongYoY') passengerStrongYoYTpl!: TemplateRef<void>;
 
   @Input() data!: DashboardDataVM;
+
+  @Input() config?: DashboardConfig;
 
   get passengerStrongTpls(): TemplateRef<void>[] {
     const tpls: TemplateRef<void>[] = [];

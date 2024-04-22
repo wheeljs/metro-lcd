@@ -1,12 +1,17 @@
-import { Component, Input } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { filter, tap } from 'rxjs';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { faSliders } from '@fortawesome/free-solid-svg-icons';
 import type { DatasetComponentOption, EChartsOption } from 'echarts';
+import { STORAGE } from '../../common';
 import type { City, DashboardData, DashboardDataVM } from '../types';
 import { DataService } from '../services';
+import type { DashboardConfig } from './types';
+
+const DashboardConfigKey = 'dashboard-config';
 
 const formatCityNumber = (value: number, unit: number): number => {
   return Number.parseFloat((value / unit).toFixed(2));
@@ -165,11 +170,29 @@ export class DashboardIndexComponent {
 
   opened = false;
 
+  _config: DashboardConfig = {
+    showVolumeDiff: true,
+  };
+
+  get config() {
+    return this._config;
+  }
+
+  set config(val: DashboardConfig) {
+    this.localStorage[DashboardConfigKey] = JSON.stringify(val);
+    this._config = val;
+  }
+
   constructor(
     private router: Router,
     private title: Title,
+    @Inject(STORAGE) private localStorage: Storage,
     private dataService: DataService,
   ) {
+    if (DashboardConfigKey in localStorage) {
+      this._config = JSON.parse(localStorage[DashboardConfigKey]);
+    }
+
     this.dataService.list().pipe(
       tap(() => this.loading = true),
       filter(() => Object.keys(this.list).length === 0),
@@ -243,5 +266,12 @@ export class DashboardIndexComponent {
       data: this.list[id] as DashboardDataVM,
     });
     this.loading = false;
+  }
+
+  onShowVolumeDiffChange(event: MatSlideToggleChange) {
+    this.config = {
+      ...this.config,
+      showVolumeDiff: event.checked,
+    };
   }
 }

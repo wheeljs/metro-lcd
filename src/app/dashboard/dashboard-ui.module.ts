@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzFlexModule } from 'ng-zorro-antd/flex';
 import { NzGridModule } from 'ng-zorro-antd/grid';
@@ -23,6 +24,7 @@ const ExportsAsIs = [
   MatFormFieldModule,
   MatSelectModule,
   MatSidenavModule,
+  MatSlideToggleModule,
   NzCardModule,
   NzFlexModule,
   NzGridModule,

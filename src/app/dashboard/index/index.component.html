@@ -17,6 +17,12 @@
               }
             </mat-select>
           </mat-form-field>
+          <div>
+            <mat-slide-toggle
+              [checked]="config.showVolumeDiff"
+              (change)="onShowVolumeDiffChange($event)"
+            >展示运量对比</mat-slide-toggle>
+          </div>
         </mat-card-content>
       </mat-card>
     </mat-sidenav>
@@ -41,7 +47,7 @@
               }
             </div>
           </div>
-          <md-monthly-data [data]="data" />
+          <md-monthly-data [data]="data" [config]="config" />
           <div echarts [options]="options"></div>
           @if (data.summaries) {
             <section class="summaries">
