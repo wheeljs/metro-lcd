@@ -8,6 +8,7 @@ import { faSliders } from '@fortawesome/free-solid-svg-icons';
 import { STORAGE } from '../../common';
 import type { DashboardData, DashboardDataVM } from '../types';
 import { DataService } from '../services';
+import { DataVMService } from '../services/data-vm.service';
 import type { DashboardConfig } from './types';
 
 const DashboardConfigKey = 'dashboard-config';
@@ -79,6 +80,7 @@ export class DashboardIndexComponent {
     private title: Title,
     @Inject(STORAGE) private localStorage: Storage,
     private dataService: DataService,
+    private dataVMService: DataVMService,
   ) {
     if (DashboardConfigKey in localStorage) {
       this._config = JSON.parse(localStorage[DashboardConfigKey]);
@@ -104,7 +106,7 @@ export class DashboardIndexComponent {
   onRangeChange(id: string) {
     this.loading = true;
     const listItem = this.list[id];
-    this.dataService.getDataVM({
+    this.dataVMService.getDataVM({
       range: id,
       hash: listItem.hash,
     }).subscribe({

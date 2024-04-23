@@ -11,6 +11,7 @@ import { UnitPipe } from './pipes/unit.pipe';
 import { PosnegStatisticDirective } from './directives/posneg-statistic.directive';
 import { StatisticItemComponent } from './components/statistic-item/statistic-item.component';
 import { MonthCitiesBarChartComponent } from './charts/month-cities-bar-chart/month-cities-bar-chart.component';
+import { DataVMService } from './services/data-vm.service';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { MonthCitiesBarChartComponent } from './charts/month-cities-bar-chart/mo
   ],
   providers: [
     { provide: DataService, useClass: FileService },
+    DataVMService,
   ],
 })
 export class DashboardModule { }

@@ -59,6 +59,9 @@ dependencies:
   '@sentry/angular-ivy':
     specifier: ^7.107.0
     version: 7.110.1(@angular/common@17.3.5)(@angular/core@17.3.5)(@angular/router@17.3.5)(rxjs@7.8.1)
+  dexie:
+    specifier: ^4.0.4
+    version: 4.0.4
   echarts:
     specifier: ^5.5.0
     version: 5.5.0
@@ -4581,6 +4584,10 @@ packages:
   /detect-node@2.1.0:
     resolution: {integrity: sha512-T0NIuQpnTvFDATNuHN5roPwSBG83rFsuO+MXXH9/3N1eFbn4wcPjttvjMLEPWJ0RGUYgQE7cGgS3tNxbqCGM7g==}
     dev: true
+
+  /dexie@4.0.4:
+    resolution: {integrity: sha512-wFzwWSUdi+MC3jiFeQcCp9nInR7EaX8edzYY+4wmiITkQAiSnHpe4Wo2o5Ce5tJZe2nqt7mLW91MsW4GYx3ziQ==}
+    dev: false
 
   /dir-glob@3.0.1:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
