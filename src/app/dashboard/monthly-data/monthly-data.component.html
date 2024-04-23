@@ -86,11 +86,19 @@
     </nz-card>
 
     <nz-card [nzActions]="[passengerCapacityQoQ, passengerCapacityYoY]">
-      <md-statistic-item
-        nzTitle="客运量"
-        [value]="data.passengerCapacity.value"
-        unit="亿"
-      />
+      <div class="md-monthly-data__item--with-chart">
+        <md-statistic-item
+          nzTitle="客运量"
+          [value]="data.passengerCapacity.value"
+          unit="亿"
+        />
+        <div
+          echarts
+          class="md-monthly-data__simple-chart"
+          [options]="simpleChartOptions"
+          [merge]="passengerCapacityOptions"
+        ></div>
+      </div>
     </nz-card>
     <ng-template #passengerCapacityQoQ>
       <nz-flex nzAlign="center" nzJustify="space-around">
@@ -128,11 +136,19 @@
     </ng-template>
 
     <nz-card [nzActions]="data.inStationCapacityVM ? [inStationCapacityQoQ] : []">
-      <md-statistic-item
-        nzTitle="进站量"
-        [value]="data.inStationCapacity"
-        unit="亿"
-      />
+      <div class="md-monthly-data__item--with-chart">
+        <md-statistic-item
+          nzTitle="进站量"
+          [value]="data.inStationCapacity"
+          unit="亿"
+        />
+        <div
+          echarts
+          class="md-monthly-data__simple-chart"
+          [options]="simpleChartOptions"
+          [merge]="inStationCapacityOptions"
+        ></div>
+      </div>
     </nz-card>
     <ng-template #inStationCapacityQoQ>
       <nz-flex nzAlign="center" nzJustify="space-around">
@@ -153,12 +169,20 @@
     </ng-template>
 
     <nz-card [nzActions]="passengerStrongTpls">
-      <md-statistic-item
-        nzTitle="平均客运强度"
-        [value]="data.passengerStrong.value"
-        valueFormat="1.0-3"
-        nzSuffix="万人次每公里日"
-      />
+      <div class="md-monthly-data__item--with-chart">
+        <md-statistic-item
+          nzTitle="平均客运强度"
+          [value]="data.passengerStrong.value"
+          valueFormat="1.0-3"
+          nzSuffix="万人次每公里日"
+        />
+        <div
+          echarts
+          class="md-monthly-data__simple-chart"
+          [options]="simpleChartOptions"
+          [merge]="passengerStrongOptions"
+        ></div>
+      </div>
     </nz-card>
     <ng-template #passengerStrongQoQ>
       <nz-flex nzAlign="center" nzJustify="space-around">

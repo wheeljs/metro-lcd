@@ -69,6 +69,21 @@ $cls: md-monthly-data;
     max-width: 250px;
   }
 
+  &__item--with-chart {
+    display: flex;
+
+    md-statistic-item {
+      flex-shrink: 0;
+    }
+  }
+
+  &__simple-chart {
+    margin-left: auto;
+    padding-left: 16px;
+    width: 200px;
+    height: 63px;
+  }
+
   &__volumes {
     grid-column: 2 / 5;
     display: grid;

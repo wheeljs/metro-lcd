@@ -1,4 +1,4 @@
-import type { DashboardData, DashboardDataVM } from '../types';
+import type { DashboardData, DashboardDataVM, MonthCompare } from '../types';
 
 export function prevRangeId(id: string, step: 'month' | 'year'): string {
   const matched = id.split('-');
@@ -23,10 +23,27 @@ export function prevRangeId(id: string, step: 'month' | 'year'): string {
 
 export function toVM({ current, lastMonth, lastYear }: {
   current: DashboardData;
-  lastMonth?: DashboardData;
+  lastMonth?: DashboardData | (DashboardData[]);
   lastYear?: DashboardData;
 }): DashboardDataVM {
   const vm: Partial<DashboardDataVM> = { ...current };
+  const lastMonths = Array.isArray(lastMonth) ? lastMonth : [lastMonth!];
+
+  vm.monthCompare = [];
+  if (lastMonths.length >= 3) {
+    vm.monthCompare = lastMonths.map((month) => {
+      const compareItem: MonthCompare = {
+        id: month.id!,
+        passengerCapacity: month.passengerCapacity?.value,
+        inStationCapacity: month.inStationCapacity,
+      };
+      if (month.passengerStrong.value) {
+        compareItem.passengerStrong = month.passengerStrong.value;
+      }
+
+      return compareItem;
+    });
+  }
 
   if (current.passengerStrong.value == null) {
     current.passengerStrong.value = Number.parseFloat(
@@ -34,21 +51,22 @@ export function toVM({ current, lastMonth, lastYear }: {
     );
   }
 
-  if (current.inStationCapacity && lastMonth?.inStationCapacity) {
-    const compareLastMonth = current.inStationCapacity - lastMonth.inStationCapacity;
+  const prevMonth = lastMonths?.[0];
+  if (current.inStationCapacity && prevMonth?.inStationCapacity) {
+    const compareLastMonth = current.inStationCapacity - prevMonth.inStationCapacity;
     vm.inStationCapacityVM = {
       value: current.inStationCapacity,
       compareLastMonth,
-      compareLastMonthPercent: compareLastMonth / lastMonth.inStationCapacity,
+      compareLastMonthPercent: compareLastMonth / prevMonth.inStationCapacity,
     };
   }
 
   vm.passengerStrongVM = { ...current.passengerStrong };
-  if (lastMonth?.passengerStrong?.value) {
-    const compareLastMonth = (current.passengerStrong.value * 1000) - (lastMonth.passengerStrong.value * 1000);
+  if (prevMonth?.passengerStrong?.value) {
+    const compareLastMonth = (current.passengerStrong.value * 1000) - (prevMonth.passengerStrong.value * 1000);
     Object.assign(vm.passengerStrongVM, {
       compareLastMonth: compareLastMonth / 1000,
-      compareLastMonthPercent: current.passengerStrong.compareLastMonthPercent ?? (compareLastMonth / (lastMonth.passengerStrong.value * 1000)),
+      compareLastMonthPercent: current.passengerStrong.compareLastMonthPercent ?? (compareLastMonth / (prevMonth.passengerStrong.value * 1000)),
     });
   }
 
@@ -56,8 +74,8 @@ export function toVM({ current, lastMonth, lastYear }: {
     const volumeK = volumeKey as keyof Pick<DashboardData, 'largeVolume' | 'mediumVolume' | 'smallVolume'>;
     const currentVolume = current[volumeK];
 
-    if (lastMonth?.[volumeK]) {
-      const lastMonthVolume = lastMonth[volumeK];
+    if (prevMonth?.[volumeK]) {
+      const lastMonthVolume = prevMonth[volumeK];
       vm[`${volumeK}Compare`] = {
         lines: { compareLastMonth: currentVolume.lines - lastMonthVolume.lines },
         operationLength: { compareLastMonth: ((currentVolume.operationLength * 10) - (lastMonthVolume.operationLength * 10)) / 10 },
