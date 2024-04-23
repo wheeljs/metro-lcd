@@ -12,9 +12,12 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzStatisticModule } from 'ng-zorro-antd/statistic';
+import { NgxEchartsDirective, provideEchartsCore } from 'ngx-echarts';
 
 import type { IconDefinition } from '@ant-design/icons-angular';
 import { InfoCircleOutline } from '@ant-design/icons-angular/icons';
+
+import echarts from '../shared/custom-echarts';
 
 const icons: IconDefinition[] = [InfoCircleOutline];
 
@@ -31,6 +34,7 @@ const ExportsAsIs = [
   NzPopoverModule,
   NzSpinModule,
   NzStatisticModule,
+  NgxEchartsDirective,
 ];
 
 @NgModule({
@@ -41,6 +45,9 @@ const ExportsAsIs = [
   exports: [
     ...ExportsAsIs,
     NzIconModule,
+  ],
+  providers: [
+    provideEchartsCore({ echarts }),
   ],
 })
 export class DashboardUiModule {}

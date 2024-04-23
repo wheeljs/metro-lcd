@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { NgxEchartsModule } from 'ngx-echarts';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardUiModule } from './dashboard-ui.module';
 import { DashboardRoutingModule } from './dashboard-routing.module';
@@ -26,10 +25,6 @@ import { DataVMService } from './services/data-vm.service';
     SharedModule,
     DashboardUiModule,
     DashboardRoutingModule,
-
-    NgxEchartsModule.forRoot({
-      echarts: () => import('echarts'),
-    }),
   ],
   providers: [
     { provide: DataService, useClass: FileService },
