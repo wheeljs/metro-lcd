@@ -538,20 +538,26 @@
       "id": "sanya"
     }
   ],
-  "newLines": {
-    "detail": [
-      {
-        "cityEn": "changchun",
-        "ch": "长春地铁6号线",
-        "cityCh": "长春"
-      },
-      {
-        "ch": "南京地铁5号线",
-        "cityCh": "南京",
-        "cityEn": "nanjing"
-      }
-    ],
-    "count": 2,
+  "news": {
+    "lines": {
+      "detail": [
+        {
+            "cityEn": "changchun",
+            "ch": "长春地铁6号线",
+            "cityCh": "长春"
+        },
+        {
+            "ch": "南京地铁5号线",
+            "cityCh": "南京",
+            "cityEn": "nanjing"
+        }
+      ],
+      "count": 2
+    },
+    "segments": {
+      "count": 0,
+      "detail": null
+    },
     "operationLength": 42.4
   },
   "year": 2024,

@@ -1,8 +1,14 @@
 {
-  "newLines": {
+  "news": {
     "operationLength": 0,
-    "count": 0,
-    "detail": null
+    "lines": {
+      "count": 0,
+      "detail": null
+    },
+    "segments": {
+      "count": 0,
+      "detail": null
+    }
   },
   "lines": 308,
   "largeVolume": {
