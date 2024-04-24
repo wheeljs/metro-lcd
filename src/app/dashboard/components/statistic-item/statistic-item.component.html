@@ -1,0 +1,11 @@
+<nz-statistic
+  [nzTitle]="nzTitle"
+  [nzValue]="nzValue"
+  [nzPrefix]="nzPrefix"
+  [nzSuffix]="nzSuffixProp"
+  [mdPosNegStatistic]="autoColor"
+  [mdPosNegValue]="value"
+/>
+<ng-template #upPrefix><fa-icon [icon]="prefixMode === 'arrow' ? upIcon : plusIcon" /></ng-template>
+<ng-template #downPrefix><fa-icon [icon]="prefixMode === 'arrow' ? downIcon : minusIcon" /></ng-template>
+

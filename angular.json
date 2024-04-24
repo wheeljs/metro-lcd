@@ -1,7 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "1e1de97b-a744-405a-8b5a-0397bb3d01ce"
+    "analytics": "1e1de97b-a744-405a-8b5a-0397bb3d01ce",
+    "packageManager": "pnpm"
   },
   "newProjectRoot": "projects",
   "schematics": {
@@ -55,7 +56,7 @@
               "@fontsource/roboto/300.css",
               "@fontsource/roboto/400.css",
               "@fontsource/roboto/500.css",
-              "src/global_styles.css"
+              "src/global_styles.less"
             ],
             "tsConfig": "tsconfig.app.json"
           }

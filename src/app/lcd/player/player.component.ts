@@ -65,6 +65,7 @@ export class PlayerComponent implements AfterViewInit, ControlsContext {
   }
 
   pause() {
+    this.autoplay = false;
     this.audio?.nativeElement?.pause?.();
   }
 

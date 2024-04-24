@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../shared/shared.module';
+import { LcdUiModule } from './lcd-ui.module';
 import { SplitorComponent } from './splitor/splitor.component';
 import { HeaderComponent } from './header/header.component';
 import { ContainerComponent } from './container/container.component';
@@ -33,6 +34,7 @@ import { SubtitleComponent } from './subtitle/subtitle.component';
   ],
   imports: [
     SharedModule,
+    LcdUiModule,
     LcdRoutingModule,
   ],
 })

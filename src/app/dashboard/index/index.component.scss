@@ -4,27 +4,19 @@
   height: 100vh;
 }
 
+nz-spin,
+::ng-deep .ant-spin-container {
+  height: 100%;
+}
+
 .mat-sidenav-container {
   height: 100%;
 }
 
 .sidenav-toggle {
-  position: absolute;
-  right: 10px;
+  position: fixed;
+  right: 20px;
   top: 20px;
-}
-
-.loading {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffffff;
-  z-index: 10;
 }
 
 .title {
@@ -54,7 +46,7 @@
   }
 }
 
-[echarts] {
+::ng-deep [echarts] {
   height: 600px;
 }
 
@@ -64,6 +56,8 @@
   color: #333333;
 
   ul {
+    margin-top: 16px;
+    margin-bottom: 16px;
     padding-left: 100px;
     list-style: none;
   }

@@ -13,7 +13,6 @@ async function generateDataManifest() {
       .then((fileContent) => ({
         id: path.basename(x, '.json'),
         hash: crypto.createHash('md5').update(fileContent).digest('hex'),
-        url: `assets/${x}`,
       }));
   });
 
