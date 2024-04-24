@@ -1,0 +1,20 @@
+name: Sync main to develop
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create and Merge PR
+        env:
+          GH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+        run: |
+          git fetch origin
+          pr_url=$(gh pr create --base develop --fill)
+          gh pr merge $pr_url --auto --merge
