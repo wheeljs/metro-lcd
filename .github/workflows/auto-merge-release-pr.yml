@@ -10,7 +10,12 @@ jobs:
   auto-merge:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+
+      - name: Get Source Commit SHA
+        id: get_sha
+        run: |
+          echo "sha=${{ github.event.pull_request.head.sha }}" >> $GITHUB_OUTPUT
 
       - name: Merge PR
         env:
@@ -23,8 +28,6 @@ jobs:
         id: get_tag
         run: |
           git fetch origin
-          git checkout origin/main
-          echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
           echo "version=$(echo '${{ github.head_ref }}' | sed 's/release\///')" >> $GITHUB_OUTPUT
 
       - name: Push Tag
@@ -32,5 +35,5 @@ jobs:
         with:
           github_token: ${{ secrets.PERSONAL_TOKEN }}
           custom_tag: ${{ steps.get_tag.outputs.version }}
-          commit_sha: ${{ steps.get_tag.outputs.sha }}
+          commit_sha: ${{ steps.get_sha.outputs.sha }}
           tag_prefix: ""
