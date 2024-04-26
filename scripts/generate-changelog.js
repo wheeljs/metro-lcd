@@ -5,7 +5,6 @@ const { marked, parse } = require('marked');
 const changelog = fs.readFileSync(path.join(__dirname, '../CHANGELOG.md'), { encoding: 'utf-8' });
 
 const changelogTemplateFile = path.join(__dirname, '../src/app/app/changelog.component.html');
-const changelogTemplate = fs.readFileSync(changelogTemplateFile, { encoding: 'utf-8' });
 
 const CustomTagRegex = /<(\s*\w*(-\w*)+\s*)>/g;
 marked.use({
@@ -17,5 +16,17 @@ marked.use({
 const content = parse(changelog);
 fs.writeFileSync(
     changelogTemplateFile,
-    changelogTemplate.replace('{{content}}', content),
+    `<div mat-dialog-title>Changelog</div>
+<mat-dialog-content>
+  <article ngNonBindable>${content}</article>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <a
+    href="//github.com/wheeljs/metro-lcd/compare/v1.0.0...main"
+    target="_blank"
+    referrerpolicy="no-referrer"
+    style="margin-right: auto;"
+  >Full Changelog</a>
+  <button mat-stroked-button mat-dialog-close>OK</button>
+</mat-dialog-actions>`,
 );
