@@ -13,6 +13,18 @@ nz-spin,
   height: 100%;
 }
 
+mat-sidenav mat-card {
+  min-height: 100vh;
+
+  mat-card-content {
+    flex-grow: 1;
+  }
+
+  .mdc-button + .mdc-button {
+    margin-left: 8px;
+  }
+}
+
 .sidenav-toggle {
   position: fixed;
   right: 20px;

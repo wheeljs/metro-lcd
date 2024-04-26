@@ -5,6 +5,7 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ContainerConfigService } from '../container-config.service';
 import type { ContainerConfig } from '../types';
 import { RunningLineService } from '../running-line.service';
+import { ChangelogService } from '../../app/changelog.service';
 
 @Component({
   selector: 'lcd-operation-panel',
@@ -34,7 +35,8 @@ export class OperationPanelComponent {
 
   constructor(
     private runningLineService: RunningLineService,
-    private containerConfigService: ContainerConfigService
+    private containerConfigService: ContainerConfigService,
+    private changelogService: ChangelogService,
   ) {}
 
   togglePanel() {
@@ -63,5 +65,9 @@ export class OperationPanelComponent {
 
   updateBooleanConfig(key: keyof ContainerConfig, event: MatSlideToggleChange) {
     this._updateConfig(key, event.checked);
+  }
+
+  showChangelog() {
+    this.changelogService.show();
   }
 }

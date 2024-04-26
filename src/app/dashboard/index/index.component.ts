@@ -10,6 +10,7 @@ import type { DashboardData, DashboardDataVM } from '../types';
 import { DataService } from '../services';
 import { DataVMService } from '../services/data-vm.service';
 import type { DashboardConfig } from './types';
+import { ChangelogService } from '../../app/changelog.service';
 
 const DashboardConfigKey = 'dashboard-config';
 
@@ -81,6 +82,7 @@ export class DashboardIndexComponent {
     @Inject(STORAGE) private localStorage: Storage,
     private dataService: DataService,
     private dataVMService: DataVMService,
+    private changelogService: ChangelogService,
   ) {
     if (DashboardConfigKey in localStorage) {
       this._config = JSON.parse(localStorage[DashboardConfigKey]);
@@ -101,6 +103,10 @@ export class DashboardIndexComponent {
         this.onRangeChange(this.selectedId || list[0].id!);
       },
     });
+  }
+
+  showChangelog() {
+    this.changelogService.show();
   }
 
   onRangeChange(id: string) {

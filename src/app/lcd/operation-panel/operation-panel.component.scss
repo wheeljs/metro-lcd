@@ -46,6 +46,10 @@ $cls: lcd-operation-panel;
     }
   }
 
+  &__category--post {
+    margin-left: auto;
+  }
+
   &__footer {
     padding: 7px 0;
     color: #e9e9e9;
@@ -71,7 +75,7 @@ $cls: lcd-operation-panel;
     transition: transform 0.25s ease-in;
   }
 
-  button + button,
+  .mdc-button + .mdc-button,
   &__operation-item + &__operation-item {
     margin-left: 8px;
   }
