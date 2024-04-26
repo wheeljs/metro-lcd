@@ -10,7 +10,7 @@ pnpm install
 ### Before running the project
 
 ```
-pnpm prebuild
+pnpm run manifest
 ```
 
 ### Compiles and hot-reloads for development

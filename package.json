@@ -5,8 +5,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "prebuild": "node ./scripts/generate-data-manifest.js",
-    "build": "ng build"
+    "manifest": "node ./scripts/generate-data-manifest.js",
+    "prebuild": "npm run manifest && npm run changelog && npm run postchangelog",
+    "build": "ng build",
+    "changelog": "conventional-changelog -p angular-all -i CHANGELOG.md -s",
+    "postchangelog": "node ./scripts/generate-changelog.js"
   },
   "dependencies": {
     "@angular/animations": "^17.3.5",
@@ -29,6 +32,7 @@
     "@sentry/angular-ivy": "^7.107.0",
     "dexie": "^4.0.4",
     "echarts": "^5.5.0",
+    "marked": "^12.0.2",
     "ng-click-outside2": "^14.0.1",
     "ng-zorro-antd": "17.3.0",
     "ngx-echarts": "^17.1.0",
@@ -42,6 +46,8 @@
     "@angular/cli": "^17.3.5",
     "@angular/compiler-cli": "^17.3.5",
     "angular-cli-ghpages": "^2.0.0-beta.2",
+    "conventional-changelog-angular-all": "^1.7.0",
+    "conventional-changelog-cli": "^3.0.0",
     "typescript": "~5.3.0"
   },
   "overrides": {
