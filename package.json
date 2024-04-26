@@ -1,14 +1,14 @@
 {
   "name": "metro-lcd",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "private": true,
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "manifest": "node ./scripts/generate-data-manifest.js",
-    "prebuild": "npm run manifest && npm run changelog && npm run postchangelog",
+    "prebuild": "npm run manifest && npm run postchangelog",
     "build": "ng build",
-    "changelog": "conventional-changelog -p angular-all -i CHANGELOG.md -s",
+    "changelog": "conventional-changelog -p angular-all -i CHANGELOG.md -s -t 'v' -r 0",
     "postchangelog": "node ./scripts/generate-changelog.js"
   },
   "dependencies": {
