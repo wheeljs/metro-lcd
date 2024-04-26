@@ -1,3 +1,24 @@
+<a name="1.1.2"></a>
+## [1.1.2](https://github.com/wheeljs/metro-lcd/compare/v1.1.1...v1.1.2) (2024-04-26)
+
+
+### Bug Fixes
+
+* **changelog:** correct `changelog.component.html` when re-generate ([2ca04a7](https://github.com/wheeljs/metro-lcd/commit/2ca04a7))
+
+
+### Chores
+
+* manually generate changelog ([0a2ba29](https://github.com/wheeljs/metro-lcd/commit/0a2ba29))
+
+
+### Documentation
+
+* **CHANGELOG:** add v1.1.1 ([3ca5019](https://github.com/wheeljs/metro-lcd/commit/3ca5019))
+* **README:** add page build badge ([8f462c2](https://github.com/wheeljs/metro-lcd/commit/8f462c2))
+
+
+
 <a name="1.1.1"></a>
 ## [1.1.1](https://github.com/wheeljs/metro-lcd/compare/v1.1.0...v1.1.1) (2024-04-26)
 
