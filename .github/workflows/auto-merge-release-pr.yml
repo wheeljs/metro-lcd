@@ -23,17 +23,3 @@ jobs:
         run: |
           git fetch origin
           gh pr merge ${{ github.event.pull_request.html_url }} --merge --delete-branch
-
-      - name: Get Tag
-        id: get_tag
-        run: |
-          git fetch origin
-          echo "version=$(echo '${{ github.head_ref }}' | sed 's/release\///')" >> $GITHUB_OUTPUT
-
-      - name: Push Tag
-        uses: mathieudutour/github-tag-action@v6.2
-        with:
-          github_token: ${{ secrets.PERSONAL_TOKEN }}
-          custom_tag: ${{ steps.get_tag.outputs.version }}
-          commit_sha: ${{ steps.get_sha.outputs.sha }}
-          tag_prefix: ""
