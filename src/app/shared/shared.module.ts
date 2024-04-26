@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
 import zh from '@angular/common/locales/zh';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
@@ -13,6 +14,7 @@ const ExportsAsIs = [
   CommonModule,
   HttpClientModule,
   FontAwesomeModule,
+  MatDialogModule,
   NgClickOutsideDirective,
 ];
 

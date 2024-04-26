@@ -56,4 +56,11 @@
       />
     </div>
   </div>
+  <div class="lcd-operation-panel__category lcd-operation-panel__category--post">
+    <div class="lcd-operation-panel__category__title">About</div>
+    <div class="lcd-operation-panel__operation-item">
+      <a mat-stroked-button [routerLink]="['/dashboard']">Dashboard</a>
+      <button mat-stroked-button (click)="showChangelog()">Changelog</button>
+    </div>
+  </div>
 </div>

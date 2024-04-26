@@ -6,7 +6,32 @@ on:
     - release/*  # branches matching refs/heads/release/*
 
 jobs:
+  create-tag:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Get Tag
+      id: get_tag
+      run: |
+        git fetch origin
+        echo "version=$(echo '${{ github.ref_name }}' | sed 's/release\///')" >> $GITHUB_OUTPUT
+
+    - name: Push Tag
+      uses: mathieudutour/github-tag-action@v6.2
+      with:
+        github_token: ${{ secrets.PERSONAL_TOKEN }}
+        custom_tag: ${{ steps.get_tag.outputs.version }}
+        tag_prefix: ""
+
+    - name: Set output
+      id: vars
+      run: echo "::set-output name=version::${{ steps.get_tag.outputs.version }}"
+
   build-and-deploy:
+    needs: create-tag
     runs-on: ubuntu-latest
 
     steps:
@@ -54,7 +79,7 @@ jobs:
         ####
         pnpm run prebuild
         pnpm exec ng deploy --base-href=/metro-lcd/ --name="metro-lcd-bot" --email=ttvip88888888@foxmail.com
-  
+
   create-pr:
     runs-on: ubuntu-latest
     needs: build-and-deploy
@@ -65,14 +90,9 @@ jobs:
       with:
         submodules: true
 
-    - name: Get Tag
-      id: get_tag
-      run: |
-        echo "version=$(echo '${{ github.ref_name }}' | sed 's/release\///')" >> $GITHUB_OUTPUT
-
     - name: Create PR
       env:
         GH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
       run: |
         git fetch origin
-        gh pr create --fill --title 'release: ${{ steps.get_tag.outputs.version }}' --body ''
+        gh pr create --fill --title 'release: ${{ needs.create-tag.outputs.version }}'

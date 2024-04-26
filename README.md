@@ -2,15 +2,16 @@
 
 [Edit in StackBlitz next generation editor ⚡️](https://stackblitz.com/~/github.com/wheeljs/metro-lcd)
 
-# Project setup
+## Project setup
 
 ```
 pnpm install
 ```
+
 ### Before running the project
 
 ```
-pnpm prebuild
+pnpm run manifest
 ```
 
 ### Compiles and hot-reloads for development

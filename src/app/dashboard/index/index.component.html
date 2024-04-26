@@ -24,6 +24,10 @@
             >展示运量对比</mat-slide-toggle>
           </div>
         </mat-card-content>
+        <mat-card-actions>
+          <a mat-stroked-button [routerLink]="['/']">LCD</a>
+          <button mat-stroked-button (click)="showChangelog()">Changelog</button>
+        </mat-card-actions>
       </mat-card>
     </mat-sidenav>
     <mat-sidenav-content>
