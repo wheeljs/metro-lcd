@@ -73,3 +73,15 @@ mat-sidenav mat-card {
     list-style: none;
   }
 }
+
+.loading-indicator {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 128px;
+    height: 128px;
+  }
+}
