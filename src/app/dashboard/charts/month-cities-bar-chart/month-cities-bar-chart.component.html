@@ -1,0 +1,15 @@
+<div class="toolbars">
+  @if (drilldowned) {
+    <button mat-raised-button (click)="backToTop()">返回上层</button>
+  }
+</div>
+<div
+  echarts
+  [options]="options"
+  [merge]="merge"
+  (chartInit)="onChartInit($event)"
+  (chartClick)="onChartClick($event)"
+></div>
+<ul class="notes">
+  <li>点击城市数据可查看趋势</li>
+</ul>

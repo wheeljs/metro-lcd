@@ -53,6 +53,7 @@ export interface News {
 }
 
 export interface City {
+  id: string;
   number: number;
   city: string;
   lines: number;
@@ -106,6 +107,18 @@ export type MonthCompare = {
   >]?: number;
 } & { id: DashboardData['id']; };
 
+export type CityCompare = {
+  [K in keyof Pick<City,
+    'passengerCapacity' |
+    'inStationCapacity' |
+    'passengerStrong'
+  >]?: City[K];
+} & { range: DashboardData['id']; };
+
+export interface CityVM extends City {
+  history?: CityCompare[];
+}
+
 export interface DashboardDataVM extends DashboardData {
   monthCompare: MonthCompare[];
   inStationCapacityVM: Value & CompareLastMonth;
@@ -113,4 +126,5 @@ export interface DashboardDataVM extends DashboardData {
   largeVolumeCompare: VolumeCompare;
   mediumVolumeCompare: VolumeCompare;
   smallVolumeCompare: VolumeCompare;
+  cities: CityVM[];
 }

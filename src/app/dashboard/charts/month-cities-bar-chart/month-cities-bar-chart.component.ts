@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
-import type { EChartsOption } from 'echarts';
-import type { City } from '../../types';
+import { merge } from 'lodash-es';
+import type { DataZoomComponentOption, DatasetComponentOption, ECElementEvent, ECharts, EChartsOption } from 'echarts';
+import type { City, CityVM } from '../../types';
 
 const formatCityNumber = (value: number, unit: number): number => {
   return Number.parseFloat((value / unit).toFixed(2));
@@ -25,42 +26,22 @@ const CityProperties: Partial<{ [key in keyof City]: CityProperty }> = {
   },
 };
 
-@Component({
-  selector: 'md-chart-month-cities-bar',
-  template: `<div echarts [options]="options" [merge]="merge"></div>`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-})
-export class MonthCitiesBarChartComponent {
-  merge: Partial<EChartsOption> = {};
-
-  @Input() set cities(cities: City[]) {
-    if (!Array.isArray(cities)) {
-      return;
-    }
-
-    const newCities = cities.map((city) => {
-      const newCity = { ...city };
-      (Object.entries(CityProperties) as [keyof City, CityProperty][])
-        .forEach(([key, props]) => {
-          if (props.unit && typeof city[key] === 'number') {
-            (newCity as any)[key] = formatCityNumber(city[key] as number, props.unit);
-          }
-        });
-
-      return newCity;
+const processCityNumbers = <T = City>(city: T): T => {
+  const newCity = { ...city };
+  (Object.entries(CityProperties) as [keyof T, CityProperty][])
+    .forEach(([key, props]) => {
+      if (props.unit && typeof city[key] === 'number') {
+        (newCity as any)[key] = formatCityNumber(city[key] as number, props.unit);
+      }
     });
 
-    this.merge = {
-      dataset: [{
-        id: 'cities',
-        source: newCities,
-      }],
-    };
-  }
+  return newCity;
+}
 
-  options: EChartsOption = {
+const topLevelOptions = (): EChartsOption => {
+  return {
     grid: {
+      top: 70,
       right: 100,
       left: 100,
     },
@@ -74,6 +55,7 @@ export class MonthCitiesBarChartComponent {
       id: 'cities',
       source: [],
       dimensions: [
+        { name: 'id' },
         { name: 'city', displayName: '城市' },
         { name: 'passengerCapacity', displayName: '客运量' },
         { name: 'inStationCapacity', displayName: '进站量' },
@@ -81,7 +63,9 @@ export class MonthCitiesBarChartComponent {
       ],
     }],
     xAxis: {
+      id: 'x',
       type: 'category',
+      inverse: false,
       axisLabel: {
         formatter: (value) => {
           if (value.length <= 2) {
@@ -97,11 +81,13 @@ export class MonthCitiesBarChartComponent {
       axisTick: { show: false },
     },
     yAxis: [{
+      id: 'leftY',
       name: '万人次',
       nameTextStyle: {
         align: 'right',
       },
     }, {
+      id: 'rightY',
       name: '万人次每公里日',
       nameTextStyle: {
         align: 'right',
@@ -114,14 +100,26 @@ export class MonthCitiesBarChartComponent {
         type: 'bar',
         encode: {
           seriesName: 'passengerCapacity',
+          x: 'city',
           y: 'passengerCapacity',
+          itemChildGroupId: 'id',
+        },
+        universalTransition: {
+          enabled: true,
+          divideShape: 'split',
         },
       },
       {
         type: 'bar',
         encode: {
           seriesName: 'inStationCapacity',
+          x: 'city',
           y: 'inStationCapacity',
+          itemChildGroupId: 'id',
+        },
+        universalTransition: {
+          enabled: true,
+          divideShape: 'split',
         },
       },
       {
@@ -129,12 +127,20 @@ export class MonthCitiesBarChartComponent {
         yAxisIndex: 1,
         encode: {
           seriesName: 'passengerStrong',
+          x: 'city',
           y: 'passengerStrong',
+          itemChildGroupId: 'id',
+        },
+        universalTransition: {
+          enabled: true,
+          divideShape: 'split',
         },
       },
     ],
     dataZoom: [
       {
+        id: 'datazoom',
+        show: true,
         type: 'slider',
         startValue: 0,
         endValue: 12,
@@ -144,4 +150,169 @@ export class MonthCitiesBarChartComponent {
       },
     ],
   };
+};
+
+const drilldownOptions = ({ datasetId }: { datasetId: string; }): EChartsOption => {
+  return {
+    xAxis: {
+      id: 'x',
+      type: 'category',
+      inverse: true,
+      axisLabel: {
+        formatter: (value) => `${value}`,
+      },
+    },
+    yAxis: [
+      {
+        id: 'leftY',
+        scale: true,
+      },
+      {
+        id: 'rightY',
+        min: 'dataMin',
+      },
+    ],
+    series: [
+      {
+        type: 'line',
+        datasetId,
+        encode: {
+          x: 'range',
+          y: 'passengerCapacity',
+          itemGroupId: 'id',
+        },
+        smooth: true,
+        universalTransition: {
+          enabled: true,
+          divideShape: 'split',
+        },
+      },
+      {
+        type: 'line',
+        datasetId,
+        encode: {
+          x: 'range',
+          y: 'inStationCapacity',
+          itemGroupId: 'id',
+        },
+        smooth: true,
+        universalTransition: {
+          enabled: true,
+          divideShape: 'split',
+        },
+      },
+      {
+        type: 'line',
+        datasetId,
+        yAxisIndex: 1,
+        encode: {
+          x: 'range',
+          y: 'passengerStrong',
+          itemGroupId: 'id',
+        },
+        smooth: true,
+        universalTransition: {
+          enabled: true,
+          divideShape: 'split',
+        },
+      },
+    ],
+    dataZoom: [
+      {
+        id: 'datazoom',
+        show: false,
+        startValue: 0,
+        endValue: 100,
+      },
+    ],
+  };
+}
+
+@Component({
+  selector: 'md-chart-month-cities-bar',
+  templateUrl: './month-cities-bar-chart.component.html',
+  styleUrl: './month-cities-bar-chart.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+})
+export class MonthCitiesBarChartComponent {
+  merge: Partial<EChartsOption> = {};
+
+  @Input() set cities(cities: CityVM[]) {
+    if (!Array.isArray(cities)) {
+      return;
+    }
+
+    const newCities = cities.map(processCityNumbers);
+
+    const mergeOptions = {
+      dataset: [{
+        id: 'cities',
+        source: newCities.map(({ history, ...x }) => x) as DatasetComponentOption['source'],
+      }],
+    };
+
+    mergeOptions.dataset.push(
+      ...newCities.filter((x) => Array.isArray(x.history)).map((x) => ({
+        id: x.id,
+        source: x.history?.map(processCityNumbers),
+        dimensions: [
+          { name: 'id' },
+          { name: 'range' },
+          { name: 'passengerCapacity', displayName: '客运量' },
+          { name: 'inStationCapacity', displayName: '进站量' },
+          { name: 'passengerStrong', displayName: '客流强度' },
+        ],
+      }))
+    );
+
+    this.merge = mergeOptions;
+  }
+
+  options: EChartsOption = topLevelOptions();
+
+  private chart!: ECharts;
+
+  private topLevelOptionsCache?: Partial<EChartsOption>;
+
+  drilldowned = false;
+
+  onChartInit(chart: ECharts) {
+    this.chart = chart;
+  }
+
+  private snapshotTopLevelOptions(): EChartsOption {
+    const currentOptions = this.chart.getOption() as EChartsOption;
+    return {
+      dataZoom: [{
+        id: 'datazoom',
+        startValue: (currentOptions.dataZoom as DataZoomComponentOption[])[0]!.startValue,
+        endValue: (currentOptions.dataZoom as DataZoomComponentOption[])[0]!.endValue,
+      }],
+    };
+  }
+
+  onChartClick(event: ECElementEvent) {
+    if (this.drilldowned) {
+      return;
+    }
+
+    this.topLevelOptionsCache = this.snapshotTopLevelOptions();
+
+    this.drilldowned = true;
+    this.merge = drilldownOptions({
+      datasetId: (event.value as City).id,
+    });
+  }
+
+  backToTop() {
+    let { dataset, ...options } = topLevelOptions();
+    if (this.topLevelOptionsCache) {
+      options = merge({}, options, this.topLevelOptionsCache);
+      this.topLevelOptionsCache = undefined;
+    }
+
+    this.merge = options;
+    this.drilldowned = false;
+  }
 }

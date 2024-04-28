@@ -31,18 +31,39 @@ export function toVM({ current, lastMonth, lastYear }: {
 
   vm.monthCompare = [];
   if (lastMonths.length >= 3) {
-    vm.monthCompare = lastMonths.map((month) => {
-      const compareItem: MonthCompare = {
+    for (const month of lastMonths) {
+      const monthCompareItem: MonthCompare = {
         id: month.id!,
         passengerCapacity: month.passengerCapacity?.value,
         inStationCapacity: month.inStationCapacity,
       };
       if (month.passengerStrong.value) {
-        compareItem.passengerStrong = month.passengerStrong.value;
+        monthCompareItem.passengerStrong = month.passengerStrong.value;
       }
 
-      return compareItem;
-    });
+      vm.monthCompare.push(monthCompareItem);
+
+      if (Array.isArray(vm.cities) && Array.isArray(month.cities)) {
+        month.cities.forEach((city) => {
+          const vmCity = vm.cities!.find((x) => x.city === city.city);
+          if (!vmCity) {
+            return;
+          }
+
+          if (!Array.isArray(vmCity.history)) {
+            vmCity.history = [{
+              ...vmCity,
+              range: current.id,
+            }];
+          }
+
+          vmCity.history.push({
+            ...city,
+            range: month.id,
+          });
+        });
+      }
+    }
   }
 
   if (current.passengerStrong.value == null) {
