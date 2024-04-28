@@ -55,11 +55,11 @@
           <md-chart-month-cities-bar [cities]="data.cities" />
           @if (data.summaries) {
             <section class="summaries">
-              <ul>
+              <ol>
                 @for (summary of data.summaries; track summary) {
                   <li>{{summary}}</li>
                 }
-              </ul>
+              </ol>
             </section>
           }
         </main>
