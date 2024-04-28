@@ -71,7 +71,7 @@ export interface VolumeSummary {
 
 export interface DashboardDataSimple {
   hash?: string;
-  id?: string;
+  id: string;
 }
 
 export interface DashboardData extends DashboardDataSimple {
