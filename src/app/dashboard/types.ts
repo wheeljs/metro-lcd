@@ -98,8 +98,6 @@ export type VolumeCompare = {
   [K in keyof VolumeSummary]: CompareLastMonthValue;
 }
 
-export type MonthCompareData = (Value & { range: DashboardData['id']; })[];
-
 export type MonthCompare = {
   [K in keyof Pick<DashboardData,
     'passengerCapacity' |
