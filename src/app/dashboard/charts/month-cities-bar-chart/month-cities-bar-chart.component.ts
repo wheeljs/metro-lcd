@@ -275,7 +275,13 @@ export class MonthCitiesBarChartComponent {
 
   private topLevelOptionsCache?: Partial<EChartsOption>;
 
+  private dataZoomToggleOptionsCache?: Partial<EChartsOption>;
+
   drilldowned = false;
+
+  get fullDataRange(): boolean {
+    return this.dataZoomToggleOptionsCache != null;
+  }
 
   onChartInit(chart: ECharts) {
     this.chart = chart;
@@ -314,5 +320,22 @@ export class MonthCitiesBarChartComponent {
 
     this.merge = options;
     this.drilldowned = false;
+  }
+
+  toggleDataZoom() {
+    if (this.fullDataRange) {
+      this.merge = this.dataZoomToggleOptionsCache!;
+      this.dataZoomToggleOptionsCache = undefined;
+    } else {
+      this.dataZoomToggleOptionsCache = this.snapshotTopLevelOptions();
+
+      this.merge = {
+        dataZoom: [{
+          id: 'datazoom',
+          startValue: 0,
+          endValue: 100,
+        }],
+      };
+    }
   }
 }
