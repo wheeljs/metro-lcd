@@ -1,3 +1,35 @@
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/wheeljs/metro-lcd/compare/v1.1.2...v1.2.0) (2024-04-29)
+
+
+### Bug Fixes
+
+* **dashboard/monthly-data:** correct compare chart show condition ([2d4bc57](https://github.com/wheeljs/metro-lcd/commit/2d4bc57))
+* **dashboard/vm:** correct sort by year and month ([a1f573a](https://github.com/wheeljs/metro-lcd/commit/a1f573a))
+
+
+### Chores
+
+* **dashboard/data:** update ref ([1edd878](https://github.com/wheeljs/metro-lcd/commit/1edd878))
+* **dashboard/data:** update ref ([ae7ceb2](https://github.com/wheeljs/metro-lcd/commit/ae7ceb2))
+
+
+### Code Refactoring
+
+* **dashboard/types:** make id required ([0324cf5](https://github.com/wheeljs/metro-lcd/commit/0324cf5))
+* **dashboard/types:** remove unused class ([7b02230](https://github.com/wheeljs/metro-lcd/commit/7b02230))
+* **dashboard:** use ol instead of ul ([2da1875](https://github.com/wheeljs/metro-lcd/commit/2da1875))
+
+
+### Features
+
+* **dashboard/monthly-data:** city drilldown ([97e1be0](https://github.com/wheeljs/metro-lcd/commit/97e1be0))
+* **dashboard/monthly-data:** toggle data zoom ([ff8cea6](https://github.com/wheeljs/metro-lcd/commit/ff8cea6))
+* **dashboard:** make responsive ([5c8ee5e](https://github.com/wheeljs/metro-lcd/commit/5c8ee5e))
+* **global, dashboard:** loading indicator ([487d756](https://github.com/wheeljs/metro-lcd/commit/487d756))
+
+
+
 <a name="1.1.2"></a>
 ## [1.1.2](https://github.com/wheeljs/metro-lcd/compare/v1.1.1...v1.1.2) (2024-04-26)
 
