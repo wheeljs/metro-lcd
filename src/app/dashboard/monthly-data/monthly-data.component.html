@@ -304,35 +304,33 @@
       </ng-template>
     </ng-template>
 
-    <div class="md-monthly-data__volumes">
-      @if (data.largeVolume) {
-        <ng-container *ngTemplateOutlet="volumeItem; context: {
-          volumeName: '大运量',
-          volumeSubtitle: '地铁、轻轨、市域快速轨道等',
-          volume: data.largeVolume,
-          volumeCompare: data.largeVolumeCompare,
-          unit: '亿'
-        }"/>
-      }
-      @if (data.mediumVolume) {
-        <ng-container *ngTemplateOutlet="volumeItem; context: {
-          volumeName: '中运量',
-          volumeSubtitle: '单轨、磁浮等',
-          volume: data.mediumVolume,
-          volumeCompare: data.mediumVolumeCompare,
-          unit: '万'
-        }"/>
-      }
-      @if (data.smallVolume) {
-        <ng-container *ngTemplateOutlet="volumeItem; context: {
-          volumeName: '低运量',
-          volumeSubtitle: '有轨电车、自动导向轨道等',
-          volume: data.smallVolume,
-          volumeCompare: data.smallVolumeCompare,
-          unit: '万'
-        }"/>
-      }
-    </div>
+    @if (data.largeVolume) {
+      <ng-container *ngTemplateOutlet="volumeItem; context: {
+        volumeName: '大运量',
+        volumeSubtitle: '地铁、轻轨、市域快速轨道等',
+        volume: data.largeVolume,
+        volumeCompare: data.largeVolumeCompare,
+        unit: '亿'
+      }"/>
+    }
+    @if (data.mediumVolume) {
+      <ng-container *ngTemplateOutlet="volumeItem; context: {
+        volumeName: '中运量',
+        volumeSubtitle: '单轨、磁浮等',
+        volume: data.mediumVolume,
+        volumeCompare: data.mediumVolumeCompare,
+        unit: '万'
+      }"/>
+    }
+    @if (data.smallVolume) {
+      <ng-container *ngTemplateOutlet="volumeItem; context: {
+        volumeName: '低运量',
+        volumeSubtitle: '有轨电车、自动导向轨道等',
+        volume: data.smallVolume,
+        volumeCompare: data.smallVolumeCompare,
+        unit: '万'
+      }"/>
+    }
 
   </div>
 }

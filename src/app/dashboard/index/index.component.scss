@@ -67,10 +67,21 @@ mat-sidenav mat-card {
   line-height: 1.33334;
   color: #333333;
 
-  ul {
-    margin-top: 16px;
+  ol {
     margin-bottom: 16px;
     padding-left: 100px;
     list-style: none;
+  }
+}
+
+.loading-indicator {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 128px;
+    height: 128px;
   }
 }

@@ -87,8 +87,20 @@ export class DataVMService {
     const notLastMonthsRanges = [options.range, lastYearRange];
 
     return from(
-      liveQuery(() => this.db.data.where('id').anyOf(rangeIds).reverse().toArray())
+      liveQuery(() => this.db.data.where('id').anyOf(rangeIds).toArray())
     ).pipe(
+      map((rangeData) => {
+        const sortedRangeData = [...rangeData];
+        sortedRangeData.sort((a, b) => {
+          if (a.year !== b.year) {
+            return Number.parseInt(a.year) - Number.parseInt(b.year);
+          }
+
+          return Number.parseInt(a.month) - Number.parseInt(b.month);
+        });
+
+        return sortedRangeData.reverse();
+      }),
       map((rangeData) => {
         const current = rangeData.find(x => x.id === options.range);
         if (current == null) {

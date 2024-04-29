@@ -1,0 +1,32 @@
+md-chart-month-cities-bar {
+  display: block;
+  position: relative;
+
+  .toolbars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 16px;
+    z-index: 5;
+
+    .mdc-button {
+      height: 32px;
+      padding-right: 12px;
+      padding-left: 12px;
+
+      &__label {
+        line-height: 18px;
+      }
+    }
+  }
+
+  .notes {
+    margin-top: 8px;
+    margin-bottom: 0;
+    padding-left: 100px;
+    list-style: '*' inside;
+    font-size: 12px;
+    line-height: 1.33334;
+    color: #333333;
+  }
+}

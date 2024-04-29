@@ -10,6 +10,7 @@ import {
   LegendComponent, LegendComponentOption,
   TooltipComponent, TooltipComponentOption,
 } from 'echarts/components';
+import { UniversalTransition } from 'echarts/features';
 import { CanvasRenderer } from 'echarts/renderers';
 
 export type EChartsOption = echarts.ComposeOption<
@@ -30,6 +31,7 @@ echarts.use([
   GridComponent,
   LegendComponent,
   TooltipComponent,
+  UniversalTransition,
   CanvasRenderer,
 ]);
 

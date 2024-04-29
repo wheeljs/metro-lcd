@@ -84,13 +84,6 @@ $cls: md-monthly-data;
     height: 63px;
   }
 
-  &__volumes {
-    grid-column: 2 / 5;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: inherit;
-  }
-
   &__volume-card {
     &__container {
       display: grid;
@@ -130,6 +123,28 @@ $cls: md-monthly-data;
           line-height: 22px;
         }
       }
+    }
+  }
+}
+
+@media screen and (max-width: 1439px) {
+  .#{$cls} {
+    &__container {
+      grid-template-rows: unset;
+      grid-template-columns: repeat(2, 1fr);
+
+      ::ng-deep nz-card {
+        display: flex;
+        flex-direction: column;
+
+        .ant-card-body {
+          flex-grow: 1;
+        }
+      }
+    }
+
+    &__main-card ::ng-deep {
+      grid-area: auto / 1 / auto / -1;
     }
   }
 }
