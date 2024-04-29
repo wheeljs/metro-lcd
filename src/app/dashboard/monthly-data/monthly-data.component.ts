@@ -60,7 +60,7 @@ export class MonthlyDataComponent implements AfterViewInit {
       series: [],
     };
 
-    if (Array.isArray(this.data.monthCompare)) {
+    if (this.data.monthCompare?.length > 0) {
       const { data } = this;
       (options.dataset as DatasetComponentOption[])[0].source = [
         {
