@@ -1,8 +1,8 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, TemplateRef, ViewChild } from '@angular/core';
 import { merge } from 'lodash-es';
+import type { DatasetComponentOption, EChartsOption, LineSeriesOption } from 'echarts';
 import type { DashboardDataVM } from '../types';
 import type { DashboardConfig } from '../index/types';
-import type { DatasetComponentOption, EChartsOption, LineSeriesOption } from 'echarts';
 
 const SimpleChartLineSerie: LineSeriesOption = {
   type: 'line',
