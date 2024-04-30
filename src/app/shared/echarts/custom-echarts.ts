@@ -12,6 +12,7 @@ import {
 } from 'echarts/components';
 import { UniversalTransition } from 'echarts/features';
 import { CanvasRenderer } from 'echarts/renderers';
+import g2Theme from './g2.project.json';
 
 export type EChartsOption = echarts.ComposeOption<
   BarSeriesOption |
@@ -34,5 +35,7 @@ echarts.use([
   UniversalTransition,
   CanvasRenderer,
 ]);
+
+echarts.registerTheme('g2', g2Theme.theme);
 
 export default echarts;

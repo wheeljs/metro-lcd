@@ -17,7 +17,7 @@ import { NgxEchartsDirective, provideEchartsCore } from 'ngx-echarts';
 import type { IconDefinition } from '@ant-design/icons-angular';
 import { InfoCircleOutline } from '@ant-design/icons-angular/icons';
 
-import echarts from '../shared/custom-echarts';
+import echarts from '../shared/echarts/custom-echarts';
 
 const icons: IconDefinition[] = [InfoCircleOutline];
 
