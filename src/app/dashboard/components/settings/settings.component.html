@@ -1,0 +1,23 @@
+<div
+  class="md-settings"
+  [class.md-settings--expand]="!collapsed"
+  [class.md-settings--collapsing]="transitioning"
+  (clickOutside)="onClickOutside($event)"
+  (transitionend)="onContainerTransitionEnd()"
+>
+  <div class="md-settings__trigger">
+    <div class="md-settings__trigger-container" (click)="toggle()">
+      <span
+        class="md-settings__trigger-icon"
+        nz-icon
+        nzType="left"
+        nzTheme="outline"
+      ></span>
+    </div>
+    <nz-divider nzType="vertical"></nz-divider>
+    <a [routerLink]="['/']">LCD</a>
+  </div>
+  <div class="md-settings__container">
+    <ng-container *ngTemplateOutlet="settings; context: { $implicit: collapsed }" />
+  </div>
+</div>

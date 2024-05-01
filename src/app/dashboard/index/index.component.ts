@@ -1,10 +1,9 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component, HostListener, Inject, Input, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { filter, tap } from 'rxjs';
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { faSliders } from '@fortawesome/free-solid-svg-icons';
+import { Subject, filter, map, pairwise, tap } from 'rxjs';
+import { throttle } from 'lodash-es';
 import { STORAGE } from '../../common';
 import type { DashboardData, DashboardDataVM } from '../types';
 import { DataService } from '../services';
@@ -19,8 +18,41 @@ const DashboardConfigKey = 'dashboard-config';
   templateUrl: './index.component.html',
   styleUrl: './index.component.scss',
 })
-export class DashboardIndexComponent {
-  faSliders = faSliders;
+export class DashboardIndexComponent implements OnDestroy {
+  private showSettingsTimer?: number;
+  private _showSettings = false;
+
+  settingsCollapsed = true;
+
+  set showSettings(val: boolean) {
+    this._showSettings = val;
+    if (val) {
+      this.clearShowSettingsTimer();
+
+      this.showSettingsTimer = setTimeout(() => {
+        if (this.settingsCollapsed) {
+          this.showSettings = false;
+        }
+      }, 2000);
+    }
+  }
+
+  get showSettings() {
+    return this._showSettings;
+  }
+
+  mouseMoveSubject = new Subject<PointerEvent | null>();
+
+  mouseMove$ = this.mouseMoveSubject.pipe(
+    takeUntilDestroyed(),
+    pairwise(),
+    filter(([prev, current]) => {
+      const xDiff = Math.abs(prev!.clientX - current!.clientX);
+      const yDiff = Math.abs(prev!.clientY - current!.clientY);
+      return xDiff > 20 || yDiff > 20;
+    }),
+    map(([_, current]) => current),
+  );
 
   selectedId!: string;
 
@@ -61,8 +93,6 @@ export class DashboardIndexComponent {
 
   loading = true;
 
-  opened = false;
-
   _config: DashboardConfig = {
     showVolumeDiff: true,
   };
@@ -84,6 +114,8 @@ export class DashboardIndexComponent {
     private dataVMService: DataVMService,
     private changelogService: ChangelogService,
   ) {
+    this.mouseMove$.subscribe({ next: () => this.showSettings = true });
+
     if (DashboardConfigKey in localStorage) {
       this._config = JSON.parse(localStorage[DashboardConfigKey]);
     }
@@ -103,6 +135,25 @@ export class DashboardIndexComponent {
         this.onRangeChange(this.selectedId || list[0].id!);
       },
     });
+  }
+
+  @HostListener('mousemove', ['$event'])
+  onMouseMove = throttle((event: PointerEvent) => {
+    this.mouseMoveSubject.next(event);
+  }, 500);
+
+  ngOnDestroy() {
+    this.clearShowSettingsTimer();
+  }
+
+  private clearShowSettingsTimer() {
+    if (this.showSettingsTimer) {
+      clearTimeout(this.showSettingsTimer);
+    }
+  }
+
+  onSettingsClick() {
+    this.clearShowSettingsTimer();
   }
 
   showChangelog() {
@@ -134,10 +185,10 @@ export class DashboardIndexComponent {
     this.loading = false;
   }
 
-  onShowVolumeDiffChange(event: MatSlideToggleChange) {
+  onShowVolumeDiffChange(checked: boolean) {
     this.config = {
       ...this.config,
-      showVolumeDiff: event.checked,
+      showVolumeDiff: checked,
     };
   }
 }
