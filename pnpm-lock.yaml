@@ -38,6 +38,9 @@ dependencies:
   '@ant-design/icons-angular':
     specifier: ^17.0.0
     version: 17.0.0(@angular/common@17.3.5)(@angular/core@17.3.5)(@angular/platform-browser@17.3.5)(rxjs@7.8.1)
+  '@ctrl/tinycolor':
+    specifier: ^4.1.0
+    version: 4.1.0
   '@fontsource/roboto':
     specifier: ^5.0.12
     version: 5.0.12
@@ -1881,6 +1884,11 @@ packages:
   /@ctrl/tinycolor@3.6.1:
     resolution: {integrity: sha512-SITSV6aIXsuVNV3f3O0f2n/cgyEDWoSqtZMYiAmcsYHydcKrOz3gUxB/iXd/Qf08+IZX4KpgNbvUdMBmWz+kcA==}
     engines: {node: '>=10'}
+    dev: false
+
+  /@ctrl/tinycolor@4.1.0:
+    resolution: {integrity: sha512-WyOx8cJQ+FQus4Mm4uPIZA64gbk3Wxh0so5Lcii0aJifqwoVOlfFtorjLE0Hen4OYyHZMXDWqMmaQemBhgxFRQ==}
+    engines: {node: '>=14'}
     dev: false
 
   /@discoveryjs/json-ext@0.5.7:

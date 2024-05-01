@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, TemplateRef, ViewChild } from '@angular/core';
 import { merge } from 'lodash-es';
 import type { DatasetComponentOption, EChartsOption, LineSeriesOption } from 'echarts';
+import { colors, linearGradient } from '../../shared/echarts/utils';
 import type { DashboardDataVM } from '../types';
 import type { DashboardConfig } from '../index/types';
 
@@ -87,7 +88,7 @@ export class MonthlyDataComponent implements AfterViewInit {
       yAxis: {
         show: false,
         boundaryGap: false,
-        min: 'dataMin',
+        min: (values) => Math.max(values.min - 1, 0),
         max: 'dataMax',
       },
       series: [],
@@ -119,6 +120,11 @@ export class MonthlyDataComponent implements AfterViewInit {
         encode: {
           y: 'passengerCapacity',
         },
+        lineStyle: { opacity: 0 },
+        areaStyle: {
+          opacity: 1,
+          color: linearGradient({ color: colors()[0] }),
+        },
       }],
     });
 
@@ -132,6 +138,11 @@ export class MonthlyDataComponent implements AfterViewInit {
         encode: {
           y: 'inStationCapacity',
         },
+        lineStyle: { opacity: 0 },
+        areaStyle: {
+          opacity: 1,
+          color: linearGradient({ color: colors()[1] }),
+        },
       }],
     });
 
@@ -141,6 +152,11 @@ export class MonthlyDataComponent implements AfterViewInit {
         ...SimpleChartLineSerie,
         encode: {
           y: 'passengerStrong',
+        },
+        lineStyle: { opacity: 0 },
+        areaStyle: {
+          opacity: 1,
+          color: linearGradient({ color: colors()[2] }),
         },
       }],
     });
