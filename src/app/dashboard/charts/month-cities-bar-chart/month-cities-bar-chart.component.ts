@@ -50,6 +50,9 @@ const topLevelOptions = (): EChartsOption => {
     },
     tooltip: {
       trigger: 'axis',
+      axisPointer: {
+        type: 'shadow',
+      },
     },
     dataset: [{
       id: 'cities',
@@ -154,6 +157,11 @@ const topLevelOptions = (): EChartsOption => {
 
 const drilldownOptions = ({ datasetId }: { datasetId: string; }): EChartsOption => {
   return {
+    tooltip: {
+      axisPointer: {
+        type: 'line',
+      },
+    },
     xAxis: {
       id: 'x',
       type: 'category',
