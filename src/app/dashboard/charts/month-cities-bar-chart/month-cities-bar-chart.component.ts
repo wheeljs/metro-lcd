@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewEncapsulation } from '@angular/core';
 import { merge } from 'lodash-es';
 import type { DataZoomComponentOption, DatasetComponentOption, ECElementEvent, ECharts, EChartsOption } from 'echarts';
 import type { City, CityVM } from '../../types';
@@ -291,6 +291,8 @@ export class MonthCitiesBarChartComponent {
     return this.dataZoomToggleOptionsCache != null;
   }
 
+  constructor(private cdr: ChangeDetectorRef) {}
+
   onChartInit(chart: ECharts) {
     this.chart = chart;
   }
@@ -345,5 +347,7 @@ export class MonthCitiesBarChartComponent {
         }],
       };
     }
+
+    this.cdr.detectChanges();
   }
 }

@@ -52,8 +52,8 @@
         </div>
         <main>
           <md-monthly-data [data]="data" [config]="config" />
-          <nz-card>
-            <md-chart-month-cities-bar [cities]="data.cities" />
+          <nz-card [nzTitle]="monthCitiesCardTitle" [nzExtra]="monthCitiesCardExtra" nzBorderless>
+            <md-chart-month-cities-bar #monthCitiesChart [cities]="data.cities" />
             @if (data.summaries) {
               <section class="summaries">
                 <ol>
@@ -64,6 +64,14 @@
               </section>
             }
           </nz-card>
+          <ng-template #monthCitiesCardTitle>
+            <span>城市数据</span><span class="md-monthly-data__volume-card__subtitle">（点击城市数据可查看趋势）</span>
+          </ng-template>
+          <ng-template #monthCitiesCardExtra>
+            @if (!monthCitiesChart.drilldowned) {
+              <button nz-button (click)="monthCitiesChart.toggleDataZoom()">{{monthCitiesChart.fullDataRange ? '部分' : '全部'}}城市</button>
+            }
+          </ng-template>
         </main>
       }
     </mat-sidenav-content>
