@@ -1,32 +1,40 @@
 @if (data) {
   <div class="md-monthly-data__container">
-    <nz-card class="md-monthly-data__main-card">
-      <div class="md-monthly-data__main">
+    <div class="md-monthly-data__main">
+      <nz-card nzBorderless>
         <md-statistic-item
           nzTitle="轨道交通线路"
           [value]="data.lines"
           nzSuffix="条"
         />
+      </nz-card>
+      <nz-card nzBorderless>
         <md-statistic-item
           nzTitle="运营里程"
           [value]="data.operationLength"
           nzSuffix="公里"
         />
+      </nz-card>
+      <nz-card nzBorderless>
         <md-statistic-item
           nzTitle="实际开行列车"
           [value]="data.runs"
           unit="万"
           nzSuffix="万次"
         />
-        @if (data.news.operationLength > 0) {
+      </nz-card>
+      @if (data.news.operationLength > 0) {
+        <nz-card nzBorderless>
           <md-statistic-item
             class="md-monthly-data__new-operation-length"
             nzTitle="新增运营里程"
             [value]="data.news.operationLength"
             nzSuffix="公里"
           />
+        </nz-card>
 
-          @if (data.news.lines.count > 0) {
+        @if (data.news.lines.count > 0) {
+          <nz-card nzBorderless>
             <md-statistic-item
               nzTitle="新增运营线路"
               [value]="data.news.lines.count"
@@ -51,8 +59,10 @@
                 {{ newLine.ch }}@if (!$last) {<br />}
               }
             </ng-template>
-          }
-          @if (data.news.segments.count > 0) {
+          </nz-card>
+        }
+        @if (data.news.segments.count > 0) {
+          <nz-card nzBorderless>
             <md-statistic-item
               nzTitle="新增运营区段"
               [value]="data.news.segments.count"
@@ -77,15 +87,16 @@
                 {{ newSegment.ch }}@if (!$last) {<br />}
               }
             </ng-template>
-          }
-        } @else {
-          <div class="md-monthly-data__new-lines__empty">本月无新开通线路和区段</div>
+          </nz-card>
         }
+      } @else {
+        <nz-card nzBorderless>
+          <div class="md-monthly-data__new-lines__empty">本月无新开通线路和区段</div>
+        </nz-card>
+      }
+    </div>
 
-      </div>
-    </nz-card>
-
-    <nz-card [nzActions]="[passengerCapacityQoQ, passengerCapacityYoY]">
+    <nz-card nzBorderless [nzActions]="[passengerCapacityQoQ, passengerCapacityYoY]">
       <div class="md-monthly-data__item--with-chart">
         <md-statistic-item
           nzTitle="客运量"
@@ -134,7 +145,7 @@
       </nz-flex>
     </ng-template>
 
-    <nz-card [nzActions]="data.inStationCapacityVM ? [inStationCapacityQoQ] : []">
+    <nz-card nzBorderless [nzActions]="data.inStationCapacityVM ? [inStationCapacityQoQ] : []">
       <div class="md-monthly-data__item--with-chart">
         <md-statistic-item
           nzTitle="进站量"
@@ -166,7 +177,7 @@
       </nz-flex>
     </ng-template>
 
-    <nz-card [nzActions]="passengerStrongTpls">
+    <nz-card nzBorderless [nzActions]="passengerStrongTpls">
       <div class="md-monthly-data__item--with-chart">
         <md-statistic-item
           nzTitle="平均客运强度"
@@ -228,6 +239,7 @@
         class="md-monthly-data__volume-card"
         [nzTitle]="volumeNameTpl"
         [nzBodyStyle]="{ padding: 0 }"
+        nzBorderless
       >
         <div class="md-monthly-data__volume-card__container">
           <div class="md-monthly-data__volume-card__item">

@@ -148,6 +148,9 @@ export class MonthlyDataComponent implements AfterViewInit {
 
     this.passengerStrongOptions = merge<EChartsOption, EChartsOption, EChartsOption>({}, options, {
       color: '#fac858',
+      yAxis: {
+        min: (values) => Math.max(values.min - 0.05, 0),
+      },
       series: [{
         ...SimpleChartLineSerie,
         encode: {
