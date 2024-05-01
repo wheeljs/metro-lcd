@@ -18,7 +18,14 @@
           unit="万"
           nzSuffix="万次"
         />
-        @if (data.news.lines.count > 0 || data.news.segments.count > 0) {
+        @if (data.news.operationLength > 0) {
+          <md-statistic-item
+            class="md-monthly-data__new-operation-length"
+            nzTitle="新增运营里程"
+            [value]="data.news.operationLength"
+            nzSuffix="公里"
+          />
+
           @if (data.news.lines.count > 0) {
             <md-statistic-item
               nzTitle="新增运营线路"
@@ -71,13 +78,6 @@
               }
             </ng-template>
           }
-
-          <md-statistic-item
-            class="md-monthly-data__new-operation-length"
-            nzTitle="新增运营里程"
-            [value]="data.news.operationLength"
-            nzSuffix="公里"
-          />
         } @else {
           <div class="md-monthly-data__new-lines__empty">本月无新开通线路和区段</div>
         }
