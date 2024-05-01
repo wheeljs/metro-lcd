@@ -109,8 +109,13 @@ $cls: md-monthly-data;
     }
 
     &__item {
-      display: grid;
-      grid-template-columns: 1fr max-content;
+      ::ng-deep .ant-statistic-title {
+        display: flex;
+
+        span {
+          flex: 1 0;
+        }
+      }
 
       &__compare ::ng-deep {
         .ant-statistic-content-prefix {

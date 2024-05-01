@@ -232,67 +232,75 @@
         <div class="md-monthly-data__volume-card__container">
           <div class="md-monthly-data__volume-card__item">
             <md-statistic-item
-              nzTitle="线路数"
+              [nzTitle]="volumeLinesTitleTpl"
               [value]="volume.lines"
               nzSuffix="条"
             />
-            @if (config?.showVolumeDiff && volumeCompare?.lines?.compareLastMonth) {
-              <md-statistic-item
-                class="md-monthly-data__volume-card__item__compare"
-                [value]="volumeCompare.lines.compareLastMonth"
-                prefixMode="plusminus"
-                autoPrefix
-              />
-            }
+            <ng-template #volumeLinesTitleTpl>
+              <span>线路数</span>@if (config?.showVolumeDiff && volumeCompare?.lines?.compareLastMonth) {
+                <md-statistic-item
+                  class="md-monthly-data__volume-card__item__compare"
+                  [value]="volumeCompare.lines.compareLastMonth"
+                  prefixMode="plusminus"
+                  autoPrefix
+                />
+              }
+            </ng-template>
           </div>
           <div class="md-monthly-data__volume-card__item">
             <md-statistic-item
-              nzTitle="运营里程"
+              [nzTitle]="volumeOperationLengthTitleTpl"
               [value]="volume.operationLength"
               nzSuffix="公里"
             />
-            @if (config?.showVolumeDiff && volumeCompare?.operationLength?.compareLastMonth) {
-              <md-statistic-item
-                class="md-monthly-data__volume-card__item__compare"
-                [value]="volumeCompare.operationLength.compareLastMonth"
-                prefixMode="plusminus"
-                autoPrefix
-              />
-            }
+            <ng-template #volumeOperationLengthTitleTpl>
+              <span>运营里程</span>@if (config?.showVolumeDiff && volumeCompare?.operationLength?.compareLastMonth) {
+                <md-statistic-item
+                  class="md-monthly-data__volume-card__item__compare"
+                  [value]="volumeCompare.operationLength.compareLastMonth"
+                  prefixMode="plusminus"
+                  autoPrefix
+                />
+              }
+            </ng-template>
           </div>
           <div class="md-monthly-data__volume-card__item">
             <md-statistic-item
-              nzTitle="客运量"
+              [nzTitle]="volumePassengerCapacityTitleTpl"
               [value]="volume.passengerCapacity"
               [unit]="unit"
             />
-            @if (config?.showVolumeDiff && volumeCompare?.passengerCapacity?.compareLastMonth) {
-              <md-statistic-item
-                class="md-monthly-data__volume-card__item__compare"
-                [value]="volumeCompare.passengerCapacity.compareLastMonth"
-                [unit]="unit"
-                nzSuffix=""
-                prefixMode="plusminus"
-                autoPrefix
-              />
-            }
+            <ng-template #volumePassengerCapacityTitleTpl>
+              <span>客运量</span>@if (config?.showVolumeDiff && volumeCompare?.passengerCapacity?.compareLastMonth) {
+                <md-statistic-item
+                  class="md-monthly-data__volume-card__item__compare"
+                  [value]="volumeCompare.passengerCapacity.compareLastMonth"
+                  [unit]="unit"
+                  nzSuffix=""
+                  prefixMode="plusminus"
+                  autoPrefix
+                />
+              }
+            </ng-template>
           </div>
           <div class="md-monthly-data__volume-card__item">
             <md-statistic-item
-              nzTitle="进站量"
+              [nzTitle]="volumeinStationCapacityTitleTpl"
               [value]="volume.inStationCapacity"
               [unit]="unit"
             />
-            @if (config?.showVolumeDiff && volumeCompare?.inStationCapacity?.compareLastMonth) {
-              <md-statistic-item
-                class="md-monthly-data__volume-card__item__compare"
-                [value]="volumeCompare.inStationCapacity.compareLastMonth"
-                [unit]="unit"
-                nzSuffix=""
-                prefixMode="plusminus"
-                autoPrefix
-              />
-            }
+            <ng-template #volumeinStationCapacityTitleTpl>
+              <span>进站量</span>@if (config?.showVolumeDiff && volumeCompare?.inStationCapacity?.compareLastMonth) {
+                <md-statistic-item
+                  class="md-monthly-data__volume-card__item__compare"
+                  [value]="volumeCompare.inStationCapacity.compareLastMonth"
+                  [unit]="unit"
+                  nzSuffix=""
+                  prefixMode="plusminus"
+                  autoPrefix
+                />
+              }
+            </ng-template>
           </div>
         </div>
       </nz-card>
