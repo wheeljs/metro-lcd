@@ -59,5 +59,10 @@
     }
   },
   "license": "AGPL-3.0-only",
-  "packageManager": "pnpm@8.15.7+sha256.50783dd0fa303852de2dd1557cd4b9f07cb5b018154a6e76d0f40635d6cee019"
+  "packageManager": "pnpm@8.15.7+sha256.50783dd0fa303852de2dd1557cd4b9f07cb5b018154a6e76d0f40635d6cee019",
+  "pnpm": {
+    "patchedDependencies": {
+      "ngx-echarts@17.1.0": "patches/ngx-echarts@17.1.0.patch"
+    }
+  }
 }

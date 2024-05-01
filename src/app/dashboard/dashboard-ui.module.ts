@@ -47,7 +47,10 @@ const ExportsAsIs = [
     NzIconModule,
   ],
   providers: [
-    provideEchartsCore({ echarts }),
+    provideEchartsCore({
+      echarts,
+      theme: 'g2',
+    }),
   ],
 })
 export class DashboardUiModule {}
