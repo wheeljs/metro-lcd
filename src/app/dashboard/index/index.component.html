@@ -37,31 +37,33 @@
         </button>
       </div>
       @if (data) {
-        <main>
-          <div class="title">
-            <h1>{{pageTitle}}</h1>
-            <div class="subtitle">
-              @if (data.originLink) {
-                <a
-                  [href]="data.originLink"
-                  target="_blank"
-                  referrerpolicy="no-referrer"
-                  class="read-origin"
-                >阅读原文</a>
-              }
-            </div>
+        <div class="title">
+          <h1>{{pageTitle}}</h1>
+          <div class="subtitle">
+            @if (data.originLink) {
+              <a
+                [href]="data.originLink"
+                target="_blank"
+                referrerpolicy="no-referrer"
+                class="read-origin"
+              >阅读原文</a>
+            }
           </div>
+        </div>
+        <main>
           <md-monthly-data [data]="data" [config]="config" />
-          <md-chart-month-cities-bar [cities]="data.cities" />
-          @if (data.summaries) {
-            <section class="summaries">
-              <ol>
-                @for (summary of data.summaries; track summary) {
-                  <li>{{summary}}</li>
-                }
-              </ol>
-            </section>
-          }
+          <nz-card>
+            <md-chart-month-cities-bar [cities]="data.cities" />
+            @if (data.summaries) {
+              <section class="summaries">
+                <ol>
+                  @for (summary of data.summaries; track summary) {
+                    <li>{{summary}}</li>
+                  }
+                </ol>
+              </section>
+            }
+          </nz-card>
         </main>
       }
     </mat-sidenav-content>

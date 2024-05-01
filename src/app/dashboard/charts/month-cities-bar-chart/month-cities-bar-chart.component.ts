@@ -42,11 +42,11 @@ const topLevelOptions = (): EChartsOption => {
   return {
     grid: {
       top: 70,
-      right: 100,
-      left: 100,
+      right: 40,
+      left: 48,
     },
     legend: {
-      right: 100,
+      right: 0,
     },
     tooltip: {
       trigger: 'axis',

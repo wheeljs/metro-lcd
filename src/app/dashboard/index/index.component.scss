@@ -2,6 +2,8 @@
   position: relative;
   display: block;
   height: 100vh;
+
+  --horizontal-space: 48px;
 }
 
 nz-spin,
@@ -39,7 +41,7 @@ mat-sidenav mat-card {
   }
 
   .subtitle {
-    margin-right: 100px;
+    margin-right: var(--horizontal-space);
     text-align: right;
   }
 
@@ -58,6 +60,10 @@ mat-sidenav mat-card {
   }
 }
 
+main {
+  padding-inline: var(--horizontal-space);
+}
+
 ::ng-deep [echarts] {
   height: 600px;
 }
@@ -68,8 +74,8 @@ mat-sidenav mat-card {
   color: #333333;
 
   ol {
-    margin-bottom: 16px;
-    padding-left: 100px;
+    margin-bottom: 0;
+    padding-left: var(--horizontal-space);
     list-style: none;
   }
 }
