@@ -1,9 +1,8 @@
-import { Component, HostListener, Inject, Input, OnDestroy } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Subject, filter, map, pairwise, tap } from 'rxjs';
-import { throttle } from 'lodash-es';
+import { filter, tap } from 'rxjs';
 import * as Sentry from '@sentry/angular-ivy';
 import { STORAGE } from '../../common';
 import type { DashboardData, DashboardDataVM } from '../types';
@@ -19,41 +18,7 @@ const DashboardConfigKey = 'dashboard-config';
   templateUrl: './index.component.html',
   styleUrl: './index.component.scss',
 })
-export class DashboardIndexComponent implements OnDestroy {
-  private showSettingsTimer?: number;
-  private _showSettings = false;
-
-  settingsCollapsed = true;
-
-  set showSettings(val: boolean) {
-    this._showSettings = val;
-    if (val) {
-      this.clearShowSettingsTimer();
-
-      this.showSettingsTimer = setTimeout(() => {
-        if (this.settingsCollapsed) {
-          this.showSettings = false;
-        }
-      }, 2000);
-    }
-  }
-
-  get showSettings() {
-    return this._showSettings;
-  }
-
-  mouseMoveSubject = new Subject<PointerEvent | null>();
-
-  mouseMove$ = this.mouseMoveSubject.pipe(
-    takeUntilDestroyed(),
-    pairwise(),
-    filter(([prev, current]) => {
-      const xDiff = Math.abs(prev!.clientX - current!.clientX);
-      const yDiff = Math.abs(prev!.clientY - current!.clientY);
-      return xDiff > 20 || yDiff > 20;
-    }),
-    map(([_, current]) => current),
-  );
+export class DashboardIndexComponent {
 
   selectedId!: string;
 
@@ -116,8 +81,6 @@ export class DashboardIndexComponent implements OnDestroy {
     private dataVMService: DataVMService,
     private changelogService: ChangelogService,
   ) {
-    this.mouseMove$.subscribe({ next: () => this.showSettings = true });
-
     if (DashboardConfigKey in localStorage) {
       this._config = JSON.parse(localStorage[DashboardConfigKey]);
     }
@@ -150,25 +113,6 @@ export class DashboardIndexComponent implements OnDestroy {
         this.onRangeChange(this.selectedId || list[0].id!, true);
       },
     });
-  }
-
-  @HostListener('mousemove', ['$event'])
-  onMouseMove = throttle((event: PointerEvent) => {
-    this.mouseMoveSubject.next(event);
-  }, 500);
-
-  ngOnDestroy() {
-    this.clearShowSettingsTimer();
-  }
-
-  private clearShowSettingsTimer() {
-    if (this.showSettingsTimer) {
-      clearTimeout(this.showSettingsTimer);
-    }
-  }
-
-  onSettingsClick() {
-    this.clearShowSettingsTimer();
   }
 
   showChangelog() {

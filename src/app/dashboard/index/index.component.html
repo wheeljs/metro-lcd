@@ -37,12 +37,7 @@
     </main>
   }
 
-  <md-settings
-    [hidden]="!showSettings"
-    [settings]="settingsTpl"
-    (collapsedChange)="settingsCollapsed = $event"
-    (click)="onSettingsClick()"
-  />
+  <md-settings [settings]="settingsTpl" />
   <ng-template #settingsTpl>
     <form nz-form>
       <nz-form-item nzAlign="middle">
