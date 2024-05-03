@@ -4,6 +4,7 @@ import type { DatasetComponentOption, EChartsOption, LineSeriesOption } from 'ec
 import { colors, linearGradient } from '../../shared/echarts/utils';
 import type { DashboardDataVM } from '../types';
 import type { DashboardConfig } from '../index/types';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 const SimpleChartLineSerie: LineSeriesOption = {
   type: 'line',
@@ -18,6 +19,8 @@ const SimpleChartLineSerie: LineSeriesOption = {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MonthlyDataComponent implements AfterViewInit {
+  faLocationDot = faLocationDot;
+
   @ViewChild('passengerStrongQoQ') passengerStrongQoQTpl!: TemplateRef<void>;
 
   @ViewChild('passengerStrongYoY') passengerStrongYoYTpl!: TemplateRef<void>;

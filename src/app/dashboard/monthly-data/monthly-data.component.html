@@ -46,6 +46,41 @@
           </div>
         </nz-card>
 
+        @if (data.news.cities?.length! > 0) {
+          <nz-card nzBorderless>
+            <md-statistic-item
+              nzTitle="新增城市"
+              [value]="data.news.cities?.length!"
+              [nzSuffix]="newCitieCountSuffix"
+            />
+            <ng-template #newCitieCountSuffix>
+              个
+              <a class="md-monthly-data__popover-btn">
+                <span
+                  nz-icon
+                  nzType="info-circle"
+                  nzTheme="outline"
+                  nz-popover
+                  nzPopoverOverlayClassName="md-monthly-data__news-popover"
+                  [nzPopoverContent]="newCitiesDetail"
+                  nzPopoverPlacement="right"
+                ></span>
+              </a>
+            </ng-template>
+            <ng-template #newCitiesDetail>
+              @for (newCity of data.news.cities; track newCity.cityEn) {
+                {{ newCity.ch }}@if (!$last) {<br />}
+              }
+            </ng-template>
+            <div class="md-monthly-data__main-card__icon md-monthly-data__main-card__icon--overlay">
+              <span nz-icon>
+                <fa-icon [icon]="faLocationDot" />
+              </span>
+              <span nz-icon nzType="plus-square" nzTheme="fill"></span>
+            </div>
+          </nz-card>
+        }
+
         @if (data.news.lines.count > 0) {
           <nz-card nzBorderless>
             <md-statistic-item
