@@ -7,6 +7,9 @@
           [value]="data.lines"
           nzSuffix="条"
         />
+        <div class="md-monthly-data__main-card__icon">
+         <span nz-icon nzType="dashboard:line"></span>
+        </div>
       </nz-card>
       <nz-card nzBorderless>
         <md-statistic-item
@@ -14,6 +17,9 @@
           [value]="data.operationLength"
           nzSuffix="公里"
         />
+        <div class="md-monthly-data__main-card__icon">
+          <span nz-icon nzType="dashboard:operation-length"></span>
+        </div>
       </nz-card>
       <nz-card nzBorderless>
         <md-statistic-item
@@ -22,6 +28,9 @@
           unit="万"
           nzSuffix="万次"
         />
+        <div class="md-monthly-data__main-card__icon">
+          <span nz-icon nzType="dashboard:train"></span>
+        </div>
       </nz-card>
       @if (data.news.operationLength > 0) {
         <nz-card nzBorderless>
@@ -31,6 +40,10 @@
             [value]="data.news.operationLength"
             nzSuffix="公里"
           />
+          <div class="md-monthly-data__main-card__icon md-monthly-data__main-card__icon--overlay">
+            <span nz-icon nzType="dashboard:operation-length"></span>
+            <span nz-icon nzType="plus-square" nzTheme="fill"></span>
+          </div>
         </nz-card>
 
         @if (data.news.lines.count > 0) {
@@ -59,6 +72,10 @@
                 {{ newLine.ch }}@if (!$last) {<br />}
               }
             </ng-template>
+            <div class="md-monthly-data__main-card__icon md-monthly-data__main-card__icon--overlay">
+              <span nz-icon nzType="dashboard:line"></span>
+              <span nz-icon nzType="plus-square" nzTheme="fill"></span>
+            </div>
           </nz-card>
         }
         @if (data.news.segments.count > 0) {
@@ -87,6 +104,9 @@
                 {{ newSegment.ch }}@if (!$last) {<br />}
               }
             </ng-template>
+            <div class="md-monthly-data__main-card__icon">
+              <span nz-icon nzType="dashboard:segment"></span>
+            </div>
           </nz-card>
         }
       } @else {

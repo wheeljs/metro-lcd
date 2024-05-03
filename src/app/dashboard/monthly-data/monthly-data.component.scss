@@ -33,8 +33,39 @@ $cls: md-monthly-data;
     justify-content: space-between;
     gap: 32px 16px;
 
-    > nz-card {
+    > nz-card ::ng-deep {
       flex: 1 1;
+
+      .ant-card-body {
+        display: flex;
+
+        :first-child {
+          flex: 1;
+        }
+      }
+    }
+
+    &-card__icon {
+      align-self: center;
+      margin-left: 32px;
+
+      .anticon {
+        font-size: 48px;
+        color: #e6e6e6;
+      }
+    }
+
+    &-card__icon--overlay {
+      position: relative;
+
+      > :last-child {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        background-color: #fff;
+        font-size: 16px;
+        z-index: 5;
+      }
     }
   }
 
