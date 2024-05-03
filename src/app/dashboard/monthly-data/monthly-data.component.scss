@@ -122,11 +122,6 @@ $cls: md-monthly-data;
       }
     }
 
-    &__subtitle {
-      color: #cccccc;
-      font-size: 12px;
-    }
-
     &__item {
       ::ng-deep .ant-statistic-title {
         display: flex;
