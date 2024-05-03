@@ -147,7 +147,7 @@ export class DashboardIndexComponent implements OnDestroy {
         });
         this.list = listMap;
 
-        this.onRangeChange(this.selectedId || list[0].id!);
+        this.onRangeChange(this.selectedId || list[0].id!, true);
       },
     });
   }
@@ -175,7 +175,7 @@ export class DashboardIndexComponent implements OnDestroy {
     this.changelogService.show();
   }
 
-  onRangeChange(id: string) {
+  onRangeChange(id: string, skipLocationChange = false) {
     this.loading = true;
     const listItem = this.list[id];
     this.dataVMService.getDataVM({
@@ -186,7 +186,7 @@ export class DashboardIndexComponent implements OnDestroy {
         this.list = Object.assign({}, this.list, {
           [id]: data,
         });
-        if (this.selectedId !== id) {
+        if (!skipLocationChange && this.selectedId !== id) {
           this.router.navigateByUrl(`/dashboard/${id}`);
         }
 
