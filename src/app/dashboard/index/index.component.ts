@@ -1,9 +1,10 @@
 import { Component, HostListener, Inject, Input, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Subject, filter, map, pairwise, tap } from 'rxjs';
 import { throttle } from 'lodash-es';
+import * as Sentry from '@sentry/angular-ivy';
 import { STORAGE } from '../../common';
 import type { DashboardData, DashboardDataVM } from '../types';
 import { DataService } from '../services';
@@ -108,6 +109,7 @@ export class DashboardIndexComponent implements OnDestroy {
 
   constructor(
     private router: Router,
+    activatedRoute: ActivatedRoute,
     private title: Title,
     @Inject(STORAGE) private localStorage: Storage,
     private dataService: DataService,
@@ -119,6 +121,19 @@ export class DashboardIndexComponent implements OnDestroy {
     if (DashboardConfigKey in localStorage) {
       this._config = JSON.parse(localStorage[DashboardConfigKey]);
     }
+
+    activatedRoute.paramMap
+      .pipe(takeUntilDestroyed())
+      .subscribe({
+        next: (paramMap) => {
+          const range = paramMap.get('range');
+          Sentry.metrics.increment('dashboard_view', 1, {
+            tags: {
+              range: range || 'latest',
+            },
+          });
+        },
+      });
 
     this.dataService.list().pipe(
       tap(() => this.loading = true),

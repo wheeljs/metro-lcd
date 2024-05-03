@@ -10,6 +10,7 @@ if (!environment.disableSentry) {
   Sentry.init({
     dsn: 'https://431ab5bcf2c9a5c6fccab44dcc90b5ae@o4505188035133440.ingest.us.sentry.io/4506915449929728',
     integrations: [
+      Sentry.metrics.metricsAggregatorIntegration(),
       Sentry.replayIntegration({
         maskAllText: false,
         blockAllMedia: false,
