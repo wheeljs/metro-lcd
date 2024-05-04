@@ -8,6 +8,7 @@ import { NzFlexModule } from 'ng-zorro-antd/flex';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzIconModule, NzIconService } from 'ng-zorro-antd/icon';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
@@ -40,6 +41,7 @@ const ExportsAsIs = [
   NzFlexModule,
   NzFormModule,
   NzGridModule,
+  NzInputNumberModule,
   NzPopoverModule,
   NzSelectModule,
   NzSpaceModule,

@@ -56,6 +56,18 @@
           (ngModelChange)="onShowVolumeDiffChange($event)"
         ></nz-switch>
       </nz-form-item>
+      <nz-form-item nzAlign="middle">
+        <nz-form-label nzFor="dataRange">历史数据范围</nz-form-label>
+        <nz-input-number-group nzSuffix="个月">
+          <nz-input-number
+            name="dataRange"
+            [ngModel]="6"
+            [nzMin]="6"
+            [nzMax]="12"
+            nzReadOnly
+          />
+        </nz-input-number-group>
+      </nz-form-item>
     </form>
   </ng-template>
 }
