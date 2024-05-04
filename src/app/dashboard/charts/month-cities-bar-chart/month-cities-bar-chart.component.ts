@@ -275,6 +275,12 @@ export class MonthCitiesBarChartComponent {
     );
 
     this.merge = mergeOptions;
+    if (this.drilldowned) {
+      const drilldownedCity = newCities.find(x => x.id === this.drilldownedCityId);
+      if (!drilldownedCity || !drilldownedCity.drilldownable) {
+        this.backToTop();
+      }
+    }
   }
 
   options: EChartsOption = topLevelOptions();
@@ -285,7 +291,11 @@ export class MonthCitiesBarChartComponent {
 
   private dataZoomToggleOptionsCache?: Partial<EChartsOption>;
 
-  drilldowned = false;
+  get drilldowned() {
+    return this.drilldownedCityId != null;
+  }
+
+  private drilldownedCityId?: string | null;
 
   get fullDataRange(): boolean {
     return this.dataZoomToggleOptionsCache != null;
@@ -309,15 +319,16 @@ export class MonthCitiesBarChartComponent {
   }
 
   onChartClick(event: ECElementEvent) {
-    if (this.drilldowned) {
+    const value = event.value as CityVM;
+    if (this.drilldowned || !value.drilldownable) {
       return;
     }
 
     this.topLevelOptionsCache = this.snapshotTopLevelOptions();
 
-    this.drilldowned = true;
+    this.drilldownedCityId = value.id;
     this.merge = drilldownOptions({
-      datasetId: (event.value as City).id,
+      datasetId: value.id,
     });
   }
 
@@ -329,7 +340,7 @@ export class MonthCitiesBarChartComponent {
     }
 
     this.merge = options;
-    this.drilldowned = false;
+    this.drilldownedCityId = null;
   }
 
   toggleDataZoom() {

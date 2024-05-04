@@ -118,6 +118,7 @@ export type CityCompare = {
 
 export interface CityVM extends City {
   history?: CityCompare[];
+  drilldownable?: boolean;
 }
 
 export interface DashboardDataVM extends DashboardData {

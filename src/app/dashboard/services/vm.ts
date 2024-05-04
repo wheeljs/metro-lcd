@@ -51,6 +51,7 @@ export function toVM({ current, lastMonth, lastYear }: {
           }
 
           if (!Array.isArray(vmCity.history)) {
+            vmCity.drilldownable = true;
             vmCity.history = [{
               ...vmCity,
               range: current.id,
