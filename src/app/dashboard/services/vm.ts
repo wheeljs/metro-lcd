@@ -1,4 +1,4 @@
-import type { DashboardData, DashboardDataVM, MonthCompare } from '../types';
+import type { DashboardData, DashboardDataVM, MonthCompare, ValueComparePercent } from '../types';
 
 export function prevRangeId(id: string, step: 'month' | 'year'): string {
   const matched = id.split('-');
@@ -37,7 +37,7 @@ export function toVM({ current, lastMonth, lastYear }: {
         passengerCapacity: month.passengerCapacity?.value,
         inStationCapacity: month.inStationCapacity,
       };
-      if (month.passengerStrong.value) {
+      if (month.passengerStrong?.value) {
         monthCompareItem.passengerStrong = month.passengerStrong.value;
       }
 
@@ -66,7 +66,10 @@ export function toVM({ current, lastMonth, lastYear }: {
     }
   }
 
-  if (current.passengerStrong.value == null) {
+  if (!current.passengerStrong?.value) {
+    if (!current.passengerStrong) {
+      current.passengerStrong = {} as ValueComparePercent;
+    }
     current.passengerStrong.value = Number.parseFloat(
       (current.passengerCapacity.value / current.operationLength / current.days / 10000).toFixed(3)
     );

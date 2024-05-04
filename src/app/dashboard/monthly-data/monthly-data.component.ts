@@ -104,7 +104,7 @@ export class MonthlyDataComponent implements AfterViewInit {
           id: data.id,
           passengerCapacity: data.passengerCapacity.value,
           inStationCapacity: data.inStationCapacity,
-          passengerStrong: data.passengerStrong.value,
+          passengerStrong: data.passengerStrong?.value,
         },
         ...data?.monthCompare,
       ]?.map(x => ({

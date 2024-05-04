@@ -61,7 +61,7 @@ export interface City {
   operationLength: number;
   passengerCapacity: number;
   inStationCapacity: number;
-  passengerStrong: number;
+  passengerStrong?: number;
 }
 
 export interface VolumeSummary {
@@ -86,7 +86,7 @@ export interface DashboardData extends DashboardDataSimple {
   runs: number;
   passengerCapacity: ValueCompareFull;
   inStationCapacity: number;
-  passengerStrong: ValueComparePercent;
+  passengerStrong?: ValueComparePercent;
   news: News;
   largeVolume: VolumeSummary;
   mediumVolume: VolumeSummary;
