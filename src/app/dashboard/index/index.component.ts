@@ -72,6 +72,15 @@ export class DashboardIndexComponent {
     this._config = val;
   }
 
+  get reportUrl(): string {
+    let reportUrl = 'https://github.com/wheeljs/rail-transit-data/issues/new?assignees=wheeljs&labels=data&template=data.md';
+    if (this.data) {
+      reportUrl += `&title=${encodeURIComponent(`Correct data in ${this.data.id}`)}`;
+    }
+
+    return reportUrl;
+  }
+
   constructor(
     private router: Router,
     activatedRoute: ActivatedRoute,
