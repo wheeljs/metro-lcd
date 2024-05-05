@@ -12,6 +12,10 @@ const SimpleChartLineSerie: LineSeriesOption = {
   smooth: true,
 };
 
+function or(...args: unknown[]): boolean {
+  return args.some(x => x != null);
+}
+
 @Component({
   selector: 'md-monthly-data',
   templateUrl: './monthly-data.component.html',
@@ -20,6 +24,10 @@ const SimpleChartLineSerie: LineSeriesOption = {
 })
 export class MonthlyDataComponent implements AfterViewInit {
   faLocationDot = faLocationDot;
+
+  @ViewChild('inStationCapacityQoQ') inStationCapacityQoQTpl!: TemplateRef<void>;
+
+  @ViewChild('inStationCapacityYoY') inStationCapacityYoYTpl!: TemplateRef<void>;
 
   @ViewChild('passengerStrongQoQ') passengerStrongQoQTpl!: TemplateRef<void>;
 
@@ -43,12 +51,24 @@ export class MonthlyDataComponent implements AfterViewInit {
 
   @Input() config?: DashboardConfig;
 
+  get inStationCapacityTpls(): TemplateRef<void>[] {
+    const tpls: TemplateRef<void>[] = [];
+    if (or(this.data.inStationCapacityVM?.compareLastMonth, this.data.inStationCapacityVM?.compareLastMonthPercent)) {
+      tpls.push(this.inStationCapacityQoQTpl);
+    }
+    if (or(this.data.inStationCapacityVM?.compareLastYear, this.data.inStationCapacityVM?.compareLastYearPercent)) {
+      tpls.push(this.inStationCapacityYoYTpl);
+    }
+
+    return tpls;
+  }
+
   get passengerStrongTpls(): TemplateRef<void>[] {
     const tpls: TemplateRef<void>[] = [];
-    if (this.data.passengerStrongVM?.compareLastMonth || this.data.passengerStrongVM?.compareLastMonthPercent) {
+    if (or(this.data.passengerStrongVM?.compareLastMonth, this.data.passengerStrongVM?.compareLastMonthPercent)) {
       tpls.push(this.passengerStrongQoQTpl);
     }
-    if (this.data.passengerStrongVM?.compareLastYearPercent) {
+    if (or(this.data.passengerStrongVM?.compareLastYear, this.data.passengerStrongVM?.compareLastYearPercent)) {
       tpls.push(this.passengerStrongYoYTpl);
     }
 

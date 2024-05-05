@@ -123,8 +123,8 @@ export interface CityVM extends City {
 
 export interface DashboardDataVM extends DashboardData {
   monthCompare: MonthCompare[];
-  inStationCapacityVM: Value & CompareLastMonth;
-  passengerStrongVM: DashboardData['passengerStrong'] & Partial<CompareLastMonthValue>;
+  inStationCapacityVM: Value & Partial<CompareLastMonth> & Partial<CompareLastYear>;
+  passengerStrongVM: DashboardData['passengerStrong'] & Partial<CompareLastMonthValue> & Partial<CompareLastYearValue>;
   largeVolumeCompare: VolumeCompare;
   mediumVolumeCompare: VolumeCompare;
   smallVolumeCompare: VolumeCompare;

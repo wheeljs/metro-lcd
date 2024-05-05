@@ -21,6 +21,31 @@ export function prevRangeId(id: string, step: 'month' | 'year'): string {
   return `${prevYear}-${prevMonth}`;
 }
 
+type PrecisionNumber = [number, number];
+
+function fromPrecisionNumber(...[num, multiple]: PrecisionNumber): number {
+  return num / multiple;
+}
+
+function toPrecisionNumber(num: number, multiple = 1): PrecisionNumber {
+  const value = num * multiple;
+  if (value % 1 !== 0) {
+    return toPrecisionNumber(num, multiple * 10);
+  }
+
+  return [value, multiple];
+}
+
+function calcCompare(currentValue: number, previousValue: number): [number, number] {
+  const [curVal, multiple] = toPrecisionNumber(currentValue);
+  const prevVal = previousValue * multiple;
+
+  const diffValue = curVal - prevVal;
+  const diffPercent = diffValue / prevVal;
+
+  return [fromPrecisionNumber(diffValue, multiple), diffPercent];
+}
+
 export function toVM({ current, lastMonth, lastYear }: {
   current: DashboardData;
   lastMonth?: DashboardData | (DashboardData[]);
@@ -77,21 +102,45 @@ export function toVM({ current, lastMonth, lastYear }: {
   }
 
   const prevMonth = lastMonths?.[0];
-  if (current.inStationCapacity && prevMonth?.inStationCapacity) {
-    const compareLastMonth = current.inStationCapacity - prevMonth.inStationCapacity;
+  if (current.inStationCapacity) {
     vm.inStationCapacityVM = {
       value: current.inStationCapacity,
-      compareLastMonth,
-      compareLastMonthPercent: compareLastMonth / prevMonth.inStationCapacity,
     };
+
+    let compareLastMonth;
+    if (prevMonth?.inStationCapacity) {
+      const [diff, percent] = calcCompare(current.inStationCapacity, prevMonth.inStationCapacity);
+      compareLastMonth = {
+        compareLastMonth: diff,
+        compareLastMonthPercent: percent,
+      };
+    }
+
+    let compareLastYear;
+    if (lastYear?.inStationCapacity) {
+      const [diff, percent] = calcCompare(current.inStationCapacity, lastYear.inStationCapacity);
+      compareLastYear = {
+        compareLastYear: diff,
+        compareLastYearPercent: percent,
+      };
+    }
+
+    Object.assign(vm.inStationCapacityVM, ...[compareLastMonth, compareLastYear].filter(x => x != null));
   }
 
   vm.passengerStrongVM = { ...current.passengerStrong };
   if (prevMonth?.passengerStrong?.value) {
-    const compareLastMonth = (current.passengerStrong.value * 1000) - (prevMonth.passengerStrong.value * 1000);
+    const [diff, percent] = calcCompare(current.passengerStrong.value, prevMonth.passengerStrong.value);
     Object.assign(vm.passengerStrongVM, {
-      compareLastMonth: compareLastMonth / 1000,
-      compareLastMonthPercent: current.passengerStrong.compareLastMonthPercent ?? (compareLastMonth / (prevMonth.passengerStrong.value * 1000)),
+      compareLastMonth: diff,
+      compareLastMonthPercent: current.passengerStrong.compareLastMonthPercent ?? percent,
+    });
+  }
+  if (lastYear?.passengerStrong?.value) {
+    const [diff, percent] = calcCompare(current.passengerStrong.value, lastYear.passengerStrong.value);
+    Object.assign(vm.passengerStrongVM, {
+      compareLastYear: diff,
+      compareLastYearPercent: current.passengerStrong.compareLastYearPercent ?? percent,
     });
   }
 

@@ -200,7 +200,7 @@
       </nz-flex>
     </ng-template>
 
-    <nz-card nzBorderless [nzActions]="data.inStationCapacityVM ? [inStationCapacityQoQ] : []">
+    <nz-card nzBorderless [nzActions]="inStationCapacityTpls">
       <div class="md-monthly-data__item--with-chart">
         <md-statistic-item
           nzTitle="进站量"
@@ -217,18 +217,43 @@
     <ng-template #inStationCapacityQoQ>
       <nz-flex nzAlign="center" nzJustify="space-around">
         <span>环比</span>
-        <md-statistic-item
-          [value]="data.inStationCapacityVM.compareLastMonth!"
-          unit="亿"
-          autoPrefix
-          autoColor
-        />
-        <md-statistic-item
-          [value]="data.inStationCapacityVM.compareLastMonthPercent!"
-          percent
-          autoPrefix
-          autoColor
-        />
+        @if (data.inStationCapacityVM.compareLastMonth) {
+          <md-statistic-item
+            [value]="data.inStationCapacityVM.compareLastMonth"
+            unit="亿"
+            autoPrefix
+            autoColor
+          />
+        }
+        @if (data.inStationCapacityVM.compareLastMonthPercent) {
+          <md-statistic-item
+            [value]="data.inStationCapacityVM.compareLastMonthPercent"
+            percent
+            autoPrefix
+            autoColor
+          />
+        }
+      </nz-flex>
+    </ng-template>
+    <ng-template #inStationCapacityYoY>
+      <nz-flex nzAlign="center" nzJustify="space-around">
+        <span>同比</span>
+        @if (data.inStationCapacityVM.compareLastYear) {
+          <md-statistic-item
+            [value]="data.inStationCapacityVM.compareLastYear!"
+            unit="亿"
+            autoPrefix
+            autoColor
+          />
+        }
+        @if (data.inStationCapacityVM.compareLastYearPercent) {
+          <md-statistic-item
+            [value]="data.inStationCapacityVM.compareLastYearPercent!"
+            percent
+            autoPrefix
+            autoColor
+          />
+        }
       </nz-flex>
     </ng-template>
 
@@ -249,18 +274,18 @@
     </nz-card>
     <ng-template #passengerStrongQoQ>
       <nz-flex nzAlign="center" nzJustify="space-around">
-        @if (data.passengerStrongVM.compareLastMonthPercent) {
-          <span>环比</span>
-          @if (data.passengerStrongVM.compareLastMonth) {
-            <md-statistic-item
-              [value]="data.passengerStrongVM.compareLastMonth"
-              valueFormat="1.0-3"
-              autoPrefix
-              autoColor
-            />
-          }
+        <span>环比</span>
+        @if (data.passengerStrongVM.compareLastMonth) {
           <md-statistic-item
-            [value]="data.passengerStrongVM.compareLastMonthPercent"
+            [value]="data.passengerStrongVM.compareLastMonth!"
+            valueFormat="1.0-3"
+            autoPrefix
+            autoColor
+          />
+        }
+        @if (data.passengerStrongVM.compareLastMonthPercent) {
+          <md-statistic-item
+            [value]="data.passengerStrongVM.compareLastMonthPercent!"
             percent
             autoPrefix
             autoColor
@@ -270,8 +295,16 @@
     </ng-template>
     <ng-template #passengerStrongYoY>
       <nz-flex nzAlign="center" nzJustify="space-around">
+        <span>同比</span>
+        @if (data.passengerStrongVM.compareLastYear) {
+          <md-statistic-item
+            [value]="data.passengerStrongVM.compareLastYear"
+            valueFormat="1.0-3"
+            autoPrefix
+            autoColor
+          />
+        }
         @if (data.passengerStrongVM.compareLastYearPercent) {
-          <span>同比</span>
           <md-statistic-item
             [value]="data.passengerStrongVM.compareLastYearPercent"
             percent
