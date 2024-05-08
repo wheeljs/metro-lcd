@@ -11,6 +11,7 @@ import { DataService } from '../services';
 import { DataVMService } from '../services/data-vm.service';
 import type { DashboardConfig } from './types';
 import { ChangelogService } from '../../app/changelog.service';
+import { DashboardIndexContextService } from './dashboard-index-context.service';
 
 const DashboardConfigKey = 'dashboard-config';
 
@@ -18,6 +19,9 @@ const DashboardConfigKey = 'dashboard-config';
   selector: 'md-index',
   templateUrl: './index.component.html',
   styleUrl: './index.component.scss',
+  providers: [
+    DashboardIndexContextService,
+  ],
 })
 export class DashboardIndexComponent {
 
@@ -57,6 +61,9 @@ export class DashboardIndexComponent {
     this._data = val;
 
     if (val) {
+      this.dashboardIndexContextService.update((draft) => {
+        draft.calculatedFields = Array.isArray(val.calculatedFields) ? val.calculatedFields : [];
+      });
       if (val.year && val.month) {
         this.title.setTitle(this.pageTitle);
       }
@@ -95,6 +102,7 @@ export class DashboardIndexComponent {
     private dataService: DataService,
     private dataVMService: DataVMService,
     private changelogService: ChangelogService,
+    private dashboardIndexContextService: DashboardIndexContextService,
   ) {
     if (DashboardConfigKey in localStorage) {
       this._config = JSON.parse(localStorage[DashboardConfigKey]);

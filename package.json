@@ -33,6 +33,7 @@
     "@sentry/angular-ivy": "^7.107.0",
     "dexie": "^4.0.4",
     "echarts": "^5.5.0",
+    "immer": "^10.1.1",
     "lodash-es": "^4.17.21",
     "marked": "^12.0.2",
     "ng-click-outside2": "^14.0.1",

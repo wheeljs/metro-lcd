@@ -16,6 +16,7 @@ import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzStatisticModule } from 'ng-zorro-antd/statistic';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NgxEchartsDirective, provideEchartsCore } from 'ngx-echarts';
 
 import type { IconDefinition } from '@ant-design/icons-angular';
@@ -48,6 +49,7 @@ const ExportsAsIs = [
   NzSpinModule,
   NzSwitchModule,
   NzStatisticModule,
+  NzToolTipModule,
   NgxEchartsDirective,
 ];
 

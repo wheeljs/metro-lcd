@@ -73,6 +73,9 @@ dependencies:
   echarts:
     specifier: ^5.5.0
     version: 5.5.0
+  immer:
+    specifier: ^10.1.1
+    version: 10.1.1
   lodash-es:
     specifier: ^4.17.21
     version: 4.17.21
@@ -5815,6 +5818,10 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /immer@10.1.1:
+    resolution: {integrity: sha512-s2MPrmjovJcoMaHtx6K11Ra7oD05NT97w1IC5zpMkT6Atjr7H8LjaDd81iIxUYpMKSRRNMJE703M1Fhr/TctHw==}
+    dev: false
 
   /immutable@4.3.5:
     resolution: {integrity: sha512-8eabxkth9gZatlwl5TBuJnCsoTADlL6ftEr7A4qgdaTsPyreilDSnUk57SO+jfKcNtxPa22U5KK6DSeAYhpBJw==}
