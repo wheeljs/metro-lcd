@@ -35,6 +35,8 @@
         }
       </ng-template>
     </main>
+  } @else if (status) {
+    <nz-result [nzStatus]="status" [nzTitle]="status" nzSubTitle="找不到指定的数据" />
   }
 
   <md-settings [settings]="settingsTpl" />

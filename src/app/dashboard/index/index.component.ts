@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { filter, tap } from 'rxjs';
 import * as Sentry from '@sentry/angular-ivy';
+import type { NzResultComponent } from 'ng-zorro-antd/result';
 import { STORAGE } from '../../common';
 import type { DashboardData, DashboardDataVM } from '../types';
 import { DataService } from '../services';
@@ -20,7 +21,7 @@ const DashboardConfigKey = 'dashboard-config';
 })
 export class DashboardIndexComponent {
 
-  selectedId!: string;
+  selectedId: string | undefined;
 
   @Input() set range(val: string) {
     this.selectedId = val;
@@ -44,16 +45,21 @@ export class DashboardIndexComponent {
     return `${year}年${month}月城市轨道交通运营数据`;
   }
 
-  private _data?: DashboardDataVM;
+  status?: NzResultComponent['nzStatus'];
+
+  private _data: DashboardDataVM | undefined;
   get data() {
     return this._data!;
   }
 
-  set data(val: DashboardDataVM) {
-    this.selectedId = val.id!;
+  set data(val: DashboardDataVM | undefined) {
+    this.selectedId = val?.id;
     this._data = val;
-    if (val.year && val.month) {
-      this.title.setTitle(this.pageTitle);
+
+    if (val) {
+      if (val.year && val.month) {
+        this.title.setTitle(this.pageTitle);
+      }
     }
   }
 
@@ -129,8 +135,15 @@ export class DashboardIndexComponent {
   }
 
   onRangeChange(id: string, skipLocationChange = false) {
-    this.loading = true;
     const listItem = this.list[id];
+    if (!listItem) {
+      this.data = undefined;
+      this.status = '404';
+      this.loading = false;
+      return;
+    }
+
+    this.loading = true;
     this.dataVMService.getDataVM({
       range: id,
       hash: listItem.hash,
@@ -140,9 +153,12 @@ export class DashboardIndexComponent {
           [id]: data,
         });
         if (!skipLocationChange && this.selectedId !== id) {
-          this.router.navigateByUrl(`/dashboard/${id}`);
+          this.router.navigateByUrl(`/dashboard/${id}`, {
+            replaceUrl: typeof this.status !== 'undefined',
+          });
         }
 
+        this.status = undefined;
         this.rangeUpdate(id);
       },
     });

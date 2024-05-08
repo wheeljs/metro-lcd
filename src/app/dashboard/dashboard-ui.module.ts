@@ -10,6 +10,7 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzIconModule, NzIconService } from 'ng-zorro-antd/icon';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
+import { NzResultModule } from 'ng-zorro-antd/result';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
@@ -43,6 +44,7 @@ const ExportsAsIs = [
   NzGridModule,
   NzInputNumberModule,
   NzPopoverModule,
+  NzResultModule,
   NzSelectModule,
   NzSpaceModule,
   NzSpinModule,
