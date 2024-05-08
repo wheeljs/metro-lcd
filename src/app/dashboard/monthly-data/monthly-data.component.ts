@@ -1,6 +1,6 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, TemplateRef, ViewChild } from '@angular/core';
 import { merge } from 'lodash-es';
-import type { DatasetComponentOption, EChartsOption, LineSeriesOption } from 'echarts';
+import type { DatasetComponentOption, ECharts, EChartsOption, LineSeriesOption } from 'echarts';
 import { colors, linearGradient } from '../../shared/echarts/utils';
 import type { DashboardDataVM } from '../types';
 import type { DashboardConfig } from '../index/types';
@@ -25,6 +25,8 @@ function or(...args: unknown[]): boolean {
 export class MonthlyDataComponent implements AfterViewInit {
   faLocationDot = faLocationDot;
 
+  echartInstances: ECharts[] = [];
+
   @ViewChild('inStationCapacityQoQ') inStationCapacityQoQTpl!: TemplateRef<void>;
 
   @ViewChild('inStationCapacityYoY') inStationCapacityYoYTpl!: TemplateRef<void>;
@@ -43,6 +45,7 @@ export class MonthlyDataComponent implements AfterViewInit {
     this._data = val;
 
     this.updateSimpleChartOptions();
+    setTimeout(() => this.resizeCharts());
   };
 
   get data() {
@@ -79,6 +82,10 @@ export class MonthlyDataComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.cdr.detectChanges();
+  }
+
+  onChartInit(chart: ECharts) {
+    this.echartInstances.push(chart);
   }
 
   updateSimpleChartOptions() {
@@ -186,5 +193,17 @@ export class MonthlyDataComponent implements AfterViewInit {
         },
       }],
     });
-  };
+  }
+
+  resizeCharts() {
+    if (!Array.isArray(this.echartInstances)) {
+      return;
+    }
+
+    this.echartInstances.forEach((echartInstance) => {
+      echartInstance?.resize?.({
+        animation: { duration: 500 },
+      });
+    });
+  }
 }

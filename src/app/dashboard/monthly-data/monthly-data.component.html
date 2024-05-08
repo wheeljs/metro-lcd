@@ -162,6 +162,7 @@
           echarts
           class="md-monthly-data__simple-chart"
           [options]="passengerCapacityOptions"
+          (chartInit)="onChartInit($event)"
         ></div>
       </div>
     </nz-card>
@@ -211,6 +212,7 @@
           echarts
           class="md-monthly-data__simple-chart"
           [options]="inStationCapacityOptions"
+          (chartInit)="onChartInit($event)"
         ></div>
       </div>
     </nz-card>
@@ -269,6 +271,7 @@
           echarts
           class="md-monthly-data__simple-chart"
           [options]="passengerStrongOptions"
+          (chartInit)="onChartInit($event)"
         ></div>
       </div>
     </nz-card>
