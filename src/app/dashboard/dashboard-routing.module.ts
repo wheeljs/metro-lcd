@@ -6,10 +6,16 @@ const routes: Routes = [
   {
     path: ':range',
     component: DashboardIndexComponent,
+    data: {
+      reuseId: 'dashboard-index',
+    },
   },
   {
     path: '',
     component: DashboardIndexComponent,
+    data: {
+      reuseId: 'dashboard-index',
+    },
   },
 ];
 
