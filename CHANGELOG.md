@@ -1,3 +1,13 @@
+<a name="1.2.2"></a>
+## [1.2.2](https://github.com/wheeljs/metro-lcd/compare/v1.2.1...v1.2.2) (2024-05-09)
+
+
+### Bug Fixes
+
+* **dashboard:** use relative path load custom icons ([46e03c5](https://github.com/wheeljs/metro-lcd/commit/46e03c5))
+
+
+
 <a name="1.2.1"></a>
 ## [1.2.1](https://github.com/wheeljs/metro-lcd/compare/v1.2.0...v1.2.1) (2024-05-09)
 
