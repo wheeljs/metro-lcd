@@ -1,10 +1,10 @@
 import { Component, Inject, Input } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { filter, tap } from 'rxjs';
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { faSliders } from '@fortawesome/free-solid-svg-icons';
+import * as Sentry from '@sentry/angular-ivy';
+import type { NzResultComponent } from 'ng-zorro-antd/result';
 import { STORAGE } from '../../common';
 import type { DashboardData, DashboardDataVM } from '../types';
 import { DataService } from '../services';
@@ -20,9 +20,8 @@ const DashboardConfigKey = 'dashboard-config';
   styleUrl: './index.component.scss',
 })
 export class DashboardIndexComponent {
-  faSliders = faSliders;
 
-  selectedId!: string;
+  selectedId: string | undefined;
 
   @Input() set range(val: string) {
     this.selectedId = val;
@@ -46,22 +45,25 @@ export class DashboardIndexComponent {
     return `${year}年${month}月城市轨道交通运营数据`;
   }
 
-  private _data?: DashboardDataVM;
+  status?: NzResultComponent['nzStatus'];
+
+  private _data: DashboardDataVM | undefined;
   get data() {
     return this._data!;
   }
 
-  set data(val: DashboardDataVM) {
-    this.selectedId = val.id!;
+  set data(val: DashboardDataVM | undefined) {
+    this.selectedId = val?.id;
     this._data = val;
-    if (val.year && val.month) {
-      this.title.setTitle(this.pageTitle);
+
+    if (val) {
+      if (val.year && val.month) {
+        this.title.setTitle(this.pageTitle);
+      }
     }
   }
 
   loading = true;
-
-  opened = false;
 
   _config: DashboardConfig = {
     showVolumeDiff: true,
@@ -76,8 +78,18 @@ export class DashboardIndexComponent {
     this._config = val;
   }
 
+  get reportUrl(): string {
+    let reportUrl = 'https://github.com/wheeljs/rail-transit-data/issues/new?assignees=wheeljs&labels=data&template=data.md';
+    if (this.data) {
+      reportUrl += `&title=${encodeURIComponent(`Correct data in ${this.data.id}`)}`;
+    }
+
+    return reportUrl;
+  }
+
   constructor(
     private router: Router,
+    activatedRoute: ActivatedRoute,
     private title: Title,
     @Inject(STORAGE) private localStorage: Storage,
     private dataService: DataService,
@@ -87,6 +99,19 @@ export class DashboardIndexComponent {
     if (DashboardConfigKey in localStorage) {
       this._config = JSON.parse(localStorage[DashboardConfigKey]);
     }
+
+    activatedRoute.paramMap
+      .pipe(takeUntilDestroyed())
+      .subscribe({
+        next: (paramMap) => {
+          const range = paramMap.get('range');
+          Sentry.metrics.increment('dashboard_view', 1, {
+            tags: {
+              range: range || 'latest',
+            },
+          });
+        },
+      });
 
     this.dataService.list().pipe(
       tap(() => this.loading = true),
@@ -100,7 +125,7 @@ export class DashboardIndexComponent {
         });
         this.list = listMap;
 
-        this.onRangeChange(this.selectedId || list[0].id!);
+        this.onRangeChange(this.selectedId || list[0].id!, true);
       },
     });
   }
@@ -109,9 +134,16 @@ export class DashboardIndexComponent {
     this.changelogService.show();
   }
 
-  onRangeChange(id: string) {
-    this.loading = true;
+  onRangeChange(id: string, skipLocationChange = false) {
     const listItem = this.list[id];
+    if (!listItem) {
+      this.data = undefined;
+      this.status = '404';
+      this.loading = false;
+      return;
+    }
+
+    this.loading = true;
     this.dataVMService.getDataVM({
       range: id,
       hash: listItem.hash,
@@ -120,10 +152,13 @@ export class DashboardIndexComponent {
         this.list = Object.assign({}, this.list, {
           [id]: data,
         });
-        if (this.selectedId !== id) {
-          this.router.navigateByUrl(`/dashboard/${id}`);
+        if (!skipLocationChange && this.selectedId !== id) {
+          this.router.navigateByUrl(`/dashboard/${id}`, {
+            replaceUrl: typeof this.status !== 'undefined',
+          });
         }
 
+        this.status = undefined;
         this.rangeUpdate(id);
       },
     });
@@ -134,10 +169,10 @@ export class DashboardIndexComponent {
     this.loading = false;
   }
 
-  onShowVolumeDiffChange(event: MatSlideToggleChange) {
+  onShowVolumeDiffChange(checked: boolean) {
     this.config = {
       ...this.config,
-      showVolumeDiff: event.checked,
+      showVolumeDiff: checked,
     };
   }
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewEncapsulation } from '@angular/core';
 import { merge } from 'lodash-es';
 import type { DataZoomComponentOption, DatasetComponentOption, ECElementEvent, ECharts, EChartsOption } from 'echarts';
 import type { City, CityVM } from '../../types';
@@ -42,14 +42,17 @@ const topLevelOptions = (): EChartsOption => {
   return {
     grid: {
       top: 70,
-      right: 100,
-      left: 100,
+      right: 40,
+      left: 48,
     },
     legend: {
-      right: 100,
+      right: 0,
     },
     tooltip: {
       trigger: 'axis',
+      axisPointer: {
+        type: 'shadow',
+      },
     },
     dataset: [{
       id: 'cities',
@@ -154,6 +157,11 @@ const topLevelOptions = (): EChartsOption => {
 
 const drilldownOptions = ({ datasetId }: { datasetId: string; }): EChartsOption => {
   return {
+    tooltip: {
+      axisPointer: {
+        type: 'line',
+      },
+    },
     xAxis: {
       id: 'x',
       type: 'category',
@@ -267,6 +275,12 @@ export class MonthCitiesBarChartComponent {
     );
 
     this.merge = mergeOptions;
+    if (this.drilldowned) {
+      const drilldownedCity = newCities.find(x => x.id === this.drilldownedCityId);
+      if (!drilldownedCity || !drilldownedCity.drilldownable) {
+        this.backToTop();
+      }
+    }
   }
 
   options: EChartsOption = topLevelOptions();
@@ -277,11 +291,17 @@ export class MonthCitiesBarChartComponent {
 
   private dataZoomToggleOptionsCache?: Partial<EChartsOption>;
 
-  drilldowned = false;
+  get drilldowned() {
+    return this.drilldownedCityId != null;
+  }
+
+  private drilldownedCityId?: string | null;
 
   get fullDataRange(): boolean {
     return this.dataZoomToggleOptionsCache != null;
   }
+
+  constructor(private cdr: ChangeDetectorRef) {}
 
   onChartInit(chart: ECharts) {
     this.chart = chart;
@@ -299,15 +319,16 @@ export class MonthCitiesBarChartComponent {
   }
 
   onChartClick(event: ECElementEvent) {
-    if (this.drilldowned) {
+    const value = event.value as CityVM;
+    if (this.drilldowned || !value.drilldownable) {
       return;
     }
 
     this.topLevelOptionsCache = this.snapshotTopLevelOptions();
 
-    this.drilldowned = true;
+    this.drilldownedCityId = value.id;
     this.merge = drilldownOptions({
-      datasetId: (event.value as City).id,
+      datasetId: value.id,
     });
   }
 
@@ -319,7 +340,7 @@ export class MonthCitiesBarChartComponent {
     }
 
     this.merge = options;
-    this.drilldowned = false;
+    this.drilldownedCityId = null;
   }
 
   toggleDataZoom() {
@@ -337,5 +358,7 @@ export class MonthCitiesBarChartComponent {
         }],
       };
     }
+
+    this.cdr.detectChanges();
   }
 }

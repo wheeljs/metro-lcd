@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouteReuseStrategy, RouterModule, Routes } from '@angular/router';
+import { AppRouteReuseStrategy } from './router/app-route-reuse-strategy';
 
 const routes: Routes = [
   { path: '', redirectTo: '/lcd', pathMatch: 'full' },
@@ -18,5 +19,8 @@ const routes: Routes = [
     bindToComponentInputs: true,
   })],
   exports: [RouterModule],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: AppRouteReuseStrategy },
+  ],
 })
 export class AppRoutingModule { }

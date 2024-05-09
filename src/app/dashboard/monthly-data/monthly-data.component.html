@@ -1,25 +1,88 @@
 @if (data) {
   <div class="md-monthly-data__container">
-    <nz-card class="md-monthly-data__main-card">
-      <div class="md-monthly-data__main">
+    <div class="md-monthly-data__main">
+      <nz-card nzBorderless>
         <md-statistic-item
           nzTitle="轨道交通线路"
           [value]="data.lines"
           nzSuffix="条"
         />
+        <div class="md-monthly-data__main-card__icon">
+         <span nz-icon nzType="dashboard:line"></span>
+        </div>
+      </nz-card>
+      <nz-card nzBorderless>
         <md-statistic-item
           nzTitle="运营里程"
           [value]="data.operationLength"
           nzSuffix="公里"
         />
+        <div class="md-monthly-data__main-card__icon">
+          <span nz-icon nzType="dashboard:operation-length"></span>
+        </div>
+      </nz-card>
+      <nz-card nzBorderless>
         <md-statistic-item
           nzTitle="实际开行列车"
           [value]="data.runs"
           unit="万"
           nzSuffix="万次"
         />
-        @if (data.news.lines.count > 0 || data.news.segments.count > 0) {
-          @if (data.news.lines.count > 0) {
+        <div class="md-monthly-data__main-card__icon">
+          <span nz-icon nzType="dashboard:train"></span>
+        </div>
+      </nz-card>
+      @if (data.news.operationLength > 0) {
+        <nz-card nzBorderless>
+          <md-statistic-item
+            class="md-monthly-data__new-operation-length"
+            nzTitle="新增运营里程"
+            [value]="data.news.operationLength"
+            nzSuffix="公里"
+          />
+          <div class="md-monthly-data__main-card__icon md-monthly-data__main-card__icon--overlay">
+            <span nz-icon nzType="dashboard:operation-length"></span>
+            <span nz-icon nzType="plus-square" nzTheme="fill"></span>
+          </div>
+        </nz-card>
+
+        @if (data.news.cities?.length! > 0) {
+          <nz-card nzBorderless>
+            <md-statistic-item
+              nzTitle="新增城市"
+              [value]="data.news.cities?.length!"
+              [nzSuffix]="newCitieCountSuffix"
+            />
+            <ng-template #newCitieCountSuffix>
+              个
+              <a class="md-monthly-data__popover-btn">
+                <span
+                  nz-icon
+                  nzType="info-circle"
+                  nzTheme="outline"
+                  nz-popover
+                  nzPopoverOverlayClassName="md-monthly-data__news-popover"
+                  [nzPopoverContent]="newCitiesDetail"
+                  nzPopoverPlacement="right"
+                ></span>
+              </a>
+            </ng-template>
+            <ng-template #newCitiesDetail>
+              @for (newCity of data.news.cities; track newCity.cityEn) {
+                {{ newCity.ch }}@if (!$last) {<br />}
+              }
+            </ng-template>
+            <div class="md-monthly-data__main-card__icon md-monthly-data__main-card__icon--overlay">
+              <span nz-icon>
+                <fa-icon [icon]="faLocationDot" />
+              </span>
+              <span nz-icon nzType="plus-square" nzTheme="fill"></span>
+            </div>
+          </nz-card>
+        }
+
+        @if (data.news.lines.count > 0) {
+          <nz-card nzBorderless>
             <md-statistic-item
               nzTitle="新增运营线路"
               [value]="data.news.lines.count"
@@ -44,8 +107,14 @@
                 {{ newLine.ch }}@if (!$last) {<br />}
               }
             </ng-template>
-          }
-          @if (data.news.segments.count > 0) {
+            <div class="md-monthly-data__main-card__icon md-monthly-data__main-card__icon--overlay">
+              <span nz-icon nzType="dashboard:line"></span>
+              <span nz-icon nzType="plus-square" nzTheme="fill"></span>
+            </div>
+          </nz-card>
+        }
+        @if (data.news.segments.count > 0) {
+          <nz-card nzBorderless>
             <md-statistic-item
               nzTitle="新增运营区段"
               [value]="data.news.segments.count"
@@ -70,22 +139,19 @@
                 {{ newSegment.ch }}@if (!$last) {<br />}
               }
             </ng-template>
-          }
-
-          <md-statistic-item
-            class="md-monthly-data__new-operation-length"
-            nzTitle="新增运营里程"
-            [value]="data.news.operationLength"
-            nzSuffix="公里"
-          />
-        } @else {
-          <div class="md-monthly-data__new-lines__empty">本月无新开通线路和区段</div>
+            <div class="md-monthly-data__main-card__icon">
+              <span nz-icon nzType="dashboard:segment"></span>
+            </div>
+          </nz-card>
         }
+      } @else {
+        <nz-card nzBorderless>
+          <div class="md-monthly-data__new-lines__empty">本月无新开通线路和区段</div>
+        </nz-card>
+      }
+    </div>
 
-      </div>
-    </nz-card>
-
-    <nz-card [nzActions]="[passengerCapacityQoQ, passengerCapacityYoY]">
+    <nz-card nzBorderless [nzActions]="[passengerCapacityQoQ, passengerCapacityYoY]">
       <div class="md-monthly-data__item--with-chart">
         <md-statistic-item
           nzTitle="客运量"
@@ -95,8 +161,8 @@
         <div
           echarts
           class="md-monthly-data__simple-chart"
-          [options]="simpleChartOptions"
-          [merge]="passengerCapacityOptions"
+          [options]="passengerCapacityOptions"
+          (chartInit)="onChartInit($event)"
         ></div>
       </div>
     </nz-card>
@@ -135,7 +201,7 @@
       </nz-flex>
     </ng-template>
 
-    <nz-card [nzActions]="data.inStationCapacityVM ? [inStationCapacityQoQ] : []">
+    <nz-card nzBorderless [nzActions]="inStationCapacityTpls">
       <div class="md-monthly-data__item--with-chart">
         <md-statistic-item
           nzTitle="进站量"
@@ -145,59 +211,84 @@
         <div
           echarts
           class="md-monthly-data__simple-chart"
-          [options]="simpleChartOptions"
-          [merge]="inStationCapacityOptions"
+          [options]="inStationCapacityOptions"
+          (chartInit)="onChartInit($event)"
         ></div>
       </div>
     </nz-card>
     <ng-template #inStationCapacityQoQ>
       <nz-flex nzAlign="center" nzJustify="space-around">
         <span>环比</span>
-        <md-statistic-item
-          [value]="data.inStationCapacityVM.compareLastMonth!"
-          unit="亿"
-          autoPrefix
-          autoColor
-        />
-        <md-statistic-item
-          [value]="data.inStationCapacityVM.compareLastMonthPercent!"
-          percent
-          autoPrefix
-          autoColor
-        />
+        @if (data.inStationCapacityVM.compareLastMonth) {
+          <md-statistic-item
+            [value]="data.inStationCapacityVM.compareLastMonth"
+            unit="亿"
+            autoPrefix
+            autoColor
+          />
+        }
+        @if (data.inStationCapacityVM.compareLastMonthPercent) {
+          <md-statistic-item
+            [value]="data.inStationCapacityVM.compareLastMonthPercent"
+            percent
+            autoPrefix
+            autoColor
+          />
+        }
+      </nz-flex>
+    </ng-template>
+    <ng-template #inStationCapacityYoY>
+      <nz-flex nzAlign="center" nzJustify="space-around">
+        <span>同比</span>
+        @if (data.inStationCapacityVM.compareLastYear) {
+          <md-statistic-item
+            [value]="data.inStationCapacityVM.compareLastYear!"
+            unit="亿"
+            autoPrefix
+            autoColor
+          />
+        }
+        @if (data.inStationCapacityVM.compareLastYearPercent) {
+          <md-statistic-item
+            [value]="data.inStationCapacityVM.compareLastYearPercent!"
+            percent
+            autoPrefix
+            autoColor
+          />
+        }
       </nz-flex>
     </ng-template>
 
-    <nz-card [nzActions]="passengerStrongTpls">
+    <nz-card nzBorderless [nzActions]="passengerStrongTpls">
       <div class="md-monthly-data__item--with-chart">
         <md-statistic-item
           nzTitle="平均客运强度"
-          [value]="data.passengerStrong.value"
+          [value]="data.passengerStrongVM.value"
           valueFormat="1.0-3"
           nzSuffix="万人次每公里日"
         />
         <div
           echarts
           class="md-monthly-data__simple-chart"
-          [options]="simpleChartOptions"
-          [merge]="passengerStrongOptions"
+          [options]="passengerStrongOptions"
+          (chartInit)="onChartInit($event)"
         ></div>
       </div>
     </nz-card>
     <ng-template #passengerStrongQoQ>
       <nz-flex nzAlign="center" nzJustify="space-around">
-        @if (data.passengerStrongVM.compareLastMonthPercent) {
-          <span>环比</span>
-          @if (data.passengerStrongVM.compareLastMonth) {
-            <md-statistic-item
-              [value]="data.passengerStrongVM.compareLastMonth"
-              valueFormat="1.0-3"
-              autoPrefix
-              autoColor
-            />
-          }
+        <span>环比</span>
+        @if (data.passengerStrongVM.compareLastMonth) {
           <md-statistic-item
-            [value]="data.passengerStrongVM.compareLastMonthPercent"
+            [value]="data.passengerStrongVM.compareLastMonth!"
+            valueFormat="1.0-3"
+            autoPrefix
+            autoColor
+          />
+        }
+        @if (data.passengerStrongVM.compareLastMonthPercent) {
+          <md-statistic-item
+            [value]="data.passengerStrongVM.compareLastMonthPercent!"
             percent
             autoPrefix
             autoColor
@@ -207,8 +298,16 @@
     </ng-template>
     <ng-template #passengerStrongYoY>
       <nz-flex nzAlign="center" nzJustify="space-around">
+        <span>同比</span>
+        @if (data.passengerStrongVM.compareLastYear) {
+          <md-statistic-item
+            [value]="data.passengerStrongVM.compareLastYear"
+            valueFormat="1.0-3"
+            autoPrefix
+            autoColor
+          />
+        }
         @if (data.passengerStrongVM.compareLastYearPercent) {
-          <span>同比</span>
           <md-statistic-item
             [value]="data.passengerStrongVM.compareLastYearPercent"
             percent
@@ -231,76 +330,85 @@
         class="md-monthly-data__volume-card"
         [nzTitle]="volumeNameTpl"
         [nzBodyStyle]="{ padding: 0 }"
+        nzBorderless
       >
         <div class="md-monthly-data__volume-card__container">
           <div class="md-monthly-data__volume-card__item">
             <md-statistic-item
-              nzTitle="线路数"
+              [nzTitle]="volumeLinesTitleTpl"
               [value]="volume.lines"
               nzSuffix="条"
             />
-            @if (config?.showVolumeDiff && volumeCompare?.lines?.compareLastMonth) {
-              <md-statistic-item
-                class="md-monthly-data__volume-card__item__compare"
-                [value]="volumeCompare.lines.compareLastMonth"
-                prefixMode="plusminus"
-                autoPrefix
-              />
-            }
+            <ng-template #volumeLinesTitleTpl>
+              <span>线路数</span>@if (config?.showVolumeDiff && volumeCompare?.lines?.compareLastMonth) {
+                <md-statistic-item
+                  class="md-monthly-data__volume-card__item__compare"
+                  [value]="volumeCompare.lines.compareLastMonth"
+                  prefixMode="plusminus"
+                  autoPrefix
+                />
+              }
+            </ng-template>
           </div>
           <div class="md-monthly-data__volume-card__item">
             <md-statistic-item
-              nzTitle="运营里程"
+              [nzTitle]="volumeOperationLengthTitleTpl"
               [value]="volume.operationLength"
               nzSuffix="公里"
             />
-            @if (config?.showVolumeDiff && volumeCompare?.operationLength?.compareLastMonth) {
-              <md-statistic-item
-                class="md-monthly-data__volume-card__item__compare"
-                [value]="volumeCompare.operationLength.compareLastMonth"
-                prefixMode="plusminus"
-                autoPrefix
-              />
-            }
+            <ng-template #volumeOperationLengthTitleTpl>
+              <span>运营里程</span>@if (config?.showVolumeDiff && volumeCompare?.operationLength?.compareLastMonth) {
+                <md-statistic-item
+                  class="md-monthly-data__volume-card__item__compare"
+                  [value]="volumeCompare.operationLength.compareLastMonth"
+                  prefixMode="plusminus"
+                  autoPrefix
+                />
+              }
+            </ng-template>
           </div>
           <div class="md-monthly-data__volume-card__item">
             <md-statistic-item
-              nzTitle="客运量"
+              [nzTitle]="volumePassengerCapacityTitleTpl"
               [value]="volume.passengerCapacity"
               [unit]="unit"
             />
-            @if (config?.showVolumeDiff && volumeCompare?.passengerCapacity?.compareLastMonth) {
-              <md-statistic-item
-                class="md-monthly-data__volume-card__item__compare"
-                [value]="volumeCompare.passengerCapacity.compareLastMonth"
-                [unit]="unit"
-                nzSuffix=""
-                prefixMode="plusminus"
-                autoPrefix
-              />
-            }
+            <ng-template #volumePassengerCapacityTitleTpl>
+              <span>客运量</span>@if (config?.showVolumeDiff && volumeCompare?.passengerCapacity?.compareLastMonth) {
+                <md-statistic-item
+                  class="md-monthly-data__volume-card__item__compare"
+                  [value]="volumeCompare.passengerCapacity.compareLastMonth"
+                  [unit]="unit"
+                  nzSuffix=""
+                  prefixMode="plusminus"
+                  autoPrefix
+                />
+              }
+            </ng-template>
           </div>
           <div class="md-monthly-data__volume-card__item">
             <md-statistic-item
-              nzTitle="进站量"
+              [nzTitle]="volumeinStationCapacityTitleTpl"
               [value]="volume.inStationCapacity"
               [unit]="unit"
             />
-            @if (config?.showVolumeDiff && volumeCompare?.inStationCapacity?.compareLastMonth) {
-              <md-statistic-item
-                class="md-monthly-data__volume-card__item__compare"
-                [value]="volumeCompare.inStationCapacity.compareLastMonth"
-                [unit]="unit"
-                nzSuffix=""
-                prefixMode="plusminus"
-                autoPrefix
-              />
-            }
+            <ng-template #volumeinStationCapacityTitleTpl>
+              <span>进站量</span>@if (config?.showVolumeDiff && volumeCompare?.inStationCapacity?.compareLastMonth) {
+                <md-statistic-item
+                  class="md-monthly-data__volume-card__item__compare"
+                  [value]="volumeCompare.inStationCapacity.compareLastMonth"
+                  [unit]="unit"
+                  nzSuffix=""
+                  prefixMode="plusminus"
+                  autoPrefix
+                />
+              }
+            </ng-template>
           </div>
         </div>
       </nz-card>
       <ng-template #volumeNameTpl>
-        {{volumeName}}@if (volumeSubtitle) {<span class="md-monthly-data__volume-card__subtitle">（{{volumeSubtitle}}）</span>}
+        {{volumeName}}@if (volumeSubtitle) {<span class="ant-card__subtitle">（{{volumeSubtitle}}）</span>}
       </ng-template>
     </ng-template>
 

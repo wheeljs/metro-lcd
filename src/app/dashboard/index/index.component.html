@@ -1,71 +1,80 @@
 <nz-spin nzDelay="200" [nzSpinning]="loading" [nzIndicator]="loadingIndicator">
 @if (list) {
-  <mat-sidenav-container>
-    <mat-sidenav #sidenav mode="over" position="end" [(opened)]="opened">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>设置</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <mat-form-field>
-            <mat-label>数据范围</mat-label>
-            <mat-select [value]="selectedId" (valueChange)="onRangeChange($event)">
-              @for (id of ids; track id) {
-                <mat-option [value]="id">
-                  {{id}}
-                </mat-option>
+  @if (data) {
+    <div class="title">
+      <h1>{{pageTitle}}</h1>
+    </div>
+    <main>
+      <md-monthly-data [data]="data" [config]="config" />
+      <nz-card [nzTitle]="monthCitiesCardTitle" [nzExtra]="monthCitiesCardExtra" nzBorderless>
+        <md-chart-month-cities-bar #monthCitiesChart [cities]="data.cities" />
+        @if (data.summaries) {
+          <section class="summaries">
+            <ol>
+              @for (summary of data.summaries; track summary) {
+                <li>{{summary}}</li>
               }
-            </mat-select>
-          </mat-form-field>
-          <div>
-            <mat-slide-toggle
-              [checked]="config.showVolumeDiff"
-              (change)="onShowVolumeDiffChange($event)"
-            >展示运量对比</mat-slide-toggle>
-          </div>
-        </mat-card-content>
-        <mat-card-actions>
-          <a mat-stroked-button [routerLink]="['/']">LCD</a>
-          <button mat-stroked-button (click)="showChangelog()">Changelog</button>
-        </mat-card-actions>
-      </mat-card>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <div class="sidenav-toggle" (click)="sidenav.toggle()">
-        <button mat-mini-fab color="#cccccc">
-          <fa-icon [icon]="faSliders" />
-        </button>
-      </div>
-      @if (data) {
-        <main>
-          <div class="title">
-            <h1>{{pageTitle}}</h1>
-            <div class="subtitle">
               @if (data.originLink) {
-                <a
+                <li><a
                   [href]="data.originLink"
                   target="_blank"
                   referrerpolicy="no-referrer"
                   class="read-origin"
-                >阅读原文</a>
+                >阅读原文</a></li>
               }
-            </div>
-          </div>
-          <md-monthly-data [data]="data" [config]="config" />
-          <md-chart-month-cities-bar [cities]="data.cities" />
-          @if (data.summaries) {
-            <section class="summaries">
-              <ol>
-                @for (summary of data.summaries; track summary) {
-                  <li>{{summary}}</li>
-                }
-              </ol>
-            </section>
+            </ol>
+          </section>
+        }
+      </nz-card>
+      <ng-template #monthCitiesCardTitle>
+        <span>城市数据</span><span class="ant-card__subtitle">（点击城市数据可查看趋势）</span>
+      </ng-template>
+      <ng-template #monthCitiesCardExtra>
+        @if (!monthCitiesChart.drilldowned) {
+          <button nz-button (click)="monthCitiesChart.toggleDataZoom()">{{monthCitiesChart.fullDataRange ? '部分' : '全部'}}城市</button>
+        }
+      </ng-template>
+    </main>
+  } @else if (status) {
+    <nz-result [nzStatus]="status" [nzTitle]="status" nzSubTitle="找不到指定的数据" />
+  }
+
+  <md-settings [settings]="settingsTpl" />
+  <ng-template #settingsTpl>
+    <form nz-form>
+      <nz-form-item nzAlign="middle">
+        <nz-form-label nzFor="range">数据范围</nz-form-label>
+        <nz-select name="range" [ngModel]="selectedId" (ngModelChange)="onRangeChange($event)" style="width: 120px;">
+          @for (id of ids; track id) {
+            <nz-option [nzValue]="id" [nzLabel]="id"></nz-option>
           }
-        </main>
-      }
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+        </nz-select>
+      </nz-form-item>
+      <nz-form-item nzAlign="middle">
+        <nz-form-label nzFor="showVolumeDiff">展示运量对比</nz-form-label>
+        <nz-switch
+          name="showVolumeDiff"
+          [ngModel]="config.showVolumeDiff"
+          (ngModelChange)="onShowVolumeDiffChange($event)"
+        ></nz-switch>
+      </nz-form-item>
+      <nz-form-item nzAlign="middle">
+        <nz-form-label nzFor="dataRange">历史数据范围</nz-form-label>
+        <nz-input-number-group nzSuffix="个月">
+          <nz-input-number
+            name="dataRange"
+            [ngModel]="6"
+            [nzMin]="6"
+            [nzMax]="12"
+            nzReadOnly
+          />
+        </nz-input-number-group>
+      </nz-form-item>
+      <nz-form-item>
+        <a [href]="reportUrl" target="_blank">数据不准？</a>
+      </nz-form-item>
+    </form>
+  </ng-template>
 }
 </nz-spin>
 <ng-template #loadingIndicator>

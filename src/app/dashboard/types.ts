@@ -50,6 +50,7 @@ export interface News {
   operationLength: number;
   lines: NewsCategory;
   segments: NewsCategory;
+  cities?: NewsItem[];
 }
 
 export interface City {
@@ -60,7 +61,7 @@ export interface City {
   operationLength: number;
   passengerCapacity: number;
   inStationCapacity: number;
-  passengerStrong: number;
+  passengerStrong?: number;
 }
 
 export interface VolumeSummary {
@@ -85,7 +86,7 @@ export interface DashboardData extends DashboardDataSimple {
   runs: number;
   passengerCapacity: ValueCompareFull;
   inStationCapacity: number;
-  passengerStrong: ValueComparePercent;
+  passengerStrong?: ValueComparePercent;
   news: News;
   largeVolume: VolumeSummary;
   mediumVolume: VolumeSummary;
@@ -117,12 +118,13 @@ export type CityCompare = {
 
 export interface CityVM extends City {
   history?: CityCompare[];
+  drilldownable?: boolean;
 }
 
 export interface DashboardDataVM extends DashboardData {
   monthCompare: MonthCompare[];
-  inStationCapacityVM: Value & CompareLastMonth;
-  passengerStrongVM: DashboardData['passengerStrong'] & Partial<CompareLastMonthValue>;
+  inStationCapacityVM: Value & Partial<CompareLastMonth> & Partial<CompareLastYear>;
+  passengerStrongVM: DashboardData['passengerStrong'] & Partial<CompareLastMonthValue> & Partial<CompareLastYearValue>;
   largeVolumeCompare: VolumeCompare;
   mediumVolumeCompare: VolumeCompare;
   smallVolumeCompare: VolumeCompare;

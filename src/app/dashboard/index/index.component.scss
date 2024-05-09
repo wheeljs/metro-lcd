@@ -1,7 +1,10 @@
 :host {
   position: relative;
   display: block;
-  height: 100vh;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+
+  --horizontal-space: 48px;
 }
 
 nz-spin,
@@ -9,38 +12,12 @@ nz-spin,
   height: 100%;
 }
 
-.mat-sidenav-container {
-  height: 100%;
-}
-
-mat-sidenav mat-card {
-  min-height: 100vh;
-
-  mat-card-content {
-    flex-grow: 1;
-  }
-
-  .mdc-button + .mdc-button {
-    margin-left: 8px;
-  }
-}
-
-.sidenav-toggle {
-  position: fixed;
-  right: 20px;
-  top: 20px;
-}
-
 .title {
   text-align: center;
 
   h1 {
-    margin: 24px 0 16px;
-  }
-
-  .subtitle {
-    margin-right: 100px;
-    text-align: right;
+    margin-bottom: 16px;
+    padding-top: 24px;
   }
 
   .read-origin {
@@ -58,18 +35,35 @@ mat-sidenav mat-card {
   }
 }
 
+main {
+  padding-inline: var(--horizontal-space);
+  padding-block-end: 32px;
+
+  ::ng-deep .md-monthly-data__container {
+    margin-bottom: 16px;
+  }
+}
+
+.ant-card__subtitle {
+  &, ::ng-deep & {
+    color: #cccccc;
+    font-size: 12px;
+  }
+}
+
 ::ng-deep [echarts] {
   height: 600px;
 }
 
 .summaries {
+  margin-top: 16px;
   font-size: 12px;
-  line-height: 1.33334;
-  color: #333333;
+  line-height: 1.66667;
+  color: #666666;
 
   ol {
-    margin-bottom: 16px;
-    padding-left: 100px;
+    margin-bottom: 0;
+    padding-left: var(--horizontal-space);
     list-style: none;
   }
 }

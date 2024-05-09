@@ -1,8 +1,6 @@
 <div class="toolbars">
   @if (drilldowned) {
-    <button mat-raised-button (click)="backToTop()">返回上层</button>
-  } @else {
-    <button mat-raised-button (click)="toggleDataZoom()">查看{{fullDataRange ? '部分' : '全部'}}数据</button>
+    <button nz-button nzShape="circle" (click)="backToTop()"><span nz-icon nzType="arrow-left" nzTheme="outline"></span></button>
   }
 </div>
 <div
@@ -12,6 +10,3 @@
   (chartInit)="onChartInit($event)"
   (chartClick)="onChartClick($event)"
 ></div>
-<ul class="notes">
-  <li>点击城市数据可查看趋势</li>
-</ul>

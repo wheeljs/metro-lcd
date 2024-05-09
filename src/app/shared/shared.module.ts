@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, registerLocaleData } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import zh from '@angular/common/locales/zh';
@@ -12,6 +13,7 @@ registerLocaleData(zh);
 
 const ExportsAsIs = [
   CommonModule,
+  FormsModule,
   HttpClientModule,
   FontAwesomeModule,
   MatDialogModule,

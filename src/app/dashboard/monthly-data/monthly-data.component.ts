@@ -1,13 +1,20 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, TemplateRef, ViewChild } from '@angular/core';
+import { merge } from 'lodash-es';
+import type { DatasetComponentOption, ECharts, EChartsOption, LineSeriesOption } from 'echarts';
+import { colors, linearGradient } from '../../shared/echarts/utils';
 import type { DashboardDataVM } from '../types';
 import type { DashboardConfig } from '../index/types';
-import type { DatasetComponentOption, EChartsOption, LineSeriesOption } from 'echarts';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 const SimpleChartLineSerie: LineSeriesOption = {
   type: 'line',
   symbol: 'none',
   smooth: true,
 };
+
+function or(...args: unknown[]): boolean {
+  return args.some(x => x != null);
+}
 
 @Component({
   selector: 'md-monthly-data',
@@ -16,15 +23,72 @@ const SimpleChartLineSerie: LineSeriesOption = {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MonthlyDataComponent implements AfterViewInit {
+  faLocationDot = faLocationDot;
+
+  echartInstances: ECharts[] = [];
+
+  @ViewChild('inStationCapacityQoQ') inStationCapacityQoQTpl!: TemplateRef<void>;
+
+  @ViewChild('inStationCapacityYoY') inStationCapacityYoYTpl!: TemplateRef<void>;
+
   @ViewChild('passengerStrongQoQ') passengerStrongQoQTpl!: TemplateRef<void>;
 
   @ViewChild('passengerStrongYoY') passengerStrongYoYTpl!: TemplateRef<void>;
 
-  @Input() data!: DashboardDataVM;
+  passengerCapacityOptions!: EChartsOption;
+  inStationCapacityOptions!: EChartsOption;
+  passengerStrongOptions!: EChartsOption;
+
+  private _data!: DashboardDataVM;
+
+  @Input() set data(val: DashboardDataVM) {
+    this._data = val;
+
+    this.updateSimpleChartOptions();
+    setTimeout(() => this.resizeCharts());
+  };
+
+  get data() {
+    return this._data;
+  }
 
   @Input() config?: DashboardConfig;
 
-  get simpleChartOptions(): EChartsOption {
+  get inStationCapacityTpls(): TemplateRef<void>[] {
+    const tpls: TemplateRef<void>[] = [];
+    if (or(this.data.inStationCapacityVM?.compareLastMonth, this.data.inStationCapacityVM?.compareLastMonthPercent)) {
+      tpls.push(this.inStationCapacityQoQTpl);
+    }
+    if (or(this.data.inStationCapacityVM?.compareLastYear, this.data.inStationCapacityVM?.compareLastYearPercent)) {
+      tpls.push(this.inStationCapacityYoYTpl);
+    }
+
+    return tpls;
+  }
+
+  get passengerStrongTpls(): TemplateRef<void>[] {
+    const tpls: TemplateRef<void>[] = [];
+    if (or(this.data.passengerStrongVM?.compareLastMonth, this.data.passengerStrongVM?.compareLastMonthPercent)) {
+      tpls.push(this.passengerStrongQoQTpl);
+    }
+    if (or(this.data.passengerStrongVM?.compareLastYear, this.data.passengerStrongVM?.compareLastYearPercent)) {
+      tpls.push(this.passengerStrongYoYTpl);
+    }
+
+    return tpls;
+  }
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  ngAfterViewInit(): void {
+    this.cdr.detectChanges();
+  }
+
+  onChartInit(chart: ECharts) {
+    this.echartInstances.push(chart);
+  }
+
+  updateSimpleChartOptions() {
     const options: EChartsOption = {
       grid: {
         top: 5,
@@ -54,7 +118,7 @@ export class MonthlyDataComponent implements AfterViewInit {
       yAxis: {
         show: false,
         boundaryGap: false,
-        min: 'dataMin',
+        min: (values) => Math.max(values.min - 1, 0),
         max: 'dataMax',
       },
       series: [],
@@ -67,7 +131,7 @@ export class MonthlyDataComponent implements AfterViewInit {
           id: data.id,
           passengerCapacity: data.passengerCapacity.value,
           inStationCapacity: data.inStationCapacity,
-          passengerStrong: data.passengerStrong.value,
+          passengerStrong: data.passengerStrong?.value,
         },
         ...data?.monthCompare,
       ]?.map(x => ({
@@ -77,11 +141,7 @@ export class MonthlyDataComponent implements AfterViewInit {
       }));
     }
 
-    return options;
-  };
-
-  get passengerCapacityOptions(): Partial<EChartsOption> {
-    return {
+    this.passengerCapacityOptions = merge<EChartsOption, EChartsOption, EChartsOption>({}, options, {
       tooltip: {
         valueFormatter: (value) => `${value}亿`,
       },
@@ -90,12 +150,15 @@ export class MonthlyDataComponent implements AfterViewInit {
         encode: {
           y: 'passengerCapacity',
         },
+        lineStyle: { opacity: 0 },
+        areaStyle: {
+          opacity: 1,
+          color: linearGradient({ color: colors()[0] }),
+        },
       }],
-    };
-  }
+    });
 
-  get inStationCapacityOptions(): Partial<EChartsOption> {
-    return {
+    this.inStationCapacityOptions = merge<EChartsOption, EChartsOption, EChartsOption>({}, options, {
       tooltip: {
         valueFormatter: (value) => `${value}亿`,
       },
@@ -105,37 +168,42 @@ export class MonthlyDataComponent implements AfterViewInit {
         encode: {
           y: 'inStationCapacity',
         },
+        lineStyle: { opacity: 0 },
+        areaStyle: {
+          opacity: 1,
+          color: linearGradient({ color: colors()[1] }),
+        },
       }],
-    };
-  }
+    });
 
-  get passengerStrongOptions(): Partial<EChartsOption> {
-    return {
+    this.passengerStrongOptions = merge<EChartsOption, EChartsOption, EChartsOption>({}, options, {
       color: '#fac858',
+      yAxis: {
+        min: (values) => Math.max(values.min - 0.05, 0),
+      },
       series: [{
         ...SimpleChartLineSerie,
         encode: {
           y: 'passengerStrong',
         },
+        lineStyle: { opacity: 0 },
+        areaStyle: {
+          opacity: 1,
+          color: linearGradient({ color: colors()[2] }),
+        },
       }],
-    };
+    });
   }
 
-  get passengerStrongTpls(): TemplateRef<void>[] {
-    const tpls: TemplateRef<void>[] = [];
-    if (this.data.passengerStrongVM?.compareLastMonth || this.data.passengerStrongVM?.compareLastMonthPercent) {
-      tpls.push(this.passengerStrongQoQTpl);
-    }
-    if (this.data.passengerStrongVM?.compareLastYearPercent) {
-      tpls.push(this.passengerStrongYoYTpl);
+  resizeCharts() {
+    if (!Array.isArray(this.echartInstances)) {
+      return;
     }
 
-    return tpls;
-  }
-
-  constructor(private cdr: ChangeDetectorRef) {}
-
-  ngAfterViewInit(): void {
-    this.cdr.detectChanges();
+    this.echartInstances.forEach((echartInstance) => {
+      echartInstance?.resize?.({
+        animation: { duration: 500 },
+      });
+    });
   }
 }

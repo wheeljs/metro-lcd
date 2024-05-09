@@ -11,6 +11,7 @@ import { PosnegStatisticDirective } from './directives/posneg-statistic.directiv
 import { StatisticItemComponent } from './components/statistic-item/statistic-item.component';
 import { MonthCitiesBarChartComponent } from './charts/month-cities-bar-chart/month-cities-bar-chart.component';
 import { DataVMService } from './services/data-vm.service';
+import { SettingsComponent } from './components/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { DataVMService } from './services/data-vm.service';
     PosnegStatisticDirective,
     StatisticItemComponent,
     MonthCitiesBarChartComponent,
+    SettingsComponent,
   ],
   imports: [
     SharedModule,

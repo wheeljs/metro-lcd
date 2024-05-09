@@ -1,6 +1,6 @@
 {
   "name": "metro-lcd",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "private": true,
   "scripts": {
     "ng": "ng",
@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "^17.3.5",
     "@angular/router": "^17.3.5",
     "@ant-design/icons-angular": "^17.0.0",
+    "@ctrl/tinycolor": "^4.1.0",
     "@fontsource/roboto": "^5.0.12",
     "@fortawesome/angular-fontawesome": "^0.14.1",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
@@ -58,5 +59,10 @@
     }
   },
   "license": "AGPL-3.0-only",
-  "packageManager": "pnpm@8.15.7+sha256.50783dd0fa303852de2dd1557cd4b9f07cb5b018154a6e76d0f40635d6cee019"
+  "packageManager": "pnpm@8.15.7+sha256.50783dd0fa303852de2dd1557cd4b9f07cb5b018154a6e76d0f40635d6cee019",
+  "pnpm": {
+    "patchedDependencies": {
+      "ngx-echarts@17.1.0": "patches/ngx-echarts@17.1.0.patch"
+    }
+  }
 }
