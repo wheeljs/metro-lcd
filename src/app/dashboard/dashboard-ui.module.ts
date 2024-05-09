@@ -77,7 +77,7 @@ interface AdditionalIconDefinition {
 export class DashboardUiModule {
   constructor(httpClient: HttpClient, nzIconService: NzIconService) {
     forkJoin(
-      ['line', 'operation-length', 'segment', 'train'].map((icon) =>
+      ['empty-box', 'line', 'operation-length', 'segment', 'train'].map((icon) =>
         httpClient.get(`assets/imgs/${icon}.svg`, { responseType: 'text' }).pipe(
           map((iconSvg) => ({
             icon,

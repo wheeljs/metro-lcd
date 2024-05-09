@@ -145,8 +145,11 @@
           </nz-card>
         }
       } @else {
-        <nz-card nzBorderless>
+        <nz-card nzBorderless [nzBodyStyle]="{ 'height': '100%' }">
           <div class="md-monthly-data__new-lines__empty">本月无新开通线路和区段</div>
+          <div class="md-monthly-data__main-card__icon">
+            <span nz-icon nzType="dashboard:empty-box"></span>
+          </div>
         </nz-card>
       }
     </div>
