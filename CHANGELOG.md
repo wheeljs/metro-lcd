@@ -1,3 +1,47 @@
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/wheeljs/metro-lcd/compare/v1.2.0...v1.2.1) (2024-05-09)
+
+
+### Bug Fixes
+
+* **dashboard/chart/month-cities:** user cannot drilldown when history not valid ([0509b80](https://github.com/wheeljs/metro-lcd/commit/0509b80))
+* **dashboard/monthly-data:** avoid volume diff break volume statistic ([a7c174c](https://github.com/wheeljs/metro-lcd/commit/a7c174c))
+* **dashboard/monthly-data:** resize echarts when data change ([b28a7a3](https://github.com/wheeljs/metro-lcd/commit/b28a7a3))
+* **dashboard/monthly-data:** unexpected simple chart rerender ([19d7cac](https://github.com/wheeljs/metro-lcd/commit/19d7cac))
+* **dashboard:** range not found ([8e4d1a7](https://github.com/wheeljs/metro-lcd/commit/8e4d1a7))
+* **dashboard:** reuse component between paramed and unparam route ([af3a573](https://github.com/wheeljs/metro-lcd/commit/af3a573))
+
+
+### Chores
+
+* **ngx-echarts:** update ngx-echarts support specify default theme in config ([6a17951](https://github.com/wheeljs/metro-lcd/commit/6a17951))
+
+
+### Code Refactoring
+
+* **dashboard/monthly-data:** reorder import ([75f9a96](https://github.com/wheeljs/metro-lcd/commit/75f9a96))
+* **dashboard/settings:** fold settings visible logic ([0ce618a](https://github.com/wheeljs/metro-lcd/commit/0ce618a))
+* **dashboard:** extract card subtitle style ([e1e222e](https://github.com/wheeljs/metro-lcd/commit/e1e222e))
+
+
+### Features
+
+* **dashboard/chart/month-cities:** use different axisPointer for main chart and drilldowned ([9466741](https://github.com/wheeljs/metro-lcd/commit/9466741))
+* **dashboard/monthly-data:** add icon for main data cards ([f01ce25](https://github.com/wheeljs/metro-lcd/commit/f01ce25))
+* **dashboard/monthly-data:** areaStyle for simple chart ([bcf4100](https://github.com/wheeljs/metro-lcd/commit/bcf4100))
+* **dashboard/monthly-data:** display new operation length before new lines and segments ([26f4ef1](https://github.com/wheeljs/metro-lcd/commit/26f4ef1))
+* **dashboard/monthly-data:** make passengerStrong optional ([a1366ae](https://github.com/wheeljs/metro-lcd/commit/a1366ae))
+* **dashboard/monthly-data:** new cities ([2f59307](https://github.com/wheeljs/metro-lcd/commit/2f59307))
+* **dashboard/monthly-data:** yearly compare for inStationCapacity, passengerStrong ([5a53236](https://github.com/wheeljs/metro-lcd/commit/5a53236))
+* **dashboard/settings:** history range setting ([c076a33](https://github.com/wheeljs/metro-lcd/commit/c076a33))
+* **dashboard:** make `/dashboard` accessible, not auto redirect to newest range ([45a070d](https://github.com/wheeljs/metro-lcd/commit/45a070d))
+* **dashboard:** report incorrect data ([4857811](https://github.com/wheeljs/metro-lcd/commit/4857811))
+* **dashboard:** sentry metric ([ee692ba](https://github.com/wheeljs/metro-lcd/commit/ee692ba))
+* **dashboard:** wrap monthly-data and city chart into card ([c59f0ff](https://github.com/wheeljs/metro-lcd/commit/c59f0ff))
+* **echarts:** add g2 theme ([aac7cbe](https://github.com/wheeljs/metro-lcd/commit/aac7cbe))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/wheeljs/metro-lcd/compare/v1.1.2...v1.2.0) (2024-04-29)
 
