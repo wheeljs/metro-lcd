@@ -12,6 +12,7 @@ import { StatisticItemComponent } from './components/statistic-item/statistic-it
 import { MonthCitiesBarChartComponent } from './charts/month-cities-bar-chart/month-cities-bar-chart.component';
 import { DataVMService } from './services/data-vm.service';
 import { SettingsComponent } from './components/settings/settings.component';
+import { WithValuePipe } from './pipes/with-value.pipe';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SettingsComponent } from './components/settings/settings.component';
     StatisticItemComponent,
     MonthCitiesBarChartComponent,
     SettingsComponent,
+    WithValuePipe,
   ],
   imports: [
     SharedModule,

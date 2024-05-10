@@ -204,7 +204,12 @@
       </nz-flex>
     </ng-template>
 
-    <nz-card nzBorderless [nzActions]="inStationCapacityTpls">
+    <nz-card nzBorderless [nzActions]="
+      [inStationCapacityQoQ, inStationCapacityYoY] | withValue: [
+        [data.inStationCapacityVM?.compareLastMonth, data.inStationCapacityVM?.compareLastMonthPercent],
+        [data.inStationCapacityVM?.compareLastYear, data.inStationCapacityVM?.compareLastYearPercent]
+      ]
+    ">
       <div class="md-monthly-data__item--with-chart">
         <md-statistic-item
           nzTitle="进站量"
@@ -262,7 +267,12 @@
       </nz-flex>
     </ng-template>
 
-    <nz-card nzBorderless [nzActions]="passengerStrongTpls">
+    <nz-card nzBorderless [nzActions]="
+      [passengerStrongQoQ, passengerStrongYoY] | withValue: [
+        [data.passengerStrongVM?.compareLastMonth, data.passengerStrongVM?.compareLastMonthPercent],
+        [data.passengerStrongVM?.compareLastYear, data.passengerStrongVM?.compareLastYearPercent]
+      ]
+    ">
       <div class="md-monthly-data__item--with-chart">
         <md-statistic-item
           nzTitle="平均客运强度"
