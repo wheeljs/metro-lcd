@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, TemplateRef, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
 import { merge } from 'lodash-es';
 import type { DatasetComponentOption, ECharts, EChartsOption, LineSeriesOption } from 'echarts';
 import { colors, linearGradient } from '../../shared/echarts/utils';
@@ -12,10 +12,6 @@ const SimpleChartLineSerie: LineSeriesOption = {
   smooth: true,
 };
 
-function or(...args: unknown[]): boolean {
-  return args.some(x => x != null);
-}
-
 @Component({
   selector: 'md-monthly-data',
   templateUrl: './monthly-data.component.html',
@@ -26,14 +22,6 @@ export class MonthlyDataComponent implements AfterViewInit {
   faLocationDot = faLocationDot;
 
   echartInstances: ECharts[] = [];
-
-  @ViewChild('inStationCapacityQoQ') inStationCapacityQoQTpl!: TemplateRef<void>;
-
-  @ViewChild('inStationCapacityYoY') inStationCapacityYoYTpl!: TemplateRef<void>;
-
-  @ViewChild('passengerStrongQoQ') passengerStrongQoQTpl!: TemplateRef<void>;
-
-  @ViewChild('passengerStrongYoY') passengerStrongYoYTpl!: TemplateRef<void>;
 
   passengerCapacityOptions!: EChartsOption;
   inStationCapacityOptions!: EChartsOption;
@@ -53,30 +41,6 @@ export class MonthlyDataComponent implements AfterViewInit {
   }
 
   @Input() config?: DashboardConfig;
-
-  get inStationCapacityTpls(): TemplateRef<void>[] {
-    const tpls: TemplateRef<void>[] = [];
-    if (or(this.data.inStationCapacityVM?.compareLastMonth, this.data.inStationCapacityVM?.compareLastMonthPercent)) {
-      tpls.push(this.inStationCapacityQoQTpl);
-    }
-    if (or(this.data.inStationCapacityVM?.compareLastYear, this.data.inStationCapacityVM?.compareLastYearPercent)) {
-      tpls.push(this.inStationCapacityYoYTpl);
-    }
-
-    return tpls;
-  }
-
-  get passengerStrongTpls(): TemplateRef<void>[] {
-    const tpls: TemplateRef<void>[] = [];
-    if (or(this.data.passengerStrongVM?.compareLastMonth, this.data.passengerStrongVM?.compareLastMonthPercent)) {
-      tpls.push(this.passengerStrongQoQTpl);
-    }
-    if (or(this.data.passengerStrongVM?.compareLastYear, this.data.passengerStrongVM?.compareLastYearPercent)) {
-      tpls.push(this.passengerStrongYoYTpl);
-    }
-
-    return tpls;
-  }
 
   constructor(private cdr: ChangeDetectorRef) {}
 

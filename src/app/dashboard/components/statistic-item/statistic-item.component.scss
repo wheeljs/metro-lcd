@@ -1,0 +1,9 @@
+.md-statistic-item {
+  &--positive .ant-statistic-content-prefix {
+    color: #52c41a;
+  }
+
+  &--negative .ant-statistic-content-prefix {
+    color: #e51400;
+  }
+}

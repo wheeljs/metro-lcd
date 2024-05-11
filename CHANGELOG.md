@@ -1,3 +1,41 @@
+<a name="1.2.3"></a>
+## [1.2.3](https://github.com/wheeljs/metro-lcd/compare/v1.2.2...v1.2.3) (2024-05-11)
+
+
+### Bug Fixes
+
+* **dashboard/monthly-data:** increase line height in popover ([bae6227](https://github.com/wheeljs/metro-lcd/commit/bae6227))
+
+
+### Chores
+
+* **dashboard/data:** update ref ([03ccabb](https://github.com/wheeljs/metro-lcd/commit/03ccabb))
+
+
+### Code Refactoring
+
+* **dashboard/statistic-item:** prefix icon mode ([da3e864](https://github.com/wheeljs/metro-lcd/commit/da3e864))
+* **dashboard:** extract template by value to pipe ([0f89486](https://github.com/wheeljs/metro-lcd/commit/0f89486))
+* **dashboard:** use class instead of modify nzValueStyle by directive ([c9462b7](https://github.com/wheeljs/metro-lcd/commit/c9462b7))
+
+
+### Features
+
+* **dashboard/monthly-data:** add off info, reorder main data ([2b7921d](https://github.com/wheeljs/metro-lcd/commit/2b7921d))
+* **dashboard/monthly-data:** empty icon ([f5383b5](https://github.com/wheeljs/metro-lcd/commit/f5383b5))
+
+
+
+<a name="1.2.2"></a>
+## [1.2.2](https://github.com/wheeljs/metro-lcd/compare/v1.2.1...v1.2.2) (2024-05-09)
+
+
+### Bug Fixes
+
+* **dashboard:** use relative path load custom icons ([46e03c5](https://github.com/wheeljs/metro-lcd/commit/46e03c5))
+
+
+
 <a name="1.2.1"></a>
 ## [1.2.1](https://github.com/wheeljs/metro-lcd/compare/v1.2.0...v1.2.1) (2024-05-09)
 

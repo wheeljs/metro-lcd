@@ -3,9 +3,9 @@
   [nzValue]="nzValue"
   [nzPrefix]="nzPrefix"
   [nzSuffix]="nzSuffixProp"
-  [mdPosNegStatistic]="autoColor"
-  [mdPosNegValue]="value"
+  [class.md-statistic-item--positive]="autoColor && value > 0"
+  [class.md-statistic-item--negative]="autoColor && value < 0"
 />
-<ng-template #upPrefix><fa-icon [icon]="prefixMode === 'arrow' ? upIcon : plusIcon" /></ng-template>
-<ng-template #downPrefix><fa-icon [icon]="prefixMode === 'arrow' ? downIcon : minusIcon" /></ng-template>
+<ng-template #upPrefix><fa-icon [icon]="prefixIcons.up" /></ng-template>
+<ng-template #downPrefix><fa-icon [icon]="prefixIcons.down" /></ng-template>
 

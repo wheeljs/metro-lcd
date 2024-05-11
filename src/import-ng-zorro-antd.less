@@ -20,6 +20,38 @@
 nz-card {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03),0 1px 6px -1px rgba(0, 0, 0, 0.02),0 2px 4px 0 rgba(0, 0, 0, 0.02);
 
+  &.ant-card--inline-actions {
+    .ant-card-body {
+      padding-top: 20px;
+      padding-bottom: 8px;
+    }
+
+    .ant-card-body__footer {
+      margin-top: 12px;
+      padding-top: 9px;
+      border-top: 1px solid rgba(5, 5, 5, 0.06);
+    }
+
+    .ant-card-actions {
+      margin-right: @card-padding-base;
+      margin-left: @card-padding-base;
+
+      > li {
+        margin-top: 8px;
+        margin-right: 16px;
+        margin-bottom: 8px;
+        width: initial !important;
+        border-right: none;
+        color: @heading-color;
+        text-align: initial;
+      }
+
+      .ant-card__action-label {
+        margin-right: 8px;
+      }
+    }
+  }
+
   .ant-card-actions {
     border-radius: 0 0 @card-radius @card-radius;
   }

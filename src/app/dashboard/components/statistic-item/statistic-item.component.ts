@@ -1,34 +1,41 @@
-import { Component, Input, TemplateRef, ViewChild, LOCALE_ID, Inject, SimpleChanges, AfterViewInit, OnChanges, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, TemplateRef, ViewChild, LOCALE_ID, Inject, SimpleChanges, AfterViewInit, OnChanges, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
 import { formatNumber, formatPercent } from '@angular/common';
 import { BooleanInput } from 'ng-zorro-antd/core/types';
 import { InputBoolean } from 'ng-zorro-antd/core/util';
 import { NzStatisticComponent } from 'ng-zorro-antd/statistic';
+import { type IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faArrowUp, faArrowDown, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { formatUnit, Units } from '../../pipes/unit.pipe';
+
+type PrefixMode = 'arrow' | 'plusminus';
+
+const PrefixModes: Record<PrefixMode, { up: IconDefinition; down: IconDefinition; }> = {
+  arrow: {
+    up: faArrowUp,
+    down: faArrowDown,
+  },
+  plusminus: {
+    up: faPlus,
+    down: faMinus,
+  },
+};
 
 @Component({
   selector: 'md-statistic-item',
   templateUrl: './statistic-item.component.html',
   styleUrl: './statistic-item.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
 export class StatisticItemComponent implements OnChanges, AfterViewInit {
   static ngAcceptInputType_percent: BooleanInput;
   static ngAcceptInputType_autoPrefix: BooleanInput;
   static ngAcceptInputType_autoColor: BooleanInput;
 
-  upIcon = faArrowUp;
-
-  plusIcon = faPlus;
-
-  downIcon = faArrowDown;
-
-  minusIcon = faMinus;
-
   @ViewChild('upPrefix') upPrefix!: TemplateRef<void>;
 
   @ViewChild('downPrefix') downPrefix!: TemplateRef<void>;
 
-  @Input() prefixMode: 'arrow' | 'plusminus' = 'arrow';
+  @Input() prefixMode: PrefixMode = 'arrow';
 
   @Input() nzTitle?: NzStatisticComponent['nzTitle'];
 
@@ -47,6 +54,10 @@ export class StatisticItemComponent implements OnChanges, AfterViewInit {
   @Input() @InputBoolean() autoColor = false;
 
   nzPrefix: NzStatisticComponent['nzPrefix'];
+
+  get prefixIcons() {
+    return PrefixModes[this.prefixMode];
+  }
 
   get nzValue() {
     const { value, unit, valueFormat, percent, locale } = this;

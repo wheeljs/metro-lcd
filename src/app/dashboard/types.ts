@@ -88,6 +88,7 @@ export interface DashboardData extends DashboardDataSimple {
   inStationCapacity: number;
   passengerStrong?: ValueComparePercent;
   news: News;
+  off?: News;
   largeVolume: VolumeSummary;
   mediumVolume: VolumeSummary;
   smallVolume: VolumeSummary;

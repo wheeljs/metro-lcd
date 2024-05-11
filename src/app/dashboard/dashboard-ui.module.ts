@@ -23,7 +23,6 @@ import {
   ArrowLeftOutline,
   InfoCircleOutline,
   LeftOutline,
-  PlusSquareFill,
 } from '@ant-design/icons-angular/icons';
 
 import echarts from '../shared/echarts/custom-echarts';
@@ -32,7 +31,6 @@ const icons: IconDefinition[] = [
   ArrowLeftOutline,
   InfoCircleOutline,
   LeftOutline,
-  PlusSquareFill,
 ];
 
 const ExportsAsIs = [
