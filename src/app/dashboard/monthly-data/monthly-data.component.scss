@@ -67,6 +67,7 @@ $cls: md-monthly-data;
 
   ::ng-deep &__news-popover {
     max-width: 250px;
+    line-height: 24px;
   }
 
   &__item--with-chart {
