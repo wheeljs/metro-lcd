@@ -29,6 +29,10 @@ export class CalculatedComponent {
     return this.force ?? this.fieldCalculated;
   }
 
+  get always(): boolean {
+    return this.calculated && Boolean(this.contextService.context.config?.alwaysShowCalculated);
+  }
+
   get nzTooltipTrigger(): NzTooltipDirective['trigger'] {
     return this.calculated ? 'hover' : null;
   }

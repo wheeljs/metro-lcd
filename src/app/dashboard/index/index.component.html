@@ -51,6 +51,14 @@
         </nz-select>
       </nz-form-item>
       <nz-form-item nzAlign="middle">
+        <nz-form-label nzFor="alwaysShowCalculated">始终标识计算值</nz-form-label>
+        <nz-switch
+          name="alwaysShowCalculated"
+          [ngModel]="config.alwaysShowCalculated"
+          (ngModelChange)="onConfigChange('alwaysShowCalculated', $event)"
+        ></nz-switch>
+      </nz-form-item>
+      <nz-form-item nzAlign="middle">
         <nz-form-label nzFor="showVolumeDiff">展示运量对比</nz-form-label>
         <nz-switch
           name="showVolumeDiff"
