@@ -54,26 +54,6 @@ $cls: md-monthly-data;
         color: #e6e6e6;
       }
     }
-
-    &-card__icon--overlay {
-      position: relative;
-
-      > :last-child {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        background-color: #fff;
-        font-size: 16px;
-        z-index: 5;
-      }
-    }
-  }
-
-  &__new-lines {
-    &__empty {
-      align-self: center;
-      font-size: 18px;
-    }
   }
 
   &__popover-btn {
