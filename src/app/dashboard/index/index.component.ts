@@ -1,19 +1,16 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { filter, tap } from 'rxjs';
 import * as Sentry from '@sentry/angular-ivy';
 import type { NzResultComponent } from 'ng-zorro-antd/result';
-import { STORAGE } from '../../common';
 import type { DashboardData, DashboardDataVM } from '../types';
 import { DataService } from '../services';
 import { DataVMService } from '../services/data-vm.service';
 import type { DashboardConfig } from './types';
 import { ChangelogService } from '../../app/changelog.service';
 import { DashboardIndexContextService } from './dashboard-index-context.service';
-
-const DashboardConfigKey = 'dashboard-config';
 
 @Component({
   selector: 'md-index',
@@ -72,17 +69,12 @@ export class DashboardIndexComponent {
 
   loading = true;
 
-  _config: DashboardConfig = {
-    showVolumeDiff: true,
-  };
-
   get config() {
-    return this._config;
+    return this.dashboardIndexContextService.context.config;
   }
 
   set config(val: DashboardConfig) {
-    this.localStorage[DashboardConfigKey] = JSON.stringify(val);
-    this._config = val;
+    this.dashboardIndexContextService.updateConfig(val);
   }
 
   get reportUrl(): string {
@@ -98,16 +90,11 @@ export class DashboardIndexComponent {
     private router: Router,
     activatedRoute: ActivatedRoute,
     private title: Title,
-    @Inject(STORAGE) private localStorage: Storage,
     private dataService: DataService,
     private dataVMService: DataVMService,
     private changelogService: ChangelogService,
     private dashboardIndexContextService: DashboardIndexContextService,
   ) {
-    if (DashboardConfigKey in localStorage) {
-      this._config = JSON.parse(localStorage[DashboardConfigKey]);
-    }
-
     activatedRoute.paramMap
       .pipe(takeUntilDestroyed())
       .subscribe({
@@ -177,10 +164,9 @@ export class DashboardIndexComponent {
     this.loading = false;
   }
 
-  onShowVolumeDiffChange(checked: boolean) {
+  onConfigChange(key: keyof DashboardConfig, value: DashboardConfig[typeof key]) {
     this.config = {
-      ...this.config,
-      showVolumeDiff: checked,
+      [key]: value,
     };
   }
 }

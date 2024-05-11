@@ -55,7 +55,7 @@
         <nz-switch
           name="showVolumeDiff"
           [ngModel]="config.showVolumeDiff"
-          (ngModelChange)="onShowVolumeDiffChange($event)"
+          (ngModelChange)="onConfigChange('showVolumeDiff', $event)"
         ></nz-switch>
       </nz-form-item>
       <nz-form-item nzAlign="middle">

@@ -1,3 +1,3 @@
 export interface DashboardConfig {
-  showVolumeDiff: boolean;
+  showVolumeDiff?: boolean;
 }
