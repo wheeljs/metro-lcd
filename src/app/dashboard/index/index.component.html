@@ -41,10 +41,10 @@
 
   <md-settings [settings]="settingsTpl" />
   <ng-template #settingsTpl>
-    <form nz-form>
+    <form nz-form [formGroup]="settingsForm">
       <nz-form-item nzAlign="middle">
         <nz-form-label nzFor="range">数据范围</nz-form-label>
-        <nz-select name="range" [ngModel]="selectedId" (ngModelChange)="onRangeChange($event)" style="width: 120px;">
+        <nz-select formControlName="range" style="width: 120px;">
           @for (id of ids; track id) {
             <nz-option [nzValue]="id" [nzLabel]="id"></nz-option>
           }
@@ -52,26 +52,17 @@
       </nz-form-item>
       <nz-form-item nzAlign="middle">
         <nz-form-label nzFor="alwaysShowCalculated">始终标识计算值</nz-form-label>
-        <nz-switch
-          name="alwaysShowCalculated"
-          [ngModel]="config.alwaysShowCalculated"
-          (ngModelChange)="onConfigChange('alwaysShowCalculated', $event)"
-        ></nz-switch>
+        <nz-switch formControlName="alwaysShowCalculated"></nz-switch>
       </nz-form-item>
       <nz-form-item nzAlign="middle">
         <nz-form-label nzFor="showVolumeDiff">展示运量对比</nz-form-label>
-        <nz-switch
-          name="showVolumeDiff"
-          [ngModel]="config.showVolumeDiff"
-          (ngModelChange)="onConfigChange('showVolumeDiff', $event)"
-        ></nz-switch>
+        <nz-switch formControlName="showVolumeDiff"></nz-switch>
       </nz-form-item>
       <nz-form-item nzAlign="middle">
         <nz-form-label nzFor="dataRange">历史数据范围</nz-form-label>
         <nz-input-number-group nzSuffix="个月">
           <nz-input-number
-            name="dataRange"
-            [ngModel]="6"
+            formControlName="dataRange"
             [nzMin]="6"
             [nzMax]="12"
             nzReadOnly

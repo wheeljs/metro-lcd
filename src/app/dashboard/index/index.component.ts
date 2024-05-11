@@ -1,14 +1,15 @@
 import { Component, Input } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { filter, tap } from 'rxjs';
+import { filter, map, merge, tap } from 'rxjs';
 import * as Sentry from '@sentry/angular-ivy';
 import type { NzResultComponent } from 'ng-zorro-antd/result';
 import type { DashboardData, DashboardDataVM } from '../types';
 import { DataService } from '../services';
 import { DataVMService } from '../services/data-vm.service';
-import type { DashboardConfig } from './types';
+import type { DashboardConfig, DashboardIndexSettingsForm } from './types';
 import { ChangelogService } from '../../app/changelog.service';
 import { DashboardIndexContextService } from './dashboard-index-context.service';
 
@@ -86,7 +87,10 @@ export class DashboardIndexComponent {
     return reportUrl;
   }
 
+  settingsForm!: DashboardIndexSettingsForm;
+
   constructor(
+    private formBuilder: FormBuilder,
     private router: Router,
     activatedRoute: ActivatedRoute,
     private title: Title,
@@ -95,6 +99,8 @@ export class DashboardIndexComponent {
     private changelogService: ChangelogService,
     private dashboardIndexContextService: DashboardIndexContextService,
   ) {
+    this.setupSettingsForm();
+
     activatedRoute.paramMap
       .pipe(takeUntilDestroyed())
       .subscribe({
@@ -120,6 +126,9 @@ export class DashboardIndexComponent {
         });
         this.list = listMap;
 
+        this.settingsForm.patchValue({
+          range: this.selectedId || list[0].id,
+        }, { emitEvent: false });
         this.onRangeChange(this.selectedId || list[0].id!, true);
       },
     });
@@ -127,6 +136,34 @@ export class DashboardIndexComponent {
 
   showChangelog() {
     this.changelogService.show();
+  }
+
+  setupSettingsForm() {
+    const settingsForm = this.settingsForm = this.formBuilder.group({
+      range: '',
+      alwaysShowCalculated: this.config.alwaysShowCalculated ?? false,
+      showVolumeDiff: this.config.showVolumeDiff ?? true,
+      dataRange: [6, [
+        Validators.min(6),
+        Validators.max(12),
+      ]],
+    });
+
+    merge(
+      ...Object.keys(settingsForm.controls)
+        .filter((key) => !['range'].includes(key))
+        .map((key) => settingsForm.get(key)!.valueChanges.pipe(map(x => ({ [key]: x }))))
+    ).subscribe({
+      next: (value) => {
+        this.config = value;
+      },
+    });
+
+    settingsForm.get('range')!.valueChanges.subscribe({
+      next: (range) => {
+        this.onRangeChange(range!);
+      },
+    });
   }
 
   onRangeChange(id: string, skipLocationChange = false) {
