@@ -16,7 +16,7 @@ export class DataVMService {
   private manifest$ = this.fileService.list().pipe(
     switchMap((manifest) =>
       forkJoin(
-        manifest.map((x) =>
+        manifest.filter(x => !x.disabled).map((x) =>
           this.fileService.getData({
             range: x.id!,
             hash: x.hash,

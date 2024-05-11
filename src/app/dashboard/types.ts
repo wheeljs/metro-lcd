@@ -77,6 +77,7 @@ export interface DashboardDataSimple {
 }
 
 export interface DashboardData extends DashboardDataSimple {
+  disabled?: boolean;
   year: string;
   month: string;
   days: number;

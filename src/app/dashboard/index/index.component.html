@@ -51,8 +51,13 @@
           style="width: 120px;"
           (ngModelChange)="onRangeChange($event)"
         >
-          @for (id of ids; track id) {
-            <nz-option [nzValue]="id" [nzLabel]="id"></nz-option>
+          @for (item of entries; track item[0]) {
+            <nz-option
+              [nzValue]="item[0]"
+              [nzLabel]="item[1].id"
+              [nzDisabled]="item[1].disabled"
+              [nzTitle]="item[1].disabled ? '该月无数据' : undefined"
+            ></nz-option>
           }
         </nz-select>
       </nz-form-item>

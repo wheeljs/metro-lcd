@@ -31,19 +31,19 @@ export class DashboardIndexComponent {
 
   @Input() set range(val: string) {
     if (val === 'latest') {
-      val = this.ids[0];
+      val = this.entries[0]?.[0];
     }
 
     this._range = val;
-    if (this.ids.length) {
+    if (this.entries.length) {
       this.onRangeChange(val, true);
     }
   }
 
   list: Record<string, DashboardData | DashboardDataVM> = {};
 
-  get ids() {
-    return Object.keys(this.list);
+  get entries() {
+    return Object.entries(this.list);
   }
 
   get pageTitle() {
@@ -162,7 +162,7 @@ export class DashboardIndexComponent {
 
   onRangeChange(id: string, skipLocationChange = false) {
     const listItem = this.list[id];
-    if (!listItem) {
+    if (!listItem || listItem.disabled) {
       this.data = undefined;
       this.status = '404';
       this.loading = false;
