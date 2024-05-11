@@ -1,4 +1,4 @@
-import { Component, Input, TemplateRef, ViewChild, LOCALE_ID, Inject, SimpleChanges, AfterViewInit, OnChanges, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, TemplateRef, ViewChild, LOCALE_ID, Inject, SimpleChanges, AfterViewInit, OnChanges, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
 import { formatNumber, formatPercent } from '@angular/common';
 import { BooleanInput } from 'ng-zorro-antd/core/types';
 import { InputBoolean } from 'ng-zorro-antd/core/util';
@@ -10,6 +10,7 @@ import { formatUnit, Units } from '../../pipes/unit.pipe';
   selector: 'md-statistic-item',
   templateUrl: './statistic-item.component.html',
   styleUrl: './statistic-item.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
 export class StatisticItemComponent implements OnChanges, AfterViewInit {
   static ngAcceptInputType_percent: BooleanInput;

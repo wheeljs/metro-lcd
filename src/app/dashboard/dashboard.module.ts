@@ -7,7 +7,6 @@ import { DataService } from './services/';
 import { FileService } from './services/file.service';
 import { MonthlyDataComponent } from './monthly-data/monthly-data.component';
 import { UnitPipe } from './pipes/unit.pipe';
-import { PosnegStatisticDirective } from './directives/posneg-statistic.directive';
 import { StatisticItemComponent } from './components/statistic-item/statistic-item.component';
 import { MonthCitiesBarChartComponent } from './charts/month-cities-bar-chart/month-cities-bar-chart.component';
 import { DataVMService } from './services/data-vm.service';
@@ -19,7 +18,6 @@ import { WithValuePipe } from './pipes/with-value.pipe';
     DashboardIndexComponent,
     MonthlyDataComponent,
     UnitPipe,
-    PosnegStatisticDirective,
     StatisticItemComponent,
     MonthCitiesBarChartComponent,
     SettingsComponent,
