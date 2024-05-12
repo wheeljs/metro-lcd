@@ -56,7 +56,7 @@ export class StatisticItemComponent implements OnChanges, AfterViewInit {
   nzPrefix: NzStatisticComponent['nzPrefix'];
 
   get prefixIcons() {
-    return PrefixModes[this.prefixMode];
+    return PrefixModes[this.prefixMode] ?? PrefixModes.arrow;
   }
 
   get nzValue() {

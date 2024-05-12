@@ -106,6 +106,22 @@ describe('StatisticItemComponent', () => {
     expect(prefixIcon).not.toBeNull();
   });
 
+  it('should render correct prefix icon when prefixMode invalid', () => {
+    component.autoPrefix = true;
+    component.prefixMode = 'not-exists-mode';
+    fixture.detectChanges();
+
+    component.value = 1;
+    fixture.detectChanges();
+    let prefixIcon = fixture.debugElement.query(By.css('.fa-arrow-up'));
+    expect(prefixIcon).not.toBeNull();
+
+    component.value = -1;
+    fixture.detectChanges();
+    prefixIcon = fixture.debugElement.query(By.css('.fa-arrow-down'));
+    expect(prefixIcon).not.toBeNull();
+  });
+
   it('should have correct class when autoColor', () => {
     component.autoColor = true;
     component.value = 1;
