@@ -78,8 +78,8 @@ export interface DashboardDataSimple {
 
 export interface DashboardData extends DashboardDataSimple {
   disabled?: boolean;
-  year: string;
-  month: string;
+  year: number;
+  month: number;
   days: number;
   cityCount: number;
   lines: number;
@@ -89,7 +89,7 @@ export interface DashboardData extends DashboardDataSimple {
   inStationCapacity: number;
   passengerStrong?: ValueComparePercent;
   news: News;
-  off?: News;
+  off?: Partial<News>;
   largeVolume: VolumeSummary;
   mediumVolume: VolumeSummary;
   smallVolume: VolumeSummary;

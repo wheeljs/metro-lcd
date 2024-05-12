@@ -93,10 +93,10 @@ export class DataVMService {
         const sortedRangeData = [...rangeData];
         sortedRangeData.sort((a, b) => {
           if (a.year !== b.year) {
-            return Number.parseInt(a.year) - Number.parseInt(b.year);
+            return a.year - b.year;
           }
 
-          return Number.parseInt(a.month) - Number.parseInt(b.month);
+          return a.month - b.month;
         });
 
         return sortedRangeData.reverse();
