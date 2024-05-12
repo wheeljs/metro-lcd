@@ -1,9 +1,9 @@
 import { graphic } from 'echarts';
 import { TinyColor, type ColorInput } from '@ctrl/tinycolor';
-import { theme } from './g2.project.json';
+import g2Theme from './g2.project.json';
 
 export function colors(): string[] {
-  return theme.color;
+  return g2Theme.theme.color;
 }
 
 export function linearGradient({ color, alpha = [1, 0.3] }: {
