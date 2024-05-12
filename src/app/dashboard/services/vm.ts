@@ -1,13 +1,13 @@
 import type { DashboardData, DashboardDataVM, MonthCompare, ValueComparePercent } from '../types';
 
 export function prevRangeId(id: string, step: 'month' | 'year'): string {
-  const matched = id.split('-');
+  const matched = id.match(/(\d{4})-(\d{1,2})/);
   if (!matched?.length) {
     throw new Error(`range not valid, need id like '2024-2', got ${id}`);
   }
 
-  const year = Number.parseInt(matched[0]);
-  const month = Number.parseInt(matched[1]);
+  const year = Number.parseInt(matched[1]);
+  const month = Number.parseInt(matched[2]);
   if (step === 'year') {
     return `${year - 1}-${month}`;
   }
