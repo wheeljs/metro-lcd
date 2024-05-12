@@ -32,7 +32,7 @@ export class DashboardIndexComponent {
   @Input() set range(val: string) {
     this._range = val;
     if (this.ids.length) {
-      this.rangeUpdate(val);
+      this.onRangeChange(val, true);
     }
   }
 
@@ -185,14 +185,10 @@ export class DashboardIndexComponent {
         }
 
         this.status = undefined;
-        this.rangeUpdate(id);
+        this.data = this.list[id] as DashboardDataVM;
+        this.loading = false;
       },
     });
-  }
-
-  rangeUpdate(id: string) {
-    this.data = this.list[id] as DashboardDataVM;
-    this.loading = false;
   }
 
   onConfigChange(key: keyof DashboardConfig, value: DashboardConfig[typeof key]) {
