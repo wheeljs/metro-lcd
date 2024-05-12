@@ -30,6 +30,10 @@ export class DashboardIndexComponent {
   }
 
   @Input() set range(val: string) {
+    if (val === 'latest') {
+      val = this.ids[0];
+    }
+
     this._range = val;
     if (this.ids.length) {
       this.onRangeChange(val, true);
