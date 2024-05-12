@@ -23,10 +23,14 @@ import { DashboardIndexContextService } from './dashboard-index-context.service'
 })
 export class DashboardIndexComponent {
 
-  selectedId: string | undefined;
+  private _range: string | undefined;
+
+  get range(): string | undefined {
+    return this._range;
+  }
 
   @Input() set range(val: string) {
-    this.selectedId = val;
+    this._range = val;
     if (this.ids.length) {
       this.rangeUpdate(val);
     }
@@ -55,7 +59,7 @@ export class DashboardIndexComponent {
   }
 
   set data(val: DashboardDataVM | undefined) {
-    this.selectedId = val?.id;
+    this._range = val?.id;
     this._data = val;
 
     if (val) {
@@ -126,10 +130,7 @@ export class DashboardIndexComponent {
         });
         this.list = listMap;
 
-        this.settingsForm.patchValue({
-          range: this.selectedId || list[0].id,
-        }, { emitEvent: false });
-        this.onRangeChange(this.selectedId || list[0].id!, true);
+        this.onRangeChange(this.range || list[0].id!, true);
       },
     });
   }
@@ -140,7 +141,6 @@ export class DashboardIndexComponent {
 
   setupSettingsForm() {
     const settingsForm = this.settingsForm = this.formBuilder.group({
-      range: '',
       alwaysShowCalculated: this.config.alwaysShowCalculated ?? false,
       showVolumeDiff: this.config.showVolumeDiff ?? true,
       dataRange: [6, [
@@ -151,17 +151,10 @@ export class DashboardIndexComponent {
 
     merge(
       ...Object.keys(settingsForm.controls)
-        .filter((key) => !['range'].includes(key))
         .map((key) => settingsForm.get(key)!.valueChanges.pipe(map(x => ({ [key]: x }))))
     ).subscribe({
       next: (value) => {
         this.config = value;
-      },
-    });
-
-    settingsForm.get('range')!.valueChanges.subscribe({
-      next: (range) => {
-        this.onRangeChange(range!);
       },
     });
   }
@@ -184,7 +177,8 @@ export class DashboardIndexComponent {
         this.list = Object.assign({}, this.list, {
           [id]: data,
         });
-        if (!skipLocationChange && this.selectedId !== id) {
+
+        if (!skipLocationChange && this.range !== id) {
           this.router.navigateByUrl(`/dashboard/${id}`, {
             replaceUrl: typeof this.status !== 'undefined',
           });

@@ -44,7 +44,12 @@
     <form nz-form [formGroup]="settingsForm">
       <nz-form-item nzAlign="middle">
         <nz-form-label nzFor="range">数据范围</nz-form-label>
-        <nz-select formControlName="range" style="width: 120px;">
+        <nz-select
+          [ngModel]="range"
+          [ngModelOptions]="{ standalone: true }"
+          style="width: 120px;"
+          (ngModelChange)="onRangeChange($event)"
+        >
           @for (id of ids; track id) {
             <nz-option [nzValue]="id" [nzLabel]="id"></nz-option>
           }
