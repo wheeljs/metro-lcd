@@ -1,10 +1,10 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
 import { merge } from 'lodash-es';
 import type { DatasetComponentOption, ECharts, EChartsOption, LineSeriesOption } from 'echarts';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { colors, linearGradient } from '../../../../shared/echarts/utils';
 import type { DashboardDataVM } from '../../../types';
 import type { DashboardConfig } from '../../types';
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 const SimpleChartLineSerie: LineSeriesOption = {
   type: 'line',
