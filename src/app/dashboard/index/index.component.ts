@@ -54,6 +54,7 @@ export class DashboardIndexComponent {
   status?: NzResultComponent['nzStatus'];
 
   private _data: DashboardDataVM | undefined;
+
   get data() {
     return this._data!;
   }
@@ -62,14 +63,10 @@ export class DashboardIndexComponent {
     this._range = val?.id;
     this._data = val;
 
-    if (val) {
-      this.dashboardIndexContextService.update((draft) => {
-        draft.calculatedFields = Array.isArray(val.calculatedFields) ? val.calculatedFields : [];
-      });
-      if (val.year && val.month) {
-        this.title.setTitle(this.pageTitle);
-      }
-    }
+    this.dashboardIndexContextService.update((draft) => {
+      draft.calculatedFields = Array.isArray(val?.calculatedFields) ? val.calculatedFields : [];
+    });
+    this.title.setTitle(this.pageTitle);
   }
 
   loading = true;
