@@ -43,8 +43,9 @@
   <ng-template #settingsTpl>
     <form nz-form [formGroup]="settingsForm">
       <nz-form-item nzAlign="middle">
-        <nz-form-label nzFor="range">数据范围</nz-form-label>
+        <nz-form-label nzFor="mdi-settings-range">数据范围</nz-form-label>
         <nz-select
+          nzId="mdi-settings-range"
           [ngModel]="range"
           [ngModelOptions]="{ standalone: true }"
           style="width: 120px;"
@@ -56,18 +57,19 @@
         </nz-select>
       </nz-form-item>
       <nz-form-item nzAlign="middle">
-        <nz-form-label nzFor="alwaysShowCalculated">始终标识计算值</nz-form-label>
-        <nz-switch formControlName="alwaysShowCalculated"></nz-switch>
+        <nz-form-label nzFor="mdi-settings-alwaysShowCalculated">始终标识计算值</nz-form-label>
+        <nz-switch formControlName="alwaysShowCalculated" nzId="mdi-settings-alwaysShowCalculated"></nz-switch>
       </nz-form-item>
       <nz-form-item nzAlign="middle">
-        <nz-form-label nzFor="showVolumeDiff">展示运量对比</nz-form-label>
-        <nz-switch formControlName="showVolumeDiff"></nz-switch>
+        <nz-form-label nzFor="mdi-settings-showVolumeDiff">展示运量对比</nz-form-label>
+        <nz-switch formControlName="showVolumeDiff" nzId="mdi-settings-showVolumeDiff"></nz-switch>
       </nz-form-item>
       <nz-form-item nzAlign="middle">
-        <nz-form-label nzFor="dataRange">历史数据范围</nz-form-label>
+        <nz-form-label nzFor="mdi-settings-dataRange">历史数据范围</nz-form-label>
         <nz-input-number-group nzSuffix="个月">
           <nz-input-number
             formControlName="dataRange"
+            nzId="mdi-settings-dataRange"
             [nzMin]="6"
             [nzMax]="12"
             nzReadOnly
