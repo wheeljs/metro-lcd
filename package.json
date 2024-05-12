@@ -9,7 +9,8 @@
     "prebuild": "npm run manifest && npm run postchangelog",
     "build": "ng build",
     "changelog": "conventional-changelog -p angular-all -i CHANGELOG.md -s -t 'v' -r 0",
-    "postchangelog": "node ./scripts/generate-changelog.js"
+    "postchangelog": "node ./scripts/generate-changelog.js",
+    "test": "ng test"
   },
   "dependencies": {
     "@angular/animations": "^17.3.5",
@@ -48,10 +49,17 @@
     "@angular-devkit/build-angular": "^17.3.5",
     "@angular/cli": "^17.3.5",
     "@angular/compiler-cli": "^17.3.5",
+    "@types/jasmine": "~5.1.0",
     "@types/lodash-es": "^4.17.12",
     "angular-cli-ghpages": "^2.0.0-beta.2",
     "conventional-changelog-angular-all": "^1.7.0",
     "conventional-changelog-cli": "^3.0.0",
+    "jasmine-core": "~5.1.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.3.0"
   },
   "overrides": {
