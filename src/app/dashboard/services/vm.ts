@@ -1,4 +1,4 @@
-import type { DashboardData, DashboardDataVM, MonthCompare, ValueComparePercent } from '../types';
+import type { DashboardData, DashboardDataVM, MonthCompare } from '../types';
 
 export function prevRangeId(id: string, step: 'month' | 'year'): string {
   const matched = id.match(/(\d{4})-(\d{1,2})/);
@@ -97,9 +97,9 @@ export function toVM({ current, lastMonth, lastYear }: {
 
   if (!current.passengerStrong?.value) {
     if (!current.passengerStrong) {
-      current.passengerStrong = {} as ValueComparePercent;
+      current.passengerStrong = {} as DashboardData['passengerStrong'];
     }
-    current.passengerStrong.value = Number.parseFloat(
+    current.passengerStrong!.value = Number.parseFloat(
       (current.passengerCapacity.value / current.operationLength / current.days / 10000).toFixed(3)
     );
     vm.calculatedFields.push('passengerStrongVM.value');
@@ -140,26 +140,26 @@ export function toVM({ current, lastMonth, lastYear }: {
     Object.assign(vm.inStationCapacityVM, ...[compareLastMonth, compareLastYear].filter(x => x != null));
   }
 
-  vm.passengerStrongVM = { ...current.passengerStrong };
+  vm.passengerStrongVM = { ...current.passengerStrong! };
   if (prevMonth?.passengerStrong?.value) {
-    const [diff, percent] = calcCompare(current.passengerStrong.value, prevMonth.passengerStrong.value);
+    const [diff, percent] = calcCompare(current.passengerStrong!.value, prevMonth.passengerStrong.value);
     Object.assign(vm.passengerStrongVM, {
       compareLastMonth: diff,
-      compareLastMonthPercent: current.passengerStrong.compareLastMonthPercent ?? percent,
+      compareLastMonthPercent: current.passengerStrong!.compareLastMonthPercent ?? percent,
     });
     vm.calculatedFields.push('passengerStrongVM.compareLastMonth');
-    if (current.passengerStrong.compareLastMonthPercent == null) {
+    if (current.passengerStrong!.compareLastMonthPercent == null) {
       vm.calculatedFields.push('passengerStrongVM.compareLastMonthPercent');
     }
   }
   if (lastYear?.passengerStrong?.value) {
-    const [diff, percent] = calcCompare(current.passengerStrong.value, lastYear.passengerStrong.value);
+    const [diff, percent] = calcCompare(current.passengerStrong!.value, lastYear.passengerStrong.value);
     Object.assign(vm.passengerStrongVM, {
       compareLastYear: diff,
-      compareLastYearPercent: current.passengerStrong.compareLastYearPercent ?? percent,
+      compareLastYearPercent: current.passengerStrong!.compareLastYearPercent ?? percent,
     });
     vm.calculatedFields.push('passengerStrongVM.compareLastYear');
-    if (current.passengerStrong.compareLastYearPercent == null) {
+    if (current.passengerStrong!.compareLastYearPercent == null) {
       vm.calculatedFields.push('passengerStrongVM.compareLastYearPercent');
     }
   }
