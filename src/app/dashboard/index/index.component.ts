@@ -1,39 +1,49 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { filter, tap } from 'rxjs';
+import { filter, map, merge, tap } from 'rxjs';
 import * as Sentry from '@sentry/angular-ivy';
 import type { NzResultComponent } from 'ng-zorro-antd/result';
-import { STORAGE } from '../../common';
 import type { DashboardData, DashboardDataVM } from '../types';
 import { DataService } from '../services';
 import { DataVMService } from '../services/data-vm.service';
-import type { DashboardConfig } from './types';
+import type { DashboardConfig, DashboardIndexSettingsForm } from './types';
 import { ChangelogService } from '../../app/changelog.service';
-
-const DashboardConfigKey = 'dashboard-config';
+import { DashboardIndexContextService } from './dashboard-index-context.service';
 
 @Component({
   selector: 'md-index',
   templateUrl: './index.component.html',
   styleUrl: './index.component.scss',
+  providers: [
+    DashboardIndexContextService,
+  ],
 })
 export class DashboardIndexComponent {
 
-  selectedId: string | undefined;
+  private _range: string | undefined;
+
+  get range(): string | undefined {
+    return this._range;
+  }
 
   @Input() set range(val: string) {
-    this.selectedId = val;
-    if (this.ids.length) {
-      this.rangeUpdate(val);
+    if (val === 'latest') {
+      val = this.entries[0]?.[0];
+    }
+
+    this._range = val;
+    if (this.entries.length) {
+      this.onRangeChange(val, true);
     }
   }
 
   list: Record<string, DashboardData | DashboardDataVM> = {};
 
-  get ids() {
-    return Object.keys(this.list);
+  get entries() {
+    return Object.entries(this.list);
   }
 
   get pageTitle() {
@@ -48,34 +58,29 @@ export class DashboardIndexComponent {
   status?: NzResultComponent['nzStatus'];
 
   private _data: DashboardDataVM | undefined;
+
   get data() {
     return this._data!;
   }
 
   set data(val: DashboardDataVM | undefined) {
-    this.selectedId = val?.id;
+    this._range = val?.id;
     this._data = val;
 
-    if (val) {
-      if (val.year && val.month) {
-        this.title.setTitle(this.pageTitle);
-      }
-    }
+    this.dashboardIndexContextService.update((draft) => {
+      draft.calculatedFields = Array.isArray(val?.calculatedFields) ? val.calculatedFields : [];
+    });
+    this.title.setTitle(this.pageTitle);
   }
 
   loading = true;
 
-  _config: DashboardConfig = {
-    showVolumeDiff: true,
-  };
-
   get config() {
-    return this._config;
+    return this.dashboardIndexContextService.context.config;
   }
 
   set config(val: DashboardConfig) {
-    this.localStorage[DashboardConfigKey] = JSON.stringify(val);
-    this._config = val;
+    this.dashboardIndexContextService.updateConfig(val);
   }
 
   get reportUrl(): string {
@@ -87,18 +92,19 @@ export class DashboardIndexComponent {
     return reportUrl;
   }
 
+  settingsForm!: DashboardIndexSettingsForm;
+
   constructor(
+    private formBuilder: FormBuilder,
     private router: Router,
     activatedRoute: ActivatedRoute,
     private title: Title,
-    @Inject(STORAGE) private localStorage: Storage,
     private dataService: DataService,
     private dataVMService: DataVMService,
     private changelogService: ChangelogService,
+    private dashboardIndexContextService: DashboardIndexContextService,
   ) {
-    if (DashboardConfigKey in localStorage) {
-      this._config = JSON.parse(localStorage[DashboardConfigKey]);
-    }
+    this.setupSettingsForm();
 
     activatedRoute.paramMap
       .pipe(takeUntilDestroyed())
@@ -125,7 +131,7 @@ export class DashboardIndexComponent {
         });
         this.list = listMap;
 
-        this.onRangeChange(this.selectedId || list[0].id!, true);
+        this.onRangeChange(this.range || list[0].id!, true);
       },
     });
   }
@@ -134,9 +140,29 @@ export class DashboardIndexComponent {
     this.changelogService.show();
   }
 
+  setupSettingsForm() {
+    const settingsForm = this.settingsForm = this.formBuilder.group({
+      alwaysShowCalculated: this.config.alwaysShowCalculated ?? false,
+      showVolumeDiff: this.config.showVolumeDiff ?? true,
+      dataRange: [6, [
+        Validators.min(6),
+        Validators.max(12),
+      ]],
+    });
+
+    merge(
+      ...Object.keys(settingsForm.controls)
+        .map((key) => settingsForm.get(key)!.valueChanges.pipe(map(x => ({ [key]: x }))))
+    ).subscribe({
+      next: (value) => {
+        this.config = value;
+      },
+    });
+  }
+
   onRangeChange(id: string, skipLocationChange = false) {
     const listItem = this.list[id];
-    if (!listItem) {
+    if (!listItem || listItem.disabled) {
       this.data = undefined;
       this.status = '404';
       this.loading = false;
@@ -152,27 +178,23 @@ export class DashboardIndexComponent {
         this.list = Object.assign({}, this.list, {
           [id]: data,
         });
-        if (!skipLocationChange && this.selectedId !== id) {
+
+        if (!skipLocationChange && this.range !== id) {
           this.router.navigateByUrl(`/dashboard/${id}`, {
             replaceUrl: typeof this.status !== 'undefined',
           });
         }
 
         this.status = undefined;
-        this.rangeUpdate(id);
+        this.data = this.list[id] as DashboardDataVM;
+        this.loading = false;
       },
     });
   }
 
-  rangeUpdate(id: string) {
-    this.data = this.list[id] as DashboardDataVM;
-    this.loading = false;
-  }
-
-  onShowVolumeDiffChange(checked: boolean) {
+  onConfigChange(key: keyof DashboardConfig, value: DashboardConfig[typeof key]) {
     this.config = {
-      ...this.config,
-      showVolumeDiff: checked,
+      [key]: value,
     };
   }
 }

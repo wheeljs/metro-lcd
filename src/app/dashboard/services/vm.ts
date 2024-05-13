@@ -1,13 +1,13 @@
-import type { DashboardData, DashboardDataVM, MonthCompare, ValueComparePercent } from '../types';
+import type { DashboardData, DashboardDataVM, MonthCompare } from '../types';
 
 export function prevRangeId(id: string, step: 'month' | 'year'): string {
-  const matched = id.split('-');
+  const matched = id.match(/(\d{4})-(\d{1,2})/);
   if (!matched?.length) {
     throw new Error(`range not valid, need id like '2024-2', got ${id}`);
   }
 
-  const year = Number.parseInt(matched[0]);
-  const month = Number.parseInt(matched[1]);
+  const year = Number.parseInt(matched[1]);
+  const month = Number.parseInt(matched[2]);
   if (step === 'year') {
     return `${year - 1}-${month}`;
   }
@@ -51,10 +51,13 @@ export function toVM({ current, lastMonth, lastYear }: {
   lastMonth?: DashboardData | (DashboardData[]);
   lastYear?: DashboardData;
 }): DashboardDataVM {
-  const vm: Partial<DashboardDataVM> = { ...current };
+  const vm: Partial<DashboardDataVM> & Pick<DashboardDataVM, 'monthCompare' | 'calculatedFields'> = {
+    ...current,
+    monthCompare: [],
+    calculatedFields: [],
+  };
   const lastMonths = Array.isArray(lastMonth) ? lastMonth : [lastMonth!];
 
-  vm.monthCompare = [];
   if (lastMonths.length >= 3) {
     for (const month of lastMonths) {
       const monthCompareItem: MonthCompare = {
@@ -94,11 +97,12 @@ export function toVM({ current, lastMonth, lastYear }: {
 
   if (!current.passengerStrong?.value) {
     if (!current.passengerStrong) {
-      current.passengerStrong = {} as ValueComparePercent;
+      current.passengerStrong = {} as DashboardData['passengerStrong'];
     }
-    current.passengerStrong.value = Number.parseFloat(
+    current.passengerStrong!.value = Number.parseFloat(
       (current.passengerCapacity.value / current.operationLength / current.days / 10000).toFixed(3)
     );
+    vm.calculatedFields.push('passengerStrongVM.value');
   }
 
   const prevMonth = lastMonths?.[0];
@@ -114,6 +118,10 @@ export function toVM({ current, lastMonth, lastYear }: {
         compareLastMonth: diff,
         compareLastMonthPercent: percent,
       };
+      vm.calculatedFields.push(
+        'inStationCapacityVM.compareLastMonth',
+        'inStationCapacityVM.compareLastMonthPercent'
+      );
     }
 
     let compareLastYear;
@@ -123,25 +131,37 @@ export function toVM({ current, lastMonth, lastYear }: {
         compareLastYear: diff,
         compareLastYearPercent: percent,
       };
+      vm.calculatedFields.push(
+        'inStationCapacityVM.compareLastYear',
+        'inStationCapacityVM.compareLastYearPercent'
+      );
     }
 
     Object.assign(vm.inStationCapacityVM, ...[compareLastMonth, compareLastYear].filter(x => x != null));
   }
 
-  vm.passengerStrongVM = { ...current.passengerStrong };
+  vm.passengerStrongVM = { ...current.passengerStrong! };
   if (prevMonth?.passengerStrong?.value) {
-    const [diff, percent] = calcCompare(current.passengerStrong.value, prevMonth.passengerStrong.value);
+    const [diff, percent] = calcCompare(current.passengerStrong!.value, prevMonth.passengerStrong.value);
     Object.assign(vm.passengerStrongVM, {
       compareLastMonth: diff,
-      compareLastMonthPercent: current.passengerStrong.compareLastMonthPercent ?? percent,
+      compareLastMonthPercent: current.passengerStrong!.compareLastMonthPercent ?? percent,
     });
+    vm.calculatedFields.push('passengerStrongVM.compareLastMonth');
+    if (current.passengerStrong!.compareLastMonthPercent == null) {
+      vm.calculatedFields.push('passengerStrongVM.compareLastMonthPercent');
+    }
   }
   if (lastYear?.passengerStrong?.value) {
-    const [diff, percent] = calcCompare(current.passengerStrong.value, lastYear.passengerStrong.value);
+    const [diff, percent] = calcCompare(current.passengerStrong!.value, lastYear.passengerStrong.value);
     Object.assign(vm.passengerStrongVM, {
       compareLastYear: diff,
-      compareLastYearPercent: current.passengerStrong.compareLastYearPercent ?? percent,
+      compareLastYearPercent: current.passengerStrong!.compareLastYearPercent ?? percent,
     });
+    vm.calculatedFields.push('passengerStrongVM.compareLastYear');
+    if (current.passengerStrong!.compareLastYearPercent == null) {
+      vm.calculatedFields.push('passengerStrongVM.compareLastYearPercent');
+    }
   }
 
   ['largeVolume', 'mediumVolume', 'smallVolume'].forEach((volumeKey) => {

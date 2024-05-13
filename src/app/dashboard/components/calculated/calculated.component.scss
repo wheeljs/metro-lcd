@@ -1,0 +1,13 @@
+.md-calculated {
+  transition: background-color 0.3s;
+
+  &--always, &:hover {
+    background-color: #f6f6f6;
+  }
+
+  &-tooltip {
+    .ant-tooltip-arrow {
+      transform: translateY(calc(-100% + 1px)) translateX(-50%);
+    }
+  }
+}

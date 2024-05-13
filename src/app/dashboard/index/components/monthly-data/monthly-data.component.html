@@ -238,22 +238,24 @@
       <span class="ant-card__action-label">环比</span>
       <nz-space>
         @if (data.inStationCapacityVM.compareLastMonth) {
-          <md-statistic-item
-            *nzSpaceItem
-            [value]="data.inStationCapacityVM.compareLastMonth"
-            unit="亿"
-            autoPrefix
-            autoColor
-          />
+          <md-calculated *nzSpaceItem field="inStationCapacityVM.compareLastMonth">
+            <md-statistic-item
+              [value]="data.inStationCapacityVM.compareLastMonth"
+              unit="亿"
+              autoPrefix
+              autoColor
+            />
+          </md-calculated>
         }
         @if (data.inStationCapacityVM.compareLastMonthPercent) {
-          <md-statistic-item
-            *nzSpaceItem
-            [value]="data.inStationCapacityVM.compareLastMonthPercent"
-            percent
-            autoPrefix
-            autoColor
-          />
+          <md-calculated *nzSpaceItem field="inStationCapacityVM.compareLastMonthPercent">
+            <md-statistic-item
+              [value]="data.inStationCapacityVM.compareLastMonthPercent"
+              percent
+              autoPrefix
+              autoColor
+            />
+          </md-calculated>
         }
       </nz-space>
     </ng-template>
@@ -261,22 +263,24 @@
       <span class="ant-card__action-label">同比</span>
       <nz-space>
         @if (data.inStationCapacityVM.compareLastYear) {
-          <md-statistic-item
-            *nzSpaceItem
-            [value]="data.inStationCapacityVM.compareLastYear!"
-            unit="亿"
-            autoPrefix
-            autoColor
-          />
+          <md-calculated *nzSpaceItem field="inStationCapacityVM.compareLastYear">
+            <md-statistic-item
+              [value]="data.inStationCapacityVM.compareLastYear!"
+              unit="亿"
+              autoPrefix
+              autoColor
+            />
+          </md-calculated>
         }
         @if (data.inStationCapacityVM.compareLastYearPercent) {
-          <md-statistic-item
-            *nzSpaceItem
-            [value]="data.inStationCapacityVM.compareLastYearPercent!"
-            percent
-            autoPrefix
-            autoColor
-          />
+          <md-calculated *nzSpaceItem field="inStationCapacityVM.compareLastYearPercent">
+            <md-statistic-item
+              [value]="data.inStationCapacityVM.compareLastYearPercent!"
+              percent
+              autoPrefix
+              autoColor
+            />
+          </md-calculated>
         }
       </nz-space>
     </ng-template>
@@ -288,12 +292,14 @@
       ]
     ">
       <div class="md-monthly-data__item--with-chart">
-        <md-statistic-item
-          nzTitle="平均客运强度"
-          [value]="data.passengerStrongVM.value"
-          valueFormat="1.0-3"
-          nzSuffix="万人次每公里日"
-        />
+        <md-calculated field="passengerStrongVM.value">
+          <md-statistic-item
+            nzTitle="平均客运强度"
+            [value]="data.passengerStrongVM.value"
+            valueFormat="1.0-3"
+            nzSuffix="万人次每公里日"
+          />
+        </md-calculated>
         <div
           echarts
           class="md-monthly-data__simple-chart"
@@ -306,22 +312,24 @@
       <span class="ant-card__action-label">环比</span>
       <nz-space>
         @if (data.passengerStrongVM.compareLastMonth) {
-          <md-statistic-item
-            *nzSpaceItem
-            [value]="data.passengerStrongVM.compareLastMonth!"
-            valueFormat="1.0-3"
-            autoPrefix
-            autoColor
-          />
+          <md-calculated *nzSpaceItem field="passengerStrongVM.compareLastMonth">
+            <md-statistic-item
+              [value]="data.passengerStrongVM.compareLastMonth!"
+              valueFormat="1.0-3"
+              autoPrefix
+              autoColor
+            />
+          </md-calculated>
         }
         @if (data.passengerStrongVM.compareLastMonthPercent) {
-          <md-statistic-item
-            *nzSpaceItem
-            [value]="data.passengerStrongVM.compareLastMonthPercent!"
-            percent
-            autoPrefix
-            autoColor
-          />
+          <md-calculated *nzSpaceItem field="passengerStrongVM.compareLastMonthPercent">
+            <md-statistic-item
+              [value]="data.passengerStrongVM.compareLastMonthPercent!"
+              percent
+              autoPrefix
+              autoColor
+            />
+          </md-calculated>
         }
       </nz-space>
     </ng-template>
@@ -329,22 +337,24 @@
       <span class="ant-card__action-label">同比</span>
       <nz-space>
         @if (data.passengerStrongVM.compareLastYear) {
-          <md-statistic-item
-            *nzSpaceItem
-            [value]="data.passengerStrongVM.compareLastYear"
-            valueFormat="1.0-3"
-            autoPrefix
-            autoColor
-          />
+          <md-calculated *nzSpaceItem field="passengerStrongVM.compareLastYear">
+            <md-statistic-item
+              [value]="data.passengerStrongVM.compareLastYear"
+              valueFormat="1.0-3"
+              autoPrefix
+              autoColor
+            />
+          </md-calculated>
         }
         @if (data.passengerStrongVM.compareLastYearPercent) {
-          <md-statistic-item
-            *nzSpaceItem
-            [value]="data.passengerStrongVM.compareLastYearPercent"
-            percent
-            autoPrefix
-            autoColor
-          />
+          <md-calculated *nzSpaceItem field="passengerStrongVM.compareLastYearPercent">
+            <md-statistic-item
+              [value]="data.passengerStrongVM.compareLastYearPercent"
+              percent
+              autoPrefix
+              autoColor
+            />
+          </md-calculated>
         }
       </nz-space>
     </ng-template>
@@ -372,12 +382,14 @@
             />
             <ng-template #volumeLinesTitleTpl>
               <span>线路数</span>@if (config?.showVolumeDiff && volumeCompare?.lines?.compareLastMonth) {
-                <md-statistic-item
-                  class="md-monthly-data__volume-card__item__compare"
-                  [value]="volumeCompare.lines.compareLastMonth"
-                  prefixMode="plusminus"
-                  autoPrefix
-                />
+                <md-calculated force>
+                  <md-statistic-item
+                    class="md-monthly-data__volume-card__item__compare"
+                    [value]="volumeCompare.lines.compareLastMonth"
+                    prefixMode="plusminus"
+                    autoPrefix
+                  />
+                </md-calculated>
               }
             </ng-template>
           </div>
@@ -389,12 +401,14 @@
             />
             <ng-template #volumeOperationLengthTitleTpl>
               <span>运营里程</span>@if (config?.showVolumeDiff && volumeCompare?.operationLength?.compareLastMonth) {
-                <md-statistic-item
-                  class="md-monthly-data__volume-card__item__compare"
-                  [value]="volumeCompare.operationLength.compareLastMonth"
-                  prefixMode="plusminus"
-                  autoPrefix
-                />
+                <md-calculated force>
+                  <md-statistic-item
+                    class="md-monthly-data__volume-card__item__compare"
+                    [value]="volumeCompare.operationLength.compareLastMonth"
+                    prefixMode="plusminus"
+                    autoPrefix
+                  />
+                </md-calculated>
               }
             </ng-template>
           </div>
@@ -406,14 +420,16 @@
             />
             <ng-template #volumePassengerCapacityTitleTpl>
               <span>客运量</span>@if (config?.showVolumeDiff && volumeCompare?.passengerCapacity?.compareLastMonth) {
-                <md-statistic-item
-                  class="md-monthly-data__volume-card__item__compare"
-                  [value]="volumeCompare.passengerCapacity.compareLastMonth"
-                  [unit]="unit"
-                  nzSuffix=""
-                  prefixMode="plusminus"
-                  autoPrefix
-                />
+                <md-calculated force>
+                  <md-statistic-item
+                    class="md-monthly-data__volume-card__item__compare"
+                    [value]="volumeCompare.passengerCapacity.compareLastMonth"
+                    [unit]="unit"
+                    nzSuffix=""
+                    prefixMode="plusminus"
+                    autoPrefix
+                  />
+                </md-calculated>
               }
             </ng-template>
           </div>
@@ -425,14 +441,16 @@
             />
             <ng-template #volumeinStationCapacityTitleTpl>
               <span>进站量</span>@if (config?.showVolumeDiff && volumeCompare?.inStationCapacity?.compareLastMonth) {
-                <md-statistic-item
-                  class="md-monthly-data__volume-card__item__compare"
-                  [value]="volumeCompare.inStationCapacity.compareLastMonth"
-                  [unit]="unit"
-                  nzSuffix=""
-                  prefixMode="plusminus"
-                  autoPrefix
-                />
+                <md-calculated force>
+                  <md-statistic-item
+                    class="md-monthly-data__volume-card__item__compare"
+                    [value]="volumeCompare.inStationCapacity.compareLastMonth"
+                    [unit]="unit"
+                    nzSuffix=""
+                    prefixMode="plusminus"
+                    autoPrefix
+                  />
+                </md-calculated>
               }
             </ng-template>
           </div>

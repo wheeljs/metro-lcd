@@ -1,3 +1,51 @@
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/wheeljs/metro-lcd/compare/v1.2.3...v1.3.0) (2024-05-13)
+
+
+### Bug Fixes
+
+* **dashboard/components/statistic-item:** fallback to arrow when `prefixMode` invalid ([1b90349](https://github.com/wheeljs/metro-lcd/commit/1b90349))
+* **dashboard/data:** align types with data ([47e01a3](https://github.com/wheeljs/metro-lcd/commit/47e01a3))
+* **dashboard/data:** align types with data ([df00f9e](https://github.com/wheeljs/metro-lcd/commit/df00f9e))
+* **dashboard:** change '/dashboard' to '/dashboard/latest' avoid paramMap not produce range changed value ([8c5f632](https://github.com/wheeljs/metro-lcd/commit/8c5f632))
+* **dashboard:** fetch data when range change by route param binding ([e04e7b7](https://github.com/wheeljs/metro-lcd/commit/e04e7b7))
+* **dashboard:** set relative fields ignore data defined ([b961df8](https://github.com/wheeljs/metro-lcd/commit/b961df8))
+* **dashboard:** use regexp test range ([1d50b20](https://github.com/wheeljs/metro-lcd/commit/1d50b20))
+* **echarts:** fix problem with import theme ([f353d10](https://github.com/wheeljs/metro-lcd/commit/f353d10))
+
+
+### Code Refactoring
+
+* **dashboard/index/monthly-data:** reorder imports ([2c71412](https://github.com/wheeljs/metro-lcd/commit/2c71412))
+* **dashboard/monthly-data:** move component into index page folder ([081bd37](https://github.com/wheeljs/metro-lcd/commit/081bd37))
+* **dashboard/settings:** reactive forms ([f2ca7de](https://github.com/wheeljs/metro-lcd/commit/f2ca7de))
+* **dashboard:** extract dashboard config into context service ([16dad84](https://github.com/wheeljs/metro-lcd/commit/16dad84))
+* **dashboard:** sync range in route and settings ([df35f4e](https://github.com/wheeljs/metro-lcd/commit/df35f4e))
+
+
+### Features
+
+* **dashboard/settings:** add nzFor and nzId ([534b8e6](https://github.com/wheeljs/metro-lcd/commit/534b8e6))
+* **dashboard:** always show calculated value ([bd11eef](https://github.com/wheeljs/metro-lcd/commit/bd11eef))
+* **dashboard:** highlight calculated data ([47c9926](https://github.com/wheeljs/metro-lcd/commit/47c9926))
+* **dashboard:** show missed range with disabled ([748f516](https://github.com/wheeljs/metro-lcd/commit/748f516))
+
+
+### Tests
+
+* **dashboard/chart/month-cities:** unit test ([e3ee7f1](https://github.com/wheeljs/metro-lcd/commit/e3ee7f1))
+* **dashboard/components/calculated:** unit test ([56c229b](https://github.com/wheeljs/metro-lcd/commit/56c229b))
+* **dashboard/components/settings:** unit test ([ed04ea1](https://github.com/wheeljs/metro-lcd/commit/ed04ea1))
+* **dashboard/components/statistic-item:** unit test ([16841c7](https://github.com/wheeljs/metro-lcd/commit/16841c7))
+* **dashboard/index/monthly-data:** remove unused imports ([022fdeb](https://github.com/wheeljs/metro-lcd/commit/022fdeb))
+* **dashboard/pipes/unit:** unit test ([deae2e7](https://github.com/wheeljs/metro-lcd/commit/deae2e7))
+* **dashboard/pipes/with-value:** unit test ([aa91184](https://github.com/wheeljs/metro-lcd/commit/aa91184))
+* **dashboard/services/file:** unit test, remove unused function ([2178c6e](https://github.com/wheeljs/metro-lcd/commit/2178c6e))
+* **dashboard:** unit test for vm ([48923f1](https://github.com/wheeljs/metro-lcd/commit/48923f1))
+* dependencies and configurations ([5c0b553](https://github.com/wheeljs/metro-lcd/commit/5c0b553))
+
+
+
 <a name="1.2.3"></a>
 ## [1.2.3](https://github.com/wheeljs/metro-lcd/compare/v1.2.2...v1.2.3) (2024-05-11)
 

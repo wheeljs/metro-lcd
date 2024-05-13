@@ -5,13 +5,14 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardIndexComponent } from './index/index.component';
 import { DataService } from './services/';
 import { FileService } from './services/file.service';
-import { MonthlyDataComponent } from './monthly-data/monthly-data.component';
+import { MonthlyDataComponent } from './index/components/monthly-data/monthly-data.component';
 import { UnitPipe } from './pipes/unit.pipe';
 import { StatisticItemComponent } from './components/statistic-item/statistic-item.component';
 import { MonthCitiesBarChartComponent } from './charts/month-cities-bar-chart/month-cities-bar-chart.component';
 import { DataVMService } from './services/data-vm.service';
 import { SettingsComponent } from './components/settings/settings.component';
 import { WithValuePipe } from './pipes/with-value.pipe';
+import { CalculatedComponent } from './components/calculated/calculated.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { WithValuePipe } from './pipes/with-value.pipe';
     MonthCitiesBarChartComponent,
     SettingsComponent,
     WithValuePipe,
+    CalculatedComponent,
   ],
   imports: [
     SharedModule,

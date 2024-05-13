@@ -16,7 +16,7 @@ export class DataVMService {
   private manifest$ = this.fileService.list().pipe(
     switchMap((manifest) =>
       forkJoin(
-        manifest.map((x) =>
+        manifest.filter(x => !x.disabled).map((x) =>
           this.fileService.getData({
             range: x.id!,
             hash: x.hash,
@@ -93,10 +93,10 @@ export class DataVMService {
         const sortedRangeData = [...rangeData];
         sortedRangeData.sort((a, b) => {
           if (a.year !== b.year) {
-            return Number.parseInt(a.year) - Number.parseInt(b.year);
+            return a.year - b.year;
           }
 
-          return Number.parseInt(a.month) - Number.parseInt(b.month);
+          return a.month - b.month;
         });
 
         return sortedRangeData.reverse();

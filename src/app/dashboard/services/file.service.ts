@@ -36,17 +36,4 @@ export class FileService {
       })
     );
   }
-
-  getDataVM(options: LoadDataOptions): Observable<DashboardDataVM> {
-    const { range } = options;
-    const prevMonthRange = prevRangeId(range, 'month');
-    const prevYearRange = prevRangeId(range, 'year');
-    return forkJoin({
-      current: this.getData(options),
-      lastMonth: this.getData({ range: prevMonthRange }).pipe(catchError(() => of(undefined))),
-      lastYear: this.getData({ range: prevYearRange }).pipe(catchError(() => of(undefined))),
-    }).pipe(
-      map((result) => toVM(result)),
-    );
-  }
 }
