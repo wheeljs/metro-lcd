@@ -29,9 +29,9 @@ $cls: md-monthly-data;
 
   &__main {
     grid-column: 1 / -1;
-    display: flex;
-    justify-content: space-between;
-    gap: 32px 16px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(1px, 1fr));
+    gap: 16px;
 
     > nz-card ::ng-deep {
       flex: 1 1;
@@ -141,6 +141,10 @@ $cls: md-monthly-data;
           flex-grow: 1;
         }
       }
+    }
+
+    &__main {
+      grid-template-columns: repeat(2, 1fr);
     }
 
     &__main-card ::ng-deep {

@@ -71,3 +71,9 @@ $transition-duration: .3s;
     }
   }
 }
+
+@media screen and (max-width: 1439px) {
+  .#{$cls}[hidden] {
+    display: initial !important;
+  }
+}

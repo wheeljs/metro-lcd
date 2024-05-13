@@ -7,6 +7,15 @@ export interface LoadDataOptions {
   hash?: string;
 }
 
+export enum ExtraNoteTypes {
+  Covid19 = 'covid19',
+}
+
+export interface ExtraNote {
+  type: ExtraNoteTypes;
+  note: string;
+}
+
 export interface Value {
   value: number;
 }
@@ -94,6 +103,7 @@ export interface DashboardData extends DashboardDataSimple {
   cities: City[];
   originLink?: string;
   summaries: string[];
+  extraNotes?: ExtraNote[];
 }
 
 export type VolumeCompare = {

@@ -14,6 +14,9 @@
               @for (summary of data.summaries; track summary) {
                 <li>{{summary}}</li>
               }
+              @for (extraNote of data.extraNotes; track $index) {
+                <li>{{extraNote.note}}</li>
+              }
               @if (data.originLink) {
                 <li><a
                   [href]="data.originLink"
