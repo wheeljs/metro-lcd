@@ -1,3 +1,19 @@
+<a name="1.3.1"></a>
+## [1.3.1](https://github.com/wheeljs/metro-lcd/compare/v1.3.0...v1.3.1) (2024-05-13)
+
+
+### Bug Fixes
+
+* **dashboard/index/monthly-data:** display main data into two lines on small screen ([bea6da4](https://github.com/wheeljs/metro-lcd/commit/bea6da4))
+* **dashboard/settings:** always show handler on small screen ([1928446](https://github.com/wheeljs/metro-lcd/commit/1928446))
+
+
+### Features
+
+* **dashboard:** extraNotes ([959922f](https://github.com/wheeljs/metro-lcd/commit/959922f))
+
+
+
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/wheeljs/metro-lcd/compare/v1.2.3...v1.3.0) (2024-05-13)
 
