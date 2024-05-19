@@ -59,6 +59,17 @@ export function toVM({ current, lastMonth, lastYear }: {
   };
   const lastMonths = Array.isArray(lastMonth) ? lastMonth : [lastMonth!];
 
+  if (Array.isArray(vm.cities)) {
+    vm.cities.forEach((city) => {
+      if (!city.passengerStrong && city.operationLength && city.passengerCapacity) {
+        city.passengerStrong = Number.parseFloat(
+          (city.passengerCapacity / city.operationLength / current.days / 10000).toFixed(3)
+        );
+        calculatedFields.add('cities.passengerStrong');
+      }
+    });
+  }
+
   if (lastMonths.length >= 3) {
     for (const month of lastMonths) {
       const monthCompareItem: MonthCompare = {
