@@ -4,11 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-patchedDependencies:
-  ngx-echarts@17.1.0:
-    hash: 5dpx6znp5ou2qvvftvawi3buom
-    path: patches/ngx-echarts@17.1.0.patch
-
 dependencies:
   '@angular/animations':
     specifier: ^17.3.5
@@ -89,8 +84,8 @@ dependencies:
     specifier: 17.3.0
     version: 17.3.0(@angular/animations@17.3.5)(@angular/common@17.3.5)(@angular/core@17.3.5)(@angular/forms@17.3.5)(@angular/platform-browser@17.3.5)(@angular/router@17.3.5)(rxjs@7.8.1)
   ngx-echarts:
-    specifier: ^17.1.0
-    version: 17.1.0(patch_hash=5dpx6znp5ou2qvvftvawi3buom)(echarts@5.5.0)
+    specifier: ^17.2.0
+    version: 17.2.0(echarts@5.5.0)
   normalize.css:
     specifier: ^8.0.1
     version: 8.0.1
@@ -6991,15 +6986,14 @@ packages:
       - rxjs
     dev: false
 
-  /ngx-echarts@17.1.0(patch_hash=5dpx6znp5ou2qvvftvawi3buom)(echarts@5.5.0):
-    resolution: {integrity: sha512-DSNF/aKmJSxJWb9UwPUgNtY8Ma9SmViDBRacvAwpakc/5mJerunxndDgoBQkYk5JFKAjXX6bp4ZWLRKL3/5AGA==}
+  /ngx-echarts@17.2.0(echarts@5.5.0):
+    resolution: {integrity: sha512-i3XDE9d53zmJH4bp8RQ/271oPlhBkczO1M3VtWk8nCXdxQq9qx8UckjWEQ7oV1AbSDLGK5sRiFu5EaY5hvdWPA==}
     peerDependencies:
       echarts: '>=5.0.0'
     dependencies:
       echarts: 5.5.0
       tslib: 2.6.2
     dev: false
-    patched: true
 
   /nice-napi@1.0.2:
     resolution: {integrity: sha512-px/KnJAJZf5RuBGcfD+Sp2pAKq0ytz8j+1NehvgIGFkvtvFrDM3T8E4x/JJODXK9WZow8RRGrbA9QQ3hs+pDhA==}
@@ -7007,7 +7001,7 @@ packages:
     requiresBuild: true
     dependencies:
       node-addon-api: 3.2.1
-      node-gyp-build: 4.8.0
+      node-gyp-build: 4.8.1
     dev: true
     optional: true
 
@@ -7022,8 +7016,8 @@ packages:
     engines: {node: '>= 6.13.0'}
     dev: true
 
-  /node-gyp-build@4.8.0:
-    resolution: {integrity: sha512-u6fs2AEUljNho3EYTJNBfImO5QTo/J/1Etd+NVdCj7qWKUSN/bSLkZwhDv7I+w/MSC6qJ4cknepkAYykDdK8og==}
+  /node-gyp-build@4.8.1:
+    resolution: {integrity: sha512-OSs33Z9yWr148JZcbZd5WiAXhh/n9z8TxQcdMhIOlpN9AhWpLfvVFO73+m77bBABQMaY9XSvIa+qk0jlI7Gcaw==}
     hasBin: true
     requiresBuild: true
     dev: true
