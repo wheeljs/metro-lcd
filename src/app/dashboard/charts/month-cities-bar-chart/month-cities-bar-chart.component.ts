@@ -38,6 +38,8 @@ const processCityNumbers = <T = City>(city: T): T => {
   return newCity;
 }
 
+const ParentheseRegex = /([（\(])/g;
+
 const topLevelOptions = (): EChartsOption => {
   return {
     grid: {
@@ -74,6 +76,10 @@ const topLevelOptions = (): EChartsOption => {
           if (value.length <= 2) {
             return value;
           }
+          if (value.match(ParentheseRegex)) {
+            return value.replace(ParentheseRegex, '\n$1');
+          }
+
           let text = [];
           for (let i = 0; i < value.length; i += 2) {
             text.push(value.slice(i, i + 2));
