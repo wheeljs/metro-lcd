@@ -51,12 +51,24 @@ export function toVM({ current, lastMonth, lastYear }: {
   lastMonth?: DashboardData | (DashboardData[]);
   lastYear?: DashboardData;
 }): DashboardDataVM {
-  const vm: Partial<DashboardDataVM> & Pick<DashboardDataVM, 'monthCompare' | 'calculatedFields'> = {
+  const calculatedFields = new Set<string>();
+
+  const vm: Partial<DashboardDataVM> & Pick<DashboardDataVM, 'monthCompare'> = {
     ...current,
     monthCompare: [],
-    calculatedFields: [],
   };
   const lastMonths = Array.isArray(lastMonth) ? lastMonth : [lastMonth!];
+
+  if (Array.isArray(vm.cities)) {
+    vm.cities.forEach((city) => {
+      if (!city.passengerStrong && city.operationLength && city.passengerCapacity) {
+        city.passengerStrong = Number.parseFloat(
+          (city.passengerCapacity / city.operationLength / current.days / 10000).toFixed(3)
+        );
+        calculatedFields.add('cities.passengerStrong');
+      }
+    });
+  }
 
   if (lastMonths.length >= 3) {
     for (const month of lastMonths) {
@@ -102,7 +114,7 @@ export function toVM({ current, lastMonth, lastYear }: {
     current.passengerStrong!.value = Number.parseFloat(
       (current.passengerCapacity.value / current.operationLength / current.days / 10000).toFixed(3)
     );
-    vm.calculatedFields.push('passengerStrongVM.value');
+    calculatedFields.add('passengerStrongVM.value');
   }
 
   const prevMonth = lastMonths?.[0];
@@ -118,10 +130,8 @@ export function toVM({ current, lastMonth, lastYear }: {
         compareLastMonth: diff,
         compareLastMonthPercent: percent,
       };
-      vm.calculatedFields.push(
-        'inStationCapacityVM.compareLastMonth',
-        'inStationCapacityVM.compareLastMonthPercent'
-      );
+      calculatedFields.add('inStationCapacityVM.compareLastMonth');
+      calculatedFields.add('inStationCapacityVM.compareLastMonthPercent');
     }
 
     let compareLastYear;
@@ -131,10 +141,8 @@ export function toVM({ current, lastMonth, lastYear }: {
         compareLastYear: diff,
         compareLastYearPercent: percent,
       };
-      vm.calculatedFields.push(
-        'inStationCapacityVM.compareLastYear',
-        'inStationCapacityVM.compareLastYearPercent'
-      );
+      calculatedFields.add('inStationCapacityVM.compareLastYear');
+      calculatedFields.add('inStationCapacityVM.compareLastYearPercent');
     }
 
     Object.assign(vm.inStationCapacityVM, ...[compareLastMonth, compareLastYear].filter(x => x != null));
@@ -147,9 +155,9 @@ export function toVM({ current, lastMonth, lastYear }: {
       compareLastMonth: diff,
       compareLastMonthPercent: current.passengerStrong!.compareLastMonthPercent ?? percent,
     });
-    vm.calculatedFields.push('passengerStrongVM.compareLastMonth');
+    calculatedFields.add('passengerStrongVM.compareLastMonth');
     if (current.passengerStrong!.compareLastMonthPercent == null) {
-      vm.calculatedFields.push('passengerStrongVM.compareLastMonthPercent');
+      calculatedFields.add('passengerStrongVM.compareLastMonthPercent');
     }
   }
   if (lastYear?.passengerStrong?.value) {
@@ -158,9 +166,9 @@ export function toVM({ current, lastMonth, lastYear }: {
       compareLastYear: diff,
       compareLastYearPercent: current.passengerStrong!.compareLastYearPercent ?? percent,
     });
-    vm.calculatedFields.push('passengerStrongVM.compareLastYear');
+    calculatedFields.add('passengerStrongVM.compareLastYear');
     if (current.passengerStrong!.compareLastYearPercent == null) {
-      vm.calculatedFields.push('passengerStrongVM.compareLastYearPercent');
+      calculatedFields.add('passengerStrongVM.compareLastYearPercent');
     }
   }
 
@@ -171,13 +179,22 @@ export function toVM({ current, lastMonth, lastYear }: {
     if (prevMonth?.[volumeK]) {
       const lastMonthVolume = prevMonth[volumeK];
       vm[`${volumeK}Compare`] = {
-        lines: { compareLastMonth: currentVolume.lines - lastMonthVolume.lines },
-        operationLength: { compareLastMonth: ((currentVolume.operationLength * 10) - (lastMonthVolume.operationLength * 10)) / 10 },
-        passengerCapacity: { compareLastMonth: currentVolume.passengerCapacity - lastMonthVolume.passengerCapacity },
-        inStationCapacity: { compareLastMonth: currentVolume.inStationCapacity - lastMonthVolume.inStationCapacity },
+        lines: {
+          compareLastMonth: calcCompare(currentVolume.lines, lastMonthVolume.lines)[0],
+        },
+        operationLength: {
+          compareLastMonth: calcCompare(currentVolume.operationLength, lastMonthVolume.operationLength)[0],
+        },
+        passengerCapacity: {
+          compareLastMonth: calcCompare(currentVolume.passengerCapacity, lastMonthVolume.passengerCapacity)[0],
+        },
+        inStationCapacity: {
+          compareLastMonth: calcCompare(currentVolume.inStationCapacity, lastMonthVolume.inStationCapacity)[0],
+        },
       };
     }
   });
 
+  (vm.calculatedFields as string[]) = Array.from(calculatedFields);
   return vm as DashboardDataVM;
 }

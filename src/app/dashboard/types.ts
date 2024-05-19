@@ -139,5 +139,5 @@ export interface DashboardDataVM extends DashboardData {
   mediumVolumeCompare: VolumeCompare;
   smallVolumeCompare: VolumeCompare;
   cities: CityVM[];
-  calculatedFields: string[];
+  readonly calculatedFields: string[];
 }
