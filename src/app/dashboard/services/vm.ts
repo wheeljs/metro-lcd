@@ -171,10 +171,18 @@ export function toVM({ current, lastMonth, lastYear }: {
     if (prevMonth?.[volumeK]) {
       const lastMonthVolume = prevMonth[volumeK];
       vm[`${volumeK}Compare`] = {
-        lines: { compareLastMonth: currentVolume.lines - lastMonthVolume.lines },
-        operationLength: { compareLastMonth: ((currentVolume.operationLength * 10) - (lastMonthVolume.operationLength * 10)) / 10 },
-        passengerCapacity: { compareLastMonth: currentVolume.passengerCapacity - lastMonthVolume.passengerCapacity },
-        inStationCapacity: { compareLastMonth: currentVolume.inStationCapacity - lastMonthVolume.inStationCapacity },
+        lines: {
+          compareLastMonth: calcCompare(currentVolume.lines, lastMonthVolume.lines)[0],
+        },
+        operationLength: {
+          compareLastMonth: calcCompare(currentVolume.operationLength, lastMonthVolume.operationLength)[0],
+        },
+        passengerCapacity: {
+          compareLastMonth: calcCompare(currentVolume.passengerCapacity, lastMonthVolume.passengerCapacity)[0],
+        },
+        inStationCapacity: {
+          compareLastMonth: calcCompare(currentVolume.inStationCapacity, lastMonthVolume.inStationCapacity)[0],
+        },
       };
     }
   });
