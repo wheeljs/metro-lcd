@@ -51,10 +51,11 @@ export function toVM({ current, lastMonth, lastYear }: {
   lastMonth?: DashboardData | (DashboardData[]);
   lastYear?: DashboardData;
 }): DashboardDataVM {
-  const vm: Partial<DashboardDataVM> & Pick<DashboardDataVM, 'monthCompare' | 'calculatedFields'> = {
+  const calculatedFields = new Set<string>();
+
+  const vm: Partial<DashboardDataVM> & Pick<DashboardDataVM, 'monthCompare'> = {
     ...current,
     monthCompare: [],
-    calculatedFields: [],
   };
   const lastMonths = Array.isArray(lastMonth) ? lastMonth : [lastMonth!];
 
@@ -102,7 +103,7 @@ export function toVM({ current, lastMonth, lastYear }: {
     current.passengerStrong!.value = Number.parseFloat(
       (current.passengerCapacity.value / current.operationLength / current.days / 10000).toFixed(3)
     );
-    vm.calculatedFields.push('passengerStrongVM.value');
+    calculatedFields.add('passengerStrongVM.value');
   }
 
   const prevMonth = lastMonths?.[0];
@@ -118,10 +119,8 @@ export function toVM({ current, lastMonth, lastYear }: {
         compareLastMonth: diff,
         compareLastMonthPercent: percent,
       };
-      vm.calculatedFields.push(
-        'inStationCapacityVM.compareLastMonth',
-        'inStationCapacityVM.compareLastMonthPercent'
-      );
+      calculatedFields.add('inStationCapacityVM.compareLastMonth');
+      calculatedFields.add('inStationCapacityVM.compareLastMonthPercent');
     }
 
     let compareLastYear;
@@ -131,10 +130,8 @@ export function toVM({ current, lastMonth, lastYear }: {
         compareLastYear: diff,
         compareLastYearPercent: percent,
       };
-      vm.calculatedFields.push(
-        'inStationCapacityVM.compareLastYear',
-        'inStationCapacityVM.compareLastYearPercent'
-      );
+      calculatedFields.add('inStationCapacityVM.compareLastYear');
+      calculatedFields.add('inStationCapacityVM.compareLastYearPercent');
     }
 
     Object.assign(vm.inStationCapacityVM, ...[compareLastMonth, compareLastYear].filter(x => x != null));
@@ -147,9 +144,9 @@ export function toVM({ current, lastMonth, lastYear }: {
       compareLastMonth: diff,
       compareLastMonthPercent: current.passengerStrong!.compareLastMonthPercent ?? percent,
     });
-    vm.calculatedFields.push('passengerStrongVM.compareLastMonth');
+    calculatedFields.add('passengerStrongVM.compareLastMonth');
     if (current.passengerStrong!.compareLastMonthPercent == null) {
-      vm.calculatedFields.push('passengerStrongVM.compareLastMonthPercent');
+      calculatedFields.add('passengerStrongVM.compareLastMonthPercent');
     }
   }
   if (lastYear?.passengerStrong?.value) {
@@ -158,9 +155,9 @@ export function toVM({ current, lastMonth, lastYear }: {
       compareLastYear: diff,
       compareLastYearPercent: current.passengerStrong!.compareLastYearPercent ?? percent,
     });
-    vm.calculatedFields.push('passengerStrongVM.compareLastYear');
+    calculatedFields.add('passengerStrongVM.compareLastYear');
     if (current.passengerStrong!.compareLastYearPercent == null) {
-      vm.calculatedFields.push('passengerStrongVM.compareLastYearPercent');
+      calculatedFields.add('passengerStrongVM.compareLastYearPercent');
     }
   }
 
@@ -187,5 +184,6 @@ export function toVM({ current, lastMonth, lastYear }: {
     }
   });
 
+  (vm.calculatedFields as string[]) = Array.from(calculatedFields);
   return vm as DashboardDataVM;
 }
