@@ -1,3 +1,30 @@
+<a name="1.3.2"></a>
+## [1.3.2](https://github.com/wheeljs/metro-lcd/compare/v1.3.1...v1.3.2) (2024-05-19)
+
+
+### Bug Fixes
+
+* **dashboard/chart/month-cities:** city name contains parenthese ([a64424b](https://github.com/wheeljs/metro-lcd/commit/a64424b))
+
+
+### Chores
+
+* **data:** update ref ([4e3b779](https://github.com/wheeljs/metro-lcd/commit/4e3b779))
+* **ngx-echarts:** update ngx-echarts ([ca13794](https://github.com/wheeljs/metro-lcd/commit/ca13794))
+
+
+### Code Refactoring
+
+* **dashboard:** diff volume data use `calcCompare` ([857eb29](https://github.com/wheeljs/metro-lcd/commit/857eb29))
+* **dashboard:** use Set for `calculatedFields` avoid duplicate values ([390cd74](https://github.com/wheeljs/metro-lcd/commit/390cd74))
+
+
+### Features
+
+* **dashboard/chart/month-cities:** calculate passengerStrong if value not provided ([93c4452](https://github.com/wheeljs/metro-lcd/commit/93c4452))
+
+
+
 <a name="1.3.1"></a>
 ## [1.3.1](https://github.com/wheeljs/metro-lcd/compare/v1.3.0...v1.3.1) (2024-05-13)
 
