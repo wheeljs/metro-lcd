@@ -1,3 +1,18 @@
+<a name="1.3.4"></a>
+## [1.3.4](https://github.com/wheeljs/metro-lcd/compare/v1.3.3...v1.3.4) (2024-07-05)
+
+
+### Chores
+
+* trigger cloudflare deploy ([09f45fb](https://github.com/wheeljs/metro-lcd/commit/09f45fb))
+
+
+### Features
+
+* **data:** add 2024-6 ([352cd45](https://github.com/wheeljs/metro-lcd/commit/352cd45))
+
+
+
 <a name="1.3.3"></a>
 ## [1.3.3](https://github.com/wheeljs/metro-lcd/compare/v1.3.2...v1.3.3) (2024-06-06)
 
