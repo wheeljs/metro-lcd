@@ -44,6 +44,7 @@ const CityFieldsDimensions = [
   { name: 'passengerCapacity', displayName: '客运量' },
   { name: 'inStationCapacity', displayName: '进站量' },
   { name: 'passengerStrong', displayName: '客流强度' },
+  { name: 'transferCoefficient', displayName: '换乘系数' },
 ];
 
 const topLevelOptions = (): EChartsOption => {
@@ -149,6 +150,20 @@ const topLevelOptions = (): EChartsOption => {
           divideShape: 'split',
         },
       },
+      {
+        type: 'bar',
+        yAxisIndex: 1,
+        encode: {
+          seriesName: 'transferCoefficient',
+          x: 'city',
+          y: 'transferCoefficient',
+          itemChildGroupId: 'id',
+        },
+        universalTransition: {
+          enabled: true,
+          divideShape: 'split',
+        },
+      },
     ],
     dataZoom: [
       {
@@ -226,6 +241,21 @@ const drilldownOptions = ({ datasetId }: { datasetId: string; }): EChartsOption 
         encode: {
           x: 'range',
           y: 'passengerStrong',
+          itemGroupId: 'id',
+        },
+        smooth: true,
+        universalTransition: {
+          enabled: true,
+          divideShape: 'split',
+        },
+      },
+      {
+        type: 'line',
+        datasetId,
+        yAxisIndex: 1,
+        encode: {
+          x: 'range',
+          y: 'transferCoefficient',
           itemGroupId: 'id',
         },
         smooth: true,

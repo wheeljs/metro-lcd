@@ -110,6 +110,10 @@ export class DataVMService {
                   (city.passengerCapacity / city.operationLength / x.days / 10000).toFixed(3)
                 );
               }
+
+              if (city.passengerCapacity && city.inStationCapacity) {
+                city.transferCoefficient = Number.parseFloat((city.passengerCapacity / city.inStationCapacity).toFixed(3));
+              }
             });
           }
         });
