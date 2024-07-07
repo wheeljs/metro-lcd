@@ -102,6 +102,18 @@ export class DataVMService {
         return sortedRangeData.reverse();
       }),
       map((rangeData) => {
+        rangeData.forEach(x => {
+          if (Array.isArray(x.cities)) {
+            x.cities.forEach(city => {
+              if (!city.passengerStrong && city.operationLength && city.passengerCapacity) {
+                city.passengerStrong = Number.parseFloat(
+                  (city.passengerCapacity / city.operationLength / x.days / 10000).toFixed(3)
+                );
+              }
+            });
+          }
+        });
+
         const current = rangeData.find(x => x.id === options.range);
         if (current == null) {
           return null;
