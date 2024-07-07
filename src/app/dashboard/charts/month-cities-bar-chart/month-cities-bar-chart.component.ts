@@ -40,6 +40,12 @@ const processCityNumbers = <T = City>(city: T): T => {
 
 const ParentheseRegex = /([（\(])/g;
 
+const CityFieldsDimensions = [
+  { name: 'passengerCapacity', displayName: '客运量' },
+  { name: 'inStationCapacity', displayName: '进站量' },
+  { name: 'passengerStrong', displayName: '客流强度' },
+];
+
 const topLevelOptions = (): EChartsOption => {
   return {
     grid: {
@@ -62,9 +68,7 @@ const topLevelOptions = (): EChartsOption => {
       dimensions: [
         { name: 'id' },
         { name: 'city', displayName: '城市' },
-        { name: 'passengerCapacity', displayName: '客运量' },
-        { name: 'inStationCapacity', displayName: '进站量' },
-        { name: 'passengerStrong', displayName: '客流强度' },
+        ...CityFieldsDimensions,
       ],
     }],
     xAxis: {
@@ -273,9 +277,7 @@ export class MonthCitiesBarChartComponent {
         dimensions: [
           { name: 'id' },
           { name: 'range' },
-          { name: 'passengerCapacity', displayName: '客运量' },
-          { name: 'inStationCapacity', displayName: '进站量' },
-          { name: 'passengerStrong', displayName: '客流强度' },
+          ...CityFieldsDimensions,
         ],
       }))
     );
