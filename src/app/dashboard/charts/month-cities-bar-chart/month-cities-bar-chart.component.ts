@@ -40,6 +40,13 @@ const processCityNumbers = <T = City>(city: T): T => {
 
 const ParentheseRegex = /([（\(])/g;
 
+const CityFieldsDimensions = [
+  { name: 'passengerCapacity', displayName: '客运量' },
+  { name: 'inStationCapacity', displayName: '进站量' },
+  { name: 'passengerStrong', displayName: '客流强度' },
+  { name: 'transferCoefficient', displayName: '换乘系数' },
+];
+
 const topLevelOptions = (): EChartsOption => {
   return {
     grid: {
@@ -62,9 +69,7 @@ const topLevelOptions = (): EChartsOption => {
       dimensions: [
         { name: 'id' },
         { name: 'city', displayName: '城市' },
-        { name: 'passengerCapacity', displayName: '客运量' },
-        { name: 'inStationCapacity', displayName: '进站量' },
-        { name: 'passengerStrong', displayName: '客流强度' },
+        ...CityFieldsDimensions,
       ],
     }],
     xAxis: {
@@ -138,6 +143,20 @@ const topLevelOptions = (): EChartsOption => {
           seriesName: 'passengerStrong',
           x: 'city',
           y: 'passengerStrong',
+          itemChildGroupId: 'id',
+        },
+        universalTransition: {
+          enabled: true,
+          divideShape: 'split',
+        },
+      },
+      {
+        type: 'bar',
+        yAxisIndex: 1,
+        encode: {
+          seriesName: 'transferCoefficient',
+          x: 'city',
+          y: 'transferCoefficient',
           itemChildGroupId: 'id',
         },
         universalTransition: {
@@ -230,6 +249,21 @@ const drilldownOptions = ({ datasetId }: { datasetId: string; }): EChartsOption 
           divideShape: 'split',
         },
       },
+      {
+        type: 'line',
+        datasetId,
+        yAxisIndex: 1,
+        encode: {
+          x: 'range',
+          y: 'transferCoefficient',
+          itemGroupId: 'id',
+        },
+        smooth: true,
+        universalTransition: {
+          enabled: true,
+          divideShape: 'split',
+        },
+      },
     ],
     dataZoom: [
       {
@@ -273,9 +307,7 @@ export class MonthCitiesBarChartComponent {
         dimensions: [
           { name: 'id' },
           { name: 'range' },
-          { name: 'passengerCapacity', displayName: '客运量' },
-          { name: 'inStationCapacity', displayName: '进站量' },
-          { name: 'passengerStrong', displayName: '客流强度' },
+          ...CityFieldsDimensions,
         ],
       }))
     );

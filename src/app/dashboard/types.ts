@@ -69,6 +69,7 @@ export interface City {
   passengerCapacity: number;
   inStationCapacity: number;
   passengerStrong?: number;
+  transferCoefficient?: number;
 }
 
 export interface VolumeSummary {
