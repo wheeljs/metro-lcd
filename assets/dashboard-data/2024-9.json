@@ -1,0 +1,625 @@
+{
+  "year": 2024,
+  "month": 9,
+  "cityCount": 54,
+  "lines": 313,
+  "operationLength": 10440.5,
+  "runs": 3420000,
+  "passengerCapacity": {
+    "value": 2580000000.0,
+    "compareLastMonth": -230000000.0,
+    "compareLastMonthPercent": -0.082,
+    "compareLastYear": 100000000,
+    "compareLastYearPercent": 0.04
+  },
+  "inStationCapacity": 1540000000.0,
+  "passengerStrong": {
+    "value": 0.826,
+    "compareLastMonthPercent": -0.076,
+    "compareLastYearPercent": -0.016
+  },
+  "largeVolume": {
+    "lines": 273,
+    "operationLength": 9743.1,
+    "passengerCapacity": 2540000000.0,
+    "inStationCapacity": 1510000000.0
+  },
+  "mediumVolume": {
+    "lines": 7,
+    "operationLength": 202.5,
+    "passengerCapacity": 30530000,
+    "inStationCapacity": 22160000
+  },
+  "smallVolume": {
+    "lines": 33,
+    "operationLength": 494.9,
+    "passengerCapacity": 9870000,
+    "inStationCapacity": 9340000
+  },
+  "news": {
+    "cities": [],
+    "operationLength": 77,
+    "lines": {
+      "count": 2,
+      "detail": [
+        {
+          "ch": "西安地铁10号线一期",
+          "cityCh": "西安",
+          "cityEn": "xian"
+        },
+        {
+          "ch": "苏州地铁8号线",
+          "cityCh": "苏州",
+          "cityEn": "suzhou"
+        }
+      ]
+    },
+    "segments": {
+      "count": 3,
+      "detail": [
+        {
+          "ch": "西安地铁5号线一期东段",
+          "cityCh": "西安",
+          "cityEn": "xian"
+        },
+        {
+          "ch": "西安地铁6号线一期南段",
+          "cityCh": "西安",
+          "cityEn": "xian"
+        },
+        {
+          "ch": "天津地铁5号线调整工程",
+          "cityCh": "天津",
+          "cityEn": "tianjin"
+        }
+      ]
+    }
+  },
+  "id": "2024-9",
+  "days": 30,
+  "originLink": "https://mp.weixin.qq.com/s/Wb6BiGgzSPQRHLofy5m0gw",
+  "cities": [
+    {
+      "id": "shanghai",
+      "number": 1,
+      "city": "上海",
+      "lines": 22,
+      "operationLength": 864.8,
+      "passengerCapacity": 299544000.0,
+      "inStationCapacity": 165804000.0,
+      "passengerStrong": 1.15
+    },
+    {
+      "id": "beijing",
+      "number": 2,
+      "city": "北京",
+      "lines": 27,
+      "operationLength": 836.0,
+      "passengerCapacity": 297424000.0,
+      "inStationCapacity": 164298000.0,
+      "passengerStrong": 1.19
+    },
+    {
+      "id": "guangzhou",
+      "number": 3,
+      "city": "广州",
+      "lines": 18,
+      "operationLength": 641.5,
+      "passengerCapacity": 256970000.0,
+      "inStationCapacity": 139628000.0,
+      "passengerStrong": 1.34
+    },
+    {
+      "id": "chengdu",
+      "number": 4,
+      "city": "成都",
+      "lines": 14,
+      "operationLength": 601.7,
+      "passengerCapacity": 174370000.0,
+      "inStationCapacity": 99362000.0,
+      "passengerStrong": 0.97
+    },
+    {
+      "id": "shenzhen",
+      "number": 5,
+      "city": "深圳",
+      "lines": 17,
+      "operationLength": 567.1,
+      "passengerCapacity": 252262000.0,
+      "inStationCapacity": 142115000.0,
+      "passengerStrong": 1.48
+    },
+    {
+      "id": "wuhan",
+      "number": 6,
+      "city": "武汉",
+      "lines": 15,
+      "operationLength": 529.6,
+      "passengerCapacity": 120188000.0,
+      "inStationCapacity": 75681000.0,
+      "passengerStrong": 0.76
+    },
+    {
+      "id": "hangzhou",
+      "number": 7,
+      "city": "杭州",
+      "lines": 12,
+      "operationLength": 516.0,
+      "passengerCapacity": 116847000.0,
+      "inStationCapacity": 69899000.0,
+      "passengerStrong": 0.75
+    },
+    {
+      "id": "chongqing",
+      "number": 8,
+      "city": "重庆",
+      "lines": 11,
+      "operationLength": 494.6,
+      "passengerCapacity": 103153000.0,
+      "inStationCapacity": 63999000.0,
+      "passengerStrong": 0.7
+    },
+    {
+      "id": "nanjing",
+      "number": 9,
+      "city": "南京",
+      "lines": 15,
+      "operationLength": 472.3,
+      "passengerCapacity": 84874000.0,
+      "inStationCapacity": 49974000.0,
+      "passengerStrong": 0.6
+    },
+    {
+      "id": "qingdao",
+      "number": 10,
+      "city": "青岛",
+      "lines": 9,
+      "operationLength": 357.1,
+      "passengerCapacity": 44502000.0,
+      "inStationCapacity": 30729000.0,
+      "passengerStrong": 0.42
+    },
+    {
+      "id": "xian",
+      "number": 11,
+      "city": "西安",
+      "lines": 10,
+      "operationLength": 335.3,
+      "passengerCapacity": 106131000.0,
+      "inStationCapacity": 68535000.0,
+      "passengerStrong": 1.18
+    },
+    {
+      "id": "suzhou",
+      "number": 12,
+      "city": "苏州",
+      "lines": 10,
+      "operationLength": 329.1,
+      "passengerCapacity": 48462000.0,
+      "inStationCapacity": 29296000.0,
+      "passengerStrong": 0.51
+    },
+    {
+      "id": "tianjin",
+      "number": 13,
+      "city": "天津",
+      "lines": 9,
+      "operationLength": 299.5,
+      "passengerCapacity": 53844000.0,
+      "inStationCapacity": 33740000.0,
+      "passengerStrong": 0.6
+    },
+    {
+      "id": "zhengzhou",
+      "number": 14,
+      "city": "郑州",
+      "lines": 10,
+      "operationLength": 277.7,
+      "passengerCapacity": 55313000.0,
+      "inStationCapacity": 33008000.0,
+      "passengerStrong": 0.66
+    },
+    {
+      "id": "shenyang",
+      "number": 15,
+      "city": "沈阳",
+      "lines": 11,
+      "operationLength": 262.2,
+      "passengerCapacity": 56476000.0,
+      "inStationCapacity": 36086000.0,
+      "passengerStrong": 0.72
+    },
+    {
+      "id": "dalian",
+      "number": 16,
+      "city": "大连",
+      "lines": 6,
+      "operationLength": 237.1,
+      "passengerCapacity": 23182000.0,
+      "inStationCapacity": 17009000.0,
+      "passengerStrong": 0.33
+    },
+    {
+      "id": "changsha",
+      "number": 17,
+      "city": "长沙",
+      "lines": 7,
+      "operationLength": 219.0,
+      "passengerCapacity": 81732000.0,
+      "inStationCapacity": 43685000.0,
+      "passengerStrong": 1.24
+    },
+    {
+      "id": "hefei",
+      "number": 18,
+      "city": "合肥",
+      "lines": 5,
+      "operationLength": 209.6,
+      "passengerCapacity": 40832000.0,
+      "inStationCapacity": 24412000.0,
+      "passengerStrong": 0.65
+    },
+    {
+      "id": "ningbo",
+      "number": 19,
+      "city": "宁波",
+      "lines": 6,
+      "operationLength": 194.2,
+      "passengerCapacity": 30818000.0,
+      "inStationCapacity": 17587000.0,
+      "passengerStrong": 0.53
+    },
+    {
+      "id": "kunming",
+      "number": 20,
+      "city": "昆明",
+      "lines": 6,
+      "operationLength": 165.9,
+      "passengerCapacity": 24260000.0,
+      "inStationCapacity": 17441000.0,
+      "passengerStrong": 0.49
+    },
+    {
+      "id": "foshan",
+      "number": 21,
+      "city": "佛山",
+      "lines": 6,
+      "operationLength": 150.2,
+      "passengerCapacity": 15257000.0,
+      "inStationCapacity": 11111000.0,
+      "passengerStrong": 0.34
+    },
+    {
+      "id": "changchun",
+      "number": 22,
+      "city": "长春",
+      "lines": 6,
+      "operationLength": 140.8,
+      "passengerCapacity": 25496000.0,
+      "inStationCapacity": 17706000.0,
+      "passengerStrong": 0.6
+    },
+    {
+      "id": "fuzhou",
+      "number": 23,
+      "city": "福州",
+      "lines": 5,
+      "operationLength": 139.0,
+      "passengerCapacity": 23554000.0,
+      "inStationCapacity": 17026000.0,
+      "passengerStrong": 0.56
+    },
+    {
+      "id": "nanchang",
+      "number": 24,
+      "city": "南昌",
+      "lines": 4,
+      "operationLength": 128.5,
+      "passengerCapacity": 35650000.0,
+      "inStationCapacity": 21256000.0,
+      "passengerStrong": 0.93
+    },
+    {
+      "id": "nanning",
+      "number": 25,
+      "city": "南宁",
+      "lines": 5,
+      "operationLength": 128.2,
+      "passengerCapacity": 28795000.0,
+      "inStationCapacity": 17307000.0,
+      "passengerStrong": 0.75
+    },
+    {
+      "id": "guiyang",
+      "number": 26,
+      "city": "贵阳",
+      "lines": 3,
+      "operationLength": 116.9,
+      "passengerCapacity": 21269000.0,
+      "inStationCapacity": 15168000.0,
+      "passengerStrong": 0.61
+    },
+    {
+      "id": "wuxi",
+      "number": 27,
+      "city": "无锡",
+      "lines": 4,
+      "operationLength": 110.8,
+      "passengerCapacity": 17246000.0,
+      "inStationCapacity": 11426000.0,
+      "passengerStrong": 0.52
+    },
+    {
+      "id": "xiamen",
+      "number": 28,
+      "city": "厦门",
+      "lines": 3,
+      "operationLength": 98.4,
+      "passengerCapacity": 21520000.0,
+      "inStationCapacity": 16508000.0,
+      "passengerStrong": 0.73
+    },
+    {
+      "id": "jinan",
+      "number": 29,
+      "city": "济南",
+      "lines": 3,
+      "operationLength": 84.1,
+      "passengerCapacity": 9526000.0,
+      "inStationCapacity": 6805000.0,
+      "passengerStrong": 0.38
+    },
+    {
+      "id": "haerbin",
+      "number": 30,
+      "city": "哈尔滨",
+      "lines": 3,
+      "operationLength": 82.1,
+      "passengerCapacity": 31178000.0,
+      "inStationCapacity": 20464000.0,
+      "passengerStrong": 1.27
+    },
+    {
+      "id": "shijiazhuang",
+      "number": 31,
+      "city": "石家庄",
+      "lines": 3,
+      "operationLength": 74.3,
+      "passengerCapacity": 14619000.0,
+      "inStationCapacity": 10132000.0,
+      "passengerStrong": 0.66
+    },
+    {
+      "id": "xuzhou",
+      "number": 32,
+      "city": "徐州",
+      "lines": 3,
+      "operationLength": 64.1,
+      "passengerCapacity": 7663000.0,
+      "inStationCapacity": 5509000.0,
+      "passengerStrong": 0.4
+    },
+    {
+      "id": "shaoxing",
+      "number": 33,
+      "city": "绍兴",
+      "lines": 3,
+      "operationLength": 61.2,
+      "passengerCapacity": 3390000.0,
+      "inStationCapacity": 1923000.0,
+      "passengerStrong": 0.18
+    },
+    {
+      "id": "nantong",
+      "number": 34,
+      "city": "南通",
+      "lines": 2,
+      "operationLength": 58.8,
+      "passengerCapacity": 3028000.0,
+      "inStationCapacity": 2562000.0,
+      "passengerStrong": 0.17
+    },
+    {
+      "id": "changzhou",
+      "number": 35,
+      "city": "常州",
+      "lines": 2,
+      "operationLength": 54.0,
+      "passengerCapacity": 5692000.0,
+      "inStationCapacity": 4679000.0,
+      "passengerStrong": 0.35
+    },
+    {
+      "id": "wenzhou",
+      "number": 36,
+      "city": "温州",
+      "lines": 1,
+      "operationLength": 52.5,
+      "passengerCapacity": 1641000.0,
+      "inStationCapacity": 1394000.0,
+      "passengerStrong": 0.1
+    },
+    {
+      "id": "huhehaote",
+      "number": 37,
+      "city": "呼和浩特",
+      "lines": 2,
+      "operationLength": 49.0,
+      "passengerCapacity": 6262000.0,
+      "inStationCapacity": 5061000.0,
+      "passengerStrong": 0.43
+    },
+    {
+      "id": "haining",
+      "number": 38,
+      "city": "海宁",
+      "lines": 1,
+      "operationLength": 46.4,
+      "passengerCapacity": 1121000.0,
+      "inStationCapacity": 872000.0,
+      "passengerStrong": 0.08
+    },
+    {
+      "id": "wuhu",
+      "number": 39,
+      "city": "芜湖",
+      "lines": 2,
+      "operationLength": 46.2,
+      "passengerCapacity": 2824000.0,
+      "inStationCapacity": 2372000.0,
+      "passengerStrong": 0.2
+    },
+    {
+      "id": "luoyang",
+      "number": 40,
+      "city": "洛阳",
+      "lines": 2,
+      "operationLength": 43.5,
+      "passengerCapacity": 4535000.0,
+      "inStationCapacity": 3436000.0,
+      "passengerStrong": 0.35
+    },
+    {
+      "id": "kunshan",
+      "number": 41,
+      "city": "昆山",
+      "lines": 2,
+      "operationLength": 43.0,
+      "passengerCapacity": 4366000.0,
+      "inStationCapacity": 3175000.0,
+      "passengerStrong": 0.34
+    },
+    {
+      "id": "dongguan",
+      "number": 42,
+      "city": "东莞",
+      "lines": 1,
+      "operationLength": 37.8,
+      "passengerCapacity": 3950000.0,
+      "inStationCapacity": 3950000.0,
+      "passengerStrong": 0.35
+    },
+    {
+      "id": "lanzhou",
+      "number": 43,
+      "city": "兰州",
+      "lines": 2,
+      "operationLength": 33.5,
+      "passengerCapacity": 11576000.0,
+      "inStationCapacity": 10006000.0,
+      "passengerStrong": 1.15
+    },
+    {
+      "id": "wulumuqi",
+      "number": 44,
+      "city": "乌鲁木齐",
+      "lines": 1,
+      "operationLength": 26.8,
+      "passengerCapacity": 3865000.0,
+      "inStationCapacity": 3865000.0,
+      "passengerStrong": 0.48
+    },
+    {
+      "id": "huangshi",
+      "number": 45,
+      "city": "黄石",
+      "lines": 1,
+      "operationLength": 26.8,
+      "passengerCapacity": 380000.0,
+      "inStationCapacity": 380000.0,
+      "passengerStrong": 0.05
+    },
+    {
+      "id": "taiyuan",
+      "number": 46,
+      "city": "太原",
+      "lines": 1,
+      "operationLength": 23.3,
+      "passengerCapacity": 3916000.0,
+      "inStationCapacity": 3916000.0,
+      "passengerStrong": 0.56
+    },
+    {
+      "id": "huaian",
+      "number": 47,
+      "city": "淮安",
+      "lines": 1,
+      "operationLength": 20.1,
+      "passengerCapacity": 583000.0,
+      "inStationCapacity": 583000.0,
+      "passengerStrong": 0.1
+    },
+    {
+      "id": "jurong",
+      "number": 48,
+      "city": "句容",
+      "lines": 1,
+      "operationLength": 17.3,
+      "passengerCapacity": 574000.0,
+      "inStationCapacity": 343000.0,
+      "passengerStrong": 0.11
+    },
+    {
+      "id": "jiaxing",
+      "number": 49,
+      "city": "嘉兴",
+      "lines": 1,
+      "operationLength": 13.8,
+      "passengerCapacity": 227000.0,
+      "inStationCapacity": 227000.0,
+      "passengerStrong": 0.05
+    },
+    {
+      "id": "wenshan",
+      "number": 50,
+      "city": "文山",
+      "lines": 1,
+      "operationLength": 13.4,
+      "passengerCapacity": 34000.0,
+      "inStationCapacity": 33000.0,
+      "passengerStrong": 0.01
+    },
+    {
+      "id": "honghe",
+      "number": 51,
+      "city": "红河",
+      "lines": 1,
+      "operationsSuspended": true
+    },
+    {
+      "id": "tianshui",
+      "number": 52,
+      "city": "天水",
+      "lines": 1,
+      "operationLength": 12.9,
+      "passengerCapacity": 82000.0,
+      "inStationCapacity": 82000.0,
+      "passengerStrong": 0.02
+    },
+    {
+      "id": "xianyang",
+      "number": 53,
+      "city": "咸阳",
+      "lines": 1,
+      "operationLength": 10.7,
+      "passengerCapacity": 1895000.0,
+      "inStationCapacity": 1398000.0,
+      "passengerStrong": 0.59
+    },
+    {
+      "id": "sanya",
+      "number": 54,
+      "city": "三亚",
+      "lines": 1,
+      "operationLength": 8.4,
+      "passengerCapacity": 67000.0,
+      "inStationCapacity": 67000.0,
+      "passengerStrong": 0.03
+    }
+  ],
+  "summaries": [
+    "注1：本表按城市运营里程由大到小排序。运营线路条数中上海地铁11号线（昆山段）、广佛线和广州地铁7号线（佛山段）、宁句线（句容段）、苏州地铁11号线（昆山段）、西安地铁1号线（咸阳段）不重复计算。",
+    "注2：本表含上海、北京、广州、成都、武汉、深圳、南京、青岛、苏州、沈阳、佛山、黄石、淮安嘉兴、文山、天水、三亚等城市有轨电车线路，不含大连201和202路、长春54和55路等与社会车辆完全混行的传统电车。",
+    "数据来源：交通运输部"
+  ]
+}
