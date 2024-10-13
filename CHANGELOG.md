@@ -1,3 +1,56 @@
+<a name="1.3.8"></a>
+## [1.3.8](https://github.com/wheeljs/metro-lcd/compare/v1.3.7...v1.3.8) (2024-10-13)
+
+
+
+<a name="1.3.7"></a>
+## [1.3.7](https://github.com/wheeljs/metro-lcd/compare/v1.3.6...v1.3.7) (2024-10-13)
+
+
+### Features
+
+* **data:** add 2024-9 ([030901d](https://github.com/wheeljs/metro-lcd/commit/030901d))
+
+
+
+<a name="1.3.6"></a>
+## [1.3.6](https://github.com/wheeljs/metro-lcd/compare/v1.3.5...v1.3.6) (2024-09-08)
+
+
+### Chores
+
+* **ng-zorro-antd:** update to latest version avoid ngtypecheck error ([63570a0](https://github.com/wheeljs/metro-lcd/commit/63570a0))
+
+
+### Features
+
+* **data:** add 2024-8 ([7bf3c36](https://github.com/wheeljs/metro-lcd/commit/7bf3c36))
+
+
+
+<a name="1.3.5"></a>
+## [1.3.5](https://github.com/wheeljs/metro-lcd/compare/v1.3.4...v1.3.5) (2024-08-07)
+
+
+### Chores
+
+* **typescript:** temporary fix .ngtypecheck.d.ts error ([13577fc](https://github.com/wheeljs/metro-lcd/commit/13577fc))
+* update to angular 18 ([9aa1d0a](https://github.com/wheeljs/metro-lcd/commit/9aa1d0a))
+
+
+### Code Refactoring
+
+* **dashboard/chart/month-cities:** calculate city's passengerStrong for all fetched ranges ([65b791f](https://github.com/wheeljs/metro-lcd/commit/65b791f))
+* **dashboard/chart/month-cities:** extract city fields ([4b48322](https://github.com/wheeljs/metro-lcd/commit/4b48322))
+
+
+### Features
+
+* **dashboard/chart/month-cities:** calculate and display transferCoefficient ([1a36c4e](https://github.com/wheeljs/metro-lcd/commit/1a36c4e))
+* **data:** add 2024-7 ([2a6af5a](https://github.com/wheeljs/metro-lcd/commit/2a6af5a))
+
+
+
 <a name="1.3.4"></a>
 ## [1.3.4](https://github.com/wheeljs/metro-lcd/compare/v1.3.3...v1.3.4) (2024-07-05)
 
