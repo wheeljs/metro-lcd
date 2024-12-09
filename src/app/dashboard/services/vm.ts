@@ -165,8 +165,8 @@ export function toVM({ current, lastMonth, lastYear }: {
     const volumeK = volumeKey as keyof Pick<DashboardData, 'largeVolume' | 'mediumVolume' | 'smallVolume'>;
     const currentVolume = current[volumeK];
 
-    if (prevMonth?.[volumeK]) {
-      const lastMonthVolume = prevMonth[volumeK];
+    if (currentVolume && prevMonth?.[volumeK]) {
+      const lastMonthVolume = prevMonth[volumeK]!;
       vm[`${volumeK}Compare`] = {
         lines: {
           compareLastMonth: calcCompare(currentVolume.lines, lastMonthVolume.lines)[0],

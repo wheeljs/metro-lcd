@@ -461,7 +461,15 @@
       </ng-template>
     </ng-template>
 
-    @if (data.largeVolume) {
+    @if (data.metroVolume?.lines) {
+      <ng-container *ngTemplateOutlet="volumeItem; context: {
+        volumeName: '地铁、轻轨',
+        volumeSubtitle: data.metroVolume?.cities + '个城市',
+        volume: data.metroVolume,
+        unit: '亿'
+      }"/>
+    }
+    @else if (data.largeVolume?.lines) {
       <ng-container *ngTemplateOutlet="volumeItem; context: {
         volumeName: '大运量',
         volumeSubtitle: '地铁、轻轨、市域快速轨道等',
@@ -470,7 +478,16 @@
         unit: '亿'
       }"/>
     }
-    @if (data.mediumVolume) {
+
+    @if (data.monorailVolume?.lines) {
+      <ng-container *ngTemplateOutlet="volumeItem; context: {
+        volumeName: '单轨、磁浮、市域快速轨道交通',
+        volumeSubtitle: data.monorailVolume?.cities + '个城市',
+        volume: data.monorailVolume,
+        unit: '万'
+      }"/>
+    }
+    @else if (data.mediumVolume?.lines) {
       <ng-container *ngTemplateOutlet="volumeItem; context: {
         volumeName: '中运量',
         volumeSubtitle: '单轨、磁浮等',
@@ -479,7 +496,16 @@
         unit: '万'
       }"/>
     }
-    @if (data.smallVolume) {
+
+    @if (data.tramVolume?.lines) {
+      <ng-container *ngTemplateOutlet="volumeItem; context: {
+        volumeName: '有轨电车、自动导向轨道',
+        volumeSubtitle: data.tramVolume?.cities + '个城市',
+        volume: data.tramVolume,
+        unit: '万'
+      }"/>
+    }
+    @else if (data.smallVolume?.lines) {
       <ng-container *ngTemplateOutlet="volumeItem; context: {
         volumeName: '低运量',
         volumeSubtitle: '有轨电车、自动导向轨道等',
