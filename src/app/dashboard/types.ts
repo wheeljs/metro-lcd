@@ -79,6 +79,10 @@ export interface VolumeSummary {
   inStationCapacity: number;
 }
 
+export interface VolumeByCapacitySummary extends VolumeSummary {
+  cities: number;
+}
+
 export interface DashboardDataSimple {
   hash?: string;
   id: string;
@@ -98,9 +102,12 @@ export interface DashboardData extends DashboardDataSimple {
   passengerStrong?: Value & Partial<CompareLastMonthPercent & CompareLastYearPercent>;
   news: News;
   off?: Partial<News>;
-  largeVolume: VolumeSummary;
-  mediumVolume: VolumeSummary;
-  smallVolume: VolumeSummary;
+  largeVolume?: VolumeSummary;
+  mediumVolume?: VolumeSummary;
+  smallVolume?: VolumeSummary;
+  metroVolume?: VolumeByCapacitySummary;
+  monorailVolume?: VolumeByCapacitySummary;
+  tramVolume?: VolumeByCapacitySummary;
   cities: City[];
   originLink?: string;
   summaries: string[];
