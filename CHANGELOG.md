@@ -1,3 +1,13 @@
+<a name="1.4.0"></a>
+# [1.4.0](https://github.com/wheeljs/metro-lcd/compare/v1.3.9...v1.4.0) (2024-12-09)
+
+
+### Features
+
+* **data:** add 2024-11 ([e7115f7](https://github.com/wheeljs/metro-lcd/commit/e7115f7))
+
+
+
 <a name="1.3.9"></a>
 ## [1.3.9](https://github.com/wheeljs/metro-lcd/compare/v1.3.7...v1.3.9) (2024-11-07)
 
