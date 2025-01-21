@@ -3,7 +3,7 @@
     <div class="md-monthly-data__main">
       <nz-card
         nzBorderless
-        class="ant-card--inline-actions"
+        [class.ant-card--inline-actions]="data.news.cities?.length || data.off?.cities"
         [nzActions]="[newCityTpl, offCityTpl] | withValue: [data.news.cities, data.off?.cities]"
       >
         <md-statistic-item
@@ -147,7 +147,7 @@
         <span>{{data.off?.operationLength}}公里</span>
       </ng-template>
 
-      <nz-card nzBorderless class="ant-card--inline-actions">
+      <nz-card nzBorderless>
         <md-statistic-item
           nzTitle="实际开行列车"
           [value]="data.runs"

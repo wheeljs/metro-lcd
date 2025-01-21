@@ -1,3 +1,5 @@
+@use '../../../_utils';
+
 $cls: md-monthly-data;
 
 .#{$cls} {
@@ -149,6 +151,40 @@ $cls: md-monthly-data;
 
     &__main-card ::ng-deep {
       grid-area: auto / 1 / auto / -1;
+    }
+  }
+}
+
+@include utils.mobile {
+  .#{$cls} {
+    &__container,
+    &__main {
+      grid-template-columns: 1fr;
+    }
+
+    &__container {
+      margin-block-end: 0;
+      row-gap: 16px;
+    }
+
+    &__item--with-chart {
+      flex-wrap: wrap;
+    }
+
+    &__simple-chart {
+      flex-basis: 100%;
+      padding-inline-start: 0;
+      width: 100%;
+    }
+
+    &__volume-card {
+      ::ng-deep .ant-card-head {
+        padding-inline: 12px;
+      }
+
+      &__container > * {
+        padding: 12px;
+      }
     }
   }
 }
