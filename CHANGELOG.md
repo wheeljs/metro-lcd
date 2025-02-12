@@ -1,3 +1,19 @@
+<a name="1.4.2"></a>
+## [1.4.2](https://github.com/wheeljs/metro-lcd/compare/v1.4.1...v1.4.2) (2025-02-12)
+
+
+### Code Refactoring
+
+* **dashboard:** use logical css properties ([37fc4e4](https://github.com/wheeljs/metro-lcd/commit/37fc4e4))
+
+
+### Features
+
+* **dashboard:** responsive view ([97c54be](https://github.com/wheeljs/metro-lcd/commit/97c54be))
+* **data:** add 2025-1 ([0249dfa](https://github.com/wheeljs/metro-lcd/commit/0249dfa))
+
+
+
 <a name="1.4.1"></a>
 ## [1.4.1](https://github.com/wheeljs/metro-lcd/compare/v1.4.0...v1.4.1) (2025-01-20)
 
