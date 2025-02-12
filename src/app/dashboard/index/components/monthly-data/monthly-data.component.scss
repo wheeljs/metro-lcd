@@ -1,9 +1,11 @@
+@use '../../../_utils';
+
 $cls: md-monthly-data;
 
 .#{$cls} {
   &__container {
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding-block-start: 16px;
+    padding-block-end: 16px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 32px 16px;
@@ -22,7 +24,7 @@ $cls: md-monthly-data;
       }
 
       .ant-statistic-title:empty {
-        margin-bottom: 0;
+        margin-block-end: 0;
       }
     }
   }
@@ -47,7 +49,7 @@ $cls: md-monthly-data;
 
     &-card__icon {
       align-self: center;
-      margin-left: 32px;
+      margin-inline-start: 32px;
 
       .anticon {
         font-size: 48px;
@@ -80,7 +82,7 @@ $cls: md-monthly-data;
 
   &__simple-chart {
     flex: 1 1 200px;
-    padding-left: 32px;
+    padding-inline-start: 32px;
     height: 63px;
   }
 
@@ -91,14 +93,14 @@ $cls: md-monthly-data;
 
       > * {
         padding: 24px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        border-block-end: 1px solid rgba(0, 0, 0, 0.06);
 
         &:nth-child(odd) {
-          border-right: 1px solid rgba(0, 0, 0, 0.06);
+          border-inline-end: 1px solid rgba(0, 0, 0, 0.06);
         }
 
         &:nth-last-child(-n + 2) {
-          border-bottom: none;
+          border-block-end: none;
         }
       }
     }
@@ -149,6 +151,40 @@ $cls: md-monthly-data;
 
     &__main-card ::ng-deep {
       grid-area: auto / 1 / auto / -1;
+    }
+  }
+}
+
+@include utils.mobile {
+  .#{$cls} {
+    &__container,
+    &__main {
+      grid-template-columns: 1fr;
+    }
+
+    &__container {
+      margin-block-end: 0;
+      row-gap: 16px;
+    }
+
+    &__item--with-chart {
+      flex-wrap: wrap;
+    }
+
+    &__simple-chart {
+      flex-basis: 100%;
+      padding-inline-start: 0;
+      width: 100%;
+    }
+
+    &__volume-card {
+      ::ng-deep .ant-card-head {
+        padding-inline: 12px;
+      }
+
+      &__container > * {
+        padding: 12px;
+      }
     }
   }
 }
