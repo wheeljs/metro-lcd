@@ -146,6 +146,9 @@ export interface DashboardDataVM extends DashboardData {
   largeVolumeCompare: VolumeCompare;
   mediumVolumeCompare: VolumeCompare;
   smallVolumeCompare: VolumeCompare;
+  metroVolumeCompare?: VolumeCompare;
+  monorailVolumeCompare?: VolumeCompare;
+  tramVolumeCompare?: VolumeCompare;
   cities: CityVM[];
   readonly calculatedFields: string[];
 }
