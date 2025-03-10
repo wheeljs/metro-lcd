@@ -201,8 +201,14 @@ const drilldownOptions = ({ datasetId }: { datasetId: string; }): EChartsOption 
         scale: true,
       },
       {
-        id: 'rightY',
+        id: 'passengerStrongY',
         min: 'dataMin',
+        minInterval: 0.005,
+        splitLine: { show: false },
+      },
+      {
+        id: 'transferCoefficientY',
+        show: false,
       },
     ],
     series: [
@@ -237,7 +243,7 @@ const drilldownOptions = ({ datasetId }: { datasetId: string; }): EChartsOption 
       {
         type: 'line',
         datasetId,
-        yAxisIndex: 1,
+        yAxisId: 'passengerStrongY',
         encode: {
           x: 'range',
           y: 'passengerStrong',
@@ -252,7 +258,7 @@ const drilldownOptions = ({ datasetId }: { datasetId: string; }): EChartsOption 
       {
         type: 'line',
         datasetId,
-        yAxisIndex: 1,
+        yAxisId: 'transferCoefficientY',
         encode: {
           x: 'range',
           y: 'transferCoefficient',
