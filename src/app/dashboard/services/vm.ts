@@ -161,8 +161,8 @@ export function toVM({ current, lastMonth, lastYear }: {
     }
   }
 
-  ['largeVolume', 'mediumVolume', 'smallVolume'].forEach((volumeKey) => {
-    const volumeK = volumeKey as keyof Pick<DashboardData, 'largeVolume' | 'mediumVolume' | 'smallVolume'>;
+  ['largeVolume', 'metroVolume', 'mediumVolume', 'monorailVolume', 'smallVolume', 'tramVolume'].forEach((volumeKey) => {
+    const volumeK = volumeKey as keyof Pick<DashboardData, 'largeVolume' | 'metroVolume' | 'mediumVolume' | 'monorailVolume' | 'smallVolume' | 'tramVolume'>;
     const currentVolume = current[volumeK];
 
     if (currentVolume && prevMonth?.[volumeK]) {

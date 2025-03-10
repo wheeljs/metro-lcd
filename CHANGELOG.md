@@ -1,3 +1,14 @@
+<a name="1.4.3"></a>
+## [1.4.3](https://github.com/wheeljs/metro-lcd/compare/v1.4.2...v1.4.3) (2025-03-10)
+
+
+### Features
+
+* **dashboard/monthly-data:** add capacity dimension compare ([6613499](https://github.com/wheeljs/metro-lcd/commit/6613499))
+* **data:** add 2025-2 ([2236838](https://github.com/wheeljs/metro-lcd/commit/2236838))
+
+
+
 <a name="1.4.2"></a>
 ## [1.4.2](https://github.com/wheeljs/metro-lcd/compare/v1.4.1...v1.4.2) (2025-02-12)
 
