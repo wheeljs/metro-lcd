@@ -9,6 +9,7 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation, Input } from '@a
     '[style.--primary-color]': `mainColor`,
     '[style.--secondary-color]': `transferColor || mainColor`,
   },
+  standalone: false,
 })
 export class TransferIconComponent {
   @Input() mainColor!: string;

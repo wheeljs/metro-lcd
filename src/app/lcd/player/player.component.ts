@@ -19,6 +19,7 @@ interface ControlsContext {
   selector: 'lcd-player',
   templateUrl: './player.component.html',
   styleUrl: './player.component.scss',
+  standalone: false,
 })
 export class PlayerComponent implements AfterViewInit, ControlsContext {
   @Input() controls?: TemplateRef<ControlsContext>;

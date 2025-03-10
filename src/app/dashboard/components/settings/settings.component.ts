@@ -9,6 +9,7 @@ import { throttle } from 'lodash-es';
   styleUrl: './settings.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class SettingsComponent implements OnInit, OnDestroy {
   private _collapsed = true;

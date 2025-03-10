@@ -8,6 +8,7 @@ import { ContainerConfigService } from '../container-config.service';
   templateUrl: './station.component.html',
   styleUrl: './station.component.scss',
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class StationComponent {
   settingIcon = faGear;

@@ -9,6 +9,7 @@ import { DashboardIndexContextService } from '../../index/dashboard-index-contex
   templateUrl: './calculated.component.html',
   styleUrl: './calculated.component.scss',
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class CalculatedComponent {
   static ngAcceptInputType_force: BooleanInput;

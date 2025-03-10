@@ -16,7 +16,8 @@ import { Units } from '../../pipes/unit.pipe';
       [prefixMode]="prefixMode"
       [autoColor]="autoColor"
     ></md-statistic-item>
-  `
+  `,
+  standalone: false,
 })
 class TestHostComponent {
   value = 0;

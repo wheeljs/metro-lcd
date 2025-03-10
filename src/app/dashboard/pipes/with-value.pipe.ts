@@ -2,6 +2,7 @@ import { Pipe, PipeTransform, TemplateRef } from '@angular/core';
 
 @Pipe({
   name: 'withValue',
+  standalone: false,
 })
 export class WithValuePipe implements PipeTransform {
 

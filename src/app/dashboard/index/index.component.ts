@@ -20,6 +20,7 @@ import { DashboardIndexContextService } from './dashboard-index-context.service'
   providers: [
     DashboardIndexContextService,
   ],
+  standalone: false,
 })
 export class DashboardIndexComponent {
 

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewEncapsulation } from '@angular/core';
 import { merge } from 'lodash-es';
-import type { DataZoomComponentOption, DatasetComponentOption, ECElementEvent, ECharts, EChartsOption } from 'echarts';
+import type { ECharts, ECElementEvent } from 'echarts/core';
+import type { DataZoomComponentOption, DatasetComponentOption, EChartsOption } from 'echarts';
 import type { City, CityVM } from '../../types';
 
 const formatCityNumber = (value: number, unit: number): number => {
@@ -307,6 +308,7 @@ const drilldownOptions = ({ datasetId }: { datasetId: string; }): EChartsOption 
   styleUrl: './month-cities-operation.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class MonthCitiesBarChartComponent {
   merge: Partial<EChartsOption> = {};

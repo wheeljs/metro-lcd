@@ -11,6 +11,7 @@ import { ContainerConfigService } from '../../container-config.service';
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class ToolbarComponent {
   @Input() line?: RunningLine;

@@ -6,6 +6,7 @@ import { RunningLineService } from '../running-line.service';
   selector: 'lcd-subtitle',
   templateUrl: './subtitle.component.html',
   styleUrl: './subtitle.component.scss',
+  standalone: false,
 })
 export class SubtitleComponent {
   subtitle$ = this.runningLineService.playlist$.pipe(
