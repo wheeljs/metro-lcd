@@ -94,21 +94,24 @@ const topLevelOptions = (): EChartsOption => {
       },
       axisTick: { show: false },
     },
-    yAxis: [{
-      id: 'leftY',
-      name: '万人次',
-      nameTextStyle: {
-        align: 'right',
+    yAxis: [
+      {
+        id: 'leftY',
+        name: '万人次',
+        nameTextStyle: {
+          align: 'right',
+        },
       },
-    }, {
-      id: 'rightY',
-      name: '万人次每公里日',
-      nameTextStyle: {
-        align: 'right',
+      {
+        id: 'rightY',
+        name: '万人次每公里日',
+        nameTextStyle: {
+          align: 'right',
+        },
+        alignTicks: true,
+        splitLine: { show: false },
       },
-      alignTicks: true,
-      splitLine: { show: false },
-    }],
+    ],
     series: [
       {
         type: 'bar',
