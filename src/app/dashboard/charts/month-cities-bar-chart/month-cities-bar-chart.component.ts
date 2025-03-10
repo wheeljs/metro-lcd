@@ -224,6 +224,10 @@ const drilldownOptions = ({ datasetId }: { datasetId: string; }): EChartsOption 
           itemGroupId: 'id',
         },
         smooth: true,
+        symbolSize: 11,
+        lineStyle: {
+          width: 10,
+        },
         universalTransition: {
           enabled: true,
           divideShape: 'split',
@@ -238,6 +242,10 @@ const drilldownOptions = ({ datasetId }: { datasetId: string; }): EChartsOption 
           itemGroupId: 'id',
         },
         smooth: true,
+        symbolSize: 11,
+        lineStyle: {
+          width: 10,
+        },
         universalTransition: {
           enabled: true,
           divideShape: 'split',
@@ -253,6 +261,10 @@ const drilldownOptions = ({ datasetId }: { datasetId: string; }): EChartsOption 
           itemGroupId: 'id',
         },
         smooth: true,
+        symbolSize: 11,
+        lineStyle: {
+          width: 10,
+        },
         universalTransition: {
           enabled: true,
           divideShape: 'split',
@@ -268,6 +280,10 @@ const drilldownOptions = ({ datasetId }: { datasetId: string; }): EChartsOption 
           itemGroupId: 'id',
         },
         smooth: true,
+        symbolSize: 11,
+        lineStyle: {
+          width: 10,
+        },
         universalTransition: {
           enabled: true,
           divideShape: 'split',
