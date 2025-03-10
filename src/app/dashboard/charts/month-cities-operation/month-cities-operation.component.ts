@@ -302,9 +302,9 @@ const drilldownOptions = ({ datasetId }: { datasetId: string; }): EChartsOption 
 }
 
 @Component({
-  selector: 'md-chart-month-cities-bar',
-  templateUrl: './month-cities-bar-chart.component.html',
-  styleUrl: './month-cities-bar-chart.component.scss',
+  selector: 'md-chart-month-cities-operation',
+  templateUrl: './month-cities-operation.component.html',
+  styleUrl: './month-cities-operation.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })

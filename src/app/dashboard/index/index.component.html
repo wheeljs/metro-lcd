@@ -7,7 +7,7 @@
     <main>
       <md-monthly-data [data]="data" [config]="config" />
       <nz-card [nzTitle]="monthCitiesCardTitle" [nzExtra]="monthCitiesCardExtra" nzBorderless>
-        <md-chart-month-cities-bar #monthCitiesChart [cities]="data.cities" />
+        <md-chart-month-cities-operation #monthCitiesChart [cities]="data.cities" />
         @if (data.summaries) {
           <section class="summaries">
             <ol>
@@ -30,7 +30,7 @@
         }
       </nz-card>
       <ng-template #monthCitiesCardTitle>
-        <span>城市数据</span>
+        <span>城市轨道交通运营数据</span>
         <span class="ant-card__subtitle">（点击城市数据可查看趋势@if (data.calculatedFields.includes('cities.passengerStrong')) {<span>，客运强度为计算值，仅供参考</span>}）
         </span>
       </ng-template>

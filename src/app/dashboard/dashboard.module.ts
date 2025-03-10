@@ -8,7 +8,7 @@ import { FileService } from './services/file.service';
 import { MonthlyDataComponent } from './index/components/monthly-data/monthly-data.component';
 import { UnitPipe } from './pipes/unit.pipe';
 import { StatisticItemComponent } from './components/statistic-item/statistic-item.component';
-import { MonthCitiesBarChartComponent } from './charts/month-cities-bar-chart/month-cities-bar-chart.component';
+import { MonthCitiesBarChartComponent } from './charts/month-cities-operation/month-cities-operation.component';
 import { DataVMService } from './services/data-vm.service';
 import { SettingsComponent } from './components/settings/settings.component';
 import { WithValuePipe } from './pipes/with-value.pipe';
