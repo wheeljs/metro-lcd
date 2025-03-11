@@ -39,7 +39,7 @@
     "marked": "^12.0.2",
     "ng-click-outside2": "^14.0.1",
     "ng-zorro-antd": "^19.1.0",
-    "ngx-echarts": "^17.2.0",
+    "ngx-echarts": "^19.0.0",
     "normalize.css": "^8.0.1",
     "rxjs": "^7.8.1",
     "tslib": "^2.5.0",

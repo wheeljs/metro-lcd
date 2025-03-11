@@ -84,8 +84,8 @@ dependencies:
     specifier: ^19.1.0
     version: 19.1.0(@angular/animations@19.2.1)(@angular/common@19.2.1)(@angular/core@19.2.1)(@angular/forms@19.2.1)(@angular/platform-browser@19.2.1)(@angular/router@19.2.1)(rxjs@7.8.2)
   ngx-echarts:
-    specifier: ^17.2.0
-    version: 17.2.0(echarts@5.6.0)
+    specifier: ^19.0.0
+    version: 19.0.0(echarts@5.6.0)
   normalize.css:
     specifier: ^8.0.1
     version: 8.0.1
@@ -7251,8 +7251,8 @@ packages:
       - rxjs
     dev: false
 
-  /ngx-echarts@17.2.0(echarts@5.6.0):
-    resolution: {integrity: sha512-i3XDE9d53zmJH4bp8RQ/271oPlhBkczO1M3VtWk8nCXdxQq9qx8UckjWEQ7oV1AbSDLGK5sRiFu5EaY5hvdWPA==}
+  /ngx-echarts@19.0.0(echarts@5.6.0):
+    resolution: {integrity: sha512-CtW6RSNmUs5CENUDJqI9VSAVG9zqFjDLfzpJRLNn/HA35j10/D+sEuRH7RHB1/DLmojoD9rA6q0R57jlN0hqwg==}
     peerDependencies:
       echarts: '>=5.0.0'
     dependencies:
