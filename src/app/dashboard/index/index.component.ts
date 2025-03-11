@@ -1,10 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { filter, map, merge, tap } from 'rxjs';
-import * as Sentry from '@sentry/angular-ivy';
 import type { NzResultComponent } from 'ng-zorro-antd/result';
 import type { DashboardData, DashboardDataVM } from '../types';
 import { DataService } from '../services';
@@ -98,7 +97,6 @@ export class DashboardIndexComponent {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    activatedRoute: ActivatedRoute,
     private title: Title,
     private dataService: DataService,
     private dataVMService: DataVMService,
@@ -106,19 +104,6 @@ export class DashboardIndexComponent {
     private dashboardIndexContextService: DashboardIndexContextService,
   ) {
     this.setupSettingsForm();
-
-    activatedRoute.paramMap
-      .pipe(takeUntilDestroyed())
-      .subscribe({
-        next: (paramMap) => {
-          const range = paramMap.get('range');
-          Sentry.metrics.increment('dashboard_view', 1, {
-            tags: {
-              range: range || 'latest',
-            },
-          });
-        },
-      });
 
     this.dataService.list().pipe(
       tap(() => this.loading = true),

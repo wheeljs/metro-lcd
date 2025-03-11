@@ -31,7 +31,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.4.2",
     "@fortawesome/free-regular-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
-    "@sentry/angular-ivy": "^7.107.0",
+    "@sentry/angular": "^9.5.0",
     "dexie": "^4.0.4",
     "echarts": "^5.5.0",
     "immer": "^10.1.1",
