@@ -13,6 +13,7 @@ import { DataVMService } from './services/data-vm.service';
 import { SettingsComponent } from './components/settings/settings.component';
 import { WithValuePipe } from './pipes/with-value.pipe';
 import { CalculatedComponent } from './components/calculated/calculated.component';
+import { DrilldownableChartComponent } from './charts/drilldownable-chart/drilldownable-chart.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { CalculatedComponent } from './components/calculated/calculated.componen
     SettingsComponent,
     WithValuePipe,
     CalculatedComponent,
+    DrilldownableChartComponent,
   ],
   imports: [
     SharedModule,

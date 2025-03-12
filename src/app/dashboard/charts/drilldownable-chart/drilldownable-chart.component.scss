@@ -1,0 +1,10 @@
+md-drilldownable-chart {
+  position: relative;
+
+  .md-drilldownable-chart__toolbars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+  }
+}
