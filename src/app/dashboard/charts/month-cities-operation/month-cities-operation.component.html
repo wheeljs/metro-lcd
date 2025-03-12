@@ -1,12 +1,6 @@
-<div class="toolbars">
-  @if (drilldowned) {
-    <button nz-button nzShape="circle" (click)="backToTop()"><span nz-icon nzType="arrow-left" nzTheme="outline"></span></button>
-  }
-</div>
-<div
-  echarts
-  [options]="options"
+<md-drilldownable-chart
+  #drilldownableChart
   [merge]="merge"
-  (chartInit)="onChartInit($event)"
-  (chartClick)="onChartClick($event)"
-></div>
+  [topLevelOptions]="topLevelOptions"
+  [drilldownOptions]="drilldownOptions"
+></md-drilldownable-chart>
