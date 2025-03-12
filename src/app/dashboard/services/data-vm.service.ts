@@ -73,7 +73,7 @@ export class DataVMService {
   getDataVM(options: LoadDataOptions): Observable<any> {
     const prevMonthRanges = [];
     let prevRange = options.range;
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < (options.config?.dataRange ?? 7) - 1; i++) {
       prevRange = prevRangeId(prevRange, 'month');
       prevMonthRanges.push(prevRange);
     }

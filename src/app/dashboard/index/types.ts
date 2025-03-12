@@ -9,4 +9,5 @@ export type DashboardIndexSettingsForm = FormGroup<{
 export interface DashboardConfig {
   alwaysShowCalculated?: boolean;
   showVolumeDiff?: boolean;
+  dataRange?: number;
 }
