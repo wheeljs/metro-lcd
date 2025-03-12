@@ -47,6 +47,8 @@ const CityFieldsDimensions = [
   { name: 'inStationCapacity', displayName: '进站量' },
   { name: 'passengerStrong', displayName: '客流强度' },
   { name: 'transferCoefficient', displayName: '换乘系数' },
+  { name: 'lines', displayName: '线路数' },
+  { name: 'operationLength', displayName: '运营里程' },
 ];
 
 @Component({
@@ -62,11 +64,20 @@ export class MonthCitiesBarChartComponent {
 
   topLevelOptions = (): EChartsOption => {
     return {
-      grid: {
-        top: 70,
-        right: 40,
-        left: 48,
-      },
+      grid: [
+        {
+          top: 70,
+          right: 40,
+          bottom: '50%',
+          left: 48,
+        },
+        {
+          id: 'linesGrid',
+          top: 538,
+          right: 40,
+          left: 48,
+        },
+      ],
       legend: {
         right: 0,
       },
@@ -85,28 +96,40 @@ export class MonthCitiesBarChartComponent {
           ...CityFieldsDimensions,
         ],
       }],
-      xAxis: {
-        id: 'x',
-        type: 'category',
-        inverse: false,
-        axisLabel: {
-          formatter: (value) => {
-            if (value.length <= 2) {
-              return value;
-            }
-            if (value.match(ParentheseRegex)) {
-              return value.replace(ParentheseRegex, '\n$1');
-            }
+      xAxis: [
+        {
+          id: 'x',
+          type: 'category',
+          inverse: false,
+          axisLabel: {
+            formatter: (value) => {
+              if (value.length <= 2) {
+                return value;
+              }
+              if (value.match(ParentheseRegex)) {
+                return value.replace(ParentheseRegex, '\n$1');
+              }
 
-            let text = [];
-            for (let i = 0; i < value.length; i += 2) {
-              text.push(value.slice(i, i + 2));
-            }
-            return text.join('\n');
+              let text = [];
+              for (let i = 0; i < value.length; i += 2) {
+                text.push(value.slice(i, i + 2));
+              }
+              return text.join('\n');
+            },
           },
+          axisLine: { show: false },
+          axisTick: { show: false },
         },
-        axisTick: { show: false },
-      },
+        {
+          id: 'linesX',
+          gridId: 'linesGrid',
+          type: 'category',
+          inverse: false,
+          axisLabel: { show: false },
+          axisLine: { show: false },
+          axisTick: { show: false },
+        },
+      ],
       yAxis: [
         {
           id: 'leftY',
@@ -121,6 +144,28 @@ export class MonthCitiesBarChartComponent {
           nameTextStyle: {
             align: 'right',
           },
+          alignTicks: true,
+          splitLine: { show: false },
+        },
+        {
+          id: 'linesY',
+          gridId: 'linesGrid',
+          name: '条',
+          nameTextStyle: {
+            align: 'right',
+          },
+          inverse: true,
+          minInterval: 1,
+        },
+        {
+          id: 'operationLengthY',
+          gridId: 'linesGrid',
+          name: '公里',
+          nameTextStyle: {
+            align: 'right',
+          },
+          inverse: true,
+          minInterval: 1,
           alignTicks: true,
           splitLine: { show: false },
         },
@@ -180,10 +225,41 @@ export class MonthCitiesBarChartComponent {
             divideShape: 'split',
           },
         },
+        {
+          type: 'bar',
+          xAxisId: 'linesX',
+          yAxisId: 'linesY',
+          encode: {
+            seriesName: 'lines',
+            x: 'city',
+            y: 'lines',
+            itemChildGroupId: 'id',
+          },
+          universalTransition: {
+            enabled: true,
+            divideShape: 'split',
+          },
+        },
+        {
+          type: 'bar',
+          xAxisId: 'linesX',
+          yAxisId: 'operationLengthY',
+          encode: {
+            seriesName: 'operationLength',
+            x: 'city',
+            y: 'operationLength',
+            itemChildGroupId: 'id',
+          },
+          universalTransition: {
+            enabled: true,
+            divideShape: 'split',
+          },
+        },
       ],
       dataZoom: [
         {
           id: 'datazoom',
+          xAxisId: ['x', 'linesX'],
           show: true,
           type: 'slider',
           startValue: 0,
@@ -203,14 +279,25 @@ export class MonthCitiesBarChartComponent {
           type: 'line',
         },
       },
-      xAxis: {
-        id: 'x',
-        type: 'category',
-        inverse: true,
-        axisLabel: {
-          formatter: (value) => `${value}`,
+      xAxis: [
+        {
+          id: 'x',
+          type: 'category',
+          inverse: true,
+          axisLabel: {
+            formatter: (value) => `${value}`,
+          },
         },
-      },
+        {
+          id: 'linesX',
+          gridId: 'linesGrid',
+          type: 'category',
+          inverse: true,
+          axisLabel: {
+            formatter: (value) => `${value}`,
+          },
+        },
+      ],
       yAxis: [
         {
           id: 'leftY',
@@ -290,6 +377,46 @@ export class MonthCitiesBarChartComponent {
           encode: {
             x: 'range',
             y: 'transferCoefficient',
+            itemGroupId: 'id',
+          },
+          smooth: true,
+          symbolSize: 11,
+          lineStyle: {
+            width: 10,
+          },
+          universalTransition: {
+            enabled: true,
+            divideShape: 'split',
+          },
+        },
+        {
+          type: 'line',
+          datasetId,
+          xAxisId: 'linesX',
+          yAxisId: 'linesY',
+          encode: {
+            x: 'range',
+            y: 'lines',
+            itemGroupId: 'id',
+          },
+          smooth: true,
+          symbolSize: 11,
+          lineStyle: {
+            width: 10,
+          },
+          universalTransition: {
+            enabled: true,
+            divideShape: 'split',
+          },
+        },
+        {
+          type: 'line',
+          datasetId,
+          xAxisId: 'linesX',
+          yAxisId: 'operationLengthY',
+          encode: {
+            x: 'range',
+            y: 'operationLength',
             itemGroupId: 'id',
           },
           smooth: true,
