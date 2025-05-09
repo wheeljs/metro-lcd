@@ -23,6 +23,7 @@ enum SplitorSpeed {
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class SplitorComponent {
   splitorIcon = faAngleRight;

@@ -12,6 +12,7 @@ export function lineName(value: NameItem): string {
 
 @Pipe({
   name: 'lineName',
+  standalone: false,
 })
 export class LineNamePipe implements PipeTransform {
   transform = lineName;

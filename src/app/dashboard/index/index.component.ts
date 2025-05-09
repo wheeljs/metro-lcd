@@ -1,10 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { filter, map, merge, tap } from 'rxjs';
-import * as Sentry from '@sentry/angular-ivy';
+import { filter, map, merge, switchMap, tap } from 'rxjs';
 import type { NzResultComponent } from 'ng-zorro-antd/result';
 import type { DashboardData, DashboardDataVM } from '../types';
 import { DataService } from '../services';
@@ -20,6 +19,7 @@ import { DashboardIndexContextService } from './dashboard-index-context.service'
   providers: [
     DashboardIndexContextService,
   ],
+  standalone: false,
 })
 export class DashboardIndexComponent {
 
@@ -97,7 +97,6 @@ export class DashboardIndexComponent {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    activatedRoute: ActivatedRoute,
     private title: Title,
     private dataService: DataService,
     private dataVMService: DataVMService,
@@ -105,19 +104,6 @@ export class DashboardIndexComponent {
     private dashboardIndexContextService: DashboardIndexContextService,
   ) {
     this.setupSettingsForm();
-
-    activatedRoute.paramMap
-      .pipe(takeUntilDestroyed())
-      .subscribe({
-        next: (paramMap) => {
-          const range = paramMap.get('range');
-          Sentry.metrics.increment('dashboard_view', 1, {
-            tags: {
-              range: range || 'latest',
-            },
-          });
-        },
-      });
 
     this.dataService.list().pipe(
       tap(() => this.loading = true),
@@ -144,7 +130,7 @@ export class DashboardIndexComponent {
     const settingsForm = this.settingsForm = this.formBuilder.group({
       alwaysShowCalculated: this.config.alwaysShowCalculated ?? false,
       showVolumeDiff: this.config.showVolumeDiff ?? true,
-      dataRange: [6, [
+      dataRange: [this.config.dataRange ?? 6, [
         Validators.min(6),
         Validators.max(12),
       ]],
@@ -156,6 +142,22 @@ export class DashboardIndexComponent {
     ).subscribe({
       next: (value) => {
         this.config = value;
+      },
+    });
+
+    settingsForm.get('dataRange')?.valueChanges.pipe(
+      tap(() => this.loading = true),
+      switchMap(() => this.dataVMService.getDataVM({
+        range: this.data!.id,
+        config: this.config,
+      })),
+      tap(() => this.loading = false),
+    ).subscribe({
+      next: (data) => {
+        this.list = Object.assign({}, this.list, {
+          [this.data!.id]: data,
+        });
+        this.data = this.list[this.data!.id] as DashboardDataVM;
       },
     });
   }
@@ -173,6 +175,7 @@ export class DashboardIndexComponent {
     this.dataVMService.getDataVM({
       range: id,
       hash: listItem.hash,
+      config: this.config,
     }).subscribe({
       next: (data) => {
         this.list = Object.assign({}, this.list, {

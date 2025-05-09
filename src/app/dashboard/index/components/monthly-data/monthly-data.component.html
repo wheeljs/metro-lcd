@@ -2,7 +2,7 @@
   <div class="md-monthly-data__container">
     <div class="md-monthly-data__main">
       <nz-card
-        nzBorderless
+        [nzBordered]="false"
         [class.ant-card--inline-actions]="data.news.cities?.length || data.off?.cities"
         [nzActions]="[newCityTpl, offCityTpl] | withValue: [data.news.cities, data.off?.cities]"
       >
@@ -12,9 +12,9 @@
           nzSuffix="个"
         ></md-statistic-item>
         <div class="md-monthly-data__main-card__icon">
-          <span nz-icon>
+          <nz-icon>
             <fa-icon [icon]="faLocationDot" />
-          </span>
+          </nz-icon>
         </div>
       </nz-card>
       <ng-template #newCityTpl>
@@ -47,7 +47,7 @@
       </ng-template>
 
       <nz-card
-        nzBorderless
+        [nzBordered]="false"
         class="ant-card--inline-actions"
         [nzActions]="[newLinesTpl, offLinesTpl] | withValue: [
           [data.news.lines.count > 0, data.news.segments.count > 0],
@@ -60,7 +60,7 @@
           nzSuffix="条"
         />
         <div class="md-monthly-data__main-card__icon">
-          <span nz-icon nzType="dashboard:line"></span>
+          <nz-icon nzType="dashboard:line" />
         </div>
       </nz-card>
       <ng-template #newLinesTpl>
@@ -125,7 +125,7 @@
       </ng-template>
 
       <nz-card
-        nzBorderless
+        [nzBordered]="false"
         class="ant-card--inline-actions"
         [nzActions]="[newOperationLengthTpl, offOperationLengthTpl] | withValue: [data.news.operationLength, data.off?.operationLength]"
       >
@@ -135,7 +135,7 @@
           nzSuffix="公里"
         />
         <div class="md-monthly-data__main-card__icon">
-          <span nz-icon nzType="dashboard:operation-length"></span>
+          <nz-icon nzType="dashboard:operation-length" />
         </div>
       </nz-card>
       <ng-template #newOperationLengthTpl>
@@ -147,7 +147,7 @@
         <span>{{data.off?.operationLength}}公里</span>
       </ng-template>
 
-      <nz-card nzBorderless>
+      <nz-card [nzBordered]="false">
         <md-statistic-item
           nzTitle="实际开行列车"
           [value]="data.runs"
@@ -155,12 +155,12 @@
           nzSuffix="万次"
         />
         <div class="md-monthly-data__main-card__icon">
-          <span nz-icon nzType="dashboard:train"></span>
+          <nz-icon nzType="dashboard:train" />
         </div>
       </nz-card>
     </div>
 
-    <nz-card nzBorderless class="ant-card--inline-actions" [nzActions]="[passengerCapacityQoQ, passengerCapacityYoY]">
+    <nz-card [nzBordered]="false" class="ant-card--inline-actions" [nzActions]="[passengerCapacityQoQ, passengerCapacityYoY]">
       <div class="md-monthly-data__item--with-chart">
         <md-statistic-item
           nzTitle="客运量"
@@ -214,7 +214,7 @@
       </nz-space>
     </ng-template>
 
-    <nz-card nzBorderless class="ant-card--inline-actions" [nzActions]="
+    <nz-card [nzBordered]="false" class="ant-card--inline-actions" [nzActions]="
       [inStationCapacityQoQ, inStationCapacityYoY] | withValue: [
         [data.inStationCapacityVM?.compareLastMonth, data.inStationCapacityVM?.compareLastMonthPercent],
         [data.inStationCapacityVM?.compareLastYear, data.inStationCapacityVM?.compareLastYearPercent]
@@ -285,13 +285,13 @@
       </nz-space>
     </ng-template>
 
-    <nz-card nzBorderless class="ant-card--inline-actions" [nzActions]="
+    <nz-card [nzBordered]="false" class="ant-card--inline-actions" [nzActions]="
       [passengerStrongQoQ, passengerStrongYoY] | withValue: [
         [data.passengerStrongVM?.compareLastMonth, data.passengerStrongVM?.compareLastMonthPercent],
         [data.passengerStrongVM?.compareLastYear, data.passengerStrongVM?.compareLastYearPercent]
       ]
     ">
-      <div class="md-monthly-data__item--with-chart">
+      <div class="md-monthly-data__item--with-chart md-monthly-data__item--passenger-strong">
         <md-calculated field="passengerStrongVM.value">
           <md-statistic-item
             nzTitle="平均客运强度"
@@ -371,7 +371,7 @@
         class="md-monthly-data__volume-card"
         [nzTitle]="volumeNameTpl"
         [nzBodyStyle]="{ padding: 0 }"
-        nzBorderless
+        [nzBordered]="false"
       >
         <div class="md-monthly-data__volume-card__container">
           <div class="md-monthly-data__volume-card__item">

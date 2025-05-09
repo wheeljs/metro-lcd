@@ -25,6 +25,7 @@ const PrefixModes: Record<PrefixMode, { up: IconDefinition; down: IconDefinition
   templateUrl: './statistic-item.component.html',
   styleUrl: './statistic-item.component.scss',
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class StatisticItemComponent implements OnChanges, AfterViewInit {
   static ngAcceptInputType_percent: BooleanInput;

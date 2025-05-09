@@ -3,7 +3,7 @@ import { By } from '@angular/platform-browser';
 import { NgxEchartsDirective, provideEchartsCore } from 'ngx-echarts';
 import type { DatasetComponentOption, ECElementEvent } from 'echarts';
 import echarts from '../../../shared/echarts/custom-echarts';
-import { MonthCitiesBarChartComponent } from './month-cities-bar-chart.component';
+import { MonthCitiesBarChartComponent } from './month-cities-operation.component';
 
 describe('MonthCitiesBarChartComponent', () => {
   let component: MonthCitiesBarChartComponent;

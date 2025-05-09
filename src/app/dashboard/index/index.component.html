@@ -6,8 +6,8 @@
     </div>
     <main>
       <md-monthly-data [data]="data" [config]="config" />
-      <nz-card [nzTitle]="monthCitiesCardTitle" [nzExtra]="monthCitiesCardExtra" nzBorderless>
-        <md-chart-month-cities-bar #monthCitiesChart [cities]="data.cities" />
+      <nz-card [nzTitle]="monthCitiesCardTitle" [nzExtra]="monthCitiesCardExtra" [nzBordered]="false">
+        <md-chart-month-cities-operation #monthCitiesChart [cities]="data.cities" />
         @if (data.summaries) {
           <section class="summaries">
             <ol>
@@ -30,7 +30,7 @@
         }
       </nz-card>
       <ng-template #monthCitiesCardTitle>
-        <span>城市数据</span>
+        <span>城市轨道交通运营数据</span>
         <span class="ant-card__subtitle">（点击城市数据可查看趋势@if (data.calculatedFields.includes('cities.passengerStrong')) {<span>，客运强度为计算值，仅供参考</span>}）
         </span>
       </ng-template>
@@ -76,15 +76,14 @@
       </nz-form-item>
       <nz-form-item nzAlign="middle">
         <nz-form-label nzFor="mdi-settings-dataRange">历史数据范围</nz-form-label>
-        <nz-input-number-group nzSuffix="个月">
-          <nz-input-number
-            formControlName="dataRange"
-            nzId="mdi-settings-dataRange"
-            [nzMin]="6"
-            [nzMax]="12"
-            nzReadOnly
-          />
-        </nz-input-number-group>
+        <nz-input-number
+          formControlName="dataRange"
+          nzId="mdi-settings-dataRange"
+          [nzMin]="6"
+          [nzMax]="12"
+        >
+          <span nzInputSuffix>个月</span>
+        </nz-input-number>
       </nz-form-item>
       <nz-form-item>
         <a [href]="reportUrl" target="_blank">数据不准？</a>

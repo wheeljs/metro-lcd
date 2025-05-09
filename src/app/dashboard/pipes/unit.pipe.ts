@@ -14,7 +14,8 @@ export function formatUnit(value: number | undefined, unit?: keyof typeof Units)
 }
 
 @Pipe({
-  name: 'unit'
+  name: 'unit',
+  standalone: false,
 })
 export class UnitPipe implements PipeTransform {
 

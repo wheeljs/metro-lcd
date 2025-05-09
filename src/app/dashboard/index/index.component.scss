@@ -9,6 +9,10 @@
   --horizontal-space: 48px;
 }
 
+nz-spin.ant-spin-nested-loading {
+  min-height: inherit;
+}
+
 nz-spin,
 ::ng-deep .ant-spin-container {
   height: 100%;
@@ -54,7 +58,7 @@ main {
 }
 
 ::ng-deep [echarts] {
-  height: 600px;
+  height: 1000px;
 }
 
 .summaries {

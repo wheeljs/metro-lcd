@@ -1,3 +1,5 @@
+import { DashboardConfig } from './index/types';
+
 export interface LoadDataOptions {
   /** 要加载的数据，为2024-2形式 */
   range: string;
@@ -5,6 +7,7 @@ export interface LoadDataOptions {
   skipCache?: boolean;
   /** 有效数据的MD5，取自list接口 */
   hash?: string;
+  config?: DashboardConfig;
 }
 
 export enum ExtraNoteTypes {

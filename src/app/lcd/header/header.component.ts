@@ -10,6 +10,7 @@ import type { RunningLine, RunningLineStation } from '../types';
   selector: 'lcd-header',
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
+  standalone: false,
 })
 export class HeaderComponent {
   splitorIcon = faAngleRight;

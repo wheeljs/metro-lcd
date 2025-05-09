@@ -129,6 +129,12 @@ $cls: md-monthly-data;
   }
 }
 
+@media screen and (min-width: 1440px) {
+  .#{$cls}__item--passenger-strong ::ng-deep .ant-statistic-content {
+    white-space: nowrap;
+  }
+}
+
 @media screen and (max-width: 1439px) {
   .#{$cls} {
     &__container {

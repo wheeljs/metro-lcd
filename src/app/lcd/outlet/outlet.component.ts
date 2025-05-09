@@ -10,6 +10,7 @@ import { Line } from '../types';
   templateUrl: './outlet.component.html',
   styleUrl: './outlet.component.scss',
   providers: [RunningLineService, ContainerConfigService],
+  standalone: false,
 })
 export class OutletComponent {
   lines = Object.values(Lines);

@@ -13,7 +13,7 @@ marked.use({
     link: (href, title, text) => `<a href="${href}" target="_blank"${title ? ` title="${title}"` : ''}>${text}</a>`,
   },
 });
-const content = parse(changelog);
+const content = parse(changelog.replace(/@/g, '&#64;'));
 fs.writeFileSync(
     changelogTemplateFile,
     `<div mat-dialog-title>Changelog</div>

@@ -16,6 +16,7 @@ import { ChangelogService } from '../../app/changelog.service';
     '[class.lcd-operation-panel--collapsed]': `collapsed`,
   },
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class OperationPanelComponent {
   collapseIcon = faAngleDown;

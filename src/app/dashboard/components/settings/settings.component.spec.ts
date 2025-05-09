@@ -15,6 +15,7 @@ import { SettingsComponent } from './settings.component';
     </ng-template>
     <md-settings [settings]="template"></md-settings>
   `,
+  standalone: false,
 })
 class TestHostComponent {
   @ViewChild('template') template!: TemplateRef<any>;

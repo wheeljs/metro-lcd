@@ -11,6 +11,7 @@ import { ContainerConfigService } from '../container-config.service';
   host: {
     '[style.--foreground-color]': `line.ui.foregroundColor || '#000'`,
   },
+  standalone: false,
 })
 export class ContainerComponent {
   private lineSubject = new Subject<Line>();

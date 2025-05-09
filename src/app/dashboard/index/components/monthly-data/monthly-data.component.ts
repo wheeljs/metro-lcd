@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
 import { merge } from 'lodash-es';
-import type { DatasetComponentOption, ECharts, EChartsOption, LineSeriesOption } from 'echarts';
+import type { ECharts } from 'echarts/core';
+import type { DatasetComponentOption, EChartsOption, LineSeriesOption } from 'echarts';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { colors, linearGradient } from '../../../../shared/echarts/utils';
 import type { DashboardDataVM } from '../../../types';
@@ -17,6 +18,7 @@ const SimpleChartLineSerie: LineSeriesOption = {
   templateUrl: './monthly-data.component.html',
   styleUrl: './monthly-data.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class MonthlyDataComponent implements AfterViewInit {
   faLocationDot = faLocationDot;

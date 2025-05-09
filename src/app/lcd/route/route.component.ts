@@ -10,6 +10,7 @@ import type { RunningLine, RunningLineStation } from '../types';
     '[style.--rest-station-count]': `stations.length - 1`,
   },
   encapsulation: ViewEncapsulation.Emulated,
+  standalone: false,
 })
 export class RouteComponent {
   @Input() line!: RunningLine;

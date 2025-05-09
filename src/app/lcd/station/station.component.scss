@@ -1,6 +1,6 @@
 @use 'sass:math';
 @use '../_utils';
-@import '../_variables';
+@use '../_variables' as var;
 
 $point-size: 40px;
 $cls: lcd-station;
@@ -54,7 +54,7 @@ $cls: lcd-station;
   &__line {
     flex-grow: 1;
     margin-inline: -4px;
-    height: $lcd-route-line-height;
+    height: var.$lcd-route-line-height;
     background-color: var(--line-color);
     z-index: -1;
     text-align: center;
