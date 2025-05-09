@@ -1,3 +1,45 @@
+<a name="1.5.0"></a>
+# [1.5.0](https://github.com/wheeljs/metro-lcd/compare/v1.4.3...v1.5.0) (2025-05-09)
+
+
+### Bug Fixes
+
+* **dashboard/index:** display loading indicator correct ([46810c5](https://github.com/wheeljs/metro-lcd/commit/46810c5))
+* **dashboard/monthly-data:** avoid line break in passengerStrong on large screen ([a422fd4](https://github.com/wheeljs/metro-lcd/commit/a422fd4))
+
+
+### Chores
+
+* **angular:** update to angular 19 ([3b77586](https://github.com/wheeljs/metro-lcd/commit/3b77586))
+* **fontawesome:** update ([634a187](https://github.com/wheeljs/metro-lcd/commit/634a187))
+* **ng-zorro-antd:** update to compatible with angular 19 ([1261745](https://github.com/wheeljs/metro-lcd/commit/1261745))
+* **ngx-echarts:** update ([51e8c4a](https://github.com/wheeljs/metro-lcd/commit/51e8c4a))
+* **sentry:** migrate to [@sentry](https://github.com/sentry)/angular ([be0b909](https://github.com/wheeljs/metro-lcd/commit/be0b909))
+
+
+### Code Refactoring
+
+* **dashboard/chart/drilldownable-chart:** split drilldownable chart component ([e97b718](https://github.com/wheeljs/metro-lcd/commit/e97b718))
+* **dashboard/chart/month-cities-operation:** rename to more precisely ([a6d2473](https://github.com/wheeljs/metro-lcd/commit/a6d2473))
+* **dashboard/chart/month-cities:** use `<md-drilldownable-chart>` ([6c3c450](https://github.com/wheeljs/metro-lcd/commit/6c3c450))
+* **ng-zorro-antd:** use latest `<nz-icon>` format ([73417f6](https://github.com/wheeljs/metro-lcd/commit/73417f6))
+
+
+### Features
+
+* **dashboard/chart/month-cities-operation:** add chart grid for city lines and operation length ([5194d24](https://github.com/wheeljs/metro-lcd/commit/5194d24))
+* **dashboard/chart/month-cities:** make line like metro line ([c908ddf](https://github.com/wheeljs/metro-lcd/commit/c908ddf))
+* **dashboard/chart/month-cities:** split passengerStrong and transferCoefficient y axis ([42de5f0](https://github.com/wheeljs/metro-lcd/commit/42de5f0))
+* **dashboard/index:** user can change history data month between 6 and 12 ([aa90953](https://github.com/wheeljs/metro-lcd/commit/aa90953))
+* **data:** add 2025-3, 2025-4 ([811173c](https://github.com/wheeljs/metro-lcd/commit/811173c))
+
+
+### Styles
+
+* **dashboard/chart/month-cities:** code ([c7fc070](https://github.com/wheeljs/metro-lcd/commit/c7fc070))
+
+
+
 <a name="1.4.3"></a>
 ## [1.4.3](https://github.com/wheeljs/metro-lcd/compare/v1.4.2...v1.4.3) (2025-03-10)
 
