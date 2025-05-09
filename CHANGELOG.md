@@ -4,6 +4,7 @@
 
 ### Bug Fixes
 
+* **changelog:** replace '@' to html entity ([56618fa](https://github.com/wheeljs/metro-lcd/commit/56618fa))
 * **dashboard/index:** display loading indicator correct ([46810c5](https://github.com/wheeljs/metro-lcd/commit/46810c5))
 * **dashboard/monthly-data:** avoid line break in passengerStrong on large screen ([a422fd4](https://github.com/wheeljs/metro-lcd/commit/a422fd4))
 
