@@ -1,6 +1,6 @@
 {
   "name": "metro-lcd",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "private": true,
   "scripts": {
     "ng": "ng",
@@ -42,6 +42,7 @@
     "ngx-echarts": "^19.0.0",
     "normalize.css": "^8.0.1",
     "rxjs": "^7.8.1",
+    "svg-pan-zoom": "^3.6.2",
     "tslib": "^2.5.0",
     "zone.js": "~0.15.0"
   },

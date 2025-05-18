@@ -1,0 +1,17 @@
+<h1 class="network-gallery__title">所有线网图</h1>
+<div class="network-gallery__container">
+  @for (network of networks; track network.path) {
+    <a [routerLink]="['./', network.path]" class="network-gallery__item">
+      <div class="network-gallery__item__image__container">
+        <img
+          [src]="`/assets/network-gallery/${network.path}.svg`"
+          class="network-gallery__item__image"
+        />
+      </div>
+      <div class="network-gallery__item__content">
+        <h2 class="network-gallery__item__name">{{network.name}}</h2>
+        <span class="network-gallery__item__last-updated">最后更新于：{{network.lastUpdated | date: 'YYYY-MM-dd'}}</span>
+      </div>
+    </a>
+  }
+</div>

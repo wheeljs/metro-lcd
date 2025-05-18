@@ -1,0 +1,49 @@
+.network-gallery {
+  &__title {
+    margin: 0;
+    padding-block: 24px;
+    font-size: 60px;
+    text-align: center;
+  }
+
+  &__container {
+    margin-inline: 32px;
+    display: grid;
+    gap: 32px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
+  }
+
+  &__item {
+    position: relative;
+    display: block;
+
+    &:hover {
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+      transition: box-shadow 0.25s ease-in;
+    }
+
+    &__image__container {
+      aspect-ratio: 1920 / 1080;
+    }
+
+    &__image {
+      aspect-ratio: 1920 / 1080;
+      object-fit: cover;
+    }
+
+    &__content {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    &__name,
+    &__last-updated {
+      color: #fff;
+    }
+  }
+}
