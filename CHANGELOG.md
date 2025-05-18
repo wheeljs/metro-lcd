@@ -1,10 +1,20 @@
+<a name="1.6.0"></a>
+# [1.6.0](https://github.com/wheeljs/metro-lcd/compare/v1.5.0...v1.6.0) (2025-05-18)
+
+
+### Features
+
+* **network-gallery:** add ([1890a31](https://github.com/wheeljs/metro-lcd/commit/1890a31))
+
+
+
 <a name="1.5.0"></a>
 # [1.5.0](https://github.com/wheeljs/metro-lcd/compare/v1.4.3...v1.5.0) (2025-05-09)
 
 
 ### Bug Fixes
 
-* **changelog:** replace '@' to html entity ([56618fa](https://github.com/wheeljs/metro-lcd/commit/56618fa))
+* **changelog:** replace '@' to html entity ([624f3bd](https://github.com/wheeljs/metro-lcd/commit/624f3bd))
 * **dashboard/index:** display loading indicator correct ([46810c5](https://github.com/wheeljs/metro-lcd/commit/46810c5))
 * **dashboard/monthly-data:** avoid line break in passengerStrong on large screen ([a422fd4](https://github.com/wheeljs/metro-lcd/commit/a422fd4))
 
