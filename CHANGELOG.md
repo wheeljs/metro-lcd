@@ -1,3 +1,14 @@
+<a name="1.6.1"></a>
+## [1.6.1](https://github.com/wheeljs/metro-lcd/compare/v1.6.0...v1.6.1) (2025-05-18)
+
+
+### Bug Fixes
+
+* **network-gallery:** re-order images ([95be8c3](https://github.com/wheeljs/metro-lcd/commit/95be8c3))
+* **network-gallery:** responsive ui ([2be00c7](https://github.com/wheeljs/metro-lcd/commit/2be00c7))
+
+
+
 <a name="1.6.0"></a>
 # [1.6.0](https://github.com/wheeljs/metro-lcd/compare/v1.5.0...v1.6.0) (2025-05-18)
 
