@@ -16,6 +16,11 @@ type NetworkImageInfo = {
 export class IndexComponent {
   networks: NetworkImageInfo[] = [
     {
+      name: '唐冶公交线网图v2',
+      path: 'tangyev2',
+      lastUpdated: new Date(2025, 4, 21),
+    },
+    {
       name: '济南快速公交线网图',
       path: 'brt-network',
       lastUpdated: new Date(2025, 4, 17),
