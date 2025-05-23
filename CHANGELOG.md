@@ -1,3 +1,13 @@
+<a name="1.6.2"></a>
+## [1.6.2](https://github.com/wheeljs/metro-lcd/compare/v1.6.1...v1.6.2) (2025-05-23)
+
+
+### Bug Fixes
+
+* **network-gallery/tangyev2:** add ([133b6ad](https://github.com/wheeljs/metro-lcd/commit/133b6ad))
+
+
+
 <a name="1.6.1"></a>
 ## [1.6.1](https://github.com/wheeljs/metro-lcd/compare/v1.6.0...v1.6.1) (2025-05-18)
 
