@@ -1,0 +1,772 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1897.59 1866.88">
+  <defs>
+    <style>
+      .a {
+        font-size: 248px;
+        fill: #efefef;
+      }
+
+      .a, .at, .av, .aw, .ax, .ay, .az, .d, .e {
+        font-family: SimHei;
+      }
+
+      .aa, .ac, .ae, .ag, .ai, .ak, .am, .ao, .aq, .b, .f, .g, .i, .k, .m, .o, .q, .s, .u, .w, .x, .z {
+        fill: none;
+      }
+
+      .b {
+        stroke: #e83828;
+      }
+
+      .aa, .ac, .ae, .ag, .ai, .ak, .am, .ao, .aq, .as, .au, .av, .aw, .b, .e, .f, .g, .i, .k, .m, .o, .q, .s, .u, .w, .z {
+        stroke-miterlimit: 10;
+      }
+
+      .aa, .ac, .ae, .ag, .ai, .ak, .am, .ao, .aq, .b, .f, .i, .k, .m, .o, .q, .s, .u, .w, .x, .z {
+        stroke-width: 10px;
+      }
+
+      .c {
+        fill: #e83828;
+      }
+
+      .ay, .d {
+        font-size: 16px;
+      }
+
+      .as, .au, .az, .d {
+        fill: #fff;
+      }
+
+      .at, .av, .az, .e {
+        font-size: 12px;
+      }
+
+      .as, .au, .aw, .e {
+        stroke: #231815;
+      }
+
+      .av, .aw, .e {
+        stroke-width: 0.1px;
+      }
+
+      .f, .g {
+        stroke: #f8b62d;
+      }
+
+      .g {
+        stroke-width: 5px;
+      }
+
+      .h {
+        fill: #f39800;
+      }
+
+      .i {
+        stroke: #00a0e9;
+      }
+
+      .j {
+        fill: #00a0e9;
+      }
+
+      .k {
+        stroke: #036eb8;
+      }
+
+      .l {
+        fill: #036eb8;
+      }
+
+      .m {
+        stroke: #e61673;
+      }
+
+      .n {
+        fill: #e61673;
+      }
+
+      .o {
+        stroke: #13ae67;
+      }
+
+      .p {
+        fill: #13ae67;
+      }
+
+      .q {
+        stroke: #7a6a56;
+      }
+
+      .r {
+        fill: #7a6a56;
+      }
+
+      .s {
+        stroke: #8fc31f;
+      }
+
+      .t {
+        fill: #8fc31f;
+      }
+
+      .u {
+        stroke: #00913a;
+      }
+
+      .v {
+        fill: #00913a;
+      }
+
+      .w {
+        stroke: #f39800;
+      }
+
+      .x, .z {
+        stroke: #e60012;
+      }
+
+      .x {
+        stroke-linejoin: round;
+      }
+
+      .y {
+        fill: #e60012;
+      }
+
+      .aa {
+        stroke: #9fa0a0;
+      }
+
+      .ab {
+        fill: #9fa0a0;
+      }
+
+      .ac {
+        stroke: #601986;
+      }
+
+      .ad {
+        fill: #601986;
+      }
+
+      .ae {
+        stroke: #7f4f21;
+      }
+
+      .af {
+        fill: #7f4f21;
+      }
+
+      .ag {
+        stroke: #171c61;
+      }
+
+      .ah {
+        fill: #171c61;
+      }
+
+      .ai {
+        stroke: #006934;
+      }
+
+      .aj {
+        fill: #006934;
+      }
+
+      .ak {
+        stroke: #ea5514;
+      }
+
+      .al {
+        fill: #ea5514;
+      }
+
+      .am {
+        stroke: #a40b5d;
+      }
+
+      .an {
+        fill: #a40b5d;
+      }
+
+      .ao {
+        stroke: #c9a063;
+      }
+
+      .ap {
+        fill: #c9a063;
+      }
+
+      .aq {
+        stroke: #6a3906;
+      }
+
+      .ar {
+        fill: #6a3906;
+      }
+
+      .au {
+        stroke-width: 0.5px;
+      }
+
+      .av {
+        stroke: #fff;
+      }
+
+      .aw {
+        font-size: 9px;
+      }
+
+      .ax {
+        font-size: 48px;
+      }
+
+      .ba {
+        fill: #b5b5b6;
+        font-size: 10px;
+      }
+    </style>
+  </defs>
+  <g>
+    <text class="a" transform="translate(760.7 764.47) rotate(-45)">WheelJS</text>
+    <text class="a" transform="translate(1115.7 924.47) rotate(-45)">WheelJS</text>
+    <text class="a" transform="translate(150.7 1004.47) rotate(-45)">WheelJS</text>
+    <text class="a" transform="translate(525.7 1674.47) rotate(-45)">WheelJS</text>
+    <text class="a" transform="translate(1140.7 1429.47) rotate(-45)">WheelJS</text>
+    <text class="a" transform="translate(1235.7 1839.47) rotate(-45)">WheelJS</text>
+    <text class="a" transform="translate(160.7 1699.47) rotate(-45)">WheelJS</text>
+  </g>
+  <g>
+    <g>
+      <line class="b" x1="932.59" y1="292.59" x2="1682.59" y2="292.59"/>
+      <g>
+        <rect class="c" x="1155.09" y="282.59" width="65" height="20" rx="2"/>
+        <text class="d" transform="translate(1159.59 299.46)">232 281</text>
+      </g>
+      <text class="e" transform="translate(1717.59 337.59)">往孙村新区</text>
+      <g>
+        <rect class="c" x="1682.59" y="322.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1685.59 339.46)">281</text>
+      </g>
+      <text class="e" transform="translate(1717.59 297.59)">往黄金谷小区</text>
+      <g>
+        <rect class="c" x="1682.59" y="282.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1685.59 299.46)">232</text>
+      </g>
+    </g>
+    <g>
+      <line class="f" x1="1682.59" y1="867.59" x2="1167.59" y2="867.59"/>
+      <path class="g" d="M1185,867.5H947.27a15,15,0,0,0-15,15l.46,149.89a15,15,0,0,0,15,15l189.38.22a15.42,15.42,0,0,0,15.39-15.11l.17-145a15,15,0,0,1,15-15H1185" transform="translate(-17.41 -2.41)"/>
+      <text class="e" transform="translate(1717.59 872.59)">往唐王卫生院</text>
+      <g>
+        <rect class="h" x="1682.59" y="857.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1685.59 874.46)">282</text>
+      </g>
+      <g>
+        <rect class="h" x="922.59" y="1032.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(925.59 1049.46)">282</text>
+      </g>
+    </g>
+    <g>
+      <path class="i" d="M1700,315H650a30,30,0,0,0-30,30V840a30,30,0,0,1-30,30H280" transform="translate(-17.41 -2.41)"/>
+      <text class="e" transform="translate(1717.59 316.81)">往公交维保基地</text>
+      <g>
+        <rect class="j" x="1682.59" y="302.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1685.59 319.46)">230</text>
+      </g>
+      <text class="e" transform="translate(192.59 872.59)">往北湖</text>
+      <g>
+        <rect class="j" x="232.59" y="857.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(235.59 874.46)">230</text>
+      </g>
+    </g>
+    <g>
+      <path class="k" d="M950,375h160a30,30,0,0,1,30,30V585a30,30,0,0,1-30,30H970a30,30,0,0,0-30,30v70a30,30,0,0,0,30,30h140a30,30,0,0,1,30,30v545a30,30,0,0,1-30,30H960a30,30,0,0,0-30,30v290" transform="translate(-17.41 -2.41)"/>
+      <text class="e" transform="translate(932.59 1682.59)">往省委党校东校</text>
+      <g>
+        <rect class="l" x="897.59" y="1667.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(900.59 1684.46)">265</text>
+      </g>
+      <g>
+        <rect class="l" x="1007.59" y="362.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1010.59 379.46)">265</text>
+      </g>
+    </g>
+    <g>
+      <path class="m" d="M665,1475v-75a30,30,0,0,1,30-30h550a30,30,0,0,0,30-30V1175a30,30,0,0,0-30-30H635a30,30,0,0,1-30-30V980a30,30,0,0,0-30-30H280" transform="translate(-17.41 -2.41)"/>
+      <g>
+        <rect class="n" x="712.59" y="1357.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(715.59 1374.46)">T17</text>
+      </g>
+      <text class="e" transform="translate(144.59 952.59)">往高新区管委会</text>
+      <g>
+        <rect class="n" x="232.59" y="937.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(235.59 954.46)">T17</text>
+      </g>
+    </g>
+    <g>
+      <path class="o" d="M950,395h140a30,30,0,0,1,30,30V545a30,30,0,0,1-30,30H950a30,30,0,0,0-30,30v425a30,30,0,0,0,30,30h335a30,30,0,0,0,30-30v-20a30,30,0,0,1,30-30h80a30,30,0,0,1,30,30v95a30,30,0,0,1-30,30h-80a30,30,0,0,0-30,30v195a30,30,0,0,1-30,30H710a30,30,0,0,0-30,30v55" transform="translate(-17.41 -2.41)"/>
+      <g>
+        <rect class="p" x="1007.59" y="382.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1010.59 399.46)">516</text>
+      </g>
+      <g>
+        <rect class="p" x="712.59" y="1377.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(715.59 1394.46)">516</text>
+      </g>
+    </g>
+    <g>
+      <path class="q" d="M1700,595H1502.43a30,30,0,0,0-21.22,8.79L1303.79,781.21a30,30,0,0,0-8.79,21.22V1250a30,30,0,0,1-30,30H635a30,30,0,0,0-30,30v190a30,30,0,0,1-30,30H280" transform="translate(-17.41 -2.41)"/>
+      <text class="e" transform="translate(1717.59 597.59)">往邦德激光</text>
+      <g>
+        <rect class="r" x="1682.59" y="582.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1685.59 599.46)">221</text>
+      </g>
+      <text class="e" transform="translate(127.59 1532.59)">往济莱高铁历城站</text>
+      <g>
+        <rect class="r" x="232.59" y="1517.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(235.59 1534.46)">221</text>
+      </g>
+    </g>
+    <g>
+      <path class="s" d="M950,335h505a35,35,0,0,1,35,35V560a35,35,0,0,1-35,35H680a30,30,0,0,0-30,30v850" transform="translate(-17.41 -2.41)"/>
+      <g>
+        <rect class="t" x="1172.59" y="322.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1175.59 339.46)">517</text>
+      </g>
+    </g>
+    <g>
+      <path class="u" d="M950,255h355a30,30,0,0,0,30-30V150" transform="translate(-17.41 -2.41)"/>
+      <g>
+        <rect class="v" x="1302.59" y="127.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1305.59 144.46)">566</text>
+      </g>
+      <text class="e" transform="translate(1337.59 142.59)">往李家东路北段</text>
+      <g>
+        <rect class="v" x="1172.59" y="242.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1175.59 259.46)">566</text>
+      </g>
+    </g>
+    <g>
+      <line class="w" x1="932.59" y1="272.59" x2="1682.59" y2="272.59"/>
+      <text class="e" transform="translate(1717.59 277.59)">往柿子园村</text>
+      <g>
+        <rect class="h" x="1682.59" y="262.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1685.59 279.46)">T38</text>
+      </g>
+      <text class="e" transform="translate(1717.59 257.59)">往大正路科创路</text>
+      <g>
+        <rect class="h" x="1682.59" y="242.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1685.59 259.46)">T35</text>
+      </g>
+      <text class="e" transform="translate(1717.59 237.59)">往春博路科远路</text>
+      <g>
+        <rect class="h" x="1682.59" y="222.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1685.59 239.46)">T34</text>
+      </g>
+      <g>
+        <rect class="h" x="1137.59" y="262.59" width="100" height="20" rx="2"/>
+        <text class="d" transform="translate(1143.59 279.46)">T34 T35 T38</text>
+      </g>
+    </g>
+    <g>
+      <path class="x" d="M620,1490v30a30,30,0,0,1-30,30H280" transform="translate(-17.41 -2.41)"/>
+      <g>
+        <rect class="y" x="495.09" y="1537.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(498.09 1554.46)">115</text>
+      </g>
+      <text class="e" transform="translate(127.59 1552.59)">往经八路青年西路</text>
+      <g>
+        <rect class="y" x="232.59" y="1537.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(235.59 1554.46)">115</text>
+      </g>
+      <path class="z" d="M590,1490h0a20,20,0,0,1-20,20H280" transform="translate(-17.41 -2.41)"/>
+      <text class="e" transform="translate(127.59 1492.59)">往经八路青年西路</text>
+      <g>
+        <rect class="y" x="227.59" y="1477.59" width="35" height="20" rx="2"/>
+        <text class="d" transform="translate(229.09 1494.46)">T115</text>
+      </g>
+      <text class="e" transform="translate(115.59 1512.59)">往二环东路工业南路</text>
+      <g>
+        <rect class="y" x="227.59" y="1497.59" width="35" height="20" rx="2"/>
+        <text class="d" transform="translate(229.09 1514.46)">T209</text>
+      </g>
+    </g>
+    <g>
+      <path class="aa" d="M695,1475v-35a30,30,0,0,1,30-30H880a30,30,0,0,1,30,30v260" transform="translate(-17.41 -2.41)"/>
+      <text class="e" transform="translate(912.59 1712.59)">往济南职业学院</text>
+      <g>
+        <rect class="ab" x="877.59" y="1697.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(880.59 1714.46)">158</text>
+      </g>
+      <g>
+        <rect class="ab" x="712.59" y="1397.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(715.59 1414.46)">158</text>
+      </g>
+    </g>
+    <g>
+      <path class="ac" d="M635,1475V630a35,35,0,0,0-35-35H460a35,35,0,0,1-35-35V295" transform="translate(-17.41 -2.41)"/>
+      <text class="e" transform="translate(427.59 287.59)">往济南东站公交东枢纽</text>
+      <g>
+        <rect class="ad" x="392.59" y="272.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(395.59 289.46)">188</text>
+      </g>
+    </g>
+    <g>
+      <path class="ae" d="M620,1475V960a30,30,0,0,0-30-30H280" transform="translate(-17.41 -2.41)"/>
+      <g>
+        <rect class="af" x="587.59" y="1382.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(590.59 1399.46)">163</text>
+      </g>
+      <text class="e" transform="translate(132.59 932.59)">往花园路二环东路</text>
+      <g>
+        <rect class="af" x="232.59" y="917.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(235.59 934.46)">163</text>
+      </g>
+    </g>
+    <g>
+      <path class="ag" d="M1700,850H1190a30,30,0,0,1-30-30V390a35,35,0,0,0-35-35H440a35,35,0,0,0-35,35V820a30,30,0,0,1-30,30H280" transform="translate(-17.41 -2.41)"/>
+      <text class="e" transform="translate(1717.59 852.59)">往章丘客运总站</text>
+      <g>
+        <rect class="ah" x="1682.59" y="837.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1685.59 854.46)">903</text>
+      </g>
+      <text class="e" transform="translate(120.59 852.59)">往济南长途汽车东站</text>
+      <g>
+        <rect class="ah" x="232.59" y="837.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(235.59 854.46)">903</text>
+      </g>
+    </g>
+    <rect class="ad" x="602.59" y="1362.59" width="30" height="20" rx="2"/>
+    <text class="d" transform="translate(605.59 1379.46)">188</text>
+    <g>
+      <rect class="t" x="617.59" y="1342.59" width="30" height="20" rx="2"/>
+      <text class="d" transform="translate(620.59 1359.46)">517</text>
+    </g>
+    <g>
+      <line class="ai" x1="1682.59" y1="887.59" x2="262.59" y2="887.59"/>
+      <text class="e" transform="translate(1777.59 892.59)">往孙村新区</text>
+      <g>
+        <rect class="aj" x="1682.59" y="877.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1685.59 894.46)">162</text>
+      </g>
+      <g>
+        <rect class="aj" x="1712.59" y="877.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1715.59 894.46)">308</text>
+      </g>
+      <g>
+        <rect class="aj" x="1742.59" y="877.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1745.59 894.46)">321</text>
+      </g>
+      <text class="e" transform="translate(144.59 892.59)">往高新区管委会</text>
+      <g>
+        <rect class="aj" x="232.59" y="877.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(235.59 894.46)">162</text>
+      </g>
+      <text class="e" transform="translate(132.59 972.59)">往花园路七里河路</text>
+      <g>
+        <rect class="aj" x="232.59" y="957.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(235.59 974.46)">308</text>
+      </g>
+      <text class="e" transform="translate(132.59 992.59)">往工业南路华信路</text>
+      <g>
+        <rect class="aj" x="232.59" y="977.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(235.59 994.46)">321</text>
+      </g>
+    </g>
+    <g>
+      <line class="ak" x1="1682.59" y1="907.59" x2="262.59" y2="907.59"/>
+      <text class="e" transform="translate(1717.59 912.59)">往孙村新区</text>
+      <g>
+        <rect class="al" x="1682.59" y="897.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1685.59 914.46)">T31</text>
+      </g>
+      <text class="e" transform="translate(144.59 912.59)">往高新区管委会</text>
+      <g>
+        <rect class="al" x="232.59" y="897.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(235.59 914.46)">T31</text>
+      </g>
+    </g>
+    <g>
+      <line class="am" x1="262.59" y1="1567.59" x2="1467.59" y2="1567.59"/>
+      <text class="e" transform="translate(1502.59 1572.59)">往莱蒙湖</text>
+      <g>
+        <rect class="an" x="1467.59" y="1557.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1470.59 1574.46)">300</text>
+      </g>
+      <text class="e" transform="translate(1502.59 1692.59)">往玉河泉</text>
+      <g>
+        <rect class="an" x="1467.59" y="1677.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1470.59 1694.46)">303</text>
+      </g>
+      <text class="e" transform="translate(1502.59 1712.59)">往玉龙</text>
+      <g>
+        <rect class="an" x="1437.59" y="1697.59" width="60" height="20" rx="2"/>
+        <text class="d" transform="translate(1439.59 1714.46)">303支线</text>
+      </g>
+      <text class="e" transform="translate(1502.59 1732.59)">往南泉</text>
+      <g>
+        <rect class="an" x="1467.59" y="1717.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1470.59 1734.46)">305</text>
+      </g>
+      <text class="e" transform="translate(1502.59 1752.59)">往济南职业学院</text>
+      <g>
+        <rect class="an" x="1467.59" y="1737.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1470.59 1754.46)">306</text>
+      </g>
+      <text class="e" transform="translate(151.59 1572.59)">往齐鲁软件园</text>
+      <g>
+        <rect class="an" x="232.59" y="1557.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(235.59 1574.46)">300</text>
+      </g>
+      <text class="e" transform="translate(52.59 1612.59)">往燕山立交桥东</text>
+      <g>
+        <rect class="an" x="142.59" y="1597.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(145.59 1614.46)">303</text>
+      </g>
+      <g>
+        <rect class="an" x="172.59" y="1597.59" width="60" height="20" rx="2"/>
+        <text class="d" transform="translate(174.59 1614.46)">303支线</text>
+      </g>
+      <g>
+        <rect class="an" x="232.59" y="1597.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(235.59 1614.46)">305</text>
+      </g>
+      <text class="e" transform="translate(127.59 1632.59)">往舜泰北路凤凰路</text>
+      <g>
+        <rect class="an" x="232.59" y="1617.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(235.59 1634.46)">306</text>
+      </g>
+      <text class="e" transform="translate(175.59 1652.59)">往洪家楼</text>
+      <g>
+        <rect class="an" x="232.59" y="1637.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(235.59 1654.46)">311</text>
+      </g>
+    </g>
+    <g>
+      <line class="ao" x1="262.59" y1="1587.59" x2="1467.59" y2="1587.59"/>
+      <text class="e" transform="translate(1502.59 1592.59)">往章丘（山东技师学院）</text>
+      <g>
+        <rect class="ap" x="1467.59" y="1577.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1470.59 1594.46)">301</text>
+      </g>
+      <text class="e" transform="translate(91.59 1592.59)">往长清（公交营运中心）</text>
+      <g>
+        <rect class="ap" x="232.59" y="1577.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(235.59 1594.46)">301</text>
+      </g>
+    </g>
+    <g>
+      <path class="aq" d="M665,1490v30a30,30,0,0,0,30,30h790" transform="translate(-17.41 -2.41)"/>
+      <text class="e" transform="translate(1502.59 1552.59)">往济南国际鲜花港</text>
+      <g>
+        <rect class="ar" x="1467.59" y="1537.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1470.59 1554.46)">176</text>
+      </g>
+      <text class="e" transform="translate(1502.59 1612.59)">往王家鹊山</text>
+      <g>
+        <rect class="ar" x="1467.59" y="1597.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1470.59 1614.46)">181</text>
+      </g>
+      <text class="e" transform="translate(1502.59 1632.59)">往西丝峪村</text>
+      <g>
+        <rect class="ar" x="1467.59" y="1617.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1470.59 1634.46)">182</text>
+      </g>
+      <text class="e" transform="translate(1502.59 1652.59)">往康井孟村</text>
+      <g>
+        <rect class="ar" x="1467.59" y="1637.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1470.59 1654.46)">183</text>
+      </g>
+      <text class="e" transform="translate(1502.59 1672.59)">往济南药谷产业园</text>
+      <g>
+        <rect class="ar" x="1467.59" y="1657.59" width="30" height="20" rx="2"/>
+        <text class="d" transform="translate(1470.59 1674.46)">220</text>
+      </g>
+      <g>
+        <rect class="ar" x="792.59" y="1537.59" width="160" height="20" rx="2"/>
+        <text class="d" transform="translate(796.59 1554.46)">176 181 182 183 220</text>
+      </g>
+    </g>
+  </g>
+  <g>
+    <g>
+      <text class="e" transform="translate(1352.09 1612.59)">山青院</text>
+      <rect class="as" x="1362.59" y="1537.59" width="15" height="60" rx="7.5"/>
+      <text class="e" transform="translate(758.09 1527.59)">邢村</text>
+      <rect class="as" x="762.59" y="1537.59" width="15" height="40" rx="7.5"/>
+      <text class="e" transform="translate(404.09 1612.59)">邢村立交桥东</text>
+      <rect class="as" x="432.59" y="1517.59" width="15" height="80" rx="7.5"/>
+    </g>
+    <g>
+      <text class="e" transform="translate(758.09 1432.59)">敬德街唐冶中路</text>
+      <rect class="as" x="792.59" y="1377.59" width="15" height="40" rx="7.5"/>
+    </g>
+    <g>
+      <text class="e" transform="translate(1188.59 1302.59)">华夏帝苑</text>
+      <circle class="as" cx="1212.59" cy="1277.59" r="5"/>
+      <text class="e" transform="translate(1015.59 1262.59)">唐冶公园南门</text>
+      <circle class="as" cx="1051.59" cy="1277.59" r="5"/>
+      <text class="e" transform="translate(770.09 1262.59)">凤凰城南区</text>
+      <circle class="as" cx="800.09" cy="1277.59" r="5"/>
+    </g>
+    <g>
+      <text class="e" transform="translate(1177.09 1082.59)">文苑街围子山路</text>
+      <circle class="as" cx="1219.09" cy="1057.59" r="5"/>
+      <text class="e" transform="translate(1025.59 1082.59)">历城工人文化宫</text>
+      <circle class="as" cx="1067.59" cy="1057.59" r="5"/>
+      <text class="e" transform="translate(917.59 1082.59)">文苑街唐冶中路</text>
+      <rect class="as" x="952.59" y="1037.59" width="15" height="30" rx="7.5"/>
+    </g>
+    <g>
+      <text class="e" transform="translate(1317.59 1117.59)">银丰唐郡桂花园北门</text>
+      <circle class="as" cx="1392.59" cy="1132.59" r="5"/>
+      <text class="e" transform="translate(1447.59 1096.81)">银丰唐郡牡丹园</text>
+      <circle class="as" cx="1437.59" cy="1092.59" r="5"/>
+      <text class="e" transform="translate(1447.59 1032.59)">银丰唐郡玫瑰园</text>
+      <circle class="as" cx="1437.59" cy="1027.84" r="5"/>
+      <text class="e" transform="translate(1344.59 962.59)">帝华鸿府东区北门</text>
+      <circle class="as" cx="1392.59" cy="977.59" r="5"/>
+    </g>
+    <g>
+      <text class="e" transform="translate(1307.09 827.59)">世纪大道围子山路</text>
+      <rect class="as" x="1347.59" y="837.59" width="15" height="80" rx="7.5"/>
+      <text class="e" transform="translate(993.09 932.59)">唐冶</text>
+      <rect class="as" x="997.59" y="857.59" width="15" height="60" rx="7.5"/>
+      <text class="e" transform="translate(647.59 872.59)">世纪大道唐冶西路</text>
+      <circle class="as" cx="677.59" cy="887.59" r="5"/>
+      <text class="at" transform="translate(332.59 967.59)">世纪大道龙凤山路</text>
+      <rect class="as" x="373.09" y="857.59" width="15" height="80" rx="7.5"/>
+    </g>
+    <g>
+      <text class="at" transform="translate(1040.59 727.59)">贞观街唐冶东路</text>
+      <circle class="as" cx="1082.59" cy="742.59" r="5"/>
+      <text class="e" transform="translate(942.59 767.59)">贞观街唐冶中路</text>
+      <circle class="as" cx="972.59" cy="742.59" r="5"/>
+    </g>
+    <g>
+      <text class="e" transform="translate(1593.59 577.59)">武家庄南</text>
+      <circle class="as" cx="1617.59" cy="592.59" r="5"/>
+      <text class="e" transform="translate(1352.59 617.59)">贞元街围子山路</text>
+      <circle class="as" cx="1432.59" cy="592.59" r="5"/>
+      <text class="e" transform="translate(1268.59 617.59)">稼轩学校</text>
+      <circle class="as" cx="1292.59" cy="592.59" r="5"/>
+      <text class="e" transform="translate(1162.59 617.59)">贞元街唐冶东路</text>
+      <circle class="as" cx="1167.59" cy="592.59" r="5"/>
+      <text class="e" transform="translate(928.09 552.59)">贞元街唐冶中路</text>
+      <rect class="as" x="962.59" y="562.59" width="15" height="60" rx="7.5"/>
+      <text class="e" transform="translate(791.59 617.59)">贞元街唐景路</text>
+      <circle class="as" cx="827.59" cy="592.59" r="5"/>
+      <text class="e" transform="translate(640.59 577.59)">贞元街唐冶西路</text>
+      <circle class="as" cx="682.59" cy="592.59" r="5"/>
+      <text class="e" transform="translate(457.59 617.59)">唐城小区北</text>
+      <circle class="as" cx="487.59" cy="592.59" r="5"/>
+    </g>
+    <g>
+      <text class="e" transform="translate(1257.59 1412.59)">围子山路唐冶东路</text>
+      <circle class="as" cx="1262.59" cy="1387.59" r="5"/>
+      <text class="e" transform="translate(1312.59 1351.81)">银丰山青苑</text>
+      <circle class="as" cx="1297.59" cy="1347.59" r="5"/>
+      <text class="e" transform="translate(1312.59 1244.31)">围子山路邢村街</text>
+      <rect class="as" x="1287.5" y="1212.5" width="15" height="60" rx="7.5" transform="translate(35.09 2535.09) rotate(-90)"/>
+      <text class="e" transform="translate(1312.59 1164.31)">围子山路幼安街</text>
+      <rect class="as" x="1297.5" y="1142.5" width="15" height="40" rx="7.5" transform="translate(125.09 2465.09) rotate(-90)"/>
+      <text class="e" transform="translate(1312.59 1021.56)">帝华鸿府</text>
+      <rect class="as" x="1297.5" y="999.75" width="15" height="40" rx="7.5" transform="translate(267.84 2322.34) rotate(-90)"/>
+      <text class="e" transform="translate(1287.59 941.81)">山东省康复医院西门</text>
+      <circle class="as" cx="1277.59" cy="937.59" r="5"/>
+      <text class="e" transform="translate(1287.59 801.81)">围子山路世纪大道</text>
+      <circle class="as" cx="1277.59" cy="797.59" r="5"/>
+      <text class="e" transform="translate(1342.59 746.81)">围子山路贞观街</text>
+      <circle class="as" cx="1322.59" cy="742.59" r="5"/>
+      <text class="e" transform="translate(1442.59 646.81)">围子山路贞元街</text>
+      <circle class="as" cx="1422.59" cy="642.59" r="5"/>
+      <text class="e" transform="translate(1482.59 511.81)">围子山路文德街</text>
+      <circle class="as" cx="1472.59" cy="507.59" r="5"/>
+      <text class="e" transform="translate(1482.59 394.7)">围子山路飞跃大道</text>
+      <circle class="as" cx="1472.59" cy="390.48" r="5"/>
+    </g>
+    <g>
+      <text class="e" transform="translate(1327.59 211.81)">土河西路飞跃大道</text>
+      <circle class="as" cx="1317.59" cy="207.59" r="5"/>
+    </g>
+    <g>
+      <text class="e" transform="translate(1602.09 252.59)">武家庄</text>
+      <rect class="as" x="1612.59" y="262.59" width="15" height="60" rx="7.5"/>
+      <text class="e" transform="translate(1379.59 252.59)">飞跃大道围子山路</text>
+      <rect class="as" x="1417.59" y="262.59" width="15" height="60" rx="7.5"/>
+      <circle class="au" cx="1425.09" cy="330.09" r="2.5"/>
+      <text class="e" transform="translate(889.09 227.59)">地铁彭家庄站</text>
+      <rect class="as" x="917.59" y="237.59" width="15" height="170" rx="7.5"/>
+    </g>
+    <g>
+      <text class="e" transform="translate(1063.59 1201.81)">唐冶公园</text>
+      <circle class="as" cx="1122.59" cy="1197.59" r="5"/>
+      <text class="e" transform="translate(1027.59 1316.81)">唐冶东路邢村街</text>
+      <circle class="as" cx="1122.59" cy="1312.59" r="5"/>
+      <text class="e" transform="translate(1019.59 984.31)">唐冶东路文苑街</text>
+      <rect class="as" x="1137.5" y="967.5" width="15" height="30" rx="7.5" transform="translate(145.09 2125.09) rotate(-90)"/>
+      <text class="e" transform="translate(1007.59 809.31)">唐冶东路世纪大道</text>
+      <rect class="as" x="1142.5" y="787.5" width="15" height="40" rx="7.5" transform="translate(325.09 1955.09) rotate(-90)"/>
+      <text class="av" transform="translate(1037.59 484.31)">历城二中</text>
+      <rect class="as" x="1122.5" y="462.5" width="15" height="40" rx="7.5" transform="translate(630.09 1610.09) rotate(-90)"/>
+    </g>
+    <g>
+      <text class="e" transform="translate(922.59 1436.81)">唐冶中路敬德街</text>
+      <circle class="as" cx="912.59" cy="1432.59" r="5"/>
+      <text class="e" transform="translate(793.59 950.56)">唐冶中路世纪大道</text>
+      <circle class="au" cx="900.2" cy="946.34" r="2.5"/>
+      <circle class="au" cx="915.09" cy="946.34" r="2.5"/>
+      <text class="aw" transform="translate(817.59 845.75)">唐冶中路世纪大道</text>
+      <circle class="au" cx="905.09" cy="842.59" r="2.5"/>
+      <text class="e" transform="translate(937.59 664.31)">唐冶中路贞观街</text>
+      <rect class="as" x="922.5" y="642.5" width="15" height="40" rx="7.5" transform="translate(250.09 1590.09) rotate(-90)"/>
+    </g>
+    <g>
+      <text class="e" transform="translate(697.59 1484.31)">唐冶公交枢纽</text>
+      <rect class="as" x="635" y="1420" width="15" height="125" rx="7.5" transform="translate(-857.41 2122.59) rotate(-90)"/>
+      <text class="e" transform="translate(647.59 1334.31)">唐官小区</text>
+      <rect class="as" x="620" y="1300" width="15" height="65" rx="7.5" transform="translate(-722.41 1957.59) rotate(-90)"/>
+      <text class="e" transform="translate(647.59 1119.31)">唐冶西路幼安街</text>
+      <rect class="as" x="615" y="1085" width="15" height="65" rx="7.5" transform="translate(-512.41 1737.59) rotate(-90)"/>
+      <text class="e" transform="translate(647.59 1054.31)">唐冶西路文苑街</text>
+      <rect class="as" x="627.5" y="1027.5" width="15" height="50" rx="7.5" transform="translate(-434.91 1685.09) rotate(-90)"/>
+      <text class="e" transform="translate(647.59 1009.31)">唐冶西路世纪大道</text>
+      <rect class="as" x="620" y="975" width="15" height="65" rx="7.5" transform="translate(-397.41 1632.59) rotate(-90)"/>
+      <text class="e" transform="translate(647.59 794.31)">唐冶西路长盈街</text>
+      <rect class="as" x="627.5" y="767.5" width="15" height="50" rx="7.5" transform="translate(-174.91 1425.09) rotate(-90)"/>
+      <text class="e" transform="translate(647.59 659.31)">唐城小区</text>
+      <rect class="as" x="627.5" y="632.5" width="15" height="50" rx="7.5" transform="translate(-39.91 1290.09) rotate(-90)"/>
+      <text class="e" transform="translate(612.59 536.81)">唐冶西路贞元街</text>
+      <circle class="as" cx="602.59" cy="532.59" r="5"/>
+      <text class="e" transform="translate(612.59 431.81)">唐冶西路飞跃大道</text>
+      <circle class="as" cx="602.59" cy="427.59" r="5"/>
+    </g>
+    <g>
+      <text class="e" transform="translate(417.59 481.81)">龙凤山路益新街</text>
+      <circle class="as" cx="407.59" cy="477.59" r="5"/>
+    </g>
+  </g>
+  <g>
+    <text class="ax" transform="translate(89.59 78.84)">唐冶公交线网图</text>
+    <text class="ay" transform="translate(91.59 142.59)">图例</text>
+    <g>
+      <rect class="c" x="97.59" y="157.59" width="45" height="20" rx="2"/>
+      <text class="az" transform="translate(102.09 172.74)">线路号</text>
+    </g>
+    <text class="e" transform="translate(147.59 172.59)">方向</text>
+    <text class="e" transform="translate(182.59 172.59)">线路开往方向</text>
+    <line class="b" x1="92.59" y1="207.59" x2="172.59" y2="207.59"/>
+    <g>
+      <rect class="c" x="112.59" y="197.59" width="40" height="20" rx="2"/>
+      <text class="az" transform="translate(114.59 212.74)">线路号</text>
+    </g>
+    <text class="e" transform="translate(182.59 212.59)">线路起/终点</text>
+    <circle class="as" cx="117.59" cy="247.59" r="5"/>
+    <text class="e" transform="translate(182.59 247.59)">站点</text>
+    <rect class="as" x="127.5" y="257.5" width="15" height="50" rx="7.5" transform="translate(-164.91 415.09) rotate(-90)"/>
+    <text class="e" transform="translate(182.59 284.31)">换乘站</text>
+    <text class="at" transform="translate(1482.59 1827.59)">说明：本图经变形处理，仅供参考，数据最后更新日期：2025/5/21。<tspan x="0" y="14.4">本图基于CC BY-NC-SA 4.0，署名-非商业性使用-相同方式共享 4.0国际，</tspan><tspan x="0" y="28.8">请认真阅读版权声明</tspan><tspan class="ba" x="108" y="28.8">(https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</tspan><tspan x="403" y="28.8">。</tspan></text>
+  </g>
+</svg>
