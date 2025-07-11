@@ -1,3 +1,18 @@
+<a name="1.6.6"></a>
+## [1.6.6](https://github.com/wheeljs/metro-lcd/compare/v1.6.5...v1.6.6) (2025-07-11)
+
+
+### Bug Fixes
+
+* **network-gallery/brt-network:** update ([1d36af8](https://github.com/wheeljs/metro-lcd/commit/1d36af8))
+
+
+### Features
+
+* **data:** add 2025-6 ([20df365](https://github.com/wheeljs/metro-lcd/commit/20df365))
+
+
+
 <a name="1.6.5"></a>
 ## [1.6.5](https://github.com/wheeljs/metro-lcd/compare/v1.6.4...v1.6.5) (2025-06-09)
 
