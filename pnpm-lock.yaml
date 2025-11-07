@@ -60,8 +60,8 @@ dependencies:
     specifier: ^6.4.2
     version: 6.7.2
   '@sentry/angular':
-    specifier: ^9.5.0
-    version: 9.5.0(@angular/common@20.3.10)(@angular/core@20.3.10)(@angular/router@20.3.10)(rxjs@7.8.2)
+    specifier: ^9.46.0
+    version: 9.46.0(@angular/common@20.3.10)(@angular/core@20.3.10)(@angular/router@20.3.10)(rxjs@7.8.2)
   dexie:
     specifier: ^4.0.4
     version: 4.0.11
@@ -2388,67 +2388,67 @@ packages:
       - chokidar
     dev: true
 
-  /@sentry-internal/browser-utils@9.5.0:
-    resolution: {integrity: sha512-AE9jgeI5+KyGvLR0vf1I6sesi0NZXZe6pDlZNXyg+pWZB2vkE9dksE8ZsoU+YiD9zjUqazgPcVyb3O0VvmaCGw==}
+  /@sentry-internal/browser-utils@9.46.0:
+    resolution: {integrity: sha512-Q0CeHym9wysku8mYkORXmhtlBE0IrafAI+NiPSqxOBKXGOCWKVCvowHuAF56GwPFic2rSrRnub5fWYv7T1jfEQ==}
     engines: {node: '>=18'}
     dependencies:
-      '@sentry/core': 9.5.0
+      '@sentry/core': 9.46.0
     dev: false
 
-  /@sentry-internal/feedback@9.5.0:
-    resolution: {integrity: sha512-p+yOTufEYHP1RLwkD+aZwpCNS4/2l6t4uHgphjYrEC2U/U2mtZQh+EvlBAt0wY/eiKC4/acPNrF5yFD/4A7a0A==}
+  /@sentry-internal/feedback@9.46.0:
+    resolution: {integrity: sha512-KLRy3OolDkGdPItQ3obtBU2RqDt9+KE8z7r7Gsu7c6A6A89m8ZVlrxee3hPQt6qp0YY0P8WazpedU3DYTtaT8w==}
     engines: {node: '>=18'}
     dependencies:
-      '@sentry/core': 9.5.0
+      '@sentry/core': 9.46.0
     dev: false
 
-  /@sentry-internal/replay-canvas@9.5.0:
-    resolution: {integrity: sha512-W7MS7/9Z8uP2i0pbndxqz2VcGlFPc7Bv6gCoxRdGIWUWSBS9rsRbryO0sM0PwwuHt2mQtWMqwjYykcR441RBRA==}
+  /@sentry-internal/replay-canvas@9.46.0:
+    resolution: {integrity: sha512-QcBjrdRWFJrrrjbmrr2bbrp2R9RYj1KMEbhHNT2Lm1XplIQw+tULEKOHxNtkUFSLR1RNje7JQbxhzM1j95FxVQ==}
     engines: {node: '>=18'}
     dependencies:
-      '@sentry-internal/replay': 9.5.0
-      '@sentry/core': 9.5.0
+      '@sentry-internal/replay': 9.46.0
+      '@sentry/core': 9.46.0
     dev: false
 
-  /@sentry-internal/replay@9.5.0:
-    resolution: {integrity: sha512-fBBNimElAnu865HT3MJ6xH2P26KvkZvAYt+yRrWr+x5zS5KvjBYUPsSI+F0FTE14XmLW9q7DlNUl5iAZhXSy3g==}
+  /@sentry-internal/replay@9.46.0:
+    resolution: {integrity: sha512-+8JUblxSSnN0FXcmOewbN+wIc1dt6/zaSeAvt2xshrfrLooVullcGsuLAiPhY0d/e++Fk06q1SAl9g4V0V13gg==}
     engines: {node: '>=18'}
     dependencies:
-      '@sentry-internal/browser-utils': 9.5.0
-      '@sentry/core': 9.5.0
+      '@sentry-internal/browser-utils': 9.46.0
+      '@sentry/core': 9.46.0
     dev: false
 
-  /@sentry/angular@9.5.0(@angular/common@20.3.10)(@angular/core@20.3.10)(@angular/router@20.3.10)(rxjs@7.8.2):
-    resolution: {integrity: sha512-8sqTY/PGNYxsl4gsm7mC8DkUckeWjQV5sPWXGk6P2IGS5aaarXBhekSaFyff2wp0jJi3WGAxLlrSG1pjizyOxA==}
+  /@sentry/angular@9.46.0(@angular/common@20.3.10)(@angular/core@20.3.10)(@angular/router@20.3.10)(rxjs@7.8.2):
+    resolution: {integrity: sha512-HvRxxd8J5l6/SavzmGjbvhsegTpRG9XkkcHPvkDcoELJwk7B6SCXz8CP7M3orRWUbHVewvrpzC9KIOMDB42JHA==}
     engines: {node: '>=18'}
     peerDependencies:
-      '@angular/common': '>= 14.x <= 19.x'
-      '@angular/core': '>= 14.x <= 19.x'
-      '@angular/router': '>= 14.x <= 19.x'
+      '@angular/common': '>= 14.x <= 20.x'
+      '@angular/core': '>= 14.x <= 20.x'
+      '@angular/router': '>= 14.x <= 20.x'
       rxjs: ^6.5.5 || ^7.x
     dependencies:
       '@angular/common': 20.3.10(@angular/core@20.3.10)(rxjs@7.8.2)
       '@angular/core': 20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2)(zone.js@0.15.0)
       '@angular/router': 20.3.10(@angular/common@20.3.10)(@angular/core@20.3.10)(@angular/platform-browser@20.3.10)(rxjs@7.8.2)
-      '@sentry/browser': 9.5.0
-      '@sentry/core': 9.5.0
+      '@sentry/browser': 9.46.0
+      '@sentry/core': 9.46.0
       rxjs: 7.8.2
       tslib: 2.8.1
     dev: false
 
-  /@sentry/browser@9.5.0:
-    resolution: {integrity: sha512-HYSPW8GjknuYykJgOialKFyWg7ldmrbD1AKTIhksqdsNXLER07YeVWFAbe+xSYa1ZwwC8/s6vQJP9ZOoH1BaVg==}
+  /@sentry/browser@9.46.0:
+    resolution: {integrity: sha512-NOnCTQCM0NFuwbyt4DYWDNO2zOTj1mCf43hJqGDFb1XM9F++7zAmSNnCx4UrEoBTiFOy40McJwBBk9D1blSktA==}
     engines: {node: '>=18'}
     dependencies:
-      '@sentry-internal/browser-utils': 9.5.0
-      '@sentry-internal/feedback': 9.5.0
-      '@sentry-internal/replay': 9.5.0
-      '@sentry-internal/replay-canvas': 9.5.0
-      '@sentry/core': 9.5.0
+      '@sentry-internal/browser-utils': 9.46.0
+      '@sentry-internal/feedback': 9.46.0
+      '@sentry-internal/replay': 9.46.0
+      '@sentry-internal/replay-canvas': 9.46.0
+      '@sentry/core': 9.46.0
     dev: false
 
-  /@sentry/core@9.5.0:
-    resolution: {integrity: sha512-NMqyFdyg26ECAfnibAPKT8vvAt4zXp4R7dYtQnwJKhEJEVkgAshcNYeJ2D95ZLMVOqlqhTtTPnw1vqf+v9ePZg==}
+  /@sentry/core@9.46.0:
+    resolution: {integrity: sha512-it7JMFqxVproAgEtbLgCVBYtQ9fIb+Bu0JD+cEplTN/Ukpe6GaolyYib5geZqslVxhp2sQgT+58aGvfd/k0N8Q==}
     engines: {node: '>=18'}
     dev: false
 
