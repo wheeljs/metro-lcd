@@ -1,3 +1,22 @@
+<a name="1.7.0"></a>
+# [1.7.0](https://github.com/wheeljs/metro-lcd/compare/v1.6.9...v1.7.0) (2025-11-12)
+
+
+### Chores
+
+* **angular:** update to angular 20 ([7f2d837](https://github.com/wheeljs/metro-lcd/commit/7f2d837))
+* **fontawesome:** update ([deb106f](https://github.com/wheeljs/metro-lcd/commit/deb106f))
+* **ng-zorro-antd:** update to compatible with angular 20 ([8d08a5b](https://github.com/wheeljs/metro-lcd/commit/8d08a5b))
+* **ngx-echarts:** update ([a536020](https://github.com/wheeljs/metro-lcd/commit/a536020))
+* **sentry:** update ([964d8e1](https://github.com/wheeljs/metro-lcd/commit/964d8e1))
+
+
+### Features
+
+* **data:** add 2025-10 ([5ad14d5](https://github.com/wheeljs/metro-lcd/commit/5ad14d5))
+
+
+
 <a name="1.6.9"></a>
 ## [1.6.9](https://github.com/wheeljs/metro-lcd/compare/v1.6.8...v1.6.9) (2025-10-13)
 
