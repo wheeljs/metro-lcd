@@ -121,6 +121,9 @@ devDependencies:
   angular-cli-ghpages:
     specifier: ^2.0.0-beta.2
     version: 2.0.3
+  baseline-browser-mapping:
+    specifier: ^2.10.20
+    version: 2.10.20
   conventional-changelog-angular-all:
     specifier: ^1.7.0
     version: 1.7.0
@@ -3013,8 +3016,9 @@ packages:
     engines: {node: ^4.5.0 || >= 5.9}
     dev: true
 
-  /baseline-browser-mapping@2.8.25:
-    resolution: {integrity: sha512-2NovHVesVF5TXefsGX1yzx1xgr7+m9JQenvz6FQY3qd+YXkKkYiv+vTCc7OriP9mcDZpTC5mAOYN4ocd29+erA==}
+  /baseline-browser-mapping@2.10.20:
+    resolution: {integrity: sha512-1AaXxEPfXT+GvTBJFuy4yXVHWJBXa4OdbIebGN/wX5DlsIkU0+wzGnd2lOzokSk51d5LUmqjgBLRLlypLUqInQ==}
+    engines: {node: '>=6.0.0'}
     hasBin: true
     dev: true
 
@@ -3130,7 +3134,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      baseline-browser-mapping: 2.8.25
+      baseline-browser-mapping: 2.10.20
       caniuse-lite: 1.0.30001754
       electron-to-chromium: 1.5.248
       node-releases: 2.0.27
