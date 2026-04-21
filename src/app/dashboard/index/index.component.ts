@@ -1,10 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { filter, map, merge, switchMap, tap } from 'rxjs';
-import type { NzResultComponent } from 'ng-zorro-antd/result';
+import type { NzResultStatusType } from 'ng-zorro-antd/result';
 import type { DashboardData, DashboardDataVM } from '../types';
 import { DataService } from '../services';
 import { DataVMService } from '../services/data-vm.service';
@@ -55,7 +55,7 @@ export class DashboardIndexComponent {
     return `${year}年${month}月城市轨道交通运营数据`;
   }
 
-  status?: NzResultComponent['nzStatus'];
+  status = signal<NzResultStatusType | undefined>(undefined);
 
   private _data: DashboardDataVM | undefined;
 
@@ -166,7 +166,7 @@ export class DashboardIndexComponent {
     const listItem = this.list[id];
     if (!listItem || listItem.disabled) {
       this.data = undefined;
-      this.status = '404';
+      this.status.set('404');
       this.loading = false;
       return;
     }
@@ -184,11 +184,11 @@ export class DashboardIndexComponent {
 
         if (!skipLocationChange && this.range !== id) {
           this.router.navigateByUrl(`/dashboard/${id}`, {
-            replaceUrl: typeof this.status !== 'undefined',
+            replaceUrl: typeof this.status() !== 'undefined',
           });
         }
 
-        this.status = undefined;
+        this.status.set(undefined);
         this.data = this.list[id] as DashboardDataVM;
         this.loading = false;
       },
