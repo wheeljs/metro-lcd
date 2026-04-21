@@ -1,4 +1,5 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { provideZoneChangeDetection } from "@angular/core";
+import { platformBrowser } from "@angular/platform-browser";
 import * as Sentry from '@sentry/angular';
 import 'zone.js';
 
@@ -21,7 +22,7 @@ if (!environment.disableSentry) {
   });
 }
 
-platformBrowserDynamic([
+platformBrowser([
   { provide: STORAGE, useFactory: () => localStorage },
-]).bootstrapModule(AppModule)
+]).bootstrapModule(AppModule, { applicationProviders: [provideZoneChangeDetection()], })
   .catch((err) => console.error(err));
