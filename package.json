@@ -1,6 +1,6 @@
 {
   "name": "metro-lcd",
-  "version": "1.7.4",
+  "version": "1.7.5",
   "private": true,
   "engines": {
     "node": "^20.19.0 || ^22.12.0 || ^24.0.0"
