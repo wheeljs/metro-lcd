@@ -45,8 +45,8 @@ dependencies:
     specifier: ^5.0.12
     version: 5.2.5
   '@fortawesome/angular-fontawesome':
-    specifier: ^2.0.1
-    version: 2.0.1(@angular/core@21.2.9)
+    specifier: ^4.0.0
+    version: 4.0.0(@angular/core@21.2.9)
   '@fortawesome/fontawesome-svg-core':
     specifier: ^6.4.2
     version: 6.7.2
@@ -1324,13 +1324,13 @@ packages:
     resolution: {integrity: sha512-70r2UZ0raqLn5W+sPeKhqlf8wGvUXFWlofaDlcbt/S3d06+17gXKr3VNqDODB0I1ASme3dGT5OJj9NABt7OTZQ==}
     dev: false
 
-  /@fortawesome/angular-fontawesome@2.0.1(@angular/core@21.2.9):
-    resolution: {integrity: sha512-IdklZkuw+WS2GQWhFnr1EX/tOALnrKaj4YGnUmPaUg2Uf+Amj8Xi+M/qDrr915YJ5MaDxd9tZ1kqOHRcvQqq2A==}
+  /@fortawesome/angular-fontawesome@4.0.0(@angular/core@21.2.9):
+    resolution: {integrity: sha512-TCqHqT5ovFY1A4RgMpoBUgS+RX3OVs39+CzHFgzDhbCPAopOa26J748TZJcuZwJAvGAk9tbWeVEmWuLByINAeg==}
     peerDependencies:
-      '@angular/core': ^20.0.0
+      '@angular/core': ^21.0.0
     dependencies:
       '@angular/core': 21.2.9(@angular/compiler@21.2.9)(rxjs@7.8.2)(zone.js@0.15.0)
-      '@fortawesome/fontawesome-svg-core': 6.7.2
+      '@fortawesome/fontawesome-svg-core': 7.2.0
       tslib: 2.8.1
     dev: false
 
@@ -1339,11 +1339,23 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
+  /@fortawesome/fontawesome-common-types@7.2.0:
+    resolution: {integrity: sha512-IpR0bER9FY25p+e7BmFH25MZKEwFHTfRAfhOyJubgiDnoJNsSvJ7nigLraHtp4VOG/cy8D7uiV0dLkHOne5Fhw==}
+    engines: {node: '>=6'}
+    dev: false
+
   /@fortawesome/fontawesome-svg-core@6.7.2:
     resolution: {integrity: sha512-yxtOBWDrdi5DD5o1pmVdq3WMCvnobT0LU6R8RyyVXPvFRd2o79/0NCuQoCjNTeZz9EzA9xS3JxNWfv54RIHFEA==}
     engines: {node: '>=6'}
     dependencies:
       '@fortawesome/fontawesome-common-types': 6.7.2
+    dev: false
+
+  /@fortawesome/fontawesome-svg-core@7.2.0:
+    resolution: {integrity: sha512-6639htZMjEkwskf3J+e6/iar+4cTNM9qhoWuRfj9F3eJD6r7iCzV1SWnQr2Mdv0QT0suuqU8BoJCZUyCtP9R4Q==}
+    engines: {node: '>=6'}
+    dependencies:
+      '@fortawesome/fontawesome-common-types': 7.2.0
     dev: false
 
   /@fortawesome/free-brands-svg-icons@6.7.2:
