@@ -1,3 +1,25 @@
+<a name="1.7.6"></a>
+## [1.7.6](https://github.com/wheeljs/metro-lcd/compare/v1.7.5...v1.7.6) (2026-05-16)
+
+
+### Chores
+
+* **@angular/material:** update to 21 ([2991040](https://github.com/wheeljs/metro-lcd/commit/2991040))
+* **angular:** remove deprecated [@angular](https://github.com/angular)/animations ([efba1f7](https://github.com/wheeljs/metro-lcd/commit/efba1f7))
+* **angular:** update to angular 21 ([378a4dc](https://github.com/wheeljs/metro-lcd/commit/378a4dc))
+* **baseline-browser-mapping:** add dependency ([aa4526b](https://github.com/wheeljs/metro-lcd/commit/aa4526b))
+* **fontawesome:** update ([afd16cb](https://github.com/wheeljs/metro-lcd/commit/afd16cb))
+* **ng-zorro-antd:** update to compatible with angular 21 ([23166de](https://github.com/wheeljs/metro-lcd/commit/23166de))
+* **ngx-echarts:** update ([5158560](https://github.com/wheeljs/metro-lcd/commit/5158560))
+* **sentry:** update ([37796ff](https://github.com/wheeljs/metro-lcd/commit/37796ff))
+
+
+### Features
+
+* **data:** add 2026-4 ([884cc21](https://github.com/wheeljs/metro-lcd/commit/884cc21))
+
+
+
 <a name="1.7.5"></a>
 ## [1.7.5](https://github.com/wheeljs/metro-lcd/compare/v1.7.4...v1.7.5) (2026-04-21)
 
